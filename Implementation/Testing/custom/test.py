@@ -1,4 +1,4 @@
-from flask import Flask, request, escape
+from flask import Flask, request, render_template, escape
 
 app = Flask(__name__)
 
@@ -6,32 +6,30 @@ app = Flask(__name__)
 def index():
     message = ""
     if request.method == "POST":
-        name = request.form.get("name", "")  # Get the name from the form
-        # Vulnerable code: Directly embedding user input
-        message = f"Hello, {name}!"  # Vulnerable to XSS
+        # Reflected XSS (Demonstration - DO NOT DO THIS IN PRODUCTION)
+        # In a real application, you MUST sanitize user input!
+        unsafe_input = request.form.get("user_input", "")
+        #message = f"You entered: {unsafe_input}"  # Vulnerable - DO NOT DO THIS
+        message = f"You entered: {escape(unsafe_input)}" # Safer - Escaping output
 
-        # More secure approach (using escape):
-        # message = f"Hello, {escape(name)}!" #Escaping using escape() function
+        # Stored XSS (Demonstration - DO NOT DO THIS IN PRODUCTION)
+        # In a real application, you MUST sanitize user input before storing it!
+        try:
+            with open("stored_xss.txt", "a") as f:  # Insecure storage for demo
+                f.write(unsafe_input + "\n")
+        except Exception as e:
+            print(f"Error storing XSS: {e}")
 
 
-    return f"""
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>XSS Test Page</title>
-    </head>
-    <body>
-        <h1>XSS Test</h1>
+    # Display stored XSS (Demonstration - DO NOT DO THIS IN PRODUCTION)
+    stored_messages = []
+    try:
+        with open("stored_xss.txt", "r") as f:
+            stored_messages = f.readlines()
+    except FileNotFoundError:
+        pass
 
-        <form method="POST">
-            <label for="name">Enter your name:</label>
-            <input type="text" name="name" id="name">
-            <input type="submit" value="Submit">
-        </form>
-
-        <p>{message}</p>  </body>
-    </html>
-    """
+    return render_template("index.html", message=message, stored_messages=stored_messages)
 
 if __name__ == "__main__":
-    app.run(debug=True)  # debug=True for easier development
+    app.run(debug=True)
