@@ -1,52 +1,78 @@
-# ... (imports and test_xss function as before)
+import requests
+from bs4 import BeautifulSoup
+import urllib.parse
 
-vulnerable_url = "http://127.0.0.1:5000/?user_input={}"
+def test_xss(url, vector, request_method="GET", data=None, target_element_id=None):
+    try:
+        encoded_vector = urllib.parse.quote(vector)
+        if request_method == "GET":
+            full_url = url + encoded_vector  # Already formatted in the calling function
+            response = requests.get(full_url)
+        elif request_method == "POST":
+            response = requests.post(url, data=data)
+        else:
+            raise ValueError("Invalid request method")
 
-# Add more URLs for other test cases
-event_handler_url = "http://127.0.0.1:5000/?event_onclick={}&event_onmouseover={}&event_onerror={}"
-attribute_url = "http://127.0.0.1:5000/?attr_href={}&attr_onfocus={}"
-tag_url = "http://127.0.0.1:5000/?tag_script={}&tag_iframe={}"
+        response.raise_for_status()  # Check for HTTP errors
 
+        if target_element_id:
+            soup = BeautifulSoup(response.content, "html.parser")
+            target_element = soup.find(id=target_element_id)
+
+            if target_element and encoded_vector in str(target_element):  # Check encoded vector
+                return True  # XSS successful (encoded vector found in target)
+
+            # Check for decoded vector if encoded is not found.
+            if target_element and vector in str(target_element):  # Check decoded vector
+                return True  # XSS successful (decoded vector found in target)
+
+            return False #XSS not successful
+        else:
+            soup = BeautifulSoup(response.content, "html.parser")
+
+            # Example checks (adapt these based on your vectors' effects)
+            if "alert(" in str(soup):  # Basic alert check
+                return True
+            # Add more checks as needed (checking for specific elements, etc.)
+            return False #XSS not successful
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+        return False  # Return False on error
+
+base_url = "http://127.0.0.1:5000/"
 
 with open("xss_vectors.txt", "r") as f:
     xss_vectors = [line.strip() for line in f]
 
 for vector in xss_vectors:
-    # Test reflected XSS
-    if test_xss(vulnerable_url, vector):
-        print(f"Reflected XSS successful with: {vector}")
+    # Reflected XSS (GET)
+    reflected_url = base_url + "?user_input="
+    reflected_url += urllib.parse.quote(vector)
+
+    if test_xss(reflected_url, vector):
+        print(f"Reflected XSS successful: {vector}")
     else:
-        print(f"Reflected XSS NOT successful with: {vector}")
+        print(f"Reflected XSS NOT successful: {vector}")
 
-    # Test event handlers
-    if test_xss(event_handler_url, vector, request_method="POST", data={"event_onclick": vector, "event_onmouseover": vector, "event_onerror": vector}):
-        print(f"Event Handler XSS successful with: {vector}")
+
+    # Event Handler XSS (POST)
+    event_handler_data = {"event_handler": vector}
+    if test_xss(base_url, vector, request_method="POST", data=event_handler_data, target_element_id="event_handler_test"):
+        print(f"Event Handler XSS successful: {vector}")
     else:
-        print(f"Event Handler XSS NOT successful with: {vector}")
+        print(f"Event Handler XSS NOT successful: {vector}")
 
-    # Test attributes
-    if test_xss(attribute_url, vector, request_method="POST", data={"attr_href": vector, "attr_onfocus": vector}):
-        print(f"Attribute XSS successful with: {vector}")
+    # Attribute XSS (POST)
+    attribute_data = {"attribute": vector}
+    if test_xss(base_url, vector, request_method="POST", data=attribute_data, target_element_id="attribute_test"):
+        print(f"Attribute XSS successful: {vector}")
     else:
-        print(f"Attribute XSS NOT successful with: {vector}")
+        print(f"Attribute XSS NOT successful: {vector}")
 
-    # Test tags
-    if test_xss(tag_url, vector, request_method="POST", data={"tag_script": vector, "tag_iframe": vector}):
-        print(f"Tag XSS successful with: {vector}")
+    # Tag XSS (POST)
+    tag_data = {"tag": vector}
+    if test_xss(base_url, vector, request_method="POST", data=tag_data, target_element_id="tag_test"):
+        print(f"Tag XSS successful: {vector}")
     else:
-        print(f"Tag XSS NOT successful with: {vector}")
-
-
-def test_xss(url, vector, request_method="GET", data=None):  # Added request_method and data
-    try:
-        encoded_vector = urllib.parse.quote(vector)
-        full_url = url.format(encoded_vector)
-
-        if request_method == "GET":
-            response = requests.get(full_url)
-        elif request_method == "POST":
-            response = requests.post(full_url, data=data)  # Use POST and send data
-        else:
-            raise ValueError("Invalid request method")
-
-        # ... (rest of the test_xss function remains the same)
+        print(f"Tag XSS NOT successful: {vector}")
