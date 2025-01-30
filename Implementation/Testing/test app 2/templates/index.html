@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XSS Test Page</title>
+</head>
+<body>
+    <h1>XSS Test Page</h1>
+
+    <form method="POST">
+        <label for="user_input">Enter some text:</label><br>
+        <input type="text" id="user_input" name="user_input"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Reflected XSS Test (Unsafe - For Testing ONLY):</h2>
+    <p>{{ message|safe }}</p>  <h2>Stored XSS Test (INSECURE DEMO):</h2>
+    <ul>
+        {% for msg in stored_messages %}
+            <li>{{ msg|safe }}</li>  {% endfor %}
+    </ul>
+
+    <h2>Event Handler Tests:</h2>
+    <button onclick="{{ event_onclick|safe }}">Click Me (onclick)</button>
+    <a href="#" onmouseover="{{ event_onmouseover|safe }}">Hover Over Me (onmouseover)</a>
+    <img src="#" onerror="{{ event_onerror|safe }}">
+
+    <h2>Attribute Tests:</h2>
+    <a href="{{ attr_href|safe }}">Link with JS href</a>
+    <input type="text" value="" onfocus="{{ attr_onfocus|safe }}">
+
+    <h2>Tag Tests:</h2>
+    {{ tag_script|safe }}
+    {{ tag_iframe|safe }}
+
+    <h2>DOM-based XSS Test (Client-Side - for demonstration):</h2>
+    <input type="text" id="dom_input" value="Test">
+    <button onclick="var val = document.getElementById('dom_input').value; alert(val);">DOM XSS Test</button>
+
+</body>
+</html>

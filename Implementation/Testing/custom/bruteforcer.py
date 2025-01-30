@@ -31,7 +31,7 @@ with open("xss_vectors.txt", "r") as f:
   xss_vectors = f.readlines()
 
 # URL of the vulnerable page (replace with the actual URL)
-vulnerable_url = "http://your-test-website.com/vulnerable-page?input={}" 
+vulnerable_url = "http://127.0.0.1:5000/?user_input={}" 
 
 for vector in xss_vectors:
   vector = vector.strip()  # Remove any leading/trailing whitespace
