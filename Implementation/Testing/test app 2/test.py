@@ -42,7 +42,7 @@ def test_xss(url, vector, request_method="GET", data=None, target_element_id=Non
 
 base_url = "http://127.0.0.1:5000/"
 
-with open("xss_vectors.txt", "r") as f:
+with open("../../Cheatsheet/portswigger_cheatsheet.txt", "r") as f:
     xss_vectors = [line.strip() for line in f]
 
 for vector in xss_vectors:
