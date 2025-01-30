@@ -1,57 +1,29 @@
-from flask import Flask, request, render_template, escape
+from flask import Flask, request, render_template_string
 
 app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    message = ""
-    event_onclick = ""
-    event_onmouseover = ""
-    event_onerror = ""
-    attr_href = ""
-    attr_onfocus = ""
-    tag_script = ""
-    tag_iframe = ""
-
+    user_input = ""
     if request.method == "POST":
-        unsafe_input = request.form.get("user_input", "")
+        user_input = request.form.get("payload", "")
 
-        # Reflected XSS (Unsafe - For Testing ONLY)
-        message = unsafe_input
-
-        # Stored XSS (Insecure - For Testing ONLY)
-        try:
-            with open("stored_xss.txt", "a") as f:
-                f.write(unsafe_input + "\n")
-        except Exception as e:
-            print(f"Error storing XSS: {e}")
-        
-        # Example event handlers (for demonstration)
-        event_onclick = request.form.get("event_onclick", "")
-        event_onmouseover = request.form.get("event_onmouseover", "")
-        event_onerror = request.form.get("event_onerror", "")
-        attr_href = request.form.get("attr_href", "")
-        attr_onfocus = request.form.get("attr_onfocus", "")
-        tag_script = request.form.get("tag_script", "")
-        tag_iframe = request.form.get("tag_iframe", "")
-
-    stored_messages = []
-    try:
-        with open("stored_xss.txt", "r") as f:
-            stored_messages = f.readlines()
-    except FileNotFoundError:
-        pass
-
-    return render_template("index.html", 
-                           message=message, 
-                           stored_messages=stored_messages,
-                           event_onclick=event_onclick,
-                           event_onmouseover=event_onmouseover,
-                           event_onerror=event_onerror,
-                           attr_href=attr_href,
-                           attr_onfocus=attr_onfocus,
-                           tag_script=tag_script,
-                           tag_iframe=tag_iframe)
+    # Reflecting user input directly without sanitization (XSS vulnerability)
+    return render_template_string(f"""
+        <!DOCTYPE html>
+        <html>
+        <head><title>XSS Vulnerability Test</title></head>
+        <body>
+            <h2>XSS Test Page</h2>
+            <form method="post">
+                <input type="text" name="payload" placeholder="Enter XSS Payload">
+                <button type="submit">Submit</button>
+            </form>
+            <h3>Reflected Output:</h3>
+            <div>{user_input}</div> <!-- Vulnerable reflection -->
+        </body>
+        </html>
+    """)
 
 if __name__ == "__main__":
     app.run(debug=True)
