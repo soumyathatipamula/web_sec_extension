@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from time import sleep
+import time
 
 # Read XSS payloads from cheatsheet file
 with open('../../Cheatsheet/portswigger_cheatsheet.txt', 'r') as file:
@@ -63,40 +63,40 @@ def login_to_dvwa():
 
 # Function to test XSS payloads
 def test_xss_payloads():
+    payload = "<script>alert(1)</script>"
     detected_results = []
     undetected_results = []
     driver.get(DVWA_URL + 'vulnerabilities/xss_r/')
 
-    for payload in xss_payloads:
-        input_field = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.NAME, 'name'))
+    input_field = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.NAME, 'name'))
+    )
+    input_field.clear()
+    input_field.send_keys(payload)
+    input_field.send_keys(Keys.RETURN)
+
+    # Use WebDriverWait for dynamic content
+    try:
+        alert = WebDriverWait(driver, 5).until( # Wait up to 5 seconds
+            EC.alert_is_present() # Check for an alert
         )
-        input_field.clear()
-        input_field.send_keys(payload)
-        sleep(2)
-        input_field.send_keys(Keys.RETURN)
+        
+        alert_text = alert.text
+        print(alert_text)
+        detected = True
+        alert.accept() # Dismiss the alert
+    except:
+        detected = False
+        alert_text = "No alert"
 
-        # Use WebDriverWait for dynamic content
-        try:
-          alert = WebDriverWait(driver, 5).until( # Wait up to 5 seconds
-              EC.alert_is_present() # Check for an alert
-          )
-        #   alert = driver.switch_to.alert
-          alert_text = alert.text
-          detected = True
-          alert.accept() # Dismiss the alert
-        except:
-          detected = False
-          alert_text = "No alert"
+    result = f'Payload: {payload}\nDetected: {detected}\nAlert Text: {alert_text}\n'
 
-        result = f'Payload: {payload}\nDetected: {detected}\nAlert Text: {alert_text}\n'
+    if detected:
+        detected_results.append(result)
+    else:
+        undetected_results.append(result)
 
-        if detected:
-            detected_results.append(result)
-        else:
-            undetected_results.append(result)
-
-        driver.get(DVWA_URL + 'vulnerabilities/xss_r/') # Return to the page for next test
+    driver.get(DVWA_URL + 'vulnerabilities/xss_r/') # Return to the page for next test
 
     return detected_results, undetected_results
 
