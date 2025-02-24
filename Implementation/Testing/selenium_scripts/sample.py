@@ -12,7 +12,7 @@ submit_button = driver.find_element(By.CSS_SELECTOR, "button" )
 text_box.send_keys ("Hello, World!")
 submit_button.click()
 
-message = driver.find_element(By.ID, "mesasge")
+message = driver.find_element(By.ID, "message")
 text = message.text
 print(text)
 driver.quit()
