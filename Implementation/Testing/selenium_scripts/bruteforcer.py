@@ -18,7 +18,7 @@ driver = webdriver.Chrome(options=options) # Pass the options to the driver
 # DVWA credentials (consider storing these securely, not directly in the script)
 DVWA_USER = 'admin'
 DVWA_PASSWORD = 'password'
-DVWA_URL = 'http://192.168.101.147/DVWA/login.php/'
+DVWA_URL = 'http://192.168.2.6/DVWA/login.php/'
 
 # Function to log in to DVWA
 def login_to_dvwa():
