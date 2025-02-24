@@ -1,6 +1,6 @@
 <a autofocus onfocus=alert(1) href></a>
 <a autofocus onfocusin=alert(1) href></a>
-<a contenteditable onbeforeinput=alert(1)>test
+<a contenteditable onbeforeinput=alert(1)>test</a>
 <a draggable="true" ondrag="alert(1)" style=display:block>test</a>
 <a draggable="true" ondragend="alert(1)" style=display:block>test</a>
 <a draggable="true" ondragenter="alert(1)" style=display:block>test</a>

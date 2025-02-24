@@ -1,2 +1,0 @@
-# CounterXSS
-chrome extension

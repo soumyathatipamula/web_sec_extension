@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "XSS-immune",
+  "version": "1.2",
+  "description": "A Chrome Extension for detecting and sanitizing XSS attacks based on HREQ and HRES comparison with context-aware sanitization and partial script injection detection.",
+  "permissions": ["webRequest", "webRequestBlocking", "<all_urls>", "storage", "activeTab"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  }
+}

@@ -1,0 +1,52 @@
+{
+    "TAGS": [
+      "<script.*?>",
+      "<img.*?src=.*?>",
+      "<iframe.*?>",
+      "<embed.*?>",
+      "<object.*?>",
+      "<video.*?>",
+      "<audio.*?>",
+      "<svg.*?>",
+      "<form.*?>",
+      "<button.*?>",
+      "<body.*?>",
+      "<input.*?>",
+      "<textarea.*?>",
+      "<source.*?>",
+      "<g.*?>"
+    ],
+    "ATTRS": [
+      "onerror=.*?",
+      "onload=.*?",
+      "onfocus=.*?",
+      "onblur=.*?",
+      "oninput=.*?",
+      "formaction=.*?",
+      "autofocus",
+      "src=.*?",
+      "type=.*?",
+      "AllowScriptAccess=.*?",
+      "xmlns=.*?",
+      "xlink:href=.*?"
+    ],
+    "SVG": [
+      "<svg.*?onload=.*?>",
+      "<g.*?onload=.*?>",
+      "<a.*?xlink:href=.*?>",
+      "<rect.*?fill=.*?>"
+    ],
+    "KEYWORDS": [
+      "document\\.getElementById",
+      "document\\.getElementByName",
+      "document\\.cookie",
+      "location\\.href",
+      "location\\.replace",
+      "window\\.location",
+      "window\\.history",
+      "history\\.back",
+      "history\\.forward",
+      "history\\.go"
+    ]
+  }
+  
