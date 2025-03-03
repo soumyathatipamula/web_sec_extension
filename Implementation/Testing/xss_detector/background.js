@@ -11,23 +11,42 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       });
   
       // Store attack details in Chrome storage
-      chrome.storage.local.get({ xssLogs: [] }, data => {
-        let logs = data.xssLogs;
-        logs.push(...message.attacks);
-        savetojson(logs);
-        chrome.storage.local.set({ xssLogs: logs });
-      });
+      storeInIDB(message.attacks);
     }
   });
 
 
-  function savetojson(attacklogs) {
-    const jsonString = JSON.stringify(attacklogs, null, 2);
-    const dataUrl = 'data:application/json;base64,' + btoa(jsonString);
-  
-    chrome.downloads.download({
-      url: dataUrl,
-      filename: 'xss-attacks.json',
-      saveAs: true
-    });
+  function storeInIDB(attacks) {
+    let request = indexedDB.open("XSS_logs", 1);
+
+    request.onupgradeneeded = (event) =>{
+      let db = event.target.result;
+      if (!db.objectStoreNames.contains("xssLogs")) {
+        db.createObjectStore("xssLogs", { autoIncrement: true });
+      }
+    };
+
+    request.onsuccess = (event) => {
+      let db = event.target.result;
+      let transaction = db.transaction("xssLogs", "readwrite");
+      let objectStore = transaction.objectStore("xssLogs");
+
+      attacks.forEach((attack) => {
+        objectStore.add(attack);
+      });
+
+      transaction.oncomplete = () => {
+        console.log("Attack details stored in IndexedDB");
+      };
+
+      transaction.onerror = (event) => {
+        console.log("Error storing attack details in IndexedDB", event.target.error);
+      };
+
+    };
+
+    request.onerror = event => {
+      console.log("Erroor opening indexed DB", event.target.error);
+    };
+
   }
