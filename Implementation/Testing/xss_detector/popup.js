@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //   });
     // });
 
-    let request = indexedDB.open("XSS_logs", 1);
+    let request = indexedDB.open("xssLogs", 1);
     
     request.onsuccess = event => {
       let db = event.target.result;
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let cursor = event.target.result;
         if (cursor) {
           let li = document.createElement("li");
-          li.textContent = '[$(cursor.value.type)] $(cursor.value.effector), $(cursor.value.payload), $(cursor.value.url)';
+          li.textContent = `[${cursor.value.type}] ${cursor.value.effector}, ${cursor.value.payload}, ${cursor.value.url}`;
           logList.appendChild(li);
           cursor.continue();
         }
