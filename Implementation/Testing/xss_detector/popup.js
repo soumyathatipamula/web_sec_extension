@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //   });
     // });
 
-    let request = indexedDB.open("XSS_logs", 1);
+    let request = indexedDB.open("XSS_logs", 2);
     
     request.onsuccess = event => {
       let db = event.target.result;
