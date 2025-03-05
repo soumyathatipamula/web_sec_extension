@@ -1,3 +1,11 @@
+Object.defineProperty(String.prototype, "capitalize", {
+  value: function() {
+    return this.chatAt(0).toUpperCase() + this.slice(1);
+  }
+});
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const logList = document.getElementById("log-list");
     const clearBtn = document.getElementById("clear-log");
@@ -17,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
           let log = cursor.value;
           for (let key in log) {
             let li = document.createElement("li");
-            li.textContent = `${key.} : ${log[key]}`;
+            li.textContent = `${key.capitalize()} : ${log[key]}`;
             ul.appendChild(li);
           }
           main_li.appendChild(ul)

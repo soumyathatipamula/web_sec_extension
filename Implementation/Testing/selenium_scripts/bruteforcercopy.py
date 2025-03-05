@@ -79,10 +79,10 @@ def handle_alert():
 # Function to check extension's XSS logs
 def get_extension_logs():
     handle_alert()  # Handle any unexpected alerts before getting logs
-    # extension_id = "pcjnggemkkhpfoepgnnkbhgbhhfgkgic"
-    driver.get(f"chrome-extension://{extension_id}/popup.html")
 
-    value = driver.execute_script("localStorage.clear();")
+    value = driver.execute_script("""
+                    request = indexedDB.open('xssLogs');
+""")
     if value:
         return value
     else:
