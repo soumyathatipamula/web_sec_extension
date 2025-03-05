@@ -17,7 +17,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 
   function storeInIDB(attacks) {
-    let request = indexedDB.open("XSS_logs", 1);
+    let request = indexedDB.open("xssLogs", 1);
 
     request.onupgradeneeded = (event) =>{
       let db = event.target.result;
@@ -28,6 +28,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
     request.onsuccess = (event) => {
       let db = event.target.result;
+      
       let transaction = db.transaction("xssLogs", "readwrite");
       let objectStore = transaction.objectStore("xssLogs");
 
@@ -49,4 +50,4 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       console.log("Erroor opening indexed DB", event.target.error);
     };
 
-  }
+}

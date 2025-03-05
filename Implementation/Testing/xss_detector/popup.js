@@ -1,16 +1,15 @@
+Object.defineProperty(String.prototype, "capitalize", {
+  value: function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  }
+});
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const logList = document.getElementById("log-list");
     const clearBtn = document.getElementById("clear-log");
-  
-    // Load stored logs
-    // chrome.storage.local.get({ xssLogs: [] }, data => {
-    //   data.xssLogs.forEach(log => {
-    //     let li = document.createElement("li");
-    //     li.textContent = `[${log.type}] ${log.effector}, ${log.payload}, ${log.url}`;
-    //     // li.textContent = `Type: ${log.type}\nEffected Area: ${log.effector}\nPayload: ${log.payload}\nURL: ${log.url}`;
-    //     logList.appendChild(li);
-    //   });
-    // });
+
 
     let request = indexedDB.open("XSS_logs", 2);
     
@@ -22,9 +21,16 @@ document.addEventListener("DOMContentLoaded", () => {
       objectstore.openCursor().onsuccess = event => {
         let cursor = event.target.result;
         if (cursor) {
-          let li = document.createElement("li");
-          li.textContent = '[$(cursor.value.type)] $(cursor.value.effector), $(cursor.value.payload), $(cursor.value.url)';
-          logList.appendChild(li);
+          let main_li = document.createElement("li");
+          let ul = document.createElement("ul");
+          let log = cursor.value;
+          for (let key in log) {
+            let li = document.createElement("li");
+            li.textContent = `${key.capitalize()} : ${log[key]}`;
+            ul.appendChild(li);
+          }
+          main_li.appendChild(ul)
+          logList.appendChild(main_li);
           cursor.continue();
         }
       };
@@ -38,10 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     ;
 
-
-
-
-  
     // Clear logs when button is clicked
     clearBtn.addEventListener("click", () => {
         logList.innerHTML = "";
