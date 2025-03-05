@@ -47,7 +47,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     };
 
     request.onerror = event => {
-      console.log("Erroor opening indexed DB", event.target.error);
+      console.log("Error opening indexed DB", event.target.error);
     };
 
 }

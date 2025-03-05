@@ -4,18 +4,16 @@ Object.defineProperty(String.prototype, "capitalize", {
   }
 });
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
     const logList = document.getElementById("log-list");
     const clearBtn = document.getElementById("clear-log");
 
 
-    let request = indexedDB.open("XSS_logs", 2);
+    let request = indexedDB.open("xssLogs", 1);
     
     request.onsuccess = event => {
       let db = event.target.result;
-      let transaction = db.transaction("xssLogs", "readwrite");
+      let transaction = db.transaction("xssLogs", "readonly");
       let objectstore = transaction.objectStore("xssLogs");
 
       objectstore.openCursor().onsuccess = event => {

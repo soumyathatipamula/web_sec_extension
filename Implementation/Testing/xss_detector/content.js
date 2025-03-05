@@ -19,7 +19,7 @@ function detectXSS() {
   urlParams.forEach((value, key) => {
     xssPatterns.forEach(pattern => {
       if (pattern.test(value)) {
-        detectedAttacks.push({type: "Reflected XSS", effector: key, payload: value, url: window.location.href });
+        detectedAttacks.push({type: "Reflected XSS", effector: key, payload: value, url: window.location.href, Time: new Date().toLocaleString()});
       }
     });
   });
@@ -38,7 +38,7 @@ function detectXSS() {
   matchedElement.style.border = "2px solid yellow";
   matchedElement.style.background = "tomato";
 
-  detectedAttacks.push({ type: "DOM XSS", effector: matchedElement.tagName, payload: matchedElement.innerHTML, url: window.location.href});}
+  detectedAttacks.push({ type: "DOM XSS", effector: matchedElement.tagName, payload: matchedElement.innerHTML, url: window.location.href, , Time: new Date().toLocaleString()});}
 
   // Send detected attacks to background script
   if (detectedAttacks.length > 0) {

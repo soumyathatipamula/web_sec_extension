@@ -21,7 +21,7 @@ driver = webdriver.Chrome(options=chrome_options)
 # DVWA configuration (update IP if needed)
 DVWA_USER = 'admin'
 DVWA_PASSWORD = 'password'
-DVWA_URL = 'http://192.168.2.4/DVWA/'
+DVWA_URL = 'http://10.92.46.147/DVWA/'
 
 # Function to log in and set security level
 def login_and_set_security():
@@ -76,17 +76,32 @@ def handle_alert():
     except:
         print("❌ No alert present.")
 
-# Function to check extension's XSS logs
+
 def get_extension_logs():
     handle_alert()  # Handle any unexpected alerts before getting logs
 
-    value = driver.execute_script("""
-                    request = indexedDB.open('xssLogs');
-""")
-    if value:
-        return value
-    else:
-        return []
+    logs = driver.execute_script("""
+        return new Promise((resolve, reject) => {
+            let saved_logs = [];
+            let request = indexedDB.open('xssLogs');
+            request.onsuccess = event => {
+                let db = event.target.result;
+                let transaction = db.transaction(['xssLogs'], 'readonly');
+                let objectStore = transaction.objectStore('xssLogs');
+                                    
+                objectStore.getAll().onsuccess = (event) => {
+                    resolve(event.target.result);
+                };
+            };
+            request.onerror = event => {
+                console.log("Error", event.target.error);
+                reject(event.target.error);           
+            };
+        });
+    """)
+
+    return logs
+        
 
 # Function to test XSS payloads
 def test_xss_payloads():
@@ -109,6 +124,7 @@ def test_xss_payloads():
         # Check extension logs
         logs = get_extension_logs()
         print(logs)
+        time.sleep(10)
         detected = any(log['payload'] == payload for log in logs)
         
         # Record results
@@ -119,9 +135,6 @@ def test_xss_payloads():
         else:
             undetected_results.append(result)
             print(f"❌ Missed: {payload}")
-
-        # Clear storage for next test
-        driver.execute_script("chrome.storage.local.set({ xssLogs: [] });")
 
     return detected_results, undetected_results
 
