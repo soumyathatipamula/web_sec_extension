@@ -1,2 +1,0 @@
-Payload: <script>alert('9749852')</script>
-Detected: False

@@ -13,28 +13,16 @@ with open('../../Cheatsheet/portswigger_cheatsheet.txt', 'r') as file:
 
 # Configure Chrome to load your extension
 extension_path = "/Users/nithin/college/web_sec_extension/Implementation/Testing/xss_detector with indexed db"  # Update this path
-
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument(f'--load-extension={extension_path}')
 
-# Initialize WebDriver with extension and logging capabilities
+# Initialize WebDriver with extension
 driver = webdriver.Chrome(options=chrome_options)
 
 # DVWA configuration (update IP if needed)
 DVWA_USER = 'admin'
 DVWA_PASSWORD = 'password'
-DVWA_URL = 'http://192.168.1.113/DVWA/'
-
-def get_extension_id(driver):
-    driver.get("chrome://extensions")
-    time.sleep(1)
-    script = """
-        return document.querySelector("extensions-manager")
-               .shadowRoot.querySelector("extensions-item-list")
-               .shadowRoot.querySelector("extensions-item")
-               .getAttribute("id")
-    """
-    return driver.execute_script(script)
+DVWA_URL = 'http://192.168.29.155/DVWA/'
 
 def login_and_set_security():
     # Log in to DVWA
@@ -81,6 +69,7 @@ def login_and_set_security():
 
 def handle_alert():
     try:
+        WebDriverWait(driver, 3).until(EC.alert_is_present())
         alert = driver.switch_to.alert
         alert.accept()
         print("✅ Alert accepted.")
@@ -88,31 +77,51 @@ def handle_alert():
         # No alert to handle
         print("❌ No alert to handle.")
 
-def after_injection():
+def get_extension_logs():
     handle_alert()  # Handle any unexpected alerts before getting logs
-    print("Waiting for extension to store payload...")
     
-    extension_id = get_extension_id(driver)
-    popup_url = f"chrome-extension://{extension_id}/popup.html"
-    driver.get(popup_url)
+    #getting the extension id
+    driver.get("chrome://extensions") #Opening the extension manager
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "extensions-manager")))
+    script = """
+        return document.querySelector("extensions-manager")
+               .shadowRoot.querySelector("extensions-item-list")
+               .shadowRoot.querySelector("extensions-item")
+               .getAttribute("id")
+    """
+    extension_id = driver.execute_script(script)
 
-    wait = WebDriverWait(driver, 10)
+    #Verifying with extension id
+    driver.get(f"chrome-extension://{extension_id}/popup.html")
 
-    output = wait.until(EC.visibility_of_element_located((By.ID, "payload")))
+    # Wait till extension detects the payload
+    log_list = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "payload")))
+    print("Extension list detected")
 
-    print(output, type(output))
+    driver.execute_script("""
+    var logs = [];
 
+    let request = indexedDB.open("xssLogs", 1);
 
-    print("logs code executed")
+    request.onsuccess = () => {
+        let db = request.result;
+        let transaction = db.transaction("xssLogs", "readwrite");
+        let store = transaction.objectStore("xssLogs");
 
-    # return detect_flag
+        store.clear();
+    }
+    """)
+
+    return log_list.text
 
 def test_xss_payloads():
     detected_results = []
     undetected_results = []
     
-    # Here, we test one payload. You can adjust the range if needed.
-    for _ in range(1):
+    print("\n\nStarting XSS payload tests...\n\n")
+
+    for i in range(2):
+        print(f"Attack vector {i+1}")
         driver.get(DVWA_URL + 'vulnerabilities/xss_r/')
         
         # Generate a unique XSS payload
@@ -127,22 +136,23 @@ def test_xss_payloads():
         input_field.send_keys(payload)
         input_field.send_keys(Keys.RETURN)
         
-        # Wait a few seconds for the extension to detect and store the payload
         # Retrieve logs from IndexedDB using the extension's storage
-        detected = after_injection()
+        logs = get_extension_logs()
         print("IndexedDB logs:", logs)
         
         # Depending on how your extension sends data, records may be stored as objects or raw strings.
         # Adjust the check accordingly:
+        detected_payload = logs.split(": ")[1]
         
-        
-        result = f'Payload: {payload}\nDetected: {detected}\n'
-        if detected:
+        result = f'Payload: {payload}\nDetected: {detected_payload}\n'
+        if detected_payload == payload :
             detected_results.append(result)
             print(f"✅ Detected payload: {payload}")
         else:
             undetected_results.append(result)
             print(f"❌ Missed payload: {payload}")
+        
+        print("\n--------------------------------------------------------------------------------------------------------------------------------\n")
 
     return detected_results, undetected_results
 

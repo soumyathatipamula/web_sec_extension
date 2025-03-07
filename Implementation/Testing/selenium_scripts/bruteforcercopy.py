@@ -25,6 +25,7 @@ DVWA_PASSWORD = 'password'
 DVWA_URL = 'http://192.168.1.113/DVWA/'
 
 def login_and_set_security():
+    print("Logging in to DVWA...")
     # Log in to DVWA
     driver.get(DVWA_URL + 'login.php')
     username_field = WebDriverWait(driver, 10).until(
