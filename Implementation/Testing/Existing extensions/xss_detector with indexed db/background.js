@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         title: "XSS Alert",
         message: alertMessage
       });
-  
+      
       // Store attack details in Chrome storage
       storeInIDB(message.attacks);
     }
@@ -17,6 +17,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 
   function storeInIDB(attacks) {
+    const indexedDB = window.indexedDB;
     let request = indexedDB.open("xssLogs", 1);
 
     request.onupgradeneeded = (event) =>{

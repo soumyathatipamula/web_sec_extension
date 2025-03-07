@@ -1,3 +1,4 @@
+
 // Known XSS attack patterns (simplified version)
 const xssPatterns = [
   /<script>.*?<\/script>/i,
@@ -20,6 +21,7 @@ function detectXSS() {
     xssPatterns.forEach(pattern => {
       if (pattern.test(value)) {
         detectedAttacks.push({type: "Reflected XSS", effector: key, payload: value, url: window.location.href, Time: new Date().toLocaleString()});
+        console.log("Sent the log to the background script");
       }
     });
   });
@@ -37,8 +39,8 @@ function detectXSS() {
   if (found){let matchedElement = matchedElements.pop();
   matchedElement.style.border = "2px solid yellow";
   matchedElement.style.background = "tomato";
-
-  detectedAttacks.push({ type: "DOM XSS", effector: matchedElement.tagName, payload: matchedElement.innerHTML, url: window.location.href, , Time: new Date().toLocaleString()});}
+  detectedAttacks.push({ type: "DOM XSS", effector: matchedElement.tagName, payload: matchedElement.innerHTML, url: window.location.href,Time: new Date().toLocaleString()});
+  console.log("Sent the log to the background script");}
 
   // Send detected attacks to background script
   if (detectedAttacks.length > 0) {

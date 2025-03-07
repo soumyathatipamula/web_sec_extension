@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const logList = document.getElementById("log-list");
     const clearBtn = document.getElementById("clear-log");
 
-
+    const indexedDB = window.indexedDB;
     let request = indexedDB.open("xssLogs", 1);
     
     request.onsuccess = event => {
