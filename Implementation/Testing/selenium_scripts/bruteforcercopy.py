@@ -4,8 +4,11 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.chrome.options import Options
 import time
 from random import randint
+
+alert = False 
 
 # Read XSS payloads from cheatsheet file (if needed)
 with open('../../Cheatsheet/portswigger_cheatsheet.txt', 'r') as file:
@@ -14,18 +17,19 @@ with open('../../Cheatsheet/portswigger_cheatsheet.txt', 'r') as file:
 # Configure Chrome to load your extension
 extension_path = "/Users/nithin/college/web_sec_extension/Implementation/Testing/xss_detector with indexed db"  # Update this path
 chrome_options = webdriver.ChromeOptions()
+chrome_options.headless = True
+driver = webdriver.Chrome(options=chrome_options)
 chrome_options.add_argument(f'--load-extension={extension_path}')
 
-# Initialize WebDriver with extension and logging capabilities
+# Initialize WebDriver with extension
 driver = webdriver.Chrome(options=chrome_options)
 
 # DVWA configuration (update IP if needed)
 DVWA_USER = 'admin'
 DVWA_PASSWORD = 'password'
-DVWA_URL = 'http://192.168.1.113/DVWA/'
+DVWA_URL = 'http://192.168.29.27/DVWA/'
 
 def login_and_set_security():
-    print("Logging in to DVWA...")
     # Log in to DVWA
     driver.get(DVWA_URL + 'login.php')
     username_field = WebDriverWait(driver, 10).until(
@@ -69,63 +73,83 @@ def login_and_set_security():
         exit()
 
 def handle_alert():
+    global alert
     try:
+        WebDriverWait(driver, 3).until(EC.alert_is_present())
         alert = driver.switch_to.alert
         alert.accept()
+        alert = True
         print("✅ Alert accepted.")
     except:
         # No alert to handle
+        alert = False
         print("❌ No alert to handle.")
 
 def get_extension_logs():
     handle_alert()  # Handle any unexpected alerts before getting logs
-    print("Waiting for extension to store payload...")
-    # time.sleep(2)  # Wait for the extension to store the payload
+    
+    #getting the extension id
+    driver.get("chrome://extensions") #Opening the extension manager
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "extensions-manager")))
+    script = """
+        return document.querySelector("extensions-manager")
+               .shadowRoot.querySelector("extensions-item-list")
+               .shadowRoot.querySelector("extensions-item")
+               .getAttribute("id")
+    """
+    extension_id = driver.execute_script(script)
 
-    logs = driver.execute_async_script("""
-        var callback = arguments[arguemnts.length - 1];
-        var request = indexedDB.open('xssLogs', 1);  // Ensure the version matches the existing version
-        request.onsuccess = (event) =>  {
-            var db = event.target.result;
-            var transaction = db.transaction(['xssLogs'], 'readonly');
-            var objectStore = transaction.objectStore('xssLogs');
-            var data = [];
-            var cursorRequest = objectStore.openCursor();
-            cursorRequest.onsuccess = function(event) {
-                cursor = cursorRequest.result;
-                if(cursor) {
-                    data.push(cursor.value);
-                    cursor.continue();
-                }
-                else{
-                    callback(data);
-                }
-            };
-            cursorRequest.onerror = function(event) {
-                console.log("Error getting all records:", event.target.error);
-                callback([]);
-            };
-        };
-        request.onerror = function(event) {
-            console.log("Error opening IndexedDB:", event.target.error);
-            callback([]);
-        };
+    #Verifying with extension id
+    driver.get(f"chrome-extension://{extension_id}/popup.html")
+
+    # Wait till extension detects the payload
+    log_list = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "payload")))
+    print("Extension list detected")
+
+    driver.execute_script("""
+    var logs = [];
+
+    let request = indexedDB.open("xssLogs", 1);
+
+    request.onsuccess = () => {
+        let db = request.result;
+        let transaction = db.transaction("xssLogs", "readwrite");
+        let store = transaction.objectStore("xssLogs");
+
+        store.clear();
+    }
     """)
-    print("logs code executed")
 
-    return logs
+    return log_list.text
+
+def HTML_convertion(text):
+    chrome_options = Options()
+    chrome_options.headless = True
+    driver = webdriver.Chrome(options=chrome_options)
+    # Open a blank page so that we have a DOM to work with.
+    driver.get("data:text/html,<html></html>")
+    script = """
+    var payload = arguments[0];
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(payload, 'text/html');
+    // Return the normalized outerHTML of the first element in the body
+    return doc.body.firstChild.outerHTML;
+    """
+    converted_text =  driver.execute_script(script, text)
+    driver.quit()
+    return converted_text
 
 def test_xss_payloads():
     detected_results = []
     undetected_results = []
     
-    # Here, we test one payload. You can adjust the range if needed.
-    for _ in range(1):
+    print("\n\nStarting XSS payload tests...\n\n")
+
+    for i, payload in (enumerate(xss_payloads)):
+        print(f"Attack vector {i+1}")
         driver.get(DVWA_URL + 'vulnerabilities/xss_r/')
         
-        # Generate a unique XSS payload
-        random_number = randint(0, 10000000)
-        payload = f"<script>alert('{random_number}')</script>"
+
         
         # Submit payload
         input_field = WebDriverWait(driver, 10).until(
@@ -135,25 +159,23 @@ def test_xss_payloads():
         input_field.send_keys(payload)
         input_field.send_keys(Keys.RETURN)
         
-        # Wait a few seconds for the extension to detect and store the payload
         # Retrieve logs from IndexedDB using the extension's storage
         logs = get_extension_logs()
         print("IndexedDB logs:", logs)
         
         # Depending on how your extension sends data, records may be stored as objects or raw strings.
         # Adjust the check accordingly:
-        detected = any(
-            (isinstance(log, dict) and log.get('payload') == payload) or (log == payload)
-            for log in logs
-        )
+        detected_payload = logs.split(": ")[1]
         
-        result = f'Payload: {payload}\nDetected: {detected}\n'
-        if detected:
+        result = f'Payload: {payload} | Detected: {detected_payload} | Alert: {alert}\n'
+        if (detected_payload.find(HTML_convertion(payload))) :
             detected_results.append(result)
             print(f"✅ Detected payload: {payload}")
         else:
-            undetected_results.append(result)
+            undetected_results.append(f'Payload: {payload} | Detected: {detected_payload} | Alert: {alert}\n')
             print(f"❌ Missed payload: {payload}")
+        
+        print("\n--------------------------------------------------------------------------------------------------------------------------------\n")
 
     return detected_results, undetected_results
 
