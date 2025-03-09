@@ -8,12 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const logList = document.getElementById("log-list");
     const clearBtn = document.getElementById("clear-log");
 
-    const indexedDB = window.indexedDB;
     let request = indexedDB.open("xssLogs", 1);
     
     request.onsuccess = event => {
       let db = event.target.result;
-      let transaction = db.transaction("xssLogs", "readonly");
+      let transaction = db.transaction("xssLogs", "readwrite");
       let objectstore = transaction.objectStore("xssLogs");
 
       objectstore.openCursor().onsuccess = event => {
@@ -24,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
           let log = cursor.value;
           for (let key in log) {
             let li = document.createElement("li");
+            li.id = key;
             li.textContent = `${key.capitalize()} : ${log[key]}`;
             ul.appendChild(li);
           }
