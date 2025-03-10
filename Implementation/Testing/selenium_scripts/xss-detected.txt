@@ -1,4 +1,1 @@
-Payload: <script>hi</script>
-Detected: <script>hi</script>
-Payload: <script>hi</script>
-Detected: <script>hi</script>
+Payload: <script>ReferenceError.prototype.__defineGetter__('name', function(){javascript:alert(1)}),x</script> | Detected: <script>ReferenceError.prototype.__defineGetter__('name', function(){javascript:alert(1)}),x</script> | Alert: False

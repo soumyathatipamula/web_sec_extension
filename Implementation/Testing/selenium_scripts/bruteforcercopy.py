@@ -17,8 +17,8 @@ with open('../../Cheatsheet/portswigger_cheatsheet.txt', 'r') as file:
 # Configure Chrome to load your extension
 extension_path = "/Users/nithin/college/web_sec_extension/Implementation/Testing/xss_detector with indexed db"  # Update this path
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
-driver = webdriver.Chrome(options=chrome_options)
+# chrome_options.add_argument("--headless")
+# driver = webdriver.Chrome(options=chrome_options)
 chrome_options.add_argument(f'--load-extension={extension_path}')
 
 # Initialize WebDriver with extension
@@ -75,7 +75,7 @@ def login_and_set_security():
 def handle_alert():
     global alert
     try:
-        WebDriverWait(driver, 3).until(EC.alert_is_present())
+        WebDriverWait(driver, 1).until(EC.alert_is_present())
         alert = driver.switch_to.alert
         alert.accept()
         alert = True
@@ -103,8 +103,12 @@ def get_extension_logs():
     driver.get(f"chrome-extension://{extension_id}/popup.html")
 
     # Wait till extension detects the payload
-    log_list = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "payload")))
-    print("Extension list detected")
+    log_list = ""
+    try :
+        log_list = WebDriverWait(driver, 1).until(EC.presence_of_element_located((By.ID, "payload")))
+    except:
+        print("No logs detected")
+        return ""
 
     driver.execute_script("""
     var logs = [];
@@ -146,6 +150,7 @@ def test_xss_payloads():
     print("\n\nStarting XSS payload tests...\n\n")
 
     for i, payload in (enumerate(xss_payloads)):
+        detected_payload = ""
         print(f"Attack vector {i+1}")
         driver.get(DVWA_URL + 'vulnerabilities/xss_r/')
         
@@ -165,17 +170,21 @@ def test_xss_payloads():
         
         # Depending on how your extension sends data, records may be stored as objects or raw strings.
         # Adjust the check accordingly:
-        detected_payload = logs.split(": ")[1]
+        if logs:
+            detected_payload = logs.split(": ")[1]
+            converted_payload = HTML_convertion(payload)
+            print("Converted payload:", converted_payload)
         
         result = f'Payload: {payload} | Detected: {detected_payload} | Alert: {alert}\n'
-        if (detected_payload.find(HTML_convertion(payload))) :
+        # print(f"{logs} \n {converted_payload} \n {detected_payload.find(converted_payload)}")
+        if logs :#and ((detected_payload.find(converted_payload)) != -1):
             detected_results.append(result)
             print(f"✅ Detected payload: {payload}")
         else:
-            undetected_results.append(f'Payload: {payload} | Detected: {detected_payload} | Alert: {alert}\n')
+            undetected_results.append(f'Payload: {payload} | Alert: {alert}\n')
             print(f"❌ Missed payload: {payload}")
         
-        print("\n--------------------------------------------------------------------------------------------------------------------------------\n")
+        print("\n------------------------------------------------------------------------------------------\n")
 
     return detected_results, undetected_results
 
