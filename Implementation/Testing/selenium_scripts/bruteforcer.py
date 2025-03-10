@@ -17,7 +17,7 @@ with open('../../Cheatsheet/portswigger_cheatsheet.txt', 'r') as file:
 # Configure Chrome to load your extension
 extension_path = "/Users/nithin/college/web_sec_extension/Implementation/Testing/xss_detector with indexed db"  # Update this path
 chrome_options = webdriver.ChromeOptions()
-chrome_options.headless = True
+chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(options=chrome_options)
 chrome_options.add_argument(f'--load-extension={extension_path}')
 
@@ -124,7 +124,7 @@ def get_extension_logs():
 
 def HTML_convertion(text):
     chrome_options = Options()
-    chrome_options.headless = True
+    chrome_options.add_argument("--headless")
     driver = webdriver.Chrome(options=chrome_options)
     # Open a blank page so that we have a DOM to work with.
     driver.get("data:text/html,<html></html>")
