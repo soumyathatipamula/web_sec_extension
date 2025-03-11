@@ -10,8 +10,9 @@ import time
 is_alert = False 
 
 #opening the files
-detected_file = open('xss-detected.txt', 'w')
-undetected_file = open('xss-undetected.txt', 'w')
+detected_file = open('xss-detected(709:).txt', 'w')
+undetected_file = open('xss-undetected(709:).txt', 'w')
+cant_perform = open('cant-perform(709:).txt', 'w')
 
 # Read XSS payloads from cheatsheet file (if needed)
 with open('../../Cheatsheet/xss_vectors_kurobeats.txt', 'r') as file:
@@ -22,16 +23,17 @@ with open('../../Cheatsheet/xss_vectors_kurobeats.txt', 'r') as file:
 # Configure Chrome to load your extension
 extension_path = "/Users/nithin/college/web_sec_extension/Implementation/Testing/xss_detector with indexed db"  # Update this path
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--headless")
 chrome_options.add_argument(f'--load-extension={extension_path}')
 
 # Initialize WebDriver with extension
 driver = webdriver.Chrome(options=chrome_options)
 
+# driver.set_page_load_timeout(30)
 # DVWA configuration (update IP if needed)
 DVWA_USER = 'admin'
 DVWA_PASSWORD = 'password'
-DVWA_URL = 'http://10.92.46.136/DVWA/'
+DVWA_URL = 'http://192.168.29.155/DVWA/'
 
 def login_and_set_security():
     # Log in to DVWA
@@ -77,6 +79,7 @@ def login_and_set_security():
         exit()
 
 def handle_alert():
+    print("Handling alerts")
     global is_alert
     while True:
         try:
@@ -143,19 +146,23 @@ def test_xss_payloads():
     
     print("\n\nStarting XSS payload tests...\n\n")
 
-    for i, payload in (enumerate(xss_payloads)):
-        is_alert = False
-        print(f"Attack vector {i+1}")
-        driver.get(DVWA_URL + 'vulnerabilities/xss_r/')
-        
-        # Submit payload
-        input_field = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.NAME, 'name'))
-        )
-        input_field.clear()
-        input_field.send_keys(payload)
-        input_field.send_keys(Keys.RETURN)
-        
+    for i, payload in (enumerate(xss_payloads[709:],start=709)):
+        try:
+            is_alert = False
+            print(f"Attack vector {i+1}")
+            driver.get(DVWA_URL + 'vulnerabilities/xss_r/')
+            
+            # Submit payload
+            input_field = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.NAME, 'name'))
+            )
+            input_field.clear()
+            input_field.send_keys(payload)
+            input_field.send_keys(Keys.RETURN)
+            print("pressed ")
+        except Exception as e:
+            cant_perform.write(f"{payload} | {e}")
+            continue
         # Retrieve logs from IndexedDB using the extension's storage
         logs = get_extension_logs()
         print("IndexedDB logs:", logs)
