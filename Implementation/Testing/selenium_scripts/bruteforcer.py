@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
-from selenium.common.exceptions import NoAlertPresentException
+from selenium.common.exceptions import NoAlertPresentException, TimeoutException
 import time
 from random import randint
 
@@ -16,13 +16,15 @@ detected_file = open('xss-detected.txt', 'w')
 undetected_file = open('xss-undetected.txt', 'w')
 
 # Read XSS payloads from cheatsheet file (if needed)
-with open('my_cheatsheet', 'r') as file:
+# with open('../../Cheatsheet/xss_vectors_kurobeats.txt', 'r') as file:
+with open('../../Cheatsheet/portswigger_cheatsheet.txt', 'r') as file:
+# with open('./my_cheatsheet', 'r') as file:
     xss_payloads = [line.strip() for line in file.readlines()]
 
 # Configure Chrome to load your extension
 extension_path = "/Users/nithin/college/web_sec_extension/Implementation/Testing/xss_detector with indexed db"  # Update this path
 chrome_options = webdriver.ChromeOptions()
-# chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless")
 # driver = webdriver.Chrome(options=chrome_options)
 chrome_options.add_argument(f'--load-extension={extension_path}')
 
@@ -91,12 +93,16 @@ def handle_alert():
             # No alert found within the timeout, exit the loop
             print("❌ No more alerts to handle.")
             break
+        except TimeoutException:
+            # No alert found within the timeout, exit the loop
+            print("❌ timeoutexeption : No more alerts to handle.")
+            break
         except Exception as e:
-            #catch all other errors.
-            print(f"Error handling alert: {e}")
+            print("❌ other : No more alerts to handle.")
             break
 
 def get_extension_logs():
+    global is_alert
     handle_alert()  # Handle any unexpected alerts before getting logs
     
     #getting the extension id
@@ -137,23 +143,6 @@ def get_extension_logs():
 
     return log_list.text
 
-def HTML_convertion(text):
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")
-    driver = webdriver.Chrome(options=chrome_options)
-    # Open a blank page so that we have a DOM to work with.
-    driver.get("data:text/html,<html></html>")
-    script = """
-    var payload = arguments[0];
-    var parser = new DOMParser();
-    var doc = parser.parseFromString(payload, 'text/html');
-    // Return the normalized outerHTML of the first element in the body
-    return doc.body.firstChild.outerHTML;
-    """
-    converted_text =  driver.execute_script(script, text)
-    driver.quit()
-    return converted_text
-
 def test_xss_payloads():
     detected_results = []
     undetected_results = []
@@ -186,7 +175,7 @@ def test_xss_payloads():
         if logs:
             detected_payload = logs.split(": ")[1]
         
-        result = f'Payload: {payload} | Detected: {detected_payload} | Alert: {is_alert}\n'
+        result = f'Payload: {payload} | Alert: {is_alert}\n'
         # print(f"{logs} \n {converted_payload} \n {detected_payload.find(converted_payload)}")
         if logs :#and ((detected_payload.find(converted_payload)) != -1):
             detected_file.write(result)
