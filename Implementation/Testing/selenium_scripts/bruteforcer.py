@@ -3,11 +3,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoAlertPresentException, TimeoutException
 import time
-from random import randint
+
 
 is_alert = False 
 
@@ -16,8 +14,8 @@ detected_file = open('xss-detected.txt', 'w')
 undetected_file = open('xss-undetected.txt', 'w')
 
 # Read XSS payloads from cheatsheet file (if needed)
-# with open('../../Cheatsheet/xss_vectors_kurobeats.txt', 'r') as file:
-with open('../../Cheatsheet/portswigger_cheatsheet.txt', 'r') as file:
+with open('../../Cheatsheet/xss_vectors_kurobeats.txt', 'r') as file:
+# with open('../../Cheatsheet/portswigger_cheatsheet.txt', 'r') as file:
 # with open('./my_cheatsheet', 'r') as file:
     xss_payloads = [line.strip() for line in file.readlines()]
 
@@ -25,7 +23,6 @@ with open('../../Cheatsheet/portswigger_cheatsheet.txt', 'r') as file:
 extension_path = "/Users/nithin/college/web_sec_extension/Implementation/Testing/xss_detector with indexed db"  # Update this path
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--headless")
-# driver = webdriver.Chrome(options=chrome_options)
 chrome_options.add_argument(f'--load-extension={extension_path}')
 
 # Initialize WebDriver with extension
@@ -128,8 +125,6 @@ def get_extension_logs():
         return ""
 
     driver.execute_script("""
-    var logs = [];
-
     let request = indexedDB.open("xssLogs", 1);
 
     request.onsuccess = () => {
@@ -144,19 +139,14 @@ def get_extension_logs():
     return log_list.text
 
 def test_xss_payloads():
-    detected_results = []
-    undetected_results = []
     global is_alert
     
     print("\n\nStarting XSS payload tests...\n\n")
 
     for i, payload in (enumerate(xss_payloads)):
-        detected_payload = ""
         is_alert = False
         print(f"Attack vector {i+1}")
         driver.get(DVWA_URL + 'vulnerabilities/xss_r/')
-        
-
         
         # Submit payload
         input_field = WebDriverWait(driver, 10).until(
@@ -170,27 +160,20 @@ def test_xss_payloads():
         logs = get_extension_logs()
         print("IndexedDB logs:", logs)
         
-        # Depending on how your extension sends data, records may be stored as objects or raw strings.
-        # Adjust the check accordingly:
-        if logs:
-            detected_payload = logs.split(": ")[1]
-        
         result = f'Payload: {payload} | Alert: {is_alert}\n'
         # print(f"{logs} \n {converted_payload} \n {detected_payload.find(converted_payload)}")
         if logs :#and ((detected_payload.find(converted_payload)) != -1):
             detected_file.write(result)
             print(f"✅ Detected payload: {payload}")
         else:
-            undetected_file.write(f'Payload: {payload} | Alert: {is_alert}\n')
+            undetected_file.write(result)
             print(f"❌ Missed payload: {payload}")
         
         print("\n------------------------------------------------------------------------------------------\n")
 
-    return detected_results, undetected_results
-
 def main():
     login_and_set_security()
-    detected, undetected = test_xss_payloads()
+    test_xss_payloads()
     driver.quit()
 
 if __name__ == '__main__':
