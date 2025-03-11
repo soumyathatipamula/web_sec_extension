@@ -11,8 +11,12 @@ from random import randint
 
 is_alert = False 
 
+#opening the files
+detected_file = open('xss-detected.txt', 'w')
+undetected_file = open('xss-undetected.txt', 'w')
+
 # Read XSS payloads from cheatsheet file (if needed)
-with open('../../Cheatsheet/portswigger_cheatsheet.txt', 'r') as file:
+with open('my_cheatsheet', 'r') as file:
     xss_payloads = [line.strip() for line in file.readlines()]
 
 # Configure Chrome to load your extension
@@ -28,7 +32,7 @@ driver = webdriver.Chrome(options=chrome_options)
 # DVWA configuration (update IP if needed)
 DVWA_USER = 'admin'
 DVWA_PASSWORD = 'password'
-DVWA_URL = 'http://192.168.29.27/DVWA/'
+DVWA_URL = 'http://10.92.46.136/DVWA/'
 
 def login_and_set_security():
     # Log in to DVWA
@@ -153,6 +157,7 @@ def HTML_convertion(text):
 def test_xss_payloads():
     detected_results = []
     undetected_results = []
+    global is_alert
     
     print("\n\nStarting XSS payload tests...\n\n")
 
@@ -180,16 +185,14 @@ def test_xss_payloads():
         # Adjust the check accordingly:
         if logs:
             detected_payload = logs.split(": ")[1]
-            converted_payload = HTML_convertion(payload)
-            print("Converted payload:", converted_payload)
         
         result = f'Payload: {payload} | Detected: {detected_payload} | Alert: {is_alert}\n'
         # print(f"{logs} \n {converted_payload} \n {detected_payload.find(converted_payload)}")
         if logs :#and ((detected_payload.find(converted_payload)) != -1):
-            detected_results.append(result)
+            detected_file.write(result)
             print(f"✅ Detected payload: {payload}")
         else:
-            undetected_results.append(f'Payload: {payload} | Alert: {is_alert}\n')
+            undetected_file.write(f'Payload: {payload} | Alert: {is_alert}\n')
             print(f"❌ Missed payload: {payload}")
         
         print("\n------------------------------------------------------------------------------------------\n")
@@ -200,12 +203,6 @@ def main():
     login_and_set_security()
     detected, undetected = test_xss_payloads()
     driver.quit()
-
-    # Save results
-    with open('xss-detected.txt', 'w') as f:
-        f.writelines(detected)
-    with open('xss-undetected.txt', 'w') as f:
-        f.writelines(undetected)
 
 if __name__ == '__main__':
     main()
