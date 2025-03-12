@@ -10,9 +10,9 @@ import time
 is_alert = False 
 
 #opening the files
-detected_file = open('xss-detected(709:).txt', 'w')
-undetected_file = open('xss-undetected(709:).txt', 'w')
-cant_perform = open('cant-perform(709:).txt', 'w')
+detected_file = open('xss-detected(594:709]+xss_payloads[935:).txt', 'w')
+undetected_file = open('xss-undetected(594:709]+xss_payloads[935:).txt', 'w')
+cant_perform = open('cant-perform(594:709]+xss_payloads[935:).txt', 'w')
 
 # Read XSS payloads from cheatsheet file (if needed)
 with open('../../Cheatsheet/xss_vectors_kurobeats.txt', 'r') as file:
@@ -33,7 +33,7 @@ driver = webdriver.Chrome(options=chrome_options)
 # DVWA configuration (update IP if needed)
 DVWA_USER = 'admin'
 DVWA_PASSWORD = 'password'
-DVWA_URL = 'http://192.168.29.155/DVWA/'
+DVWA_URL = 'http://192.168.29.156/DVWA/'
 
 def login_and_set_security():
     # Log in to DVWA
@@ -78,32 +78,34 @@ def login_and_set_security():
         driver.quit()
         exit()
 
-def handle_alert():
+def handle_alert(payload):
     print("Handling alerts")
     global is_alert
-    while True:
-        try:
-            # Wait for an alert to appear (timeout: 1 second)
-            WebDriverWait(driver, 1).until(EC.alert_is_present())
-            alert = driver.switch_to.alert
-            alert.accept()  # Close the alert
-            is_alert = True
-            print("✅ Alert accepted.")
-        except NoAlertPresentException:
-            # No alert found within the timeout, exit the loop
-            print("❌ No more alerts to handle.")
-            break
-        except TimeoutException:
-            # No alert found within the timeout, exit the loop
-            print("❌ timeoutexeption : No more alerts to handle.")
-            break
-        except Exception as e:
-            print("❌ other : No more alerts to handle.")
-            break
+    # while True:
+    try:
+        # Wait for an alert to appear (timeout: 1 second)
+        WebDriverWait(driver, 4).until(EC.alert_is_present())
+        alert = driver.switch_to.alert
+        alert.accept()  # Close the alert
+        is_alert = True
+        print("✅ Alert accepted.")
+    except NoAlertPresentException:
+        # No alert found within the timeout, exit the loop
+        print("❌ No more alerts to handle.")
+        # break
+    except TimeoutException:
+        # No alert found within the timeout, exit the loop
+        print("❌ timeoutexeption : No more alerts to handle.")
+        # break
+    except Exception as e:
+        print("❌ other : No more alerts to handle.")
+        cant_perform.write(f"{payload} | {e}")
+        # break
 
-def get_extension_logs():
+
+def get_extension_logs(payload):
     global is_alert
-    handle_alert()  # Handle any unexpected alerts before getting logs
+    handle_alert(payload)  # Handle any unexpected alerts before getting logs
     
     #getting the extension id
     driver.get("chrome://extensions") #Opening the extension manager
@@ -115,14 +117,13 @@ def get_extension_logs():
                .getAttribute("id")
     """
     extension_id = driver.execute_script(script)
-
     #Verifying with extension id
     driver.get(f"chrome-extension://{extension_id}/popup.html")
 
     # Wait till extension detects the payload
     log_list = ""
     try :
-        log_list = WebDriverWait(driver, 1).until(EC.presence_of_element_located((By.ID, "payload")))
+        log_list = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.ID, "payload")))
     except:
         print("No logs detected")
         return ""
@@ -146,7 +147,7 @@ def test_xss_payloads():
     
     print("\n\nStarting XSS payload tests...\n\n")
 
-    for i, payload in (enumerate(xss_payloads[709:],start=709)):
+    for i, payload in (enumerate(xss_payloads[594:709]+xss_payloads[935:], start=709)):
         try:
             is_alert = False
             print(f"Attack vector {i+1}")
@@ -160,12 +161,11 @@ def test_xss_payloads():
             input_field.send_keys(payload)
             input_field.send_keys(Keys.RETURN)
             print("pressed ")
+        # Retrieve logs from IndexedDB using the extension's storage
+            logs = get_extension_logs(payload)
+            print("IndexedDB logs:", logs)
         except Exception as e:
             cant_perform.write(f"{payload} | {e}")
-            continue
-        # Retrieve logs from IndexedDB using the extension's storage
-        logs = get_extension_logs()
-        print("IndexedDB logs:", logs)
         
         result = f'Payload: {payload} | Alert: {is_alert}\n'
         # print(f"{logs} \n {converted_payload} \n {detected_payload.find(converted_payload)}")

