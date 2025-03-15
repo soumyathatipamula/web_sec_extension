@@ -10,13 +10,13 @@ import time
 is_alert = False 
 
 #opening the files
-detected_file = open('xss-detected(594:709]+xss_payloads[935:).txt', 'w')
-undetected_file = open('xss-undetected(594:709]+xss_payloads[935:).txt', 'w')
-cant_perform = open('cant-perform(594:709]+xss_payloads[935:).txt', 'w')
+detected_file = open('ps_detected[4126:].txt', 'w')
+undetected_file = open('ps_undetected[4126:].txt', 'w')
+cant_perform = open('ps_cant[4126:].txt', 'w')
 
 # Read XSS payloads from cheatsheet file (if needed)
-with open('../../Cheatsheet/xss_vectors_kurobeats.txt', 'r') as file:
-# with open('../../Cheatsheet/portswigger_cheatsheet.txt', 'r') as file:
+# with open('../../Cheatsheet/xss_vectors_kurobeats.txt', 'r') as file:
+with open('../../Cheatsheet/portswigger_cheatsheet.txt', 'r') as file:
 # with open('./my_cheatsheet', 'r') as file:
     xss_payloads = [line.strip() for line in file.readlines()]
 
@@ -84,7 +84,7 @@ def handle_alert(payload):
     # while True:
     try:
         # Wait for an alert to appear (timeout: 1 second)
-        WebDriverWait(driver, 4).until(EC.alert_is_present())
+        WebDriverWait(driver, 2).until(EC.alert_is_present())
         alert = driver.switch_to.alert
         alert.accept()  # Close the alert
         is_alert = True
@@ -147,9 +147,10 @@ def test_xss_payloads():
     
     print("\n\nStarting XSS payload tests...\n\n")
 
-    for i, payload in (enumerate(xss_payloads[594:709]+xss_payloads[935:], start=709)):
+    for i, payload in (enumerate(xss_payloads[4126:], start=4126)):
+        is_alert = False
+        logs = ""
         try:
-            is_alert = False
             print(f"Attack vector {i+1}")
             driver.get(DVWA_URL + 'vulnerabilities/xss_r/')
             

