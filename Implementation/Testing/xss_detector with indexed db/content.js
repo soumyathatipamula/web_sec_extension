@@ -1,15 +1,15 @@
 
 // Known XSS attack patterns (simplified version)
 const xssPatterns = [
-  /<script>.*?<\/script>/i,
-  /javascript:/i,
-  /on\w+\s*=\s*["'].*?["']/i,
-  /<video\s+[^>]*onerror\s*=\s*["'].*?["'][^>]*>/i,
-  /<form\s+[^>]*formaction\s*=\s*["'].*?["'][^>]*>/i,
-  /<svg\s+[^>]*onload\s*=\s*["'].*?["'][^>]*>/i,
-  /document\.(cookie|write|location)/i,
+  /<script\b[^>]*>[\s\S]*?<\/script>/i, // Matches <script> tags and their content
+  /javascript:/i, // Matches "javascript:" protocol in URLs
+  /on\w+\s*=\s*["'].*?["']/i, // Matches any inline event handler attribute with a quoted value
+  /<video\b[^>]*onerror\s*=\s*["'].*?["'][^>]*>/i, // Matches a <video> tag with an onerror attribute
+  /<form\b[^>]*formaction\s*=\s*["'].*?["'][^>]*>/i, // Matches a <form> tag with a formaction attribute
+  /<svg\b[^>]*onload\s*=\s*["'].*?["'][^>]*>/i, // Matches an <svg> tag with an onload attribute
+  /document\.(cookie|write|location)/i, // Matches dangerous document property usage
+  /<[^>]+\s+(?:(?:onfocusin)|(?:oncontentvisibilityautostatechange)|(?:onerror)|(?:onfocus)|(?:onload))\s*=\s*(["']?)\s*alert\(1\)/i, // Matches tags with specific event handlers that immediately call alert(1)
 ];
-
 // Function to scan for XSS payloads
 function detectXSS() {
   let detectedAttacks = [];

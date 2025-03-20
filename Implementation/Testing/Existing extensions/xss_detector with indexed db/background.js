@@ -28,6 +28,10 @@ function storeInIDB(attacks) {
 
   request.onsuccess = (event) => {
     let db = event.target.result;
+
+    if (!db.objectStoreNames.contains("xssLogs")) {
+      db.createObjectStore("xssLogs", { autoIncrement: true });
+    }
     
     let transaction = db.transaction("xssLogs", "readwrite");
     let objectStore = transaction.objectStore("xssLogs");

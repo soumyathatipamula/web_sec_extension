@@ -10,13 +10,13 @@ import time
 is_alert = False 
 
 #opening the files
-detected_file = open('ps_detected[4126:].txt', 'w')
-undetected_file = open('ps_undetected[4126:].txt', 'w')
-cant_perform = open('ps_cant[4126:].txt', 'w')
+detected_file = open('ps_detected_new.txt', 'w')
+undetected_file = open('ps_undetected_new.txt', 'w')
+cant_perform = open('ps_cant_new.txt', 'w')
 
 # Read XSS payloads from cheatsheet file (if needed)
 # with open('../../Cheatsheet/xss_vectors_kurobeats.txt', 'r') as file:
-with open('../../Cheatsheet/portswigger_cheatsheet.txt', 'r') as file:
+with open('./portswigger_brute_logs/main/ps_undetected.txt', 'r') as file:
 # with open('./my_cheatsheet', 'r') as file:
     xss_payloads = [line.strip() for line in file.readlines()]
 
@@ -33,7 +33,7 @@ driver = webdriver.Chrome(options=chrome_options)
 # DVWA configuration (update IP if needed)
 DVWA_USER = 'admin'
 DVWA_PASSWORD = 'password'
-DVWA_URL = 'http://192.168.29.156/DVWA/'
+DVWA_URL = 'http://10.56.31.108/DVWA/'
 
 def login_and_set_security():
     # Log in to DVWA

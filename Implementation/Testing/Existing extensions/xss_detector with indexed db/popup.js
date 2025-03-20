@@ -9,9 +9,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const clearBtn = document.getElementById("clear-log");
 
     let request = indexedDB.open("xssLogs", 1);
+
+    request.onupgradeneeded = (event) => {
+      let db = event.target.result;
+      if (!db.objectStoreNames.contains("xssLogs")) {
+        db.createObjectStore("xssLogs", { autoIncrement: true });
+        console.log("Object store created using popup");
+      }
+    };
     
     request.onsuccess = event => {
       let db = event.target.result;
+
+      // if (!db.objectStoreNames.contains("xssLogs")) {
+      //   db.createObjectStore("xssLogs", { autoIncrement: true });
+      // }
+
       let transaction = db.transaction("xssLogs", "readwrite");
       let objectstore = transaction.objectStore("xssLogs");
 
