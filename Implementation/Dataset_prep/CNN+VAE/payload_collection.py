@@ -284,7 +284,7 @@ def augment_payloads(payloads, target_size=5000, max_len=None):
 owasp_payloads = fetch_payloads_from_owasp()
 pat_payloads = fetch_payloads_from_payloadsallthethings()
 xssed_payloads = fetch_payloads_from_xssed()
-local_payloads = fetch_payloads_from_local_files("../Cheatsheet/portswigger_cheatsheet.txt", "../Cheatsheet/xss_vectors_kurobeats.txt")
+local_payloads = fetch_payloads_from_local_files("../../Cheatsheet/portswigger_cheatsheet.txt", "../../Cheatsheet/xss_vectors_kurobeats.txt")
 
 if not owasp_payloads:
     print("Warning: No OWASP payloads fetched.")
@@ -300,7 +300,7 @@ base_payloads.extend(owasp_payloads)
 base_payloads.extend(pat_payloads)
 base_payloads.extend(xssed_payloads)
 base_payloads.extend(local_payloads)
-malicious_samples = augment_payloads(base_payloads, target_size=5000, max_len=None)
+malicious_samples = augment_payloads(base_payloads, target_size=19000, max_len=None)
 
 # Output results
 print(f"Collected {len(malicious_samples)} malicious samples")
