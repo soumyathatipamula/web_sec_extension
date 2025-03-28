@@ -162,7 +162,7 @@ def augment_payloads(payloads, target_size=5000, max_len=None):
 owasp_payloads = fetch_payloads_from_owasp()
 pat_payloads = fetch_payloads_from_payloadsallthethings()
 xssed_payloads = fetch_payloads_from_xssed()
-local_payloads = fetch_payloads_from_local_files("payloads1.txt", "payloads2.txt")
+local_payloads = fetch_payloads_from_local_files("../Cheatsheet/portswigger_cheatsheet.txt", "../Cheatsheet/xss_vectors_kurobeats.txt")
 
 if not owasp_payloads:
     print("Warning: No OWASP payloads fetched.")
