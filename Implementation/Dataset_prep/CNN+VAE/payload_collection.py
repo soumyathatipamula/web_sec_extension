@@ -185,7 +185,7 @@ print(f"Collected {len(malicious_samples)} malicious samples")
 for sample in malicious_samples[:5]:
     print(sample)
 
-writer = csv.writer(open("xss_payloads.csv", "w"))
+writer = csv.writer(open("./xss_payloads.csv", "w"))
 for sample in malicious_samples:
     writer.writerow([sample])   
 
