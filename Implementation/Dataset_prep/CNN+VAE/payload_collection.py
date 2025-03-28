@@ -4,6 +4,7 @@ import base64
 import urllib.parse
 from bs4 import BeautifulSoup
 import csv
+import pandas as pd
 
 # Sample payloads (expanded for variety)
 base_payloads = [
@@ -251,10 +252,10 @@ def url_encode_words(text):
             result.append(word)
     return ''.join(result)
 
-def augment_payloads(payloads, target_size=5000, max_len=None):
+def augment_payloads(payloads):
     malicious_samples = set(payloads)  # Use set to avoid duplicates
-    while len(malicious_samples) < target_size:
-        base = random.choice(payloads)
+    for payload in payloads:
+        base = payload
         variants = [
             base.lower(),                                  # All lowercase
             base.upper(),                                  # All uppercase
@@ -272,13 +273,17 @@ def augment_payloads(payloads, target_size=5000, max_len=None):
             f"<script>'{base[:len(base)//2]}'+'{base[len(base)//2:]}'</script>"  # JS string concatenation
         ]
         for variant in variants:
-            if max_len is None or len(variant) <= max_len:
                 malicious_samples.add(variant)
-            if len(malicious_samples) >= target_size:
-                break
+
     malicious_samples = list(malicious_samples)
     random.shuffle(malicious_samples)
-    return malicious_samples[:target_size]
+    return malicious_samples
+
+
+
+other_payloads = pd.read_csv("../Datasets/Processed/process_all_xss_payloads.csv")
+mal_other_payloads = other_payloads[other_payloads["xss"] == 1] 
+mal_other_payloads = mal_other_payloads["payload"].tolist()
 
 # Collect payloads from all sources
 owasp_payloads = fetch_payloads_from_owasp()
@@ -300,15 +305,21 @@ base_payloads.extend(owasp_payloads)
 base_payloads.extend(pat_payloads)
 base_payloads.extend(xssed_payloads)
 base_payloads.extend(local_payloads)
-malicious_samples = augment_payloads(base_payloads, target_size=19000, max_len=None)
+base_payloads.extend(mal_other_payloads)
+print(f"Collected {len(base_payloads)} base payloads")
+malicious_samples = augment_payloads(base_payloads)
 
 # Output results
 print(f"Collected {len(malicious_samples)} malicious samples")
 for sample in malicious_samples[:5]:
     print(sample)
 
-writer = csv.writer(open("./xss_payloads.csv", "w"))
-for sample in malicious_samples:
-    writer.writerow([sample])   
+with_augmented_xss_payloads = pd.DataFrame(malicious_samples, columns=["payload"])
+with_augmented_xss_payloads["xss"] = 1
+#other_benign = other_payloads[other_payloads["xss"] == 0]
+#final_xss_payloads = pd.concat([other_benign, with_augmented_xss_payloads], ignore_index=True)
+# final_xss_payloads.to_csv("./xss_payloads.csv", index=False)
+with_augmented_xss_payloads.to_csv("./xss_payloads.csv", index=False)
 
-print("Payloads saved to 'xss_payloads.txt'")
+# Save payloads to file
+print("Payloads saved to 'xss_payloads.csv'")
