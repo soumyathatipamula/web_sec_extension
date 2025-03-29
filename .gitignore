@@ -5,3 +5,4 @@
 *.mov
 Implementation/Testing/test_environment/
 Implementation/Dataset_prep/CNN+VAE/benign_samples.csv
+._*
