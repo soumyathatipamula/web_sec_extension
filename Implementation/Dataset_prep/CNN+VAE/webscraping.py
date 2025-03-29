@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import random
 import time
+from collections import deque
+from urllib.parse import urljoin, urlparse
 
 # Comprehensive list of benign HTML tags
 tags = [
@@ -28,47 +30,89 @@ user_agents = [
     'Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Mobile/15E148 Safari/604.1'
 ]
 
-def scrape_benign_html(urls, target_samples=775974):
-    benign_samples = set()  # Use set to avoid duplicates
+# Optional proxy list (uncomment and fill if needed)
+proxies_list = [
+    # "http://your_proxy1:port",
+    # "http://your_proxy2:port",
+    # Add more proxies here
+]
+
+def scrape_benign_html_with_crawl(start_urls, target_samples=775974, max_depth=20):
+    benign_samples = set()  # Use set for deduplication
+    visited_urls = set()    # Track visited URLs
+    queue = deque([(url, 0) for url in start_urls])  # (URL, depth)
     retries = 3
+    base_delay = 1  # Base delay in seconds
+    max_delay = 10  # Max delay on rate limits
     
-    for url in urls:
-        print(f"Scraping {url}")
+    while queue and len(benign_samples) < target_samples:
+        url, depth = queue.popleft()
+        
+        if url in visited_urls or depth > max_depth:
+            continue
+        
+        visited_urls.add(url)
+        print(f"Scraping {url} (Depth: {depth}, Samples: {len(benign_samples)})")
+        
         for attempt in range(retries):
             try:
                 headers = {'User-Agent': random.choice(user_agents)}
-                response = requests.get(url, headers=headers, timeout=10)
+                proxies = {'http': random.choice(proxies_list), 'https': random.choice(proxies_list)} if proxies_list else None
+                response = requests.get(url, headers=headers, proxies=proxies, timeout=10)
                 response.raise_for_status()
+                
                 soup = BeautifulSoup(response.text, 'html.parser')
                 
-                # Extract all tags from the page
+                # Extract benign HTML snippets
                 for tag in tags:
                     elements = soup.find_all(tag)
                     for elem in elements:
                         content = str(elem).replace('\n', ' ').replace('\r', ' ').replace('\t', ' ')
-                        content = ' '.join(content.split())  # Normalize whitespace
+                        content = ' '.join(content.split())
                         if content and '<script' not in content.lower() and 'javascript:' not in content.lower():
-                            benign_samples.add(content)  # Add only non-malicious content
+                            benign_samples.add(content)
+                
+                # Collect links for crawling
+                if depth < max_depth:
+                    for link in soup.find_all('a', href=True):
+                        absolute_url = urljoin(url, link['href'])
+                        parsed_url = urlparse(absolute_url)
+                        if (parsed_url.scheme in ['http', 'https'] and 
+                            parsed_url.netloc == urlparse(url).netloc and 
+                            absolute_url not in visited_urls):
+                            queue.append((absolute_url, depth + 1))
+                
                 print(f"Collected {len(benign_samples)} samples so far...")
-                if len(benign_samples) >= target_samples:
-                    break
-                time.sleep(random.uniform(1, 3))  # Polite delay
+                time.sleep(random.uniform(base_delay, base_delay + 2))  # Polite delay
                 break  # Exit retry loop on success
+            
+            except requests.exceptions.HTTPError as e:
+                if response.status_code == 403:
+                    print(f"403 Forbidden at {url}. Possible block. Retrying with delay...")
+                    time.sleep(2 ** attempt * base_delay)
+                elif response.status_code == 429:
+                    print(f"429 Too Many Requests at {url}. Increasing delay to {max_delay} seconds...")
+                    base_delay = min(base_delay + 2, max_delay)  # Increase delay up to max
+                    time.sleep(base_delay * (2 ** attempt))
+                else:
+                    print(f"HTTP Error {response.status_code} at {url}: {e}")
+                    break
+                if attempt == retries - 1:
+                    print(f"Max retries reached for {url}. Skipping...")
+            
             except requests.exceptions.RequestException as e:
                 print(f"Attempt {attempt + 1} failed for {url}: {e}")
                 if attempt == retries - 1:
                     print(f"Max retries reached for {url}. Skipping...")
                 time.sleep(2 ** attempt)  # Exponential backoff
+            
             except Exception as e:
                 print(f"General error processing {url}: {e}")
                 break
-        
-        if len(benign_samples) >= target_samples:
-            break
     
     return list(benign_samples)
 
-# Expanded URLs (same as yours)
+# Starting URLs
 urls = [
     "https://www.google.com/", "https://www.youtube.com/", "https://www.facebook.com/",
     "https://www.twitter.com/", "https://www.instagram.com/", "https://www.linkedin.com/",
@@ -124,15 +168,15 @@ manual_benign = [
     "<blockquote>quote</blockquote>"
 ]
 
-# Scrape benign samples
-benign_samples = scrape_benign_html(urls, target_samples=775974)
+# Scrape and crawl for benign samples
+benign_samples = scrape_benign_html_with_crawl(urls, target_samples=775974, max_depth=20)
 benign_samples.extend(manual_benign)
 
 # Deduplicate and shuffle
 benign_samples = list(set(benign_samples))  # Remove duplicates
 random.shuffle(benign_samples)
 
-# If we don’t reach the target, warn the user
+# Adjust to target size
 if len(benign_samples) < 775974:
     print(f"Warning: Only collected {len(benign_samples)} benign samples, short of 775,974.")
 else:
@@ -142,7 +186,7 @@ print(f"Collected {len(benign_samples)} benign samples")
 for sample in benign_samples[:10]:
     print(sample)
 
-# Save to text file (consistent with xss_payloads.txt)
+# Save to text file
 with open("benign_samples.txt", "w", encoding='utf-8') as f:
     f.write("\n".join(benign_samples))
 print("Benign samples saved to 'benign_samples.txt'")
