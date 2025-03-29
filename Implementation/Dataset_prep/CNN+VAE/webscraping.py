@@ -4,6 +4,7 @@ import random
 import time
 from collections import deque
 from urllib.parse import urljoin, urlparse
+import csv
 
 # Comprehensive list of benign HTML tags
 tags = [
@@ -187,6 +188,8 @@ for sample in benign_samples[:10]:
     print(sample)
 
 # Save to text file
-with open("benign_samples.txt", "w", encoding='utf-8') as f:
-    f.write("\n".join(benign_samples))
-print("Benign samples saved to 'benign_samples.txt'")
+writer = csv.writer(open("benign_samples.csv", "w", newline=''))
+for sample in benign_samples:
+    writer.writerow([sample])  
+
+print("Benign samples saved to 'benign_samples.csv'")
