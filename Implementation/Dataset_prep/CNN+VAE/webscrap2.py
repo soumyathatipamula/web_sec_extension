@@ -5,121 +5,127 @@ import time
 from collections import deque
 from urllib.parse import urljoin, urlparse
 import csv
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from threading import Lock
 
-# Comprehensive list of benign HTML tags
+# Reduced list of common benign HTML tags for faster parsing
 tags = [
-    "a", "abbr", "address", "area", "article", "aside", "audio", "b", "bdi", "bdo",
-    "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col",
-    "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "div",
-    "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "footer", "form",
-    "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hr", "html", "i", "iframe",
-    "img", "input", "ins", "kbd", "label", "legend", "li", "link", "main", "map",
-    "mark", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option",
-    "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby",
-    "s", "samp", "script", "section", "select", "small", "source", "span", "strong",
-    "style", "sub", "summary", "sup", "svg", "table", "tbody", "td", "template",
-    "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul",
-    "var", "video", "wbr"
+    "a", "div", "p", "img", "span", "h1", "h2", "h3", "li", "td", "tr", "ul", "ol",
+    "form", "input", "button", "table", "thead", "tbody", "tfoot", "th"
 ]
 
 user_agents = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0',
-    'Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko',
-    'Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Mobile/15E148 Safari/604.1'
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0'
 ]
 
 # Optional proxy list (uncomment and fill if needed)
 proxies_list = [
     # "http://your_proxy1:port",
     # "http://your_proxy2:port",
-    # Add more proxies here
 ]
 
-def scrape_benign_html_with_crawl(start_urls, target_samples=775974, max_pages_per_domain=20):
-    benign_samples = set()  # Use set for deduplication
-    domain_page_count = {}  # Track pages crawled per domain
-    visited_urls = set()    # Track visited URLs globally
+# Thread-safe set for samples and lock
+benign_samples = set()
+samples_lock = Lock()
+visited_urls = set()
+urls_lock = Lock()
+
+def scrape_domain(start_url, target_samples=775974, max_pages_per_domain=20):
+    domain_samples = set()
+    queue = deque([(start_url, 0)])  # (URL, depth)
+    domain = urlparse(start_url).netloc
+    pages_crawled = 0
     retries = 3
-    base_delay = 1  # Base delay in seconds
-    max_delay = 10  # Max delay on rate limits
+    base_delay = 0.5  # Reduced base delay
     
-    for start_url in start_urls:
-        if len(benign_samples) >= target_samples:
-            break
+    while queue and pages_crawled < max_pages_per_domain and len(benign_samples) < target_samples:
+        url, _ = queue.popleft()
         
-        queue = deque([(start_url, 0)])  # (URL, depth) for this domain
-        domain = urlparse(start_url).netloc
-        domain_page_count[domain] = 0
-        
-        while queue and len(benign_samples) < target_samples and domain_page_count[domain] < max_pages_per_domain:
-            url, depth = queue.popleft()
-            
+        with urls_lock:
             if url in visited_urls:
                 continue
-            
             visited_urls.add(url)
-            domain_page_count[domain] += 1
-            print(f"Scraping {url} (Domain: {domain}, Page {domain_page_count[domain]}/{max_pages_per_domain}, Samples: {len(benign_samples)})")
+        
+        pages_crawled += 1
+        print(f"Scraping {url} (Domain: {domain}, Page {pages_crawled}/{max_pages_per_domain}, Total Samples: {len(benign_samples)})")
+        
+        for attempt in range(retries):
+            try:
+                headers = {'User-Agent': random.choice(user_agents)}
+                proxies = {'http': random.choice(proxies_list), 'https': random.choice(proxies_list)} if proxies_list else None
+                response = requests.get(url, headers=headers, proxies=proxies, timeout=5)
+                response.raise_for_status()
+                
+                soup = BeautifulSoup(response.text, 'html.parser')
+                
+                # Extract benign HTML snippets
+                for tag in tags:
+                    elements = soup.find_all(tag)
+                    for elem in elements:
+                        content = str(elem).replace('\n', ' ').replace('\r', ' ').replace('\t', ' ')
+                        content = ' '.join(content.split())
+                        if content and '<script' not in content.lower() and 'javascript:' not in content.lower():
+                            domain_samples.add(content)
+                
+                # Collect links for crawling
+                if pages_crawled < max_pages_per_domain:
+                    for link in soup.find_all('a', href=True):
+                        absolute_url = urljoin(url, link['href'])
+                        parsed_url = urlparse(absolute_url)
+                        if (parsed_url.scheme in ['http', 'https'] and 
+                            parsed_url.netloc == domain and 
+                            absolute_url not in visited_urls and 
+                            pages_crawled < max_pages_per_domain):
+                            queue.append((absolute_url, 0))
+                
+                print(f"Domain {domain} collected {len(domain_samples)} samples this page")
+                time.sleep(random.uniform(base_delay, base_delay + 0.5))  # Reduced delay
+                break
             
-            for attempt in range(retries):
-                try:
-                    headers = {'User-Agent': random.choice(user_agents)}
-                    proxies = {'http': random.choice(proxies_list), 'https': random.choice(proxies_list)} if proxies_list else None
-                    response = requests.get(url, headers=headers, proxies=proxies, timeout=10)
-                    response.raise_for_status()
-                    
-                    soup = BeautifulSoup(response.text, 'html.parser')
-                    
-                    # Extract benign HTML snippets
-                    for tag in tags:
-                        elements = soup.find_all(tag)
-                        for elem in elements:
-                            content = str(elem).replace('\n', ' ').replace('\r', ' ').replace('\t', ' ')
-                            content = ' '.join(content.split())
-                            if content and '<script' not in content.lower() and 'javascript:' not in content.lower():
-                                benign_samples.add(content)
-                    
-                    # Collect links for crawling within domain
-                    if domain_page_count[domain] < max_pages_per_domain:
-                        for link in soup.find_all('a', href=True):
-                            absolute_url = urljoin(url, link['href'])
-                            parsed_url = urlparse(absolute_url)
-                            if (parsed_url.scheme in ['http', 'https'] and 
-                                parsed_url.netloc == domain and 
-                                absolute_url not in visited_urls and 
-                                domain_page_count[domain] < max_pages_per_domain):
-                                queue.append((absolute_url, depth + 1))
-                    
-                    print(f"Collected {len(benign_samples)} samples so far...")
-                    time.sleep(random.uniform(base_delay, base_delay + 2))  # Polite delay
-                    break  # Exit retry loop on success
-                
-                except requests.exceptions.HTTPError as e:
-                    if response.status_code == 403:
-                        print(f"403 Forbidden at {url}. Possible block. Retrying with delay...")
-                        time.sleep(2 ** attempt * base_delay)
-                    elif response.status_code == 429:
-                        print(f"429 Too Many Requests at {url}. Increasing delay to {max_delay} seconds...")
-                        base_delay = min(base_delay + 2, max_delay)
-                        time.sleep(base_delay * (2 ** attempt))
-                    else:
-                        print(f"HTTP Error {response.status_code} at {url}: {e}")
-                        break
-                    if attempt == retries - 1:
-                        print(f"Max retries reached for {url}. Skipping...")
-                
-                except requests.exceptions.RequestException as e:
-                    print(f"Attempt {attempt + 1} failed for {url}: {e}")
-                    if attempt == retries - 1:
-                        print(f"Max retries reached for {url}. Skipping...")
-                    time.sleep(2 ** attempt)  # Exponential backoff
-                
-                except Exception as e:
-                    print(f"General error processing {url}: {e}")
+            except requests.exceptions.HTTPError as e:
+                if response.status_code == 403:
+                    print(f"403 Forbidden at {url}. Retrying...")
+                    time.sleep(2 ** attempt)
+                elif response.status_code == 429:
+                    print(f"429 Too Many Requests at {url}. Slowing down...")
+                    base_delay = min(base_delay + 1, 5)
+                    time.sleep(base_delay * (2 ** attempt))
+                else:
+                    print(f"HTTP Error {response.status_code} at {url}: {e}")
                     break
+                if attempt == retries - 1:
+                    print(f"Max retries reached for {url}. Skipping...")
+            
+            except requests.exceptions.RequestException as e:
+                print(f"Attempt {attempt + 1} failed for {url}: {e}")
+                if attempt == retries - 1:
+                    print(f"Max retries reached for {url}. Skipping...")
+                time.sleep(2 ** attempt)
+            
+            except Exception as e:
+                print(f"General error processing {url}: {e}")
+                break
+    
+    with samples_lock:
+        benign_samples.update(domain_samples)
+    return domain_samples
+
+def scrape_benign_html_with_crawl(start_urls, target_samples=775974, max_pages_per_domain=20, max_workers=10):
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_url = {executor.submit(scrape_domain, url, target_samples, max_pages_per_domain): url for url in start_urls}
+        for future in as_completed(future_to_url):
+            url = future_to_url[future]
+            try:
+                future.result()
+                print(f"Finished crawling {url}. Total samples: {len(benign_samples)}")
+                if len(benign_samples) >= target_samples:
+                    executor.shutdown(wait=False)
+                    break
+            except Exception as e:
+                print(f"Error crawling {url}: {e}")
     
     return list(benign_samples)
 
@@ -180,18 +186,22 @@ manual_benign = [
 ]
 
 # Scrape and crawl for benign samples
-benign_samples = scrape_benign_html_with_crawl(urls, target_samples=775974, max_pages_per_domain=20)
+benign_samples = scrape_benign_html_with_crawl(urls, target_samples=775974, max_pages_per_domain=20, max_workers=10)
 benign_samples.extend(manual_benign)
 
 # Deduplicate and shuffle
-benign_samples = list(set(benign_samples))  # Remove duplicates
+benign_samples = list(set(benign_samples))
 random.shuffle(benign_samples)
 
 # Adjust to target size
 if len(benign_samples) < 775974:
     print(f"Warning: Only collected {len(benign_samples)} benign samples, short of 775,974.")
-else:
-    benign_samples = benign_samples[:775974]  # Limit to exact target
+    # Optional: Add synthetic samples to reach target
+    shortfall = 775974 - len(benign_samples)
+    for i in range(shortfall):
+        synthetic = f"<{random.choice(tags)}>{random.randint(1, 1000)} {random.choice(['text', 'data', 'content'])}</{random.choice(tags)}>"
+        benign_samples.append(synthetic)
+    print(f"Added {shortfall} synthetic samples to reach 775,974.")
 
 print(f"Collected {len(benign_samples)} benign samples")
 for sample in benign_samples[:10]:
