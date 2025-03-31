@@ -1,6 +1,3 @@
-
-// import DOMPurify from 'dompurify';
-
 const xssPatterns = [
     /<script\b[^>]*>[\s\S]*?<\/script>/i,
     /javascript:/i,
@@ -10,13 +7,11 @@ const xssPatterns = [
     /<svg\b[^>]*onload\s*=\s*["'].*?["'][^>]*>/i,
     /document\.(cookie|write|location)/i,
     /<[^>]+\s+(?:(?:onfocusin)|(?:oncontentvisibilityautostatechange)|(?:onerror)|(?:onfocus)|(?:onload))\s*=\s*(["']?)\s*alert\(1\)/i,
-    // Add more patterns here...
 ];
 
 async function detectXSS() {
     let detectedAttacks = [];
     let matchedElements = [];
-    let found = false;
 
     let urlParams = new URLSearchParams(window.location.search);
     urlParams.forEach((value, key) => {

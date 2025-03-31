@@ -56,14 +56,12 @@ chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
         chrome.storage.local.get('blockingEnabled', function(data) {
             if (data.blockingEnabled) {
-                // Implement your logic to detect and block malicious requests here.
-                // Example (basic):
-                if (details.url.includes("<script>")) {
-                    return { cancel: true };
+                if (details.url.includes("<script>") || isPhishingUrl(details.url)) {
+                   // cancel the request.
+                   return {cancel: true};
                 }
             }
         });
     },
-    { urls: ["<all_urls>"] },
-    ["blocking"]
+    { urls: ["<all_urls>"] }
 );
