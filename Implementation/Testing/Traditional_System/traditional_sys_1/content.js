@@ -1,5 +1,5 @@
 
-import DOMPurify from 'dompurify';
+// import DOMPurify from 'dompurify';
 
 const xssPatterns = [
     /<script\b[^>]*>[\s\S]*?<\/script>/i,
