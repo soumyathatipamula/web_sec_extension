@@ -19,12 +19,12 @@
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
-            "js": ["dompurify.js", "content.js"]
+            "js": ["purify.js", "content.js"]
         }
     ],
     "web_accessible_resources": [
         {
-            "resources": ["dompurify.js"],
+            "resources": ["purify.js"],
             "matches": ["<all_urls>"]
         }
     ]
