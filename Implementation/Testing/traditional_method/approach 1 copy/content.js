@@ -1,4 +1,5 @@
 // content.js
+// XSS patterns
 const xssPatterns = [
   /<script\b[^>]*>[\s\S]*?(?:<\/script>|$)/i,
   /javascript:/i,
@@ -10,16 +11,7 @@ const xssPatterns = [
   /<[^>]+\s+(?:(?:onfocusin)|(?:oncontentvisibilityautostatechange)|(?:onerror)|(?:onfocus)|(?:onload))\s*=\s*(["']?)\s*alert\(1\)/i,
 ];
 
-const allowList = [
-  'google.com',
-  'www.google.com',
-];
-
-function isAllowedDomain() {
-  const hostname = window.location.hostname;
-  return allowList.some(domain => hostname === domain || hostname.endsWith('.' + domain));
-}
-
+// Wait for DOMPurify to be available
 function waitForDOMPurify(callback) {
   if (typeof DOMPurify !== 'undefined') {
     callback();
@@ -29,25 +21,9 @@ function waitForDOMPurify(callback) {
 }
 
 function detectAndSanitizeXSS() {
-  if (isAllowedDomain()) {
-    console.log("[XSS Protection] Skipping allowed domain:", window.location.hostname);
-    return;
-  }
-
   let detectedAttacks = [];
-
-  const sanitizeConfig = {
-    ALLOWED_TAGS: ['div', 'span', 'p', 'a', 'b', 'i', 'u', 'strong', 'em', 'img', 'ul', 'ol', 'li'],
-    ALLOWED_ATTR: ['href', 'title', 'style', 'src', 'alt'],
-    FORBID_TAGS: ['script', 'iframe', 'object', 'embed', 'form'],
-    FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onsubmit', 'formaction', 'javascript'],
-    ADD_ATTR: ['target'],
-    WHOLE_DOCUMENT: true, // Sanitize entire document
-    RETURN_DOM_FRAGMENT: false,
-    SANITIZE_DOM: true
-  };
-
-  // Sanitize and process DOM content
+  
+  // Process and sanitize elements using DOMPurify
   function processElement(element) {
     if (!element || !element.innerHTML) return;
     
@@ -60,18 +36,22 @@ function detectAndSanitizeXSS() {
       }
     });
     
-    const sanitizedContent = DOMPurify.sanitize(originalContent, sanitizeConfig);
-    if (sanitizedContent !== originalContent) {
-      element.innerHTML = sanitizedContent;
-      if (foundAttack) {
+    if (foundAttack) {
+      const sanitizedContent = DOMPurify.sanitize(originalContent, {
+        FORBID_TAGS: ['script'],
+        FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onsubmit', 'formaction']
+      });
+      
+      if (sanitizedContent !== originalContent) {
+        element.innerHTML = sanitizedContent;
         element.style.border = "2px solid yellow";
         element.style.background = "rgba(255, 99, 71, 0.2)";
         
         detectedAttacks.push({
           type: "DOM XSS",
           effector: element.tagName,
-          originalPayload: originalContent.substring(0, 200),
-          sanitizedPayload: sanitizedContent.substring(0, 200),
+          originalPayload: originalContent,
+          sanitizedPayload: sanitizedContent,
           url: window.location.href,
           time: new Date().toLocaleString()
         });
@@ -79,28 +59,15 @@ function detectAndSanitizeXSS() {
     }
   }
 
-  // Sanitize URL parameters
+  // Scan and sanitize URL parameters
   let urlParams = new URLSearchParams(window.location.search);
   urlParams.forEach((value, key) => {
-    let foundAttack = false;
     xssPatterns.forEach(pattern => {
       if (pattern.test(value)) {
-        foundAttack = true;
-      }
-    });
-    
-    const sanitizedValue = DOMPurify.sanitize(value, {
-      ALLOWED_TAGS: [],
-      ALLOWED_ATTR: [],
-      RETURN_TRUSTED_TYPE: false
-    });
-    
-    if (sanitizedValue !== value) {
-      urlParams.set(key, sanitizedValue);
-      const newUrl = `${window.location.pathname}?${urlParams.toString()}${window.location.hash}`;
-      window.history.replaceState({}, document.title, newUrl);
-      
-      if (foundAttack) {
+        const sanitizedValue = DOMPurify.sanitize(value, {
+          ALLOWED_TAGS: [],
+          ALLOWED_ATTR: []
+        });
         detectedAttacks.push({
           type: "Reflected XSS",
           effector: key,
@@ -109,56 +76,20 @@ function detectAndSanitizeXSS() {
           url: window.location.href,
           time: new Date().toLocaleString()
         });
+        urlParams.set(key, sanitizedValue);
+        const newUrl = `${window.location.pathname}?${urlParams.toString()}${window.location.hash}`;
+        window.history.replaceState({}, document.title, newUrl);
       }
-    }
+    });
   });
 
-  // Override document.write to sanitize content before writing
-  const originalDocumentWrite = document.write;
-  document.write = function(content) {
-    const sanitized = DOMPurify.sanitize(content, sanitizeConfig);
-    if (sanitized !== content) {
-      detectedAttacks.push({
-        type: "Document Write XSS",
-        effector: "document.write",
-        originalPayload: content.substring(0, 200),
-        sanitizedPayload: sanitized.substring(0, 200),
-        url: window.location.href,
-        time: new Date().toLocaleString()
-      });
-    }
-    originalDocumentWrite.call(document, sanitized);
-  };
-
-  // Initial sanitization of entire document
-  function sanitizeDocument() {
-    if (!document.documentElement) return;
-    const originalHTML = document.documentElement.innerHTML;
-    const sanitizedHTML = DOMPurify.sanitize(originalHTML, sanitizeConfig);
-    
-    if (sanitizedHTML !== originalHTML) {
-      document.documentElement.innerHTML = sanitizedHTML;
-      let foundAttack = false;
-      xssPatterns.forEach(pattern => {
-        if (pattern.test(originalHTML)) {
-          foundAttack = true;
-        }
-      });
-      
-      if (foundAttack) {
-        detectedAttacks.push({
-          type: "Full Document XSS",
-          effector: "document",
-          originalPayload: originalHTML.substring(0, 200),
-          sanitizedPayload: sanitizedHTML.substring(0, 200),
-          url: window.location.href,
-          time: new Date().toLocaleString()
-        });
-      }
-    }
+  // Initial DOM scan
+  function initialScan() {
+    if (!document.body) return;
+    document.body.querySelectorAll("*").forEach(processElement);
   }
 
-  // Setup MutationObserver for dynamic content
+  // Setup MutationObserver
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.type === 'childList') {
@@ -180,14 +111,15 @@ function detectAndSanitizeXSS() {
     }
   });
 
+  // Initialize when DOM and DOMPurify are ready
   function initialize() {
-    if (!document.documentElement) {
+    if (!document.body) {
       setTimeout(initialize, 50);
       return;
     }
     
-    sanitizeDocument();
-    observer.observe(document.documentElement, {
+    initialScan();
+    observer.observe(document.body, {
       childList: true,
       subtree: true
     });
