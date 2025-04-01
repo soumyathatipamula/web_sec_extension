@@ -2,14 +2,15 @@
     "manifest_version": 3,
     "name": "XSS Alert Extension",
     "version": "1.1",
-    "description": "Detects and mitigates XSS attacks, phishing URLs, and anomalies with real-time HTTP analysis.",
+    "description": "Detects, mitigates, and sanitizes XSS attacks, phishing URLs, and anomalies with HTTP analysis.",
     "permissions": [
       "storage",
       "notifications",
       "tabs",
       "scripting",
       "downloads",
-      "declarativeNetRequest"
+      "declarativeNetRequest",
+      "webRequest"
     ],
     "background": {
       "service_worker": "background.js"

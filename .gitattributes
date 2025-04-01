@@ -1,3 +1,5 @@
 /Volumes/Data/web_sec_extension/Implementation/Dataset_prep/CNN+VAE/benign_samples.csv filter=lfs diff=lfs merge=lfs -text
 *.ipynb filter=lfs diff=lfs merge=lfs -text
 purify.js filter=lfs diff=lfs merge=lfs -text
+tf.min.js filter=lfs diff=lfs merge=lfs -text
+dompurify.js filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XSS Alert Log</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>XSS Attack Logs</h2>
+  <ul id="log-list"></ul>
+  <button id="clear-log">Clear Logs</button>
+  <h3>Whitelist</h3>
+  <input id="whitelist-input" type="text" placeholder="e.g., example.com">
+  <button id="add-whitelist">Add to Whitelist</button>
+  <ul id="whitelist-list"></ul>
+  <script src="popup.js"></script>
+</body>
+</html>

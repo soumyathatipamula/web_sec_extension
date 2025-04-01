@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XSS Depthwise CNN Model Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <style>
+        body { font-family: sans-serif; }
+        textarea { width: 500px; height: 100px; margin-bottom: 10px; }
+        #results { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>XSS Depthwise CNN Model Test</h1>
+
+    <textarea id="inputText" placeholder="Enter text to test..."></textarea><br>
+    <button id="predictButton">Predict</button>
+
+    <div id="results"></div>
+
+    <script>
+        async function loadModel() {
+            try {
+                const model = await tf.loadLayersModel('xss_depthwise_cnn_js/model.json'); // Adjust path if needed
+                return model;
+            } catch (error) {
+                console.error('Error loading model:', error);
+                document.getElementById('results').textContent = `Error loading model: ${error.message}`;
+                return null;
+            }
+        }
+
+        async function preprocess(text, maxLen = 100) {
+            const encoded = [];
+            for (let i = 0; i < text.length && i < maxLen; i++) {
+                encoded.push(text.charCodeAt(i) % 256);
+            }
+            while (encoded.length < maxLen) {
+                encoded.push(0);
+            }
+            return tf.tensor2d([encoded], [1, 100, 1]);
+        }
+
+        document.getElementById('predictButton').addEventListener('click', async () => {
+            const inputText = document.getElementById('inputText').value;
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.textContent = 'Predicting...';
+
+            const model = await loadModel();
+            if (!model) return;
+
+            try {
+                const processedInput = await preprocess(inputText);
+                const prediction = await model.predict(processedInput).array();
+                const probability = prediction[0][0];
+
+                let resultText = `Probability of Malicious: ${probability.toFixed(4)} - `;
+                if (probability > 0.5) {
+                    resultText += 'Malicious';
+                } else {
+                    resultText += 'Benign';
+                }
+
+                resultsDiv.textContent = resultText;
+                processedInput.dispose(); // Release tensor memory
+            } catch (error) {
+                console.error('Prediction error:', error);
+                resultsDiv.textContent = `Prediction error: ${error.message}`;
+            }
+        });
+
+    </script>
+</body>
+</html>

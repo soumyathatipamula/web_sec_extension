@@ -13,30 +13,32 @@ const xssPatterns = [
   
   const phishingPatterns = [/phish/, /login-verify/, /bank-secure/];
   
-  function detectThreats() {
+  function sanitizeUrl(url) {
+    const urlObj = new URL(url, window.location.origin); // Handle relative URLs
+    const xssPatterns = [/javascript:/i, /<script/i, /on\w+=/i];
+    let sanitizedSearch = urlObj.search;
+    xssPatterns.forEach(pattern => {
+      sanitizedSearch = sanitizedSearch.replace(pattern, "");
+    });
+    urlObj.search = sanitizedSearch;
+    return urlObj.href.replace(/#.*/g, "");
+  }
+  
+  function detectAndSanitize() {
     let detectedAttacks = [];
-  
-    // URL Parameter Scanning (Reflected XSS and Phishing)
     let url = window.location.href;
-    let urlParams = new URLSearchParams(window.location.search);
-    urlParams.forEach((value, key) => {
-      xssPatterns.forEach(pattern => {
-        if (pattern.test(value)) {
-          detectedAttacks.push({ type: "Reflected XSS", effector: key, payload: value, url: url, time: new Date().toLocaleString() });
-        }
-      });
-    });
-    phishingPatterns.forEach(pattern => {
-      if (pattern.test(url)) {
-        detectedAttacks.push({ type: "Phishing URL", url: url, time: new Date().toLocaleString() });
-      }
-    });
   
-    // DOM-based XSS with DOMPurify
+    // Request URL Sanitization (pre-DOM)
+    let sanitizedUrl = sanitizeUrl(url);
+    if (sanitizedUrl !== url) {
+      detectedAttacks.push({ type: "Reflected XSS", effector: "URL", payload: url, sanitized: sanitizedUrl, time: new Date().toLocaleString() });
+      window.location.href = sanitizedUrl; // Redirect to sanitized URL
+    }
+  
+    // DOM-based XSS Detection and Sanitization
     let originalHTML = document.body.innerHTML;
     let sanitizedHTML = DOMPurify.sanitize(originalHTML, {
       RETURN_DOM: false,
-      ADD_TAGS: ["my-custom-tag"],
       FORBID_ATTR: ["onerror", "onload"]
     });
     if (originalHTML !== sanitizedHTML) {
@@ -50,7 +52,31 @@ const xssPatterns = [
       });
     }
   
-    // Anomaly Detection via MutationObserver
+    // Response URL Sanitization (e.g., <a>, <script src>)
+    document.querySelectorAll("a[href], script[src], img[src]").forEach(element => {
+      const originalUrl = element.getAttribute(element.tagName === "A" ? "href" : "src");
+      const sanitizedUrl = sanitizeUrl(originalUrl);
+      if (originalUrl !== sanitizedUrl) {
+        element.setAttribute(element.tagName === "A" ? "href" : "src", sanitizedUrl);
+        detectedAttacks.push({
+          type: "Response URL XSS",
+          effector: element.tagName,
+          payload: originalUrl,
+          sanitized: sanitizedUrl,
+          url: window.location.href,
+          time: new Date().toLocaleString()
+        });
+      }
+    });
+  
+    // Phishing Detection
+    phishingPatterns.forEach(pattern => {
+      if (pattern.test(url)) {
+        detectedAttacks.push({ type: "Phishing URL", url: url, time: new Date().toLocaleString() });
+      }
+    });
+  
+    // Anomaly Detection
     let mutationCount = 0;
     const observer = new MutationObserver((mutations) => {
       mutationCount += mutations.length;
@@ -58,7 +84,7 @@ const xssPatterns = [
         detectedAttacks.push({
           type: "Anomaly",
           effector: "Excessive DOM Mutations",
-          payload: `${mutationCount} mutations detected`,
+          payload: `${mutationCount} mutations`,
           url: url,
           time: new Date().toLocaleString()
         });
@@ -67,9 +93,11 @@ const xssPatterns = [
     });
     observer.observe(document.body, { childList: true, subtree: true });
   
-    // Send detected attacks
     if (detectedAttacks.length > 0) {
-      chrome.runtime.sendMessage({ action: detectedAttacks[0].type === "Phishing URL" ? "phishingDetected" : "xssDetected", attacks: detectedAttacks });
+      chrome.runtime.sendMessage({ 
+        action: detectedAttacks[0].type === "Phishing URL" ? "phishingDetected" : "xssDetected", 
+        attacks: detectedAttacks 
+      });
     }
   }
   
@@ -77,8 +105,11 @@ const xssPatterns = [
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "sanitizePage") {
       document.body.innerHTML = DOMPurify.sanitize(document.body.innerHTML);
+      document.querySelectorAll("a[href], script[src], img[src]").forEach(element => {
+        const attr = element.tagName === "A" ? "href" : "src";
+        element.setAttribute(attr, sanitizeUrl(element.getAttribute(attr)));
+      });
     }
   });
   
-  // Run Detection
-  detectThreats();
+  detectAndSanitize();
