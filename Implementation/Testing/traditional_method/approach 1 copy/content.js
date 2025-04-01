@@ -1,15 +1,20 @@
 // content.js
-// XSS patterns
-const xssPatterns = [
-  /<script\b[^>]*>[\s\S]*?(?:<\/script>|$)/i,
-  /javascript:/i,
-  /on\w+\s*=\s*["'].*?["']/i,
-  /<video\b[^>]*onerror\s*=\s*["'].*?["'][^>]*>/i,
-  /<form\b[^>]*formaction\s*=\s*["'].*?["'][^>]*>/i,
-  /<svg\b[^>]*onload\s*=\s*["'].*?["'][^>]*>/i,
-  /document\.(cookie|write|location)/i,
-  /<[^>]+\s+(?:(?:onfocusin)|(?:oncontentvisibilityautostatechange)|(?:onerror)|(?:onfocus)|(?:onload))\s*=\s*(["']?)\s*alert\(1\)/i,
-];
+
+// New async function to check XSS via API
+async function checkXSS(text) {
+  try {
+    let response = await fetch("http://127.0.0.1:5000/predict", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text })
+    });
+    let result = await response.json();
+    return result.malicious;
+  } catch (error) {
+    console.error("[XSS API Check Error]", error);
+    return false; // Default to false if API fails
+  }
+}
 
 // Wait for DOMPurify to be available
 function waitForDOMPurify(callback) {
@@ -23,20 +28,14 @@ function waitForDOMPurify(callback) {
 function detectAndSanitizeXSS() {
   let detectedAttacks = [];
   
-  // Process and sanitize elements using DOMPurify
-  function processElement(element) {
+  // Process and sanitize elements using DOMPurify and API check
+  async function processElement(element) {
     if (!element || !element.innerHTML) return;
     
     const originalContent = element.innerHTML;
-    let foundAttack = false;
+    const isMalicious = await checkXSS(originalContent);
     
-    xssPatterns.forEach(pattern => {
-      if (pattern.test(originalContent)) {
-        foundAttack = true;
-      }
-    });
-    
-    if (foundAttack) {
+    if (isMalicious) {
       const sanitizedContent = DOMPurify.sanitize(originalContent, {
         FORBID_TAGS: ['script'],
         FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onsubmit', 'formaction']
@@ -53,17 +52,20 @@ function detectAndSanitizeXSS() {
           originalPayload: originalContent,
           sanitizedPayload: sanitizedContent,
           url: window.location.href,
-          time: new Date().toLocaleString()
+          time: new Date().toLocaleString(),
+          detectionMethod: "API"
         });
       }
     }
   }
 
-  // Scan and sanitize URL parameters
-  let urlParams = new URLSearchParams(window.location.search);
-  urlParams.forEach((value, key) => {
-    xssPatterns.forEach(pattern => {
-      if (pattern.test(value)) {
+  // Scan and sanitize URL parameters with API check
+  async function scanURLParams() {
+    let urlParams = new URLSearchParams(window.location.search);
+    for (let [key, value] of urlParams) {
+      const isMalicious = await checkXSS(value);
+      
+      if (isMalicious) {
         const sanitizedValue = DOMPurify.sanitize(value, {
           ALLOWED_TAGS: [],
           ALLOWED_ATTR: []
@@ -74,42 +76,37 @@ function detectAndSanitizeXSS() {
           originalPayload: value,
           sanitizedPayload: sanitizedValue,
           url: window.location.href,
-          time: new Date().toLocaleString()
+          time: new Date().toLocaleString(),
+          detectionMethod: "API"
         });
         urlParams.set(key, sanitizedValue);
         const newUrl = `${window.location.pathname}?${urlParams.toString()}${window.location.hash}`;
         window.history.replaceState({}, document.title, newUrl);
       }
-    });
-  });
-
-  // Initial DOM scan
-  function initialScan() {
-    if (!document.body) return;
-    document.body.querySelectorAll("*").forEach(processElement);
+    }
   }
 
-  // Setup MutationObserver
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (mutation.type === 'childList') {
-        mutation.addedNodes.forEach(node => {
-          if (node.nodeType === Node.ELEMENT_NODE) {
-            processElement(node);
-            node.querySelectorAll("*").forEach(processElement);
-          }
-        });
-      }
-    });
-    
+  // Initial scan for DOM and URL parameters
+  async function initialScan() {
+    if (!document.body) return;
+
+    // Scan DOM elements
+    const elements = document.body.querySelectorAll("*");
+    for (let element of elements) {
+      await processElement(element);
+    }
+
+    // Scan URL parameters
+    await scanURLParams();
+
+    // Send detected attacks to background script
     if (detectedAttacks.length > 0) {
       chrome.runtime.sendMessage({ 
         action: "xssDetected", 
         attacks: detectedAttacks 
       });
-      detectedAttacks = [];
     }
-  });
+  }
 
   // Initialize when DOM and DOMPurify are ready
   function initialize() {
@@ -119,10 +116,6 @@ function detectAndSanitizeXSS() {
     }
     
     initialScan();
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
   }
 
   waitForDOMPurify(() => {
@@ -130,13 +123,6 @@ function detectAndSanitizeXSS() {
       document.addEventListener('DOMContentLoaded', initialize);
     } else {
       initialize();
-    }
-
-    if (detectedAttacks.length > 0) {
-      chrome.runtime.sendMessage({ 
-        action: "xssDetected", 
-        attacks: detectedAttacks 
-      });
     }
   });
 }
