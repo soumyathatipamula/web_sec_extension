@@ -4,7 +4,14 @@
   "name": "XSS Protection Extension",
   "version": "1.1",
   "description": "Detects and sanitizes XSS attacks using DOMPurify",
-  "permissions": ["storage", "notifications", "tabs", "scripting"],
+  "permissions": [
+  "storage", 
+  "notifications", 
+  "tabs", 
+  "scripting",
+  "webRequest", 
+  "webNavigation"
+],
   "background": {
     "service_worker": "background.js"
   },

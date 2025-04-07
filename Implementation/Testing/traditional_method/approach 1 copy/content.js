@@ -117,8 +117,10 @@ function detectAndSanitizeXSS() {
           time: new Date().toLocaleString()
         });
         urlParams.set(key, sanitizedValue);
-        const newUrl = `${window.location.pathname}?${urlParams.toString()}${window.location.hash}`;
-        window.history.replaceState({}, document.title, newUrl);
+        urlParams.set("__xss_sanitized_redirect", "1"); // Trigger background redirect
+        const newUrl = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}${window.location.hash}`;
+        window.location.replace(newUrl); // Trigger the redirect
+
       }
     });
   });
