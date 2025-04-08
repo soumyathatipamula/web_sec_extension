@@ -1,7 +1,7 @@
 
 {
   "manifest_version": 3,
-  "name": "XSS Protection Extension",
+  "name": "V3 XSS Protection Extension",
   "version": "1.1",
   "description": "Detects and sanitizes XSS attacks using DOMPurify",
   "permissions": [
