@@ -18,6 +18,8 @@ const xssPatterns = [
   /&#x?[0-9a-f]+;/i,                    // Detects HTML entity encoding
   /%[0-9a-f]{2}/i,                      // Detects URL encoding
   /(?:\\x[0-9a-f]{2})|(?:\\u[0-9a-f]{4})/i, // Detects hex/unicode escapes
+  /<[^>]+(\s+\w+\s*=\s*["']?.*?(prompt|alert|confirm)\(.*\).*?["']?)+[^>]*>/i, // Generalized tag with prompt/alert/confirm
+  /\w+\s*=\s*["']?.*?(prompt|alert|confirm)\(.*\).*?["']?/i, //for attribute based attacks.
 ];
 
 // Wait for DOMPurify to be available
@@ -57,6 +59,17 @@ function decodeObfuscation(content) {
 }
 
 function detectAndSanitizeXSS() {
+  // If redirected and marker exists, clean up the URL without reloading
+  (function cleanRedirectMarker() {
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+    if (params.has("__xss_sanitized_redirect")) {
+      params.delete("__xss_sanitized_redirect");
+      url.search = params.toString();
+      window.history.replaceState({}, document.title, url.toString());
+    }
+  })();
+
   let detectedAttacks = [];
   
   // Process and sanitize elements using DOMPurify
