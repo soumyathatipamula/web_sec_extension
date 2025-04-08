@@ -1,0 +1,34 @@
+
+{
+  "manifest_version": 3,
+  "name": "XSS Protection Extension",
+  "version": "1.1",
+  "description": "Detects and sanitizes XSS attacks using DOMPurify",
+  "permissions": [
+  "storage", 
+  "notifications", 
+  "tabs", 
+  "scripting",
+  "webRequest", 
+  "webNavigation"
+],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["dompurify.js", "content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
