@@ -6,6 +6,7 @@ Object.defineProperty(String.prototype, "capitalize", {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  const exportBtn = document.getElementById("export-log");
   const logList = document.getElementById("log-list");
   const clearBtn = document.getElementById("clear-log");
 
@@ -37,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ul.appendChild(li);
         }
         mainLi.appendChild(ul);
-        logList.appendChild(mainLi);
+        logList.insertBefore(mainLi, logList.firstChild);
         cursor.continue();
       }
     };
@@ -58,4 +59,55 @@ document.addEventListener("DOMContentLoaded", () => {
       logList.innerHTML = "";
     };
   });
+  
+  
+  exportBtn.addEventListener("click", () => {
+    let request = indexedDB.open("xssLogs", 1);
+    request.onsuccess = (event) => {
+      let db = event.target.result;
+      let transaction = db.transaction("xssLogs", "readonly");
+      let objectStore = transaction.objectStore("xssLogs");
+      
+      let logs = [];
+      objectStore.openCursor().onsuccess = (event) => {
+        let cursor = event.target.result;
+        if (cursor) {
+          logs.push(cursor.value);
+          cursor.continue();
+        } else {
+          if (logs.length === 0) {
+            alert("No logs to export.");
+            return;
+          }
+          
+          // Extract CSV headers dynamically
+          const headers = Object.keys(logs[0]);
+          const csvRows = [];
+          
+          // Add header row
+          csvRows.push(headers.join(","));
+          
+          // Add data rows
+          logs.forEach(log => {
+            const row = headers.map(field => {
+              const value = log[field] || "";
+              return `"${String(value).replace(/"/g, '""')}"`; // Escape quotes
+            });
+            csvRows.push(row.join(","));
+          });
+          
+          const csvContent = csvRows.join("\n");
+          const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `xss_logs_${new Date().toISOString().replace(/[:.]/g, "-")}.csv`;
+          a.click();
+          URL.revokeObjectURL(url);
+        }
+      };
+    };
+  });
+  
+  
 });
