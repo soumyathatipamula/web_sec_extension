@@ -1,6 +1,24 @@
+// content.js
+// XSS patterns including obfuscation detection
 const xssPatterns = [
+  /<script\b[^>]*>[\s\S]*?(?:<\/script>|$)/i,
   /javascript:/i,
-  /on(?:load|error|click|mouse(?:over|out)|key(?:up|down|press)|submit|focus|blur|change)\s*=\s*["'].*?["']/i, //refined on\w+ regex.
+  /on\w+\s*=\s*["'].*?["']/i,
+  /<video\b[^>]*onerror\s*=\s*["'].*?["'][^>]*>/i,
+  /<form\b[^>]*formaction\s*=\s*["'].*?["'][^>]*>/i,
+  /<svg\b[^>]*onload\s*=\s*["'].*?["'][^>]*>/i,
+  /document\.(cookie|write|location)/i,
+  /<[^>]+\s+(?:(?:onfocusin)|(?:oncontentvisibilityautostatechange)|(?:onerror)|(?:onfocus)|(?:onload))\s*=\s*(["']?)\s*alert\(1\)/i,
+  // Obfuscation patterns
+  /eval\s*\(/i,                          // Detects eval() usage
+  /unescape\s*\(/i,                      // Detects unescape()
+  /decodeURIComponent\s*\(/i,            // Detects decodeURIComponent()
+  /atob\s*\(/i,                          // Detects base64 decoding
+  /String\.fromCharCode\s*\(/i,          // Detects char code construction
+  /&#x?[0-9a-f]+;/i,                    // Detects HTML entity encoding
+  /%[0-9a-f]{2}/i,                      // Detects URL encoding
+  /(?:\\x[0-9a-f]{2})|(?:\\u[0-9a-f]{4})/i, // Detects hex/unicode escapes
+  /<[^>]+(\s+\w+\s*=\s*["']?.*?(prompt|alert|confirm)\(.*\).*?["']?)+[^>]*>/i, // Generalized tag with prompt/alert/confirm
   /\w+\s*=\s*["']?.*?(prompt|alert|confirm)\(.*\).*?["']?/i, //for attribute based attacks.
 ];
 
@@ -41,6 +59,7 @@ function decodeObfuscation(content) {
 }
 
 function detectAndSanitizeXSS() {
+  // If redirected and marker exists, clean up the URL without reloading
   (function cleanRedirectMarker() {
     const url = new URL(window.location.href);
     const params = url.searchParams;
@@ -52,67 +71,43 @@ function detectAndSanitizeXSS() {
   })();
 
   let detectedAttacks = [];
-
+  
+  // Process and sanitize elements using DOMPurify
   function processElement(element) {
-    if (!element) return;
-
+    if (!element || !element.innerHTML) return;
+    
+    const originalContent = element.innerHTML;
+    let decodedContent = decodeObfuscation(originalContent);
     let foundAttack = false;
-
-    // Check attributes
-    if (element.attributes) {
-      for (let attr of element.attributes) {
-        const decodedAttrValue = decodeObfuscation(attr.value);
-        xssPatterns.forEach(pattern => {
-          if (pattern.test(attr.value) || pattern.test(decodedAttrValue)) {
-            foundAttack = true;
-          }
+    
+    xssPatterns.forEach(pattern => {
+      if (pattern.test(originalContent) || pattern.test(decodedContent)) {
+        foundAttack = true;
+      }
+    });
+    
+    if (foundAttack) {
+      const sanitizedContent = DOMPurify.sanitize(decodedContent, {
+        FORBID_TAGS: ['script'],
+        FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onsubmit', 'formaction']
+      });
+      
+      if (sanitizedContent !== originalContent) {
+        element.innerHTML = sanitizedContent;
+        // element.style.border = "2px solid yellow";
+        // element.style.background = "rgba(255, 99, 71, 0.2)";
+        
+        detectedAttacks.push({
+          type: "DOM XSS (Obfuscated)",
+          effector: element.tagName,
+          originalPayload: originalContent,
+          decodedPayload: decodedContent,
+          sanitizedPayload: sanitizedContent,
+          url: window.location.href,
+          time: new Date().toLocaleString()
         });
-        if (foundAttack) {
-          const sanitizedValue = DOMPurify.sanitize(attr.value, {
-            ALLOWED_TAGS: [],
-            ALLOWED_ATTR: []
-          });
-          if (sanitizedValue !== attr.value) {
-            element.setAttribute(attr.name, sanitizedValue);
-          }
-        }
       }
     }
-
-      // Check innerHTML, if no attribute based attack was found
-      if (!foundAttack && element.innerHTML) {
-        const originalContent = element.innerHTML;
-        let decodedContent = decodeObfuscation(originalContent);
-        xssPatterns.forEach(pattern => {
-          if (pattern.test(originalContent) || pattern.test(decodedContent)) {
-            foundAttack = true;
-          }
-        });
-
-        if (foundAttack) {
-          const sanitizedContent = DOMPurify.sanitize(decodedContent, {
-            FORBID_TAGS: ['script'],
-            FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onsubmit', 'formaction']
-          });
-
-          if (sanitizedContent !== originalContent) {
-            element.innerHTML = sanitizedContent;
-            element.style.border = "2px solid yellow";
-            element.style.background = "rgba(255, 99, 71, 0.2)";
-
-            detectedAttacks.push({
-              type: "DOM XSS (Obfuscated)",
-              effector: element.tagName,
-              originalPayload: originalContent,
-              decodedPayload: decodedContent,
-              sanitizedPayload: sanitizedContent,
-              url: window.location.href,
-              time: new Date().toLocaleString()
-            });
-          }
-        }
-      }
-
   }
 
   // Scan and sanitize URL parameters

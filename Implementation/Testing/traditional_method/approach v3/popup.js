@@ -1,3 +1,4 @@
+// popup.js (unchanged)
 Object.defineProperty(String.prototype, "capitalize", {
   value: function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let mainLi = document.createElement("li");
         let ul = document.createElement("ul");
         let log = cursor.value;
-
+        
         for (let key in log) {
           let li = document.createElement("li");
           li.id = key;
@@ -58,15 +59,15 @@ document.addEventListener("DOMContentLoaded", () => {
       logList.innerHTML = "";
     };
   });
-
-
+  
+  
   exportBtn.addEventListener("click", () => {
     let request = indexedDB.open("xssLogs", 1);
     request.onsuccess = (event) => {
       let db = event.target.result;
       let transaction = db.transaction("xssLogs", "readonly");
       let objectStore = transaction.objectStore("xssLogs");
-
+      
       let logs = [];
       objectStore.openCursor().onsuccess = (event) => {
         let cursor = event.target.result;
@@ -78,14 +79,14 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("No logs to export.");
             return;
           }
-
+          
           // Extract CSV headers dynamically
           const headers = Object.keys(logs[0]);
           const csvRows = [];
-
+          
           // Add header row
           csvRows.push(headers.join(","));
-
+          
           // Add data rows
           logs.forEach(log => {
             const row = headers.map(field => {
@@ -94,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             csvRows.push(row.join(","));
           });
-
+          
           const csvContent = csvRows.join("\n");
           const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
           const url = URL.createObjectURL(blob);
@@ -107,6 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     };
   });
-
-
+  
+  
 });
