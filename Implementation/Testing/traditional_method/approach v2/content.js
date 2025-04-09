@@ -94,8 +94,8 @@ function detectAndSanitizeXSS() {
       
       if (sanitizedContent !== originalContent) {
         element.innerHTML = sanitizedContent;
-        element.style.border = "2px solid yellow";
-        element.style.background = "rgba(255, 99, 71, 0.2)";
+        // element.style.border = "2px solid yellow";
+        // element.style.background = "rgba(255, 99, 71, 0.2)";
         
         detectedAttacks.push({
           type: "DOM XSS (Obfuscated)",

@@ -163,7 +163,7 @@ function detectAndSanitizeXSS() {
     });
     
     if (detectedAttacks.length > 0) {
-      chrome.runtime.sendMessage({ 
+      browser.runtime.sendMessage({ 
         action: "xssDetected", 
         attacks: detectedAttacks 
       });
@@ -193,7 +193,7 @@ function detectAndSanitizeXSS() {
     }
 
     if (detectedAttacks.length > 0) {
-      chrome.runtime.sendMessage({ 
+      browser.runtime.sendMessage({ 
         action: "xssDetected", 
         attacks: detectedAttacks 
       });
