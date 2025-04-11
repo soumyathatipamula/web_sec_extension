@@ -1,0 +1,46 @@
+/* style.css (unchanged) */
+body {
+  font-family: Arial, sans-serif;
+  width: 400px;
+  padding: 10px;
+}
+
+h2 {
+  font-size: 18px;
+  color: #333;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background: #ffdddd;
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 4px;
+  border-left: 3px solid #ff4444;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+ul ul {
+  margin-left: 10px;
+  background: #fff;
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #cc0000;
+}

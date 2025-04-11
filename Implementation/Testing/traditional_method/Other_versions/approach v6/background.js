@@ -17,7 +17,7 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
             browser.notifications.create(`XSS attack detected notification - ${Date.now()}`, { // Make notification ID unique
                 type: "basic",
-                iconUrl: "assets/icon.png",
+                iconUrl: "icon.png",
                 title: "XSS Alert",
                 message: alertMessage
             });
