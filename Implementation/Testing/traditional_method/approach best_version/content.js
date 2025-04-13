@@ -36,7 +36,12 @@ const xssPatterns = [
     /<input\b[^>]*?formaction\s*=\s*["']?javascript:/i,
     /import\s*\(["'][^"']+["']\)/i,
     // Pattern to catch attribute values trying to execute alert/prompt/confirm
-     /\w+\s*=\s*["']?.*?(?:alert|prompt|confirm)\s*\(.*?\).*?["']?/i
+     /\w+\s*=\s*["']?.*?(?:alert|prompt|confirm)\s*\(.*?\).*?["']?/i,
+    /data:text\/html/i,
+    /srcdoc\s*=/i,
+    /<\s*iframe/i,
+    /style\s*=\s*["']?\s*expression\s*\(/i,
+    /url\s*\(\s*["']?\s*javascript:/i
 ];
 
 // Patterns specifically for checking user input fields (potentially less strict)
@@ -461,41 +466,54 @@ function initialScan() {
 }
 
 // --- Mutation Observer Setup ---
-const observer = new MutationObserver((mutations) => {
-    // Use requestAnimationFrame to batch processing and avoid layout thrashing
-    window.requestAnimationFrame(() => {
-         const startTime = performance.now();
-         let processedNodeCount = 0;
-        mutations.forEach((mutation) => {
-            if (mutation.type === 'childList') {
-                mutation.addedNodes.forEach(node => {
-                    if (node.nodeType === Node.ELEMENT_NODE) {
-                        processElement(node); // Process the added node itself
-                        node.querySelectorAll("*").forEach(processElement); // Process its children
-                        processedNodeCount++;
-                    }
-                     // Can also check text nodes if needed: else if (node.nodeType === Node.TEXT_NODE) { ... }
-                });
-            } else if (mutation.type === 'attributes') {
-                 // If an attribute changed (e.g., src, href, style, or potentially an 'on*' handler)
-                 // Re-process the element where the attribute changed.
-                 // DOMPurify called via processElement should handle attribute sanitization.
-                 if(mutation.target && mutation.target.nodeType === Node.ELEMENT_NODE) {
+let debounceTimer; // Variable to hold the debounce timer
+
+const processMutations = (mutations) => {
+    // This function contains your actual processing logic
+    const startTime = performance.now();
+    let processedNodeCount = 0;
+    mutations.forEach((mutation) => {
+        if (mutation.type === 'childList') {
+            mutation.addedNodes.forEach(node => {
+                if (node.nodeType === Node.ELEMENT_NODE) {
+                    // OPTIMIZATION: Only process the added node itself.
+                    // Relies on `subtree: true` in observe() to catch mutations
+                    // within this node later if they occur.
+                    processElement(node);
+                    processedNodeCount++;
+                    // REMOVED: node.querySelectorAll("*").forEach(processElement);
+                }
+            });
+        } else if (mutation.type === 'attributes') {
+             if(mutation.target && mutation.target.nodeType === Node.ELEMENT_NODE) {
+                 // Check if the attribute value actually changed if old value is available
+                 // This prevents reprocessing if an attribute is set to the same value
+                 if (mutation.oldValue !== mutation.target.getAttribute(mutation.attributeName)) {
                      processElement(mutation.target);
                      processedNodeCount++;
                  }
-            }
-        });
-
-        // Send accumulated detections from observer callback
-        if (domScanDetectedAttacks.length > 0) {
-            const endTime = performance.now();
-            console.log(`MutationObserver processed ${processedNodeCount} nodes in ${((endTime - startTime)/1000).toFixed(2)}s, sending ${domScanDetectedAttacks.length} detections.`);
-            browser.runtime.sendMessage({ action: "xssDetected", attacks: domScanDetectedAttacks })
-                 .catch(err => console.error("Error sending observer detections:", err));
-            domScanDetectedAttacks = []; // Reset buffer
+             }
         }
     });
+
+    // Send accumulated detections (moved inside the debounced function)
+    if (domScanDetectedAttacks.length > 0) {
+        const endTime = performance.now();
+        console.log(`Debounced MutationObserver processed ${processedNodeCount} nodes in ${((endTime - startTime)/1000).toFixed(2)}s, sending ${domScanDetectedAttacks.length} detections.`); // Update log
+        browser.runtime.sendMessage({ action: "xssDetected", attacks: domScanDetectedAttacks })
+             .catch(err => console.error("Error sending observer detections:", err));
+        domScanDetectedAttacks = []; // Reset buffer
+    }
+};
+
+const observer = new MutationObserver((mutations) => {
+    // Clear the previous timer if mutations occur rapidly
+    clearTimeout(debounceTimer);
+    // Set a new timer to process mutations after a short delay (e.g., 100ms)
+    debounceTimer = setTimeout(() => {
+        // Use requestAnimationFrame for the actual processing
+        window.requestAnimationFrame(() => processMutations(mutations));
+    }, 100); // Adjust debounce delay (in ms) as needed
 });
 
 
@@ -511,13 +529,21 @@ function initialize() {
     initialScan(); // Perform the initial scan of existing DOM
 
     // Start observing the body for changes
-    observer.observe(document.body, {
-        childList: true,    // Observe direct children additions/removals
-        subtree: true,      // Observe all descendants
-        attributes: true,   // Observe attribute changes
-        attributeFilter: ['src', 'href', 'style', 'action', 'formaction', 'data', 'srcdoc'] // Optionally filter attributes, also watch for 'on*' added dynamically
-        // characterData: true // Use if you need to monitor text node changes directly (can be noisy)
-    });
+    // Start observing the body for changes
+observer.observe(document.body, {
+    childList: true,    // Observe direct children additions/removals
+    subtree: true,      // Observe all descendants
+    attributes: true,   // Observe attribute changes
+    attributeFilter: [  // <-- ADD THIS ARRAY
+         'src', 'href', 'style', 'action', 'formaction', 'data',
+         'srcdoc', 'background', 'poster',
+         // Add common event handlers explicitly if they might be added dynamically
+         'onload', 'onerror', 'onclick', 'onmouseover', 'onfocus', 'onsubmit'
+         // Add other attributes if relevant to your specific concerns
+    ],
+    attributeOldValue: true, // Keep if you need old values for comparison/logging
+});
+console.log("MutationObserver started with attribute filter."); // Update log message
     console.log("MutationObserver started.");
 
     monitorInputFields(); // Start monitoring input fields
