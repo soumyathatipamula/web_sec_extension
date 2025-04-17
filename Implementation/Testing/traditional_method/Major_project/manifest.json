@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "V2 XSS Protection Extension (Firefox)",
+  "version": "1.2",
+  "description": "Detects and sanitizes XSS attacks using DOMPurify",
+  "permissions": [
+    "storage",
+    "notifications",
+    "tabs",
+    "webRequest",
+    "webRequestBlocking",
+    "webNavigation",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["dompurify.js", "content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
