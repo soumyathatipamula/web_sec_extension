@@ -530,11 +530,11 @@ function initialize() {
 
     // Start observing the body for changes
     // Start observing the body for changes
-observer.observe(document.body, {
-    childList: true,    // Observe direct children additions/removals
-    subtree: true,      // Observe all descendants
-    attributes: true,   // Observe attribute changes
-    attributeFilter: [  // <-- ADD THIS ARRAY
+    observer.observe(document.body, {
+        childList: true,    // Observe direct children additions/removals
+        subtree: true,      // Observe all descendants
+        attributes: true,   // Observe attribute changes
+        attributeFilter: [  // <-- ADD THIS ARRAY
          'src', 'href', 'style', 'action', 'formaction', 'data',
          'srcdoc', 'background', 'poster',
          // Add common event handlers explicitly if they might be added dynamically
@@ -542,8 +542,8 @@ observer.observe(document.body, {
          // Add other attributes if relevant to your specific concerns
     ],
     attributeOldValue: true, // Keep if you need old values for comparison/logging
-});
-console.log("MutationObserver started with attribute filter."); // Update log message
+    });
+    console.log("MutationObserver started with attribute filter."); // Update log message
     console.log("MutationObserver started.");
 
     monitorInputFields(); // Start monitoring input fields
