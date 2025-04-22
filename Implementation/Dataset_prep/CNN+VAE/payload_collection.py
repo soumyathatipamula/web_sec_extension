@@ -306,6 +306,7 @@ base_payloads.extend(pat_payloads)
 base_payloads.extend(xssed_payloads)
 base_payloads.extend(local_payloads)
 base_payloads.extend(mal_other_payloads)
+base_payloads = set(base_payloads)
 print(f"Collected {len(base_payloads)} base payloads")
 malicious_samples = augment_payloads(base_payloads)
 
@@ -321,7 +322,8 @@ with_augmented_xss_payloads["xss"] = 1
 # final_xss_payloads.to_csv("./xss_payloads.csv", index=False)
 with_augmented_xss_payloads.to_csv("./xss_payloads.csv", index=False)
 
-base_payloads = set(base_payloads)
+
+print(f"Collected {len(base_payloads)} base payloads")
 # Save the payloads to a CSV file
 with open("base_xss_payloads.csv", "w", newline="", encoding="utf-8") as file:
     writer = csv.writer(file)
