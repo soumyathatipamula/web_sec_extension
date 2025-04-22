@@ -321,5 +321,13 @@ with_augmented_xss_payloads["xss"] = 1
 # final_xss_payloads.to_csv("./xss_payloads.csv", index=False)
 with_augmented_xss_payloads.to_csv("./xss_payloads.csv", index=False)
 
+base_payloads = set(base_payloads)
+# Save the payloads to a CSV file
+with open("base_xss_payloads.csv", "w", newline="", encoding="utf-8") as file:
+    writer = csv.writer(file)
+    writer.writerow(["payload"])
+    for payload in base_payloads:
+        writer.writerow([payload])
+
 # Save payloads to file
 print("Payloads saved to 'xss_payloads.csv'")
