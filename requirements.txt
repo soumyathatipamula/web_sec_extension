@@ -5,3 +5,4 @@ bs4
 requests
 numpy
 tensorflow
+webdriver-manager
