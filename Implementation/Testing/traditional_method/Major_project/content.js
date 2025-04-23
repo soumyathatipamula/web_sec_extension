@@ -44,7 +44,7 @@ function waitForDOMPurify(callback) {
       DOMPurify.setConfig({
           USE_PROFILES: { html: true }, // Use HTML profile by default
           FORBID_TAGS: ['style', 'form'], // More strict defaults
-          FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onsubmit', 'formaction'] // Forbid common event handlers and style
+          FORBID_ATTR: ['onerror', 'onload', 'onmouseover', 'formaction'] // Forbid common event handlers and style
           // ADD_ATTR: ['target'], // Example: Allow target attribute
       });
       console.log("DOMPurify loaded and configured.");
@@ -136,8 +136,8 @@ function detectAndSanitizeXSS() {
               const sanitizedContent = DOMPurify.sanitize(decodedContent || originalContent, {
                 // Use configured defaults or specify here
                 // USE_PROFILES: { html: true }, // Default profile
-                FORBID_TAGS: ['script', 'style', 'iframe', 'object', 'embed', 'form'], // Example stricter config
-                FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onfocus', 'onblur', 'onsubmit', 'formaction', 'style']
+                FORBID_TAGS: [ 'iframe', 'object', 'embed', 'form'], // Example stricter config
+                FORBID_ATTR: ['onerror', 'onload', 'onmouseover', 'onfocus', 'onblur', 'formaction', 'style']
             });
 
               // Only modify if DOMPurify actually changed something
@@ -336,12 +336,18 @@ function detectAndSanitizeXSS() {
           childList: true,     // Observe direct children additions/removals
           subtree: true,       // Observe all descendants
           attributes: true,   // Observe attribute changes
-          attributeFilter: [   // <-- ADD THIS ARRAY
-              'src', 'href', 'style', 'action', 'formaction', 'data',
-              'srcdoc', 'background', 'poster',
-              // Consider limiting these further based on common legitimate uses
-              // For example, 'onload' and 'onerror' on <img> tags might be legitimate in some contexts
-          ],
+          attributeFilter: [
+            // Attributes that take URLs (potential javascript:)
+            'src', 'href', 'action', 'formaction', 'background', 'poster', 'data',
+            // Attributes that contain code or HTML
+            'style', 'srcdoc',
+            // Common event handlers
+            'onload', 'onerror', 'onunload', 'onpageshow', 'onpagehide',
+            'onclick', 'ondblclick', 'onmousedown', 'onmouseup', 'onmouseover', 'onmousemove', 'onmouseout',
+            'onkeydown', 'onkeypress', 'onkeyup',
+            'onfocus', 'onblur', 'onchange', 'onsubmit', 'onreset', 'onselect',
+            // Add others if needed based on XSS cheat sheets
+        ],
           attributeOldValue: true, // Keep if you need old values for comparison/logging
       });
       console.log("MutationObserver started with attribute filter.");
