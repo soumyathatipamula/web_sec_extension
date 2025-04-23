@@ -86,10 +86,6 @@ browser.webRequest.onBeforeRequest.addListener(
         const params = new URLSearchParams(url.search);
         let paramsModified = false;
         params.forEach((value, key) => {
-            // Simple check to avoid unnecessary decoding/checking if value looks safe
-            if (!value || (value.indexOf('<') === -1 && value.indexOf('javascript:') === -1 && value.indexOf('on') === -1)) {
-                 return;
-            }
             const decodedValue = decodeObfuscation(value); // Use the same decode function
             if (isXSSPayload(decodedValue)) { // Use the same check function
                 const sanitizedValue = sanitizeValue(decodedValue); // Use the same sanitize function
@@ -122,11 +118,6 @@ browser.webRequest.onBeforeRequest.addListener(
                 const sanitizedValues = [];
                 let valueModified = false;
                 values.forEach((value) => {
-                    // Simple check to avoid unnecessary decoding/checking
-                    if (!value || (value.indexOf('<') === -1 && value.indexOf('javascript:') === -1 && value.indexOf('on') === -1)) {
-                         sanitizedValues.push(value);
-                         return;
-                    }
                     const decodedValue = decodeObfuscation(value);
                     if (isXSSPayload(decodedValue)) {
                         const sanitizedValue = sanitizeValue(decodedValue);

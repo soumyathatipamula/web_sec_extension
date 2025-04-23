@@ -284,37 +284,28 @@ function detectAndSanitizeXSS() {
   let urlParams = new URLSearchParams(window.location.search);
   urlParams.forEach((value, key) => {
       const decodedValue = decodeObfuscation(value);
-      const urlParamXssPatterns = [
-          /javascript:/i,
-          /vbscript:/i,
-          /data:text\/html/i,
-          /<script/i,
-          /on\w+\s*=/i
-      ];
-      urlParamXssPatterns.forEach(pattern => {
-          if (pattern.test(value) || pattern.test(decodedValue)) {
-              const sanitizedValue = DOMPurify.sanitize(decodedValue, {
-                  ALLOWED_TAGS: [],
-                  ALLOWED_ATTR: []
-              });
-              detectedAttacks.push({
-                  type: "Reflected XSS (Response)",
-                  effector: key,
-                  originalPayload: value,
-                  decodedPayload: decodedValue,
-                  sanitizedPayload: sanitizedValue,
-                  url: window.location.href,
-                  time: new Date().toLocaleString()
-              });
-              browser.runtime.sendMessage({
-                action: "xssDetected",
-                attacks: detectedAttacks
+        if (xssPatterns.some(pattern => pattern.test(value) || pattern.test(decodedValue))) {
+            const sanitizedValue = DOMPurify.sanitize(decodedValue, {
+                ALLOWED_TAGS: [],
+                ALLOWED_ATTR: []
             });
-              urlParams.set(key, sanitizedValue);
-              const newUrl = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}${window.location.hash}`;
-              window.location.replace(newUrl); // Trigger the redirect
-          }
-      });
+            detectedAttacks.push({
+                type: "Reflected XSS (Response)",
+                effector: key,
+                originalPayload: value,
+                decodedPayload: decodedValue,
+                sanitizedPayload: sanitizedValue,
+                url: window.location.href,
+                time: new Date().toLocaleString()
+            });
+            browser.runtime.sendMessage({
+            action: "xssDetected",
+            attacks: detectedAttacks
+        });
+            urlParams.set(key, sanitizedValue);
+            const newUrl = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}${window.location.hash}`;
+            window.location.replace(newUrl); // Trigger the redirect
+        }
   });
 
   // Setup MutationObserver
