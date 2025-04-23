@@ -101,12 +101,10 @@ def login_and_set_security():
         driver.quit()
         exit()
 
-def initiate_writer():
-    logs = open("logs.txt", "w")
-    
-    writer = csv.writer(logs)
-    writer.writerow(["Payload", "Alert", "Detected"])
-    return writer
+logs = open("logs.txt", "w")
+
+writer = csv.writer(logs)
+writer.writerow(["Payload", "Alert", "Detected"])
 
         
 
@@ -131,7 +129,7 @@ def handle_alert(payload):
         # break
     except Exception as e:
         print("❌ other : No more alerts to handle.")
-        cant_perform.write(f"{payload} | {e}")
+        writer.writerow([payload, is_alert, 2])
         # break
 
 
@@ -167,7 +165,6 @@ def get_extension_logs():
 
 def test_xss_payloads():
     global is_alert
-    writer = initiate_writer()
     
     print("\n\nStarting XSS payload tests...\n\n")
 
