@@ -1,0 +1,5 @@
+Payload,Alert,Detected
+"<SCRIPT/SRC=""%(jscript)s""></SCRIPT>",False,2
+"<SCRIPT/SRC=""%(jscript)s""></SCRIPT>",False,0
+find=%22%3E%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E,False,2
+find=%22%3E%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E,False,0
