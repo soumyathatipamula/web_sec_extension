@@ -47,7 +47,7 @@ driver.get(extension_url)
 
 DVWA_USER = 'admin'
 DVWA_PASSWORD = 'password'
-DVWA_URL = 'http://192.168.2.7/DVWA/'
+DVWA_URL = 'http://192.168.29.27/DVWA/'
 
 def login_and_set_security():
     # Log in to DVWA
@@ -132,7 +132,7 @@ def get_extension_logs():
     # Wait till extension detects the payload
     log_list = ""
     try :
-        log_list = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.ID, "originalPayload")))
+        log_list = WebDriverWait(driver, 1).until(EC.presence_of_element_located((By.ID, "originalPayload")))
     except:
         print("No logs detected")
         return ""
@@ -171,7 +171,7 @@ def test_xss_payloads_dvwa():
             input_field.send_keys(payload)
             input_field.send_keys(Keys.RETURN)
             print("pressed")
-            # handle_alert(payload)
+            handle_alert(payload)
 
             # Retrieve logs from IndexedDB using the extension's storage
             logs = get_extension_logs()
