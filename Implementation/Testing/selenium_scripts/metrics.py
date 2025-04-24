@@ -6,6 +6,7 @@ from selenium.common.exceptions import TimeoutException, NoAlertPresentException
 from selenium.webdriver.common.keys import Keys
 import os
 import csv
+import time
 import pandas
 
 is_alert = False
@@ -14,7 +15,7 @@ is_alert = False
 xss = pandas.read_csv("../../Dataset_prep/CNN+VAE/base_xss_payloads.csv")
 xss_payloads = xss["payload"].tolist()
 
-extension_path = "../traditional_method/Major_project/Major_project.xpi"  # Update this path to your extension's .xpi file
+extension_path = "../test_environment/Major_project/Major_project.xpi"  # Update this path to your extension's .xpi file
 
 firefox_options = webdriver.FirefoxOptions()
 # firefox_options.add_argument("--headless")  # Run in headless mode (no GUI)
@@ -37,6 +38,7 @@ def get_extension_uuid():
         return 
     return ext_id
 
+ext_id = None
 ext_id = get_extension_uuid()
 print("Extension ID:", ext_id)
 extension_url = f"moz-extension://{ext_id}/popup.html"
@@ -47,17 +49,16 @@ def test_with_sudo():
     email = driver.find_element(By.NAME, "email")
     email.send_keys("<script>alert('XSS')</script>")
     email.send_keys(Keys.RETURN)
-    # driver.get(extension_url)
     print(get_extension_logs())
     driver.quit()
 
 sudo_url = "https://sudo.co.il/xss/level0.php"
 
-driver.get(extension_url)
+# driver.get(extension_url)
 
 DVWA_USER = 'admin'
 DVWA_PASSWORD = 'password'
-DVWA_URL = 'http://192.168.29.169/DVWA/'
+DVWA_URL = 'http://192.168.2.7/DVWA/'
 
 def login_and_set_security():
     # Log in to DVWA
@@ -135,9 +136,8 @@ def handle_alert(payload):
 
 # def get_extension_logs(payload):
 def get_extension_logs():
-    global is_alert
-    # handle_alert(payload)  # Handle any unexpected alerts before getting logs
-    
+    global is_alert    
+
     #getting the extension id
     driver.get(extension_url) #Opening the extension manager
 
@@ -168,7 +168,7 @@ def test_xss_payloads_dvwa():
     
     print("\n\nStarting XSS payload tests...\n\n")
 
-    for i, payload in (enumerate(xss_payloads)):
+    for i, payload in (enumerate(xss_payloads[:1])):
         is_alert = False
         logs = ""
         try:
@@ -177,20 +177,22 @@ def test_xss_payloads_dvwa():
             
             # Submit payload
             input_field = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.NAME, 'name'))
-            )
+                EC.presence_of_element_located((By.NAME, 'name')))
+            
             input_field.clear()
-            input_field.send_keys(payload)
+            input_field.send_keys("<script>alert(10)</script>")
             input_field.send_keys(Keys.RETURN)
             print("pressed")
-        # Retrieve logs from IndexedDB using the extension's storage
-            logs = get_extension_logs(payload)
+            handle_alert(payload)
+
+            # Retrieve logs from IndexedDB using the extension's storage
+            logs = get_extension_logs()
+            
             print("IndexedDB logs:", logs)
         except Exception as e:
+            print("Error:", e)
             writer.writerow([payload, is_alert, 2])
         
-        result = f'Payload: {payload} | Alert: {is_alert}\n'
-        # print(f"{logs} \n {converted_payload} \n {detected_payload.find(converted_payload)}")
         if logs :#and ((detected_payload.find(converted_payload)) != -1):
             writer.writerow([payload, is_alert, 1])
             print(f"✅ Detected payload: {payload}")
@@ -221,13 +223,12 @@ def test_xss_payloads_sudo():
             input_field.send_keys(Keys.RETURN)
             print("pressed")
         # Retrieve logs from IndexedDB using the extension's storage
-            logs = get_extension_logs(payload)
+            logs = get_extension_logs()
             print("IndexedDB logs:", logs)
         except Exception as e:
+            print("Error:", e)
             writer.writerow([payload, is_alert, 2])
         
-        # result = f'Payload: {payload} | Alert: {is_alert}\n'
-        # print(f"{logs} \n {converted_payload} \n {detected_payload.find(converted_payload)}")
         if logs :#and ((detected_payload.find(converted_payload)) != -1):
             writer.writerow([payload, is_alert, 1])
             print(f"✅ Detected payload: {payload}")
@@ -239,15 +240,13 @@ def test_xss_payloads_sudo():
 
 
 
-
-
-
 def main():
-    # login_and_set_security()
-    # test_xss_payloads_dvwa()
-    test_xss_payloads_sudo()
-    # test_with_sudo()
+    start = time.time()
+    login_and_set_security()
+    test_xss_payloads_dvwa()
     driver.quit()
-
+    end = time.time()
+    print("Execution time:", end - start, "seconds")
+    logs.close()
 if __name__ == '__main__':
     main()
