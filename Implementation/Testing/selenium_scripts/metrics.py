@@ -96,31 +96,37 @@ logs = open("logs.csv", "w", newline='', encoding="utf-8" )
 writer = csv.writer(logs)
 writer.writerow(["Payload", "Alert", "Detected"])
 
-        
+
+def is_alert_present():
+    try:
+        driver.switch_to.alert
+        return True
+    except NoAlertPresentException:
+        return False    
 
 def handle_alert(payload):
     print("Handling alerts")
     global is_alert
-
-    try:
-        # Wait for an alert to appear (timeout: 1 second)
-        WebDriverWait(driver, 1).until(EC.alert_is_present())
-        alert = driver.switch_to.alert
-        alert.accept()  # Close the alert
-        is_alert = True
-        print("✅ Alert accepted.")
-    except NoAlertPresentException:
-        # No alert found within the timeout, exit the loop
-        print("❌ No more alerts to handle.")
-        # break
-    except TimeoutException:
-        # No alert found within the timeout, exit the loop
-        print("❌ timeoutexeption : No more alerts to handle.")
-        # break
-    except Exception as e:
-        print("❌ other : No more alerts to handle.")
-        writer.writerow([payload, is_alert, 2])
-        # break
+    if is_alert_present():
+        print("Alert is present")
+        try:
+            # Wait for an alert to appear (timeout: 1 second)
+            alert = driver.switch_to.alert
+            alert.accept()  # Close the alert
+            is_alert = True
+            print("✅ Alert accepted.")
+        except NoAlertPresentException:
+            # No alert found within the timeout, exit the loop
+            print("❌ No more alerts to handle.")
+            # break
+        except TimeoutException:
+            # No alert found within the timeout, exit the loop
+            print("❌ timeoutexeption : No more alerts to handle.")
+            # break
+        except Exception as e:
+            print("❌ other : No more alerts to handle.")
+            writer.writerow([payload, is_alert, 2])
+            # break
 
 # def get_extension_logs(payload):
 def get_extension_logs():
@@ -132,7 +138,8 @@ def get_extension_logs():
     # Wait till extension detects the payload
     log_list = ""
     try :
-        log_list = WebDriverWait(driver, 1).until(EC.presence_of_element_located((By.ID, "originalPayload")))
+        WebDriverWait(driver, 1).until(EC.presence_of_element_located((By.ID, "log-list")))
+        log_list = driver.find_element(By.ID, "originalPayload")
     except:
         print("No logs detected")
         return ""
