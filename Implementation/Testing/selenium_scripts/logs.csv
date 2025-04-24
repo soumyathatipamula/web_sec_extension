@@ -1,2 +1,2 @@
 Payload,Alert,Detected
-"<SCRIPT/SRC=""%(jscript)s""></SCRIPT>",True,0
+"<SCRIPT/SRC=""%(jscript)s""></SCRIPT>",False,1

@@ -104,7 +104,7 @@ def handle_alert(payload):
 
     try:
         # Wait for an alert to appear (timeout: 1 second)
-        WebDriverWait(driver, 2).until(EC.alert_is_present())
+        WebDriverWait(driver, 1).until(EC.alert_is_present())
         alert = driver.switch_to.alert
         alert.accept()  # Close the alert
         is_alert = True
@@ -156,7 +156,7 @@ def test_xss_payloads_dvwa():
     
     print("\n\nStarting XSS payload tests...\n\n")
 
-    for i, payload in (enumerate(xss_payloads[:1])):
+    for i, payload in (enumerate(xss_payloads)):
         is_alert = False
         logs = ""
         try:
