@@ -44,17 +44,6 @@ print("Extension ID:", ext_id)
 extension_url = f"moz-extension://{ext_id}/popup.html"
 driver.get(extension_url)
 
-def test_with_sudo():
-    driver.get(sudo_url)
-    email = driver.find_element(By.NAME, "email")
-    email.send_keys("<script>alert('XSS')</script>")
-    email.send_keys(Keys.RETURN)
-    print(get_extension_logs())
-    driver.quit()
-
-sudo_url = "https://sudo.co.il/xss/level0.php"
-
-# driver.get(extension_url)
 
 DVWA_USER = 'admin'
 DVWA_PASSWORD = 'password'
@@ -104,7 +93,6 @@ def login_and_set_security():
         exit()
 
 logs = open("logs.csv", "w", newline='' )
-
 writer = csv.writer(logs)
 writer.writerow(["Payload", "Alert", "Detected"])
 
@@ -113,7 +101,7 @@ writer.writerow(["Payload", "Alert", "Detected"])
 def handle_alert(payload):
     print("Handling alerts")
     global is_alert
-    # while True:
+
     try:
         # Wait for an alert to appear (timeout: 1 second)
         WebDriverWait(driver, 2).until(EC.alert_is_present())
@@ -201,43 +189,6 @@ def test_xss_payloads_dvwa():
             print(f"❌ Missed payload: {payload}")
         
         print("\n------------------------------------------------------------------------------------------\n")
-
-def test_xss_payloads_sudo():
-    global is_alert
-    
-    print("\n\nStarting XSS payload tests...\n\n")
-
-    for i, payload in (enumerate(xss_payloads)):
-        is_alert = False
-        logs = ""
-        try:
-            print(f"Attack vector {i+1}")
-            driver.get(sudo_url)
-            print(payload)
-            # Submit payload
-            input_field = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.NAME, 'email'))
-            )
-            input_field.clear()
-            input_field.send_keys(payload)
-            input_field.send_keys(Keys.RETURN)
-            print("pressed")
-        # Retrieve logs from IndexedDB using the extension's storage
-            logs = get_extension_logs()
-            print("IndexedDB logs:", logs)
-        except Exception as e:
-            print("Error:", e)
-            writer.writerow([payload, is_alert, 2])
-        
-        if logs :#and ((detected_payload.find(converted_payload)) != -1):
-            writer.writerow([payload, is_alert, 1])
-            print(f"✅ Detected payload: {payload}")
-        else:
-            writer.writerow([payload, is_alert, 0])
-            print(f"❌ Missed payload: {payload}")
-        
-        print("\n------------------------------------------------------------------------------------------\n")
-
 
 
 def main():
