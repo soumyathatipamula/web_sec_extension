@@ -92,7 +92,7 @@ def login_and_set_security():
         driver.quit()
         exit()
 
-logs = open("logs.csv", "w", newline='' )
+logs = open("logs.csv", "w", newline='', encoding="utf-8" )
 writer = csv.writer(logs)
 writer.writerow(["Payload", "Alert", "Detected"])
 
@@ -168,10 +168,10 @@ def test_xss_payloads_dvwa():
                 EC.presence_of_element_located((By.NAME, 'name')))
             
             input_field.clear()
-            input_field.send_keys("<script>alert(10)</script>")
+            input_field.send_keys(payload)
             input_field.send_keys(Keys.RETURN)
             print("pressed")
-            handle_alert(payload)
+            # handle_alert(payload)
 
             # Retrieve logs from IndexedDB using the extension's storage
             logs = get_extension_logs()
@@ -198,6 +198,7 @@ def main():
     driver.quit()
     end = time.time()
     print("Execution time:", end - start, "seconds")
+    writer.writerow(["Execution time", end - start])
     logs.close()
 if __name__ == '__main__':
     main()
