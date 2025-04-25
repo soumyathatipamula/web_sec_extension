@@ -109,7 +109,7 @@ def handle_alert(payload):
     except NoAlertPresentException:
         is_alert_present = False
 
-    if is_alert_present():
+    if is_alert_present:
         print("Alert is present")
         try:
             # Wait for an alert to appear (timeout: 1 second)
