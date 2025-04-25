@@ -47,7 +47,7 @@ driver.get(extension_url)
 
 DVWA_USER = 'admin'
 DVWA_PASSWORD = 'password'
-DVWA_URL = 'http://192.168.29.27/DVWA/'
+DVWA_URL = 'http://172.28.252.62/DVWA/'
 
 def login_and_set_security():
     # Log in to DVWA
@@ -97,22 +97,24 @@ writer = csv.writer(logs)
 writer.writerow(["Payload", "Alert", "Detected"])
 
 
-def is_alert_present():
-    try:
-        driver.switch_to.alert
-        return True
-    except NoAlertPresentException:
-        return False    
+    
 
 def handle_alert(payload):
     print("Handling alerts")
     global is_alert
+    
+    try:
+        driver.switch_to.alert
+        is_alert_present = True
+    except NoAlertPresentException:
+        is_alert_present = False
+
     if is_alert_present():
         print("Alert is present")
         try:
             # Wait for an alert to appear (timeout: 1 second)
             alert = driver.switch_to.alert
-            alert.accept()  # Close the alert
+            alert.accept()  # Close the al-ert
             is_alert = True
             print("✅ Alert accepted.")
         except NoAlertPresentException:
@@ -204,8 +206,8 @@ def main():
     test_xss_payloads_dvwa()
     driver.quit()
     end = time.time()
-    print("Execution time:", end - start, "seconds")
-    writer.writerow(["Execution time", end - start])
+    print("Execution time:", end - start, " seconds")
+    writer.writerow(["Execution time", end - start, " seconds"])
     logs.close()
 if __name__ == '__main__':
     main()
