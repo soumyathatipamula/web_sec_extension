@@ -42,12 +42,11 @@ ext_id = None
 ext_id = get_extension_uuid()
 print("Extension ID:", ext_id)
 extension_url = f"moz-extension://{ext_id}/popup.html"
-driver.get(extension_url)
 
 
 DVWA_USER = 'admin'
 DVWA_PASSWORD = 'password'
-DVWA_URL = 'http://172.28.252.62/DVWA/'
+DVWA_URL = 'http://192.168.29.27/DVWA/'
 
 def login_and_set_security():
     # Log in to DVWA

