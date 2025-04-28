@@ -185,58 +185,63 @@ const xssPatterns = [
     /atob\s*\(/i,
     /String\.fromCharCode\s*\(/i,
     /&#x?[0-9a-f]+;/i,
-    /%[0-9a-f]{2}/i, // Basic URL encoding
-    /(?:\\x[0-9a-f]{2})|(?:\\u[0-9a-f]{4})/i, // Hex/Unicode escapes
-    /<[^>]+\s+(?:(?:onfocusin)|(?:oncontentvisibilityautostatechange)|(?:onerror)|(?:onfocus)|(?:onload))\s*=\s*(["']?).*?\1/i, // Common event handlers in tags
+    /%[0-9a-f]{2}/i,
+    /(?:\\x[0-9a-f]{2})|(?:\\u[0-9a-f]{4})/i,
+    /<[^>]+\s+(?:(?:onfocusin)|(?:oncontentvisibilityautostatechange)|(?:onerror)|(?:onfocus)|(?:onload))\s*=\s*(["']?).*?\1/i,
     /document\.(cookie|write|location)/i,
-    /(alert|confirm|prompt)\s*\(/i // Direct calls to alert/confirm/prompt
-    // Add more sophisticated patterns carefully
+    /(alert|confirm|prompt)\s*\(/i,
+    // New patterns for advanced XSS
+    /throw\s*[^;]*;/i, // Detect throw statements
+    /window\.onerror\s*=/i, // Detect window.onerror assignments
+    /print\s*\(/i // Detect print() calls
 ];
 
 
 // Basic decode function (consider limitations for complex obfuscation)
 function decodeObfuscation(content) {
-    if (typeof content !== 'string') return content; // Handle non-string input
+    if (typeof content !== 'string') return content;
 
     let decoded = content;
     try {
-        // 1. HTML Entities (basic) - Careful with complex entities
+        // 1. HTML Entities (basic)
         try {
-             const textarea = document.createElement('textarea'); // Requires DOM environment - this won't work directly in background script without offscreen document or other workarounds.
-             textarea.innerHTML = decoded;                      // Consider removing this or using a library if needed in background.
-             decoded = textarea.value;
+            const textarea = document.createElement('textarea');
+            textarea.innerHTML = decoded;
+            decoded = textarea.value;
         } catch (domError) {
-             console.warn("DOM-based decoding (textarea) not available in this context or failed.", domError);
-             // Fallback or alternative decoding if needed
+            console.warn("DOM-based decoding (textarea) not available in this context or failed.", domError);
         }
 
+        // 2. URL Decoding
+        decoded = decodeURIComponent(decoded.replace(/\+/g, ' '));
 
-        // 2. URL Decoding (Percent Encoding)
-        decoded = decodeURIComponent(decoded.replace(/\+/g, ' ')); // Handle '+' for space
-
-        // 3. Base64 Decoding (Simple check)
-        // Be cautious: This might decode legitimate base64 data that isn't XSS.
-        // Only decode if it looks like base64 AND contains suspicious characters after potential decoding.
+        // 3. Base64 Decoding (with XSS check)
         if (/^[A-Za-z0-9+/=]{4,}$/.test(decoded) && decoded.length % 4 === 0) {
-             try {
-                 let tempDecoded = atob(decoded);
-                 // Check if the *result* of atob contains suspicious patterns
-                 if (/[<>"'`\(\)]/.test(tempDecoded) || /script|on\w+=|javascript:/i.test(tempDecoded)) {
+            try {
+                let tempDecoded = atob(decoded);
+                if (/[<>"'`\(\)]/.test(tempDecoded) || /script|on\w+=|javascript:/i.test(tempDecoded)) {
                     decoded = tempDecoded;
-                 }
-             } catch (e) { /* Not valid Base64, ignore error */ }
+                }
+            } catch (e) { /* Not valid Base64, ignore */ }
         }
 
-        // 4. Hex/Unicode Escapes (String.fromCharCode)
+        // 4. Hex/Unicode Escapes
         decoded = decoded.replace(/\\x([0-9A-Fa-f]{2})|\\u([0-9A-Fa-f]{4})/g, (_, hex, unicode) => {
             try {
-                 return String.fromCharCode(parseInt(hex || unicode, 16));
-            } catch (e) { return ''; } // Handle potential errors during parsing
+                return String.fromCharCode(parseInt(hex || unicode, 16));
+            } catch (e) { return ''; }
+        });
+
+        // 5. Octal Escapes (e.g., \50 = '(', \51 = ')')
+        decoded = decoded.replace(/\\([0-7]{1,3})/g, (_, octal) => {
+            try {
+                return String.fromCharCode(parseInt(octal, 8));
+            } catch (e) { return ''; }
         });
 
     } catch (e) {
         console.warn("Generic obfuscation decoding error:", e, "Original:", content);
-        return content; // Return original if decoding fails badly
+        return content;
     }
     return decoded;
 }
@@ -244,31 +249,41 @@ function decodeObfuscation(content) {
 
 function isXSSPayload(content) {
     if (typeof content !== 'string') return false;
-    return xssPatterns.some(pattern => pattern.test(content));
+    const isMatch = xssPatterns.some(pattern => {
+        const match = pattern.test(content);
+        if (match) {
+            console.log(`XSS pattern matched: ${pattern.source} in content: ${content}`);
+        }
+        return match;
+    });
+    if (!isMatch && content.includes('script') || content.includes('onerror') || content.includes('throw')) {
+        console.warn(`Potential undetected XSS payload: ${content}`);
+    }
+    return isMatch;
 }
 
 // Basic Sanitization - VERY LIMITED. DOMPurify in content script is much better.
 // This background sanitation primarily aims to break simple script execution.
 function sanitizeValue(content) {
-    if (typeof content !== 'string') return ''; // Return empty for non-strings
-    // Prioritize removing script tags and event handlers
+    if (typeof content !== 'string') return '';
     let sanitized = content
-        .replace(/<script[^>]*>[\s\S]*?(?:<\/script>|$)/gi, " none ") // Remove script blocks entirely
-        .replace(/<[^>]+>/g, (match) => { // Process other tags for inline handlers
-             return match.replace(/on\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, ' sanitized-event '); // Neutralize inline event handlers (onerror, onload, etc.)
+        .replace(/<script[^>]*>[\s\S]*?(?:<\/script>|$)/gi, " none ")
+        .replace(/<[^>]+>/g, (match) => {
+            return match.replace(/on\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, ' sanitized-event ');
         })
-        .replace(/javascript:/gi, "sanitized-javascript:") // Defang javascript: pseudo-protocol
-        .replace(/eval\s*\(/gi, "sanitized-eval(")      // Defang eval
-        .replace(/ VBScript:/gi, "sanitized-vbscript:") // Defang VBScript
-        .replace(/<(?=.*?>)/g, '&lt;') // Escape remaining opening angle brackets selectively
-        .replace(/>/g, '&gt;');        // Escape closing angle brackets
-
-     // Optionally, encode characters known to be dangerous in HTML attributes/content
-     sanitized = sanitized
-         .replace(/"/g, '&quot;')
-         .replace(/'/g, '&#x27;') // or &apos;
-         .replace(/`/g, '&#x60;');
-
+        .replace(/javascript:/gi, "sanitized-javascript:")
+        .replace(/eval\s*\(/gi, "sanitized-eval(")
+        .replace(/ VBScript:/gi, "sanitized-vbscript:")
+        // New sanitization rules
+        .replace(/throw\s*[^;]*;/gi, "sanitized-throw;")
+        .replace(/window\.onerror\s*=/gi, "sanitized-onerror=")
+        .replace(/print\s*\(/gi, "sanitized-print(")
+        .replace(/<(?=.*?>)/g, '<')
+        .replace(/>/g, '>');
+    sanitized = sanitized
+        .replace(/"/g, '"')
+        .replace(/'/g, "'")
+        .replace(/`/g, '`');
     return sanitized;
 }
 
